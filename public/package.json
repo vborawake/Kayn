@@ -1,0 +1,19 @@
+{
+  "name": "kyan",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vborawake/Kayn.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vborawake/Kayn/issues"
+  },
+  "homepage": "https://github.com/vborawake/Kayn#readme"
+}

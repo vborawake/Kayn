@@ -1,0 +1,1224 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+*, *::after, *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+
+.flex_column {
+    display: flex;
+    flex-direction: column;
+}
+
+.space_between {
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.space_evenly {
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.justify_center {
+    justify-content: center;
+}
+
+.center {
+    align-items: center;
+}
+
+.align_flex_start {
+    align-items: flex-start;
+}
+
+.flex_row {
+    display: flex;
+}
+
+.flex_row_reverse {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+li {
+    list-style: none;
+}
+
+.container-fluid a {
+    position: relative;
+    text-decoration: none;
+    color: #FFF;
+}
+
+.container-fluid a:hover {
+    color: #FFF;
+}
+
+.container-fluid a:hover::before {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    width: 30%;
+    height: 0.2rem;
+    background: #B83169;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin: 0 0 0 35%;
+}
+
+.container-fluid a.active::before {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    width: 100%;
+    height: 0.2rem;
+    background: #B83169;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.container-fluid a.active:hover::before {
+    margin: 0;
+}
+
+.container-fluid button {
+    border: none;
+    padding: 0.6rem 1rem;
+    background: #B83169;
+    color: #FFF;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 0.6rem;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+.container-fluid button:hover {
+    border: 2px solid #B83169;
+    background: #380E3C;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+.container-fluid {
+    /* width: 100%;
+    min-height: 100vh; */
+    font-family: 'Inter', sans-serif;
+    color: #FFF;
+    z-index: 10;
+}
+
+.container-fluid .hero_section {
+    background: #380E3C;
+    width: 100%;
+    height: 100vh;
+}
+
+.container-fluid .hero_section nav {
+    width: 95%;
+    height: 6rem;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    color: #FFF;
+}
+
+.container-fluid .hero_section .left_section img {
+    width: 50%;
+    z-index: 1;
+}
+
+.container-fluid .hero_section .left_section .language p {
+    margin: 0 1rem 0 0;
+}
+
+.container-fluid .hero_section nav img {
+    height: 80%;
+}
+
+.mobile_menu {
+    display: none;
+}
+
+.hamburger {
+    display: none;
+}
+
+.container-fluid .hero_section nav ul li:last-child {
+    background: #B83169;
+    border-radius: 0.6rem;
+    padding: 0.6rem 1rem;
+    transition: all 0.6s ease;
+    cursor: pointer;
+}
+
+.container-fluid .hero_section nav ul li:last-child:hover {
+    background: #65082f;
+    border-radius: 0.6rem;
+    padding: 0.6rem 1rem;
+    transition: all 0.6s ease;
+}
+
+.container-fluid .hero_section > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    width: 45%;
+    height: 100%;
+    z-index: 1;
+}
+
+.container-fluid .hero_section .hero_section_display {
+    margin: 6rem 0 0 0;
+}
+
+.container-fluid .hero_section .hero_section_display .hero_text {
+    margin: 0 0 0 8rem;
+    font-weight: 700;
+}
+
+.container-fluid .hero_section .hero_section_display .hero_text h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    width: 80%;
+}
+
+.container-fluid .hero_section .hero_section_display .hero_text p {
+    line-height: 1.4;
+    font-size: 1.3rem;
+}
+
+.container-fluid .hero_section .hero_section_display .hero_text button {
+    position: relative;
+    z-index: 3;
+    font-size: 1.2rem;
+    font-weight: 600;
+    width: 50%;
+}
+
+/* .container-fluid .hero_section .hero_section_display {
+    height: 100%;
+} */
+
+.container-fluid .introduction_section {
+    background: url('../images/Vector\ 4.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    /* height: 80vh; */
+}
+
+/* .container-fluid .introduction_section .introduction_wrapper {
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+} */
+
+.container-fluid .introduction_section .introduction_wrapper img {
+    margin: 6rem 0 0 0;
+    width: 38%;
+    height: 38%;
+}
+
+.container-fluid .introduction_section .introduction_wrapper h1 {
+    /* width: 45%; */
+    font-size: 4rem;
+    line-height: 1;
+    font-weight: 700;
+}
+
+.container-fluid .introduction_section .introduction_wrapper h1 span {
+    color: #B83169;
+}
+
+.container-fluid .features_section {
+    position: relative;
+    width: 90%;
+    margin: 0rem auto 0 auto;
+    color: #000;
+}
+
+.container-fluid .features_section .row .feature_description {
+    font-size: 1.3rem;
+}
+
+.container-fluid .features_section .row {
+    position: relative;
+    z-index: 4;
+}
+
+.container-fluid .features_section .row:not(:first-child) {
+    margin: -12% 0 0 0;
+}
+
+.container-fluid .features_section .row .feature_description h1 {
+    /* width: 110%; */
+    font-size: 2.3rem;
+    font-weight: 600;
+    margin: 0 0 1.5rem 0;
+}
+
+.container-fluid .features_section .row .feature_description > p {
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin: 0 0 1.5rem 0;
+}
+
+.container-fluid .features_section .row img {
+    width: 50%;
+}
+
+/* .container-fluid .features_section .row:not(:first-child) {
+    margin: -20rem 0 0 0;
+} */
+
+.container-fluid .features_section .feature_description ul li {
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin: 1rem 0 0 -0.6rem;
+    list-style: disc;
+}
+
+.container-fluid .features_section img.design_element {
+    position: absolute;
+    bottom: 5rem;
+    right: -4.5rem;
+    width: 60%;
+    z-index: 3;
+}
+
+.container-fluid .features_section img:last-child {
+    position: absolute;
+    bottom: -28rem;
+    right: -4.5rem;
+    z-index: 2;
+}
+
+.container-fluid .working_section {
+    /* width: 90%; */
+    margin: -2rem auto 0 auto;
+    color: #000;
+    text-align: center;
+    font-size: 1.3rem;
+    z-index: 10;
+}
+
+.container-fluid .working_section h1 span {
+    color: #B83169;
+}
+
+.container-fluid .working_section .step {
+    margin: 3rem 0 0 0;
+    /* width: 30%; */
+    height: 34rem;
+}
+
+.container-fluid .working_section .step:nth-child(2) {
+    transform: translateY(8rem);
+}
+
+.container-fluid .working_section .step .image {
+    position: relative;
+}
+
+.container-fluid .working_section .step .image p {
+    position: absolute;
+    top: 30%;
+    left: 40%;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #FFF;
+}
+
+.container-fluid .audience_section {
+    margin: 12rem 0 0 0;
+    background: #380E3C;
+    height: 30rem;
+    font-size: 1.4rem;
+}
+
+.container-fluid .audience_section .buttons {
+    width: 80%;
+}
+
+.container-fluid .audience_section button {
+    margin: 1rem 0 0 0;
+    width: 30%;
+    font-size: 1.2rem;
+    font-weight: 600;
+    height: 3rem;
+}
+
+.container-fluid .audience_section button:last-child {
+    opacity: 0;
+}
+
+.container-fluid .audience_section p {
+    width: 50%;
+    text-align: center;
+}
+
+.container-fluid .advantages_section {
+    /* width: 90%; */
+    margin: 4rem auto 0 auto;
+    color: #000;
+    height: fit-content;
+}
+
+.container-fluid .advantages_section h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+.container-fluid .advantages_section .advantages {
+    position: relative;
+    z-index: 4;
+    /* width: 80%; */
+    height: fit-content;
+}
+
+.container-fluid .advantages_section .advantages .advantage {
+    height: 24rem;
+    width: 26%;
+    margin: 3rem 5rem 0 0;
+    text-align: center;
+    background: linear-gradient(360deg, #FFFFFF 76.56%, #D399D9 100%);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+.container-fluid .advantages_section .advantages .advantage:nth-child(3),
+.container-fluid .advantages_section .advantages .advantage:nth-child(6) {
+    margin: 3rem 0 0 0;
+}
+
+.container-fluid .advantages_section .advantage .header {
+    height: 5rem;
+}
+
+.container-fluid .advantages_section .advantage .text {
+    height: 20rem;
+    width: 80%;
+    font-size: 1.4rem;
+}
+
+.container-fluid .pricing_section {
+    position: relative;
+    width: 80%;
+    color: #000;
+    margin: 5rem auto 0 auto;
+}
+
+.container-fluid .pricing_section > h1 {
+    position: relative;
+    z-index: 4;
+    font-size: 3rem;
+    font-weight: 600;
+    margin: 0 0 2rem 0;
+}
+
+.container-fluid .pricing_section .payment_cycle {
+    position: relative;
+    z-index: 4;
+    width: 50%;
+    height: 4.5rem;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 1.8rem;
+    margin: 0 0 2rem 0;
+}
+
+.container-fluid .pricing_section .payment_cycle ul {
+    width: 100%;
+    font-size: 2rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
+
+.container-fluid .pricing_section .payment_cycle ul li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 4.5rem;
+}
+
+.container-fluid .pricing_section .payment_cycle ul li.active {
+    color: #FFF;
+    background: linear-gradient(180deg, #380E3C 0%, #B83169 100%);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 1.8rem;
+}
+
+.container-fluid .pricing_section .plans {
+    position: relative;
+    z-index: 4;
+    width: 85%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.container-fluid .pricing_section .plans .plan {
+    width: 43%;
+    min-height: 35rem;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.06);
+    border-radius: 0.8rem;
+    padding-bottom: 2rem;
+    background: #FFF;
+}
+
+.container-fluid .pricing_section .plan .header {
+    border-bottom: 2px solid #DBD6D6;;
+    width: 100%;
+    height: 8rem;
+    font-size: 1.2rem;
+}
+
+.container-fluid .pricing_section .plan ul {
+    height: 20rem;
+    width: 70%;
+    font-size: 1.2rem;
+}
+
+.container-fluid .pricing_section .plan h1 {
+    margin: 2rem 0 0 0;
+    
+}
+
+.container-fluid .pricing_section .plan button {
+    height: 2.5rem;
+    margin: 2rem 0;
+    width: 40%;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.container-fluid .pricing_section .plan ul li {
+    list-style: disc;
+    text-align: center;
+}
+
+.container-fluid .pricing_section img:first-child {
+    position: absolute;
+    top: -15rem;
+    left: -10rem;
+    z-index: 2;
+    transform: scale(1.1);
+}
+
+.container-fluid .action_section {
+    background: url('../images/Vector\ 1.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height: 25rem;
+    padding: 0 8rem;
+    margin-top: 6rem;
+}
+
+.container-fluid .action_section .left_section {
+    height: 100%;
+    align-self: flex-end;
+    font-size: 1.8rem;
+    width: 50%;
+}
+
+.container-fluid .action_section .left_section h1 {
+    font-size: 3rem;
+    font-weight: 600;
+    width: 100%;
+}
+
+.container-fluid .action_section .left_section img {
+    transform: translateY(-7rem);
+}
+
+.container-fluid .action_section button {
+    align-self: flex-end;
+    width: 25%;
+    height: 4.5rem;
+    background: transparent;
+    border: 4px solid white;
+    color: #FFF;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0 4rem 6rem 0;
+}
+
+.container-fluid .action_section button:hover {
+    border: 4px solid rgba(251, 136, 184, 0.5);
+}
+
+.container-fluid .footer {
+    width: 100%;
+    height: fit-content;
+    background: #380E3C;
+    font-size: 1.2rem;
+}
+
+.container-fluid .footer a {
+    width: fit-content;
+}
+
+.container-fluid .footer a:hover::before {
+    margin: 0;
+    width: 30%;
+    left: 35%;
+}
+
+.container-fluid .footer .column {
+    height: 100%;
+    width: 25%;
+    padding: 3rem 0 0 3rem;
+
+}
+
+.container-fluid .footer img.logo {
+    width: 60%;
+    margin-bottom: 3rem;
+}
+
+.container-fluid .footer .social_media img {
+    width: 60%;
+}
+
+.container-fluid .footer .social_media .element:nth-child(4) img {
+    transform: scale(2);
+}
+
+.container-fluid .footer .element {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+}
+
+.container-fluid .footer .column h1 {
+    color: #B83169;
+}
+
+.container-fluid .footer .column ul {
+    height: 14rem;
+    font-weight: 600;
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+    
+    .container-fluid .hero_section nav .left_section {
+        align-items: center;
+        width: 25%;
+    }
+    
+    .container-fluid .hero_section .left_section img {
+        width: 50%;
+    }
+    
+    .container-fluid .hero_section nav img {
+        height: 80%;
+    }
+    
+    .container-fluid .hero_section nav .right_section {
+        width: 65%;
+    }
+    
+    .container-fluid .hero_section .hero_section_display .hero_text {
+        height: 30%;
+    }
+    
+    .container-fluid .hero_section .hero_section_display .hero_text h1 {
+        font-size: 2rem;
+    }
+    
+    .container-fluid .hero_section .hero_section_display .hero_text p {
+        font-size: 1rem;
+        line-height: 1.6rem;
+    }
+
+    /* .container-fluid .introduction_section {
+        height: 60vh;
+    }
+    
+    .container-fluid .introduction_section .introduction_wrapper img {
+        margin: 6rem 0 0 0;
+    } */
+    
+    .container-fluid .introduction_section .introduction_wrapper h1 {
+        /* width: 60%; */
+        font-size: 3.5rem;
+    }
+    
+    .container-fluid .features_section .row h1 {
+        font-size: 2rem;
+    }
+
+    .container-fluid .features_section img.design_element {
+        bottom: 0rem;
+    }
+    
+    .container-fluid .features_section .row img {
+        width: 50%;
+    }
+    
+    .container-fluid .features_section .row:not(:first-child) {
+        margin: -4rem 0 0 0;
+    }
+
+    .container-fluid .working_section .step > img:nth-child(2) {
+        width: 70%;
+    }
+
+    .container-fluid .working_section {
+        margin: 4rem 0 0 0;
+    }
+
+    .container-fluid .audience_section button {
+        font-size: 1rem;
+    }
+    
+    .container-fluid .advantages_section .advantages {
+        width: 90%;
+    }
+    
+    .container-fluid .advantages_section .advantages .advantage {
+        width: 26%;
+        margin: 1.5rem 3rem 0 0;
+    }
+    
+    .container-fluid .advantages_section .advantages .advantage:nth-child(3),
+    .container-fluid .advantages_section .advantages .advantage:nth-child(6) {
+        margin: 1.5rem 0 0 0;
+    }
+    
+    .container-fluid .advantages_section .advantage .text {
+        font-size: 1rem;
+    }
+
+    .container-fluid .pricing_section {
+        width: 80%;
+        height: fit-content;
+        color: #000;
+        margin: 0 auto;
+    }
+    
+    .container-fluid .pricing_section .payment_cycle {
+        width: 55%;
+        height: 4.5rem;
+    }
+    
+    .container-fluid .pricing_section .payment_cycle ul li {
+        height: 4.5rem;
+    }
+    
+    .container-fluid .pricing_section .plans {
+        width: 90%;
+    }
+    
+    .container-fluid .pricing_section .plans .plan {
+        width: 45%;
+        height: fit-content;
+        border-radius: 0.8px;
+    }
+    
+    .container-fluid .pricing_section .plan ul {
+        height: fit-content;
+    }
+
+    .container-fluid .action_section {
+        padding: 0 4rem;
+    }
+    
+    .container-fluid .action_section .left_section {
+        font-size: 1rem;
+        width: 60%;
+    }
+    
+    .container-fluid .action_section .left_section h1 {
+        width: 100%;
+    }
+
+    .container-fluid .action_section button {
+        font-size: 1.3rem;
+    }
+
+    .container-fluid .footer {
+        height: fit-content;
+    }
+    
+    .container-fluid .footer a {
+        width: fit-content;
+    }
+    
+    .container-fluid .footer a:hover::before {
+        margin: 0;
+        width: 30%;
+        left: 35%;
+    }
+    
+    .container-fluid .footer .column {
+        height: fit-content;
+        width: 25%;
+        padding: 1rem 0 0 1rem;
+    
+    }
+    
+    .container-fluid .footer img.logo {
+        width: 60%;
+        margin-bottom: 3rem;
+    }
+    
+    .container-fluid .footer .social_media img {
+        width: 60%;
+    }
+    
+    .container-fluid .footer .social_media .element:nth-child(4) img {
+        transform: scale(2);
+    }
+    
+    .container-fluid .footer .element {
+        width: 3rem;
+        height: 3rem;
+    }
+    
+    .container-fluid .footer .column h1 {
+        color: #B83169;
+    }
+    
+    .container-fluid .footer .column ul {
+        height: fit-content;
+    }
+
+    .container-fluid .footer .column ul li {
+        margin: 0 0 1rem 0;
+    }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1400px) {
+    .container-fluid .working_section .step {
+        width: 32%;
+    }
+
+    .container-fluid .working_section .step > img:nth-child(2) {
+        width: 70%;
+    }
+
+    .container-fluid .advantages_section .advantage .text {
+        height: 24rem;
+        font-size: 1.2rem;
+    }
+
+    .container-fluid .pricing_section {
+        width: 80%;
+        height: fit-content;
+        color: #000;
+        margin: 0 auto;
+    }
+    
+    .container-fluid .pricing_section .payment_cycle {
+        width: 55%;
+        height: 4.5rem;
+    }
+    
+    .container-fluid .pricing_section .payment_cycle ul li {
+        height: 4.5rem;
+    }
+    
+    .container-fluid .pricing_section .plans {
+        width: 90%;
+    }
+    
+    .container-fluid .pricing_section .plans .plan {
+        width: 45%;
+        height: fit-content;
+        border-radius: 0.8px;
+    }
+    
+    .container-fluid .pricing_section .plan ul {
+        height: fit-content;
+    }
+
+    .container-fluid .action_section {
+        padding: 0 4rem;
+    }
+    
+    .container-fluid .action_section .left_section {
+        font-size: 1rem;
+        width: 60%;
+    }
+    
+    .container-fluid .action_section .left_section h1 {
+        width: 100%;
+    }
+
+    .container-fluid .action_section button {
+        font-size: 1.5rem;
+    }
+
+    .container-fluid .footer {
+        height: fit-content;
+    }
+    
+    .container-fluid .footer a {
+        width: fit-content;
+    }
+    
+    .container-fluid .footer a:hover::before {
+        margin: 0;
+        width: 30%;
+        left: 35%;
+    }
+    
+    .container-fluid .footer .column {
+        height: fit-content;
+        width: 25%;
+        padding: 1rem 0 0 1rem;
+    
+    }
+    
+    .container-fluid .footer img.logo {
+        width: 60%;
+        margin-bottom: 3rem;
+    }
+    
+    .container-fluid .footer .social_media img {
+        width: 60%;
+    }
+    
+    .container-fluid .footer .social_media .element:nth-child(4) img {
+        transform: scale(2);
+    }
+    
+    .container-fluid .footer .element {
+        width: 3rem;
+        height: 3rem;
+    }
+    
+    .container-fluid .footer .column h1 {
+        color: #B83169;
+    }
+    
+    .container-fluid .footer .column ul {
+        height: fit-content;
+    }
+
+    .container-fluid .footer .column ul li {
+        margin: 0 0 1rem 0;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+
+    .container-fluid .hero_section .mobile_menu {
+        display: flex;
+        position: absolute;
+        top: 5rem;
+        right: 0;
+        width: 50%;
+        height: 15rem;
+        background: #B83169;
+        color: #FFF;
+        border-radius: 1rem;
+        z-index: 15;
+        display: none;
+    }
+
+    .container-fluid .mobile_menu ul {
+        height: 100%;
+    }
+    
+    .container-fluid .hero_section nav {
+        justify-content: flex-end;
+    }
+
+    .container-fluid .hamburger {
+        display: flex;
+        width: 3rem;
+        height: 3rem;
+        background: #B83169;
+        margin: 0 1rem 0 0;
+    }
+
+    .container-fluid span {
+        position: relative;
+        height: 0.3rem;
+        width: 80%;
+        border-radius: 0.2rem;
+        background: #FFF;
+        z-index: 15;
+    }
+
+    .container-fluid span::before {
+        content: '';
+        position: absolute;
+        top: -0.8rem;
+        left: 0;
+        height: 0.3rem;
+        width: 100%;
+        border-radius: 0.2rem;
+        background: #FFF;
+    }
+
+    .container-fluid span::after {
+        content: '';
+        position: absolute;
+        bottom: -0.8rem;
+        left: 0;
+        height: 0.3rem;
+        width: 100%;
+        border-radius: 0.2rem;
+        background: #FFF;
+    }
+    
+    .container-fluid .hero_section nav .left_section {
+        display: none;
+    }
+    
+    .container-fluid .hero_section nav img {
+        height: 80%;
+    }
+    
+    .container-fluid .hero_section nav .right_section {
+        display: none;
+    }
+
+    .container-fluid .hero_section > img {
+        width: 50%;
+    }
+    
+    /* .container-fluid .hero_section .hero_section_display .hero_text {
+        width: 80%;
+        height: 50%;
+    } */
+    
+    .container-fluid .hero_section .hero_section_display .hero_text h1 {
+        font-size: 2.5rem;
+        width: 100%;
+    }
+    
+    .container-fluid .hero_section .hero_section_display .hero_text p {
+        font-size: 1.1rem;
+    }
+    
+    /* .container-fluid .hero_section .hero_section_display img {
+        display: none;
+    } */
+
+    /* .container-fluid .introduction_section {
+        height: 50vh;
+    } */
+    
+    .container-fluid .introduction_section .introduction_wrapper h1 {
+        margin: -3rem 0 0 0;
+        width: 60%;
+        font-size: 3rem;
+    }
+    
+    .container-fluid .introduction_section .introduction_wrapper h1 span {
+        background: transparent;
+    }
+
+    .container-fluid .features_section {
+        text-align: center;
+        font-size: 1.1rem;
+    }
+    
+    .container-fluid .features_section .row {
+        display: flex;
+        justify-content: center;
+        font-size: 0.8rem;
+    }
+    
+    .container-fluid .features_section .row:not(:first-child) {
+        margin: 0 0 0 0;
+    }
+    
+    .container-fluid .features_section .feature_description ul li {
+        text-align: left;
+    }
+    
+    /* .container-fluid .features_section .row:nth-child(3) .feature_description {
+        height: 16rem;
+        width: 100%;
+    } */
+    
+    .container-fluid .features_section img.design_element {
+        display: none;
+    }
+
+    .container-fluid .working_section .step > img:nth-child(2) {
+        width: 70%;
+    }
+
+    .container-fluid .working_section {
+        margin: 4rem 0 0 0;
+    }
+
+    .container-fluid .audience_section p {
+        width: 80%;
+    }
+
+    .container-fluid .audience_section button {
+        font-size: 0.9rem;
+    }
+
+    .container-fluid .working_section {
+        margin-top: 4rem;
+    }
+    
+    /* .container-fluid .working_section .step {
+        width: 100%;
+    } */
+    
+    /* .container-fluid .working_section .step:nth-child(2) {
+        transform: translateY(0);
+    } */
+
+    .container-fluid .advantages_section {
+        margin: 4rem auto 0 auto;
+        height: fit-content;
+    }
+    
+    .container-fluid .advantages_section .advantages {
+        /* flex-direction: column; */
+        width: 80%;
+        height: fit-content;
+    }
+    
+    .container-fluid .advantages_section .advantages .advantage {
+        width: 30%;
+        margin: 3rem 0 0 0;
+    }
+    
+    .container-fluid .advantages_section .advantage .header {
+        height: 5rem;
+    }
+    
+    .container-fluid .advantages_section .advantage .text {
+        font-size: 1.1rem;
+    }
+
+    .container-fluid .advantages_section .advantages .advantage:nth-child(3),
+    .container-fluid .advantages_section .advantages .advantage:nth-child(6) {
+        margin: 3rem 0 0 0;
+    }
+
+    .container-fluid .advantages_section .advantage .text {
+        height: 24rem;
+        font-size: 1.2rem;
+    }
+
+    .container-fluid .pricing_section {
+        height: fit-content;
+    }
+
+    .container-fluid .pricing_section h1 {
+        text-align: center;
+        margin: 4rem 0 2rem 0;
+    }
+    
+    .container-fluid .pricing_section .payment_cycle {
+        width: 80%;
+        margin: 0 0 4rem 0;
+    }
+    
+    .container-fluid .pricing_section .plans {
+        width: 100%;
+    }
+    
+    .container-fluid .pricing_section .plans .plan {
+        width: 45%;
+        height: fit-content;
+        border-radius: 0.8rem;
+    }
+
+    .container-fluid .pricing_section .plans .plan:not(:last-child) {
+        margin: 0 0 2rem 0;
+    }
+    
+    .container-fluid .pricing_section .plan ul {
+        height: fit-content;
+        width: 70%;
+    }
+
+    .container-fluid .pricing_section .plan h1 {
+        margin: 0;
+    }
+
+    .container-fluid .action_section {
+        height: fit-content;
+        padding: 2rem;
+        margin: 4rem 0 0 0;
+    }
+    
+    .container-fluid .action_section .left_section {
+        height: 100%;
+        justify-content: center;
+        align-self: center;
+        font-size: 1rem;
+        width: 60%;
+        margin: 2rem 0;
+    }
+    
+    .container-fluid .action_section .left_section h1 {
+        width: 100%;
+    }
+    
+    .container-fluid .action_section button {
+        font-size: 1.2rem;
+    }
+    
+    .container-fluid .footer {
+        height: fit-content;
+    }
+    
+    .container-fluid .footer a {
+        width: fit-content;
+    }
+    
+    .container-fluid .footer a:hover::before {
+        margin: 0;
+        width: 30%;
+        left: 35%;
+    }
+    
+    .container-fluid .footer .column {
+        height: fit-content;
+        width: 25%;
+        padding: 1rem 0 0 1rem;
+    
+    }
+    
+    .container-fluid .footer img.logo {
+        width: 60%;
+        margin-bottom: 3rem;
+    }
+    
+    .container-fluid .footer .social_media img {
+        width: 60%;
+    }
+    
+    .container-fluid .footer .social_media .element:nth-child(4) img {
+        transform: scale(2);
+    }
+    
+    .container-fluid .footer .element {
+        width: 3rem;
+        height: 3rem;
+    }
+    
+    .container-fluid .footer .column h1 {
+        color: #B83169;
+    }
+    
+    .container-fluid .footer .column ul {
+        height: fit-content;
+    }
+
+    .container-fluid .footer .column ul li {
+        margin: 0 0 1rem 0;
+    }
+}

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="register.style.css">
+    <script defer src="register.js"></script>
+    <title>Register</title>
+</head>
+<body>
+    <div class="container flex_column">
+        <nav class="flex_row space_between center">
+            <div class="left_section flex_row space_between">
+                <img src="../images/logo kayn.png" alt="logo">
+                <div class="language flex_row center">
+                    <p>EN</p>
+                    <img src="../images/icons8-first-flag-of-the-usa-40 1.png" alt="flag">
+                </div>
+            </div>
+            <div class="right_section">
+                <ul class="flex_row space_between center">
+                    <li><a class="active" href="#">Concept</a></li>
+                    <li><a href="#">Athelet</a></li>
+                    <li><a href="#">Coach</a></li>
+                    <li><a href="#">Analysis</a></li>
+                    <li><a href="#">Broadcast</a></li>
+                    <li><a href="#">Ultras</a></li>
+                    <li><a href="#">Education</a></li>
+                    <li><a href="../Login/login.html">Login</a></li>
+                </ul>
+            </div>
+            <div class="hamburger flex_column justify_center center">
+                <span></span>
+            </div>
+        </nav>
+        <div class="mobile_menu flex_row center justify_center">
+            <ul class="flex_column space_evenly center">
+                <li><a class="active" href="#">Concept</a></li>
+                <li><a href="#">Athelet</a></li>
+                <li><a href="#">Coach</a></li>
+                <li><a href="#">Analysis</a></li>
+                <li><a href="#">Broadcast</a></li>
+                <li><a href="#">Ultras</a></li>
+                <li><a href="#">Education</a></li>
+                <li><a href="../Login/login.html">Login</a></li>
+            </ul>
+        </div>
+        <div class="register_section flex_row space_evenly">
+            <div class="text_section flex_column space_between">
+                <img src="../images/icons8-football-100 (1).png" alt="">
+                <div class="text_wrapper">
+                    <h2>Final Step</h2>
+                    <p>Take your new dashboard for a spin. Expertly designed for both newcomers and professionals alike, get setup and broadcasting within minutes.</p>
+                </div>
+            </div>
+            <div class="form_section flex_row justify_center center">
+                <form class="flex_column space_between center">
+                    <div class="names flex_row space_between center">
+                        <div class="input flex_column space_between">
+                            <label for="firstName">First Name</label>
+                            <input type="text" name="firstName">
+                        </div>
+                        <div class="input flex_column space_between">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" name="lastName">
+                        </div>
+                    </div>
+                    <div class="input flex_column space_between">
+                        <label for="email">Email</label>
+                        <input type="text" name="email">
+                    </div>
+                    <div class="input flex_column space_between">
+                        <label for="password">Password</label>
+                        <input type="password" name="password">
+                    </div>
+                    <div class="input flex_column space_between">
+                        <label for="country">Country/Region</label>
+                        <input type="text" name="country">
+                    </div>
+                    <div class="input flex_column space_between">
+                        <label for="email2">Email</label>
+                        <input type="text" name="email2">
+                    </div>
+                    <div class="product_info flex_column space_between center">
+                        <div class="header flex_row center justify_center">
+                            <h1>PRODUCT</h1>
+                        </div>
+                        <div class="plan flex_row space_between center">
+                            <div class="plan_type flex_row space_between center">
+                                <p class="type">Basic X </p>
+                                <p class="quantity">1</p>
+                            </div>
+                            <p class="feature">$122 / Month with 1 Week Free Trial</p>
+                        </div>
+                        <div class="bill flex_column space_between center">
+                            <div class="row flex_row space_between center">
+                                <p>Subtotal</p>
+                                <p>$0</p>
+                            </div>
+                            <div class="row flex_row space_between center">
+                                <p>VAT</p>
+                                <p>$0 / Month</p>
+                            </div>
+                            <div class="row flex_row space_between center">
+                                <p>Total</p>
+                                <p>$122 / Month</p>
+                            </div>
+                            <div class="row flex_row space_between center">
+                                <p>1st Renewal : 5 Apr 2023</p>
+                            </div>
+                        </div>
+                        <div class="payment_method flex_column space_between center">
+                            <div class="header flex_row space_between center">
+                                <div class="input flex_row center">
+                                    <input type="radio" name="payment_method" id="credit_card">
+                                    <label for="credit_card">CREDIT CARD</label>
+                                </div>
+                                <div class="input flex_row space_between center">
+                                    <input type="radio" name="payment_method" id="paypal">
+                                    <label for="paypal">PAYPAL</label>
+                                </div>
+                            </div>
+                            <div class="payment">
+                                <p>Your information is secured and we don't store card details in our systems. If your 1 week free trial coupon code applied, we won't be charging you until the end of trial and you can cancel your service whenever you want.</p>
+                            </div>
+                            <div class="inputs flex_row space_between center">
+                                <div class="input flex_row space_between center">
+                                    <img src="../images/image 32.png" alt="">
+                                    <input type="text" placeholder="Card Number">
+                                </div>
+                                <div class="input">
+                                    <input type="text" placeholder="MM/YY">
+                                </div>
+                                <div class="input">
+                                    <input type="text" placeholder="CVC">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input flex_row center">
+                        <input type="radio" name="terms">
+                        <label for="terms">I have read and agree to the website terms and conditions </label>
+                    </div>
+                    <button><a href="../Media/media.html">Lets Start</a></button>
+                </form>
+            </div>
+        </div>
+        <div class="footer flex_row space_between center">
+            <div class="column flex_column">
+                <img class="logo" src="../images/logo kayn.png" alt="logo">
+                <div class="social_media flex_row space_between center">
+                    <div class="element flex_row center justify_center" style="background: #4267B2">
+                        <img src="../images/icons8-facebook-f-50 (1).png" alt="facebook">
+                    </div>
+                    <div class="element flex_row center justify_center" style="background: #E1306C">
+                        <img src="../images/icons8-instagram-50.png" alt="facebook">
+                    </div>
+                    <div class="element flex_row center justify_center" style="background: #FF0000">
+                        <img src="../images/icons8-youtube-48.png" alt="facebook">
+                    </div>
+                    <div class="element flex_row center justify_center">
+                        <img src="../images/icons8-linkedin-circled-60.png" alt="facebook">
+                    </div>
+                </div>
+            </div>
+            <div class="column flex_column space_evenly">
+                <h1>Kayn</h1>
+                <ul class="flex_column space_evenly">
+                    <a href="">
+                        <li>Home</li>
+                    </a>
+                    <a href="">
+                        <li>Concept</li>
+                    </a>
+                    <a href="">
+                        <li>Blog</li>
+                    </a>
+                    <a href="">
+                        <li>About Us</li>
+                    </a>
+                    <a href="">
+                        <li>Contact Us</li>
+                    </a>
+                </ul>
+            </div>
+            <div class="column flex_column space_evenly">
+                <h1>Join Us</h1>
+                <ul class="flex_column space_evenly">
+                    <li>I am Athlete</li>
+                    <li>I am Coach or Agent</li>
+                    <li>Video Analyzer</li>
+                </ul>
+            </div>
+            <div class="column flex_column space_evenly">
+                <h1>Kayn</h1>
+                <ul class="flex_column space_evenly">
+                    <li>Terms And Conditions</li>
+                    <li>Licence agreement</li>
+                    <li>Privacy Policy</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

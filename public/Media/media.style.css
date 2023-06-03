@@ -1,0 +1,761 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+*, *::after, *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.flex_column {
+    display: flex;
+    flex-direction: column;
+}
+
+.space_between {
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.space_evenly {
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.justify_center {
+    justify-content: center;
+}
+
+.justify_flex_start {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.center {
+    align-items: center;
+}
+
+.align_flex_start {
+    align-items: flex-start;
+    /* flex-wrap: wrap; */
+}
+
+.flex_row {
+    display: flex;
+}
+
+.flex_row_reverse {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    position: relative;
+    text-decoration: none;
+    color: #FFF;
+}
+
+a:hover::before {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    width: 30%;
+    height: 0.2rem;
+    background: #B83169;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin: 0 0 0 35%;
+}
+
+a.active::before {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    width: 100%;
+    height: 0.2rem;
+    background: #B83169;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+button {
+    border: none;
+    padding: 0.6rem 1rem;
+    background: #B83169;
+    color: #FFF;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 0.6rem;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+input {
+    border: none;
+}
+
+input:focus {
+    outline: none;
+}
+
+.width_full {
+    width: 100%;
+}
+
+.height_full {
+    height: 100%;
+}
+
+.mt4 {
+    margin: 4rem 0 0 0;
+}
+
+.container {
+    min-height: 100vh;
+    font-family: 'Inter', 'sans-serif';
+}
+
+.hamburger {
+    display: none;
+}
+
+.mobile_menu {
+    display: none;
+}
+
+.container .menu, .container > .toolbar {
+    height: 3rem;
+    background: #380E3C;
+    color: #FFF;
+    padding: 0 2.5%;
+}
+
+.container .menu ul {
+    height: 100%;
+    width: 15%;
+}
+
+.container .menu ul li {
+    height: 70%;
+    border-radius: 0.4rem;
+    padding: 0 0.5rem;
+    transition: all 0.5s ease;
+}
+
+.container .menu ul li:hover {
+    background: #B83169;
+    cursor: pointer;
+}
+
+.container .menu .language {
+    width: 8%;
+}
+
+.container .toolbar {
+    position: relative;
+    background: #B83169;
+    border-bottom: 2px solid white;
+}
+
+.container .toolbar .import {
+    padding: 0 1rem 0 0;
+    border-right: 1px solid white;
+    cursor: pointer;
+}
+
+.container .toolbar .create {
+    padding: 0 0 0 1rem;
+    cursor: pointer;
+}
+
+.container .toolbar .create_menu {
+    position: absolute;
+    top: 2rem;
+    height: 200%;
+    width: 25%;
+    padding: 0 0.5rem;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    z-index: 10;
+    background: #FFF;
+    border-radius: 0.5rem;
+    color: #380E3C;
+    display: none;
+}
+
+.container .toolbar .create_menu .actions input {
+    padding: 0.2rem;
+    border: 2px solid #380E3C;
+    border-radius: 0.3rem;
+    font-size: 1.2rem;
+}
+
+.container .toolbar .create_menu .actions button {
+    background: #B83169;
+    border-radius: 0.3rem;
+    padding: 0.3rem;
+}
+
+.container .toolbar .create_menu .actions button:nth-child(2) {
+    background: #D9D9D9;
+    color: #000;
+}
+
+.container .toolbar img {
+    margin: 0 1rem 0 0;
+}
+
+.container .files_section {
+    width: 50%;
+}
+
+.container .player_section {
+    width: 50%;
+}
+
+.container .workspace .toolbar {
+    height: 3rem;
+    padding: 0 5%;
+}
+
+.container .workspace .toolbar .search {
+    margin: 0 1rem 0 0;
+}
+
+.container .workspace .toolbar input {
+    height: 2rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.container .workspace .toolbar .filter {
+    width: 35%;
+}
+
+.container .workspace .toolbar .filter select {
+    width: 80%;
+    height: 2rem;
+    border-radius: 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.container .workspace .toolbar .filter select .item svg {
+    fill: #B83169;
+}
+
+.container .workspace .files_section .directories {
+    height: 100%;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.container .workspace .files_section .file_tree {
+    height: 100%;
+    width: 30%;
+    border-right: 2px solid #A4A4A4;
+    padding: 1rem 0 0 1rem;
+    white-space: nowrap;
+    overflow-x: scroll;
+}
+
+.container .files_section .file_tree .file {
+    background: #380E3C;
+    padding: 0.2rem;
+    border-radius: 0.25rem;
+}
+
+.container .files_section .file_tree .path {
+    background: #D9D9D9;
+    /* padding: 0.2rem; */
+    border-radius: 0.25rem;
+    font-size: 1.2rem;
+    color: #FFF;
+    font-weight: 600;
+    margin: 0 0 0 0.5rem;
+}
+
+.container .files_section .file_tree .path p {
+    padding: 0.8rem 1.2rem;
+}
+
+.container .files_section .file_tree .row {
+    white-space: nowrap;
+    width: fit-content;
+}
+
+.container svg {
+    fill: #FFF;
+}
+
+.container .workspace .files_section .file_manager {
+    padding: 1rem;
+    width: 70%;
+}
+
+.container .workspace .files_section .file_manager .folders {
+    border-bottom: 2px solid #D9D9D9;
+    border-width: 95%;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.container .workspace .files_section .file_manager .directories_container,
+.container .workspace .files_section .file_manager .files_container {
+    /* position: relative; */
+    margin-top: 1rem;
+}
+
+.container .workspace .files_section .file_manager .directories_container .directory_wrapper,
+.container .workspace .files_section .file_manager .files_container .file_wrapper {
+    position: relative;
+    cursor: pointer;
+    width: 15%;
+    text-align: center;
+    margin: 0 2rem 1rem 0;
+}
+
+.container .workspace .files_section .file_manager .directories_container .directory_wrapper.active {
+    border: 2px solid #B83169;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    width: 25%;
+}
+
+.container .workspace .files_section .file_manager .directories_container .directory_wrapper p,
+.container .workspace .files_section .file_manager .files_container .file_wrapper p {
+    margin-top: 0.5rem;
+}
+
+.container .workspace .files_section .file_manager .directories_container .directory svg,
+.container .workspace .files_section .file_manager .files_container .file svg {
+    background: linear-gradient(180deg, #B83169 0%, #380E3C 100%);
+    border-radius: 0.25rem;
+}
+
+.container .workspace .files_section .file_manager .directory_wrapper svg:last-child {
+    display: none;
+    border: 2px solid black;
+    fill: #FFF;
+    background: #B83169;
+}
+
+.container .workspace .files_section .file_manager .directory_wrapper:hover svg:last-child {
+    display: block;
+}
+
+.container .workspace .files_section .file_manager .files_container .file_menu {
+    display: none;
+    position: absolute;
+    padding: 0.5rem;
+    z-index: 10;
+    height: fit-content;
+    width: 18rem;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    background: #FFF;
+}
+
+.container .workspace .files_section .file_manager .files_container .file_menu .menu_item:hover {
+    background: #380E3C;
+    color: #FFF;
+    cursor: pointer;
+}
+
+.container .workspace .files_section .file_manager .files_container .file_menu .menu_item:hover svg {
+    fill: #FFF;
+}
+
+.container .workspace .files_section .file_manager .files_container .file_menu .menu_item:nth-child(4) {
+    border-bottom: 2px solid #A4A4A4;
+}
+
+.container .workspace .files_section .file_manager .files_container .file_menu .menu_item {
+    height: 2.5rem;
+}
+
+.container .workspace .files_section .file_manager .files_container .file_menu .menu_item svg {
+    background: transparent;
+    fill: #B83169;
+}
+
+.container .workspace .files_section .file_manager .files_container .file_menu .menu_item p {
+    margin: 0 0 0 0.5rem;
+    padding: 0;
+}
+
+.container .workspace .controls {
+    height: 10rem;
+}
+
+.container .workspace .player {
+    height: 75vh;
+}
+
+.container .workspace .controls .seek_bar {
+    position: relative;
+    width: 95%;
+    height: 0.1rem;
+    background: #A4A4A4;
+    margin: 0 auto;
+}
+
+.container .workspace .seek_bar span {
+    position: absolute;
+    top: -0.25rem;
+    left: 0;
+    width: 0.7rem;
+    height: 0.7rem;
+    background: #B83169;
+    border-radius: 50%;
+}
+
+.container .workspace .player_section .buttons {
+    width: 95%;
+    margin: 0 auto;
+}
+
+.container .workspace .player_section .buttons .playing_buttons {
+    width: 25%;
+}
+
+.container button {
+    background: none;
+    padding: 0;
+}
+
+.container button svg {
+    fill: #380E3C;
+}
+
+.container .workspace .player_section input[type='range'] {
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.container .workspace .player_section input[type='range']::-webkit-slider-runnable-track {
+    height: 0.1rem;
+    background: #A4A4A4;
+}
+
+.container .workspace .player_section input[type='range']::-webkit-slider-thumb {
+    appearance: none;
+    background-color: #B83169;
+    height: 0.8rem;
+    width: 0.8rem;
+    border-radius: 50%;
+    margin: -0.3rem 0 0 0;
+}
+
+.container .workspace .player_section .volume_buttons {
+    width: 55%;
+}
+
+.container .bottom_buttons {
+    height: 4rem;
+}
+
+.container .bottom_buttons .buttons_wrapper {
+    width: 35%;
+}
+
+.container .bottom_buttons .buttons_wrapper button {
+    position: relative;
+}
+
+.container .bottom_buttons .buttons_wrapper button p {
+    display: none;
+    position: absolute;
+    top: 0rem;
+    background: #D9D9D9;
+    padding: 0.2rem;
+    color: #000;
+    transition: all 0.5s ease;
+}
+
+.container .bottom_buttons .buttons_wrapper button:hover p {
+    display: block;
+    top: -3rem;
+}
+
+.container .bottom_buttons .buttons_wrapper button.active {
+    background: #B83169;
+}
+
+.container .bottom_buttons .buttons_wrapper button.active svg {
+    fill: #FFF;
+}
+
+.container .bottom_buttons .buttons_wrapper svg:hover {
+    fill: #FFF;
+    background: #B83169;
+    border-radius: 0.5rem;
+}
+
+.container .cut_section {
+    background: #380E3C;
+    padding: 1rem 1rem 0 1rem;
+}
+
+.container .cut_section .button_wrapper {
+    width: 50%;
+}
+
+.container .cut_section .button_wrapper .row:first-child {
+    margin: 0 0 1rem 0;
+    width: 65%;
+}
+
+.container .cut_section .button_wrapper .row:first-child svg {
+    fill: #FFF;
+}
+
+.container .cut_section .button_wrapper .row:first-child button:last-child {
+    padding: 0.6rem;
+}
+
+.container .cut_section .button_wrapper .row:last-child {
+    color: #000;
+}
+
+.container .cut_section .button_wrapper .row:last-child p {
+    color: #FFF;
+}
+
+.container .cut_section .button_wrapper .row:last-child button {
+    border-radius: 0;
+    background: #A4A4A4;
+    color: black;
+}
+
+.container .cut_section .button_wrapper button {
+    padding: 1rem;
+    background: #B83169;
+    border-radius: 0.5rem;
+    transition: all 0.5s ease;
+}
+
+.container .cut_section .button_wrapper button:hover {
+    transform: scale(1.1);
+}
+
+.container .cut_section .button_wrapper .ranges {
+    height: 3.15rem;
+}
+
+.container .cut_section .button_wrapper .ranges input {
+    height: 100%;
+    background: #FFF;
+    font-size: 1.1rem;
+    padding: 0.1rem;
+    width: 40%;
+}
+
+.container .cut_section .tracker {
+    /* background: #FFF; */
+    padding: 0 0.6rem;
+    margin: 1rem 0 0 0;
+    background: #F2E8ED;
+}
+
+/* .container .cut_section .tracker .ticks {
+    align-items: flex-end;
+    padding: 0 1.3rem;
+} */
+
+.container .cut_section .tracker .ticks {
+    /* padding: 0 0.6rem; */
+    min-width: 100%;
+    height: 1rem;
+}
+
+.container .cut_section .working_area {
+    position: relative;
+    height: 20rem;
+    background: #380E3C;
+    padding: 0 1.8rem;
+}
+
+.container .cut_section .working_area span {
+    position: absolute;
+    top: 0;
+    left: 1.8;
+    height: 100%;
+    width: 0.2rem;
+    background: #A4A4A4;
+}
+
+.container .cut_section .working_area span:nth-child(2) {
+    position: absolute;
+    top: 0;
+    left: 2rem;
+    height: 100%;
+    width: 0.2rem;
+    background: #B83169;
+}
+
+.container .cut_section .working_area .video {
+    height: 2rem;
+    width: 100%;
+    background: #DEE871;
+    border-radius: 0.3rem;
+}
+
+.container .video img, .container .cut_video img {
+    height: 100%;
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1400px) {
+    
+    .container .workspace .toolbar .filter {
+        width: 45%;
+    }
+
+    .container .menu ul {
+        width: 18%;
+    }
+
+    .container .workspace .player {
+        height: 60vh;
+    }
+
+    .container .workspace .player_section .controls {
+        height: 5rem;
+    }
+
+    .container .workspace .player_section button {
+        padding: 0;
+    }
+
+    .container .workspace .player_section button svg {
+        width: 30px;
+        height: 30px;
+    }
+
+    .container .cut_section .button_wrapper {
+        width: 60%;
+    }
+
+    .container .cut_section .tracker {
+        overflow: hidden;
+    }
+}
+
+@media screen and (min-width: 1030px) and (max-width: 1200px) {
+    
+    .container .workspace .toolbar .filter {
+        width: 45%;
+    }
+
+    .container .workspace .toolbar .search {
+        width: 40%;
+        margin: 0 1rem 0 0;
+    }
+
+    .container .workspace .toolbar .search input {
+        width: 78%;
+    }
+
+    .container .menu ul {
+        width: 18%;
+    }
+
+    .container .workspace .player {
+        height: 55vh;
+    }
+
+    .container .workspace .player_section .controls {
+        height: 8rem;
+    }
+
+    .container .workspace .player_section button {
+        padding: 0;
+    }
+
+    .container .workspace .player_section button svg {
+        width: 26px;
+        height: 26px;
+    }
+
+    .container .cut_section .button_wrapper {
+        width: 80%;
+    }
+
+    .container .cut_section .tracker {
+        overflow: hidden;
+    }
+
+    .container .workspace .player_section .volume_buttons {
+        width: 65%;
+    }
+}
+
+@media screen and (min-width: 766px) and (max-width: 1030px) {
+    
+    .container .workspace .toolbar {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 0.5rem;
+    }
+    
+    .container .workspace .toolbar .filter {
+        width: 80%;
+    }
+
+    .container .workspace .toolbar .search {
+        width: 80%;
+        margin: 0 1rem 1rem 0;
+    }
+
+    .container .workspace .toolbar .search input {
+        width: 78%;
+    }
+
+    .container .menu ul {
+        width: 18%;
+    }
+
+    .container .workspace .player {
+        height: 50vh;
+    }
+
+    .container .workspace .player_section .controls {
+        height: 8rem;
+    }
+
+    .container .workspace .player_section button {
+        padding: 0;
+    }
+
+    .container .workspace .player_section button svg {
+        width: 26px;
+        height: 26px;
+    }
+
+    .container .cut_section .button_wrapper {
+        width: 100%;
+    }
+
+    .container .cut_section .button_wrapper button {
+        padding: 0.8rem;
+    }
+
+    .container .cut_section .tracker {
+        overflow: hidden;
+    }
+
+    .container .workspace .player_section .player .playing_buttons {
+        width: 85%;
+    }
+
+    .container .workspace .player_section .player .volume_buttons {
+        width: 100%;
+    }
+
+    .container .bottom_buttons .buttons_wrapper {
+        width: 65%;
+    }
+}

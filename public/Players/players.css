@@ -1,0 +1,601 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+*, *::after, *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.flex_column {
+    display: flex;
+    flex-direction: column;
+}
+
+.space_between {
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.space_evenly {
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.justify_center {
+    justify-content: center;
+}
+
+.justify_flex_start {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.center {
+    align-items: center;
+}
+
+.align_flex_start {
+    align-items: flex-start;
+    /* flex-wrap: wrap; */
+}
+
+.flex_row {
+    display: flex;
+}
+
+.flex_row_reverse {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    position: relative;
+    text-decoration: none;
+    color: #FFF;
+}
+
+a:hover::before {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    width: 30%;
+    height: 0.2rem;
+    background: #B83169;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin: 0 0 0 35%;
+}
+
+a.active::before {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    width: 100%;
+    height: 0.2rem;
+    background: #B83169;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+button {
+    border: none;
+    padding: 0.6rem 1rem;
+    background: #B83169;
+    color: #FFF;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 0.6rem;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+input {
+    border: none;
+    font-size: 1rem;
+    font-weight: 400;
+    padding: 0 0 0 0.5rem;
+}
+
+input:focus {
+    outline: none;
+}
+
+.width_full {
+    width: 100%;
+}
+
+.height_full {
+    height: 100%;
+}
+
+.mt4 {
+    margin: 4rem 0 0 0;
+}
+
+.container {
+    min-height: 100vh;
+    font-family: 'Inter', 'sans-serif';
+}
+
+.hamburger {
+    display: none;
+}
+
+.mobile_menu {
+    display: none;
+}
+
+.container .menu, .container .toolbar {
+    height: 3rem;
+    background: #380E3C;
+    color: #FFF;
+    padding: 0 2.5%;
+}
+
+.container .menu ul {
+    height: 100%;
+    width: 15%;
+}
+
+.container .menu ul li {
+    height: 70%;
+    border-radius: 0.4rem;
+    padding: 0 0.5rem;
+    transition: all 0.5s ease;
+}
+
+.container .menu ul li:hover {
+    background: #B83169;
+    cursor: pointer;
+}
+
+.container .menu .language {
+    width: 8%;
+}
+
+.container .workspace {
+    height: 80%;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.container .left_workspace {
+    position: relative;
+    min-width: 100%;
+    height: 82vh;
+}
+
+.container .left_workspace > h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+    font-weight: 500;
+    width: 50%;
+    color: #000;
+    text-align: center;
+}
+
+.container .left_workspace .search {
+    height: 1.8rem;
+    width: 25%;
+    background: #FFF;
+    padding: 0 0.5rem;
+    border-radius: 0.25rem;
+}
+
+.container .left_workspace .search input::placeholder {
+    color: #000;
+}
+
+.container .left_workspace .add_player svg {
+    fill: #FFF;
+    cursor: pointer;
+}
+
+.container .left_workspace .players_container {
+    height: 92%;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 400;
+    /* overflow: scroll; */
+}
+
+.container .left_workspace .players_container .player_wrapper {
+    height: 6rem;
+    margin: 0 1rem 1rem 0;
+    cursor: pointer;
+}
+
+.container .left_workspace .players_container .player_wrapper.active {
+    height: 7rem;
+    border: 2px solid #B83169;
+    border-radius: 0.3rem;
+    padding: 0.5rem;
+}
+
+.container .left_workspace .players_container .player {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 0.8rem;
+    background: #F2E8ED;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+}
+
+.container .left_workspace .players_container .player img {
+    height: 100%;
+    object-position: 0 0;
+}
+
+.container .right_workspace {
+    position: relative;
+    background: #F2E8ED;
+    height: 82vh;
+    width: 15%;
+    padding: 2rem 1rem;
+    display: none;
+    /* overflow: scroll; */
+}
+
+.container .right_workspace .player_details .player_image {
+    position: relative;
+    width: 48%;
+    height: 6rem;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 0.8rem;
+    overflow: hidden;
+}
+
+.container .right_workspace .player_details .player_image .image_upload {
+    position: absolute;
+    height: 100%;
+    object-position: 0 0;
+    opacity: 0;
+}
+
+.container .right_workspace .player_details .player_image img {
+    width: 100%;
+    height: 100%;
+}
+
+.container .right_workspace .remove {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    margin: 0 0 0 3rem;
+}
+
+.container .right_workspace .player_details .input {
+    font-size: 0.9rem;
+    margin: 0.8rem 0 0 0;
+}
+
+.container .right_workspace .player_details .input input {
+    position: relative;
+    z-index: 2;
+    height: 2rem;
+    width: 100%;
+    font-size: 0.9rem;
+    border-radius: 0.8rem;
+    margin: 0.8rem 0 0 0;
+    font-family: 'Inter', 'sans-serif';
+    color: #4E4C4C;
+}
+
+.container .right_workspace .player_details input[type='date']::-webkit-calendar-picker-indicator {
+    background: url('../icons/DatePicker.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: pointer;
+    margin-right: 1rem;  
+}
+
+.container .right_workspace .player_details .select {
+    position: relative;
+    margin: 0.8rem 0 0 0;
+    height: 2rem;
+}
+
+.container .right_workspace .player_details select {
+    appearance: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    height: 100%;
+    width: 100%;
+    border-radius: 0.8rem;
+    padding-left: 0.5rem;
+    font-size: 0.9rem;
+    color: #4E4C4C;
+}
+
+.container .right_workspace .player_details .select svg {
+    position: absolute;
+    right: 0;
+}
+
+.container .toolbar {
+    position: relative;
+    background: #B83169;
+    border-bottom: 2px solid white;
+}
+
+.container .toolbar img {
+    margin: 0 1rem 0 0;
+}
+
+.container .toolbar .create_menu {
+    display: none;
+    position: absolute;
+    top: 3rem;
+    right: 0;
+    height: 4.8rem;
+    width: 20%;
+    padding: 0 0.5rem;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    z-index: 10;
+    background: #FFF;
+    border-radius: 0.25rem;
+    color: #380E3C;
+}
+
+.container .toolbar .create_menu .actions input {
+    width: 50%;
+    height: 2rem;
+    padding: 0.2rem;
+    border-radius: 0.25rem;
+    font-size: 1.2rem;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.14);
+}
+
+.container .toolbar .create_menu .actions button {
+    background: #B83169;
+    border-radius: 0.3rem;
+    padding: 0.5rem;
+}
+
+.container .toolbar .create_menu .actions button:nth-child(2) {
+    background: #D9D9D9;
+    color: #000;
+}
+
+.container .bottom_buttons {
+    height: 4rem;
+    background: #FFF;
+    margin: 1rem 0 0 0;
+}
+
+.container .bottom_buttons .buttons_wrapper {
+    width: 35%;
+}
+
+.container .bottom_buttons .buttons_wrapper button {
+    position: relative;
+    margin: 0;
+    padding: 0.2rem;
+    background: none;
+}
+
+.container .bottom_buttons .buttons_wrapper button p {
+    display: none;
+    position: absolute;
+    top: 0rem;
+    background: #D9D9D9;
+    padding: 0.2rem;
+    color: #000;
+    transition: all 0.5s ease;
+}
+
+.container .bottom_buttons .buttons_wrapper button:hover p {
+    display: block;
+    top: -3rem;
+}
+
+.container .bottom_buttons .buttons_wrapper button.active {
+    background: #B83169;
+}
+
+.container .bottom_buttons .buttons_wrapper button.active svg {
+    fill: #FFF;
+}
+
+.container .bottom_buttons .buttons_wrapper svg:hover {
+    fill: #FFF;
+    background: #B83169;
+    border-radius: 0.5rem;
+}
+
+@media screen and (min-width: 700px) and (max-width: 900px) {
+    .container .menu ul {
+        width: 35%;
+    }
+
+    .container .menu .language {
+        width: 15%;
+    }
+
+    .container .left_workspace .search {
+        width: 40%;
+    }
+
+    .container .left_workspace .players_container {
+        height: 88%;
+    }
+
+    .container .bottom_buttons .buttons_wrapper {
+        width: 80%;
+    }
+
+    .container .right_workspace {
+        width: 20%;
+        padding: 2rem 1rem;
+        overflow: scroll;
+    }
+    
+    .container .right_workspace .player_details .player_image {
+        width: 75%;
+        height: 6.5rem;
+    }
+    
+    .container .right_workspace .player_details .input {
+        font-size: 1rem;
+    }
+    
+    .container .right_workspace .player_details .input input {
+        height: 2.5rem;
+        width: 90%;
+        font-size: 0.8rem;
+    }
+    
+    .container .right_workspace .player_details input[type='date']::-webkit-calendar-picker-indicator {
+        margin-right: 0.5rem;  
+    }
+
+    .container .toolbar .create_menu {
+        width: 40%;
+    }
+}
+
+@media screen and (min-width: 1300px) and (max-width: 1400px) {
+    .container .menu ul {
+        width: 25%;
+    }
+
+    .container .menu .language {
+        width: 8%;
+    }
+
+    .container .left_workspace .search {
+        width: 40%;
+    }
+
+    .container .bottom_buttons .buttons_wrapper {
+        width: 50%;
+    }
+
+    .container .right_workspace {
+        width: 15%;
+        padding: 2rem 1rem;
+        overflow: scroll;
+    }
+    
+    .container .right_workspace .player_details .player_image {
+        width: 55%;
+        height: 6.5rem;
+    }
+    
+    .container .right_workspace .player_details .input {
+        font-size: 1rem;
+    }
+    
+    .container .right_workspace .player_details .input input {
+        height: 2.5rem;
+        width: 100%;
+        font-size: 0.8rem;
+    }
+    
+    .container .right_workspace .player_details input[type='date']::-webkit-calendar-picker-indicator {
+        margin-right: 0.5rem;  
+    }
+
+    .container .toolbar .create_menu {
+        width: 20%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .hamburger {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 0.3rem;
+    }
+
+    .hamburger span {
+        position: relative;
+        width: 90%;
+        height: 0.2rem;
+        background: #FFF;
+    }
+
+    .hamburger span::before {
+        content: '';
+        width: 100%;
+        height: 100%;
+        background: #FFF;
+        position: absolute;
+        top: -0.75rem;
+        left: 0;
+    }
+
+    .hamburger span::after {
+        content: '';
+        width: 100%;
+        height: 100%;
+        background: #FFF;
+        position: absolute;
+        bottom: -0.75rem;
+        left: 0;
+    }
+
+    .menu ul.mobile_menu {
+        position: absolute;
+        top: 3rem;
+        left: 1rem;
+        width: 25%;
+        height: 8rem;
+        background: #B83169;
+        border-radius: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        display: none;
+        z-index: 20;
+        border: 2px solid #380E3C;
+    }
+
+    .menu ul:nth-child(2) {
+        display: none;
+    }
+
+    .container .menu .language {
+        width: 25%;
+    }
+
+    .container .left_workspace .search {
+        width: 80%;
+    }
+
+    .container .left_workspace .players_container {
+        height: 80%;
+    }
+
+    .container .bottom_buttons .buttons_wrapper {
+        width: 100%;
+    }
+
+    .container .right_workspace {
+        position: absolute;
+        top: 0;
+        left: 0;
+        min-width: 100%;
+        min-height: 90%;
+        z-index: 10;
+        overflow: scroll;
+    }
+
+    .container .right_workspace .player_details .player_image {
+        height: 12.5rem;
+    }
+
+    .container .toolbar .create_menu {
+        width: 80%;
+    }
+}

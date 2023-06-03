@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="edit.css">
+    <script defer src="edit.js"></script>
+    <title>Edit</title>
+</head>
+<body>
+    <div class="container flex_column justify_flex_start center width_full">
+        <div class="menu flex_row space_between center width_full">
+            <div class="hamburger">
+                <span></span>
+            </div>
+            <ul class="flex_row space_between center">
+                <li class="flex_row justify_center center">File</li>
+                <li class="flex_row justify_center center">View</li>
+                <li class="flex_row justify_center center">Tools</li>
+                <li class="flex_row justify_center center">Help</li>
+            </ul>
+            <ul class="mobile_menu">
+                <li>File</li>
+                <li>View</li>
+                <li>Tools</li>
+                <li>Help</li>
+            </ul>
+            <div class="language flex_row space_between center">
+                <p>EN</p>
+                <img src="../images/icons8-first-flag-of-the-usa-40 1.png" alt="flag">
+            </div>
+        </div>
+        <!-- First toolbar (import files and create directory) -->
+        <div class="toolbar flex_row space_between center width_full">
+            <div class="left_side flex_row space_between center">
+                <div class="undo flex_row center space_between">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M280 856v-60h289q70 0 120.5-46.5T740 634q0-69-50.5-115.5T569 472H274l114 114-42 42-186-186 186-186 42 42-114 114h294q95 0 163.5 64T800 634q0 94-68.5 158T568 856H280Z"/></svg>
+                    <p>Undo</p>
+                </div>
+                <div class="media flex_row center space_between">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M840 373v503q0 24-18 42t-42 18H180q-24 0-42-18t-18-42V276q0-24 18-42t42-18h503l157 157Zm-60 27L656 276H180v600h600V400ZM479.765 811Q523 811 553.5 780.735q30.5-30.264 30.5-73.5Q584 664 553.735 633.5q-30.264-30.5-73.5-30.5Q437 603 406.5 633.265q-30.5 30.264-30.5 73.5Q376 750 406.265 780.5q30.264 30.5 73.5 30.5ZM233 472h358V329H233v143Zm-53-72v476-600 124Z"/></svg>
+                    <button><a href="../Media/media.html">Media</button></a>
+                </div>
+            </div>
+            <div class="right_side flex_row space_between center">
+                <button onclick="showRender(event)" class="render flex_row center space_between">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M782 942 481 641 364 758q11 17 13.5 33t2.5 35q0 64-43 107t-107 43q-64 0-107-43T80 826q0-64 43-107t107-43q18 0 35.5 5t36.5 15l116-116-118-118q-17 8-34.5 11t-35.5 3q-64 0-107-43T80 326q0-64 43-107t107-43q64 0 107 43t43 107q0 19-2.5 36T367 394l514 514v34h-99ZM599 529l-66-66 249-249h99v33L599 529ZM230 416q38 0 64-26t26-64q0-38-26-64t-64-26q-38 0-64 26t-26 64q0 38 26 64t64 26Zm253 183q8 0 13.5-5.5T502 580q0-8-5.5-13.5T483 561q-8 0-13.5 5.5T464 580q0 8 5.5 13.5T483 599ZM230 916q38 0 64-26t26-64q0-38-26-64t-64-26q-38 0-64 26t-26 64q0 38 26 64t64 26Z"/></svg>
+                    <p>Render Selected</p>
+                </button>
+            </div>
+        </div>
+        <div class="workspace flex_column space_between center width_full">
+            <div class="video_editing flex_row width_full space_between">
+                <div class="tools left_tools">
+                    <div onclick="selectTool(event)" class="tools_wrapper flex_column">
+                        <button class="line">
+                            <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <line x1="0.744103" y1="18.6464" x2="18.7441" y2="0.646446" stroke="#3B3035"/>
+                                </svg>
+                        </button>
+                        <button>
+                            <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1.09766 18V7L15.0977 1L19.0977 11L15.0977 18" stroke="#3B3035"/>
+                            </svg>
+                        </button>
+                        <button class="dashed_arrow">
+                            <svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17.2152 0.961661C17.194 0.686333 16.9536 0.480304 16.6783 0.501482L12.1916 0.846616C11.9162 0.867796 11.7102 1.10816 11.7314 1.38349C11.7526 1.65882 11.9929 1.86485 12.2683 1.84367L16.2565 1.53689L16.5633 5.5251C16.5844 5.80043 16.8248 6.00646 17.1001 5.98528C17.3755 5.9641 17.5815 5.72374 17.5603 5.44841L17.2152 0.961661ZM1.47728 19.5476L2.12808 18.7883L1.36882 18.1375L0.718028 18.8968L1.47728 19.5476ZM3.42966 17.2698L4.73124 15.7513L3.97198 15.1005L2.6704 16.619L3.42966 17.2698ZM6.03282 14.2328L7.33441 12.7143L6.57515 12.0635L5.27357 13.582L6.03282 14.2328ZM8.63599 11.1957L9.93757 9.67723L9.17832 9.02644L7.87673 10.5449L8.63599 11.1957ZM11.2392 8.15871L12.5407 6.6402L11.7815 5.98941L10.4799 7.50792L11.2392 8.15871ZM13.8423 5.12169L15.1439 3.60318L14.3846 2.95238L13.0831 4.4709L13.8423 5.12169ZM16.4455 2.08466L17.0963 1.32541L16.337 0.674614L15.6862 1.43387L16.4455 2.08466ZM17.7137 0.923312C17.6713 0.372655 17.1906 -0.0394035 16.64 0.0029545L7.66646 0.693224C7.1158 0.735582 6.70375 1.21632 6.7461 1.76697C6.78846 2.31763 7.2692 2.72969 7.81985 2.68733L15.7963 2.07376L16.4099 10.0502C16.4522 10.6009 16.933 11.0129 17.4836 10.9706C18.0343 10.9282 18.4463 10.4475 18.404 9.8968L17.7137 0.923312ZM1.85691 19.873L2.5077 19.1137L0.989191 17.8121L0.3384 18.5714L1.85691 19.873ZM3.80929 17.5952L5.11087 16.0767L3.59236 14.7751L2.29077 16.2936L3.80929 17.5952ZM6.41245 14.5582L7.71403 13.0396L6.19552 11.7381L4.89394 13.2566L6.41245 14.5582ZM9.01562 11.5211L10.3172 10.0026L8.79869 8.70104L7.4971 10.2196L9.01562 11.5211ZM11.6188 8.48411L12.9204 6.9656L11.4019 5.66401L10.1003 7.18253L11.6188 8.48411ZM14.2219 5.44708L15.5235 3.92857L14.005 2.62699L12.7034 4.1455L14.2219 5.44708ZM16.8251 2.41006L17.4759 1.6508L15.9574 0.349218L15.3066 1.10847L16.8251 2.41006Z" fill="#3B3035"/>
+                            </svg>
+                        </button>
+                        <button class="arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="m202 896-42-42 498-498H364v-60h396v396h-60V398L202 896Z"/></svg>
+                        </button>
+                        <button class="circle">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M480 976q-82 0-155-31.5t-127.5-86Q143 804 111.5 731T80 576q0-83 31.5-156t86-127Q252 239 325 207.5T480 176q83 0 156 31.5T763 293q54 54 85.5 127T880 576q0 82-31.5 155T763 858.5q-54 54.5-127 86T480 976Zm0-60q142 0 241-99.5T820 576q0-142-99-241t-241-99q-141 0-240.5 99T140 576q0 141 99.5 240.5T480 916Zm0-340Z"/></svg>
+                        </button>
+                        <button>
+                            <svg width="24" height="19" viewBox="0 0 24 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12.0977 19L0.684978 12.0902L5.04423 0.90983L19.1511 0.90983L23.5103 12.0902L12.0977 19Z" fill="#947886"/>
+                            </svg>
+                        </button>
+                        <button>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M120 936V768l377-377-72-72 41-41 92 92 142-142q11-11 23.5-11t23.5 11l81 81q11 11 11 23.5T828 356L686 498l92 92-41 41-72-72-377 377H120Zm60-60h87l355-355-87-87-355 355v87Zm463-420 124-124-43-43-124 124 43 43Zm0 0-43-43 43 43Z"/></svg>
+                        </button>
+                        <button>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M320 853V293l440 280-440 280Zm60-280Zm0 171 269-171-269-171v342Z"/></svg>
+                        </button>
+                        <button>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M330 726h300V426H330v300Zm150.266 250q-82.734 0-155.5-31.5t-127.266-86q-54.5-54.5-86-127.341Q80 658.319 80 575.5q0-82.819 31.5-155.659Q143 347 197.5 293t127.341-85.5Q397.681 176 480.5 176q82.819 0 155.659 31.5Q709 239 763 293t85.5 127Q880 493 880 575.734q0 82.734-31.5 155.5T763 858.316q-54 54.316-127 86Q563 976 480.266 976Zm.234-60Q622 916 721 816.5t99-241Q820 434 721.188 335 622.375 236 480 236q-141 0-240.5 98.812Q140 433.625 140 576q0 141 99.5 240.5t241 99.5Zm-.5-340Z"/></svg>
+                        </button>
+                        <button>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M220 816V336h60v480h-60Zm520 0L394 576l346-240v480Zm-60-240Zm0 125V451L499 576l181 125Z"/></svg>
+                        </button>
+                        <button>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M680 816V336h60v480h-60Zm-460 0V336l346 240-346 240Zm60-240Zm0 125 181-125-181-125v250Z"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="video">
+                    <!-- <video src="../video/defaultVideo2.mp4" width="1404px" height="520px"></video> -->
+                    <img src="../images/aerial-view-grass-field-hockey.jpg" alt="">
+                    <canvas id="canvas"></canvas>
+                    <div class="render_menu flex_column center">
+                        <h4>Render Video Clip</h4>
+                        <div class="video_image">
+                            <img src="../images/aerial-view-grass-field-hockey.jpg" alt="">
+                        </div>
+                        <div class="input flex_column space_between width_full">
+                            <p>Video Name</p>
+                            <input type="text" placeholder="Lorem Ipsum" style="text-align: center;">
+                        </div>
+                        <div class="input flex_column space_between width_full">
+                            <p>Output Path</p>
+                            <input type="text" placeholder="Desktop/Folder1/filename">
+                        </div>
+                        <div class="input flex_column space_between width_full">
+                            <p>Select Range</p>
+                            <div class="ranges flex_row space_between">
+                                <div class="start flex_row space_between center">
+                                    <p>Start</p>
+                                    <input type="number" name="" id="">
+                                </div>
+                                <div class="end flex_row space_between center">
+                                    <p>End</p>
+                                    <input type="number" name="" id="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="range">
+                            <div class="slider"></div>
+                            <span class="start_tracker"></span>
+                            <span class="end_tracker"></span>
+                        </div>
+                        <button>Render</button>
+                    </div>
+                </div>
+                <div onclick="selectTool(event)" class="tools right_tools">
+                    <div class="tools_wrapper flex_column">
+                        <button class="line">
+                            <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <line x1="0.744103" y1="18.6464" x2="18.7441" y2="0.646446" stroke="#3B3035"/>
+                                </svg>
+                        </button>
+                        <button>
+                            <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1.09766 18V7L15.0977 1L19.0977 11L15.0977 18" stroke="#3B3035"/>
+                            </svg>
+                        </button>
+                        <button class="dashed_arrow">
+                            <svg width="19" height="20" viewBox="0 0 19 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17.2152 0.961661C17.194 0.686333 16.9536 0.480304 16.6783 0.501482L12.1916 0.846616C11.9162 0.867796 11.7102 1.10816 11.7314 1.38349C11.7526 1.65882 11.9929 1.86485 12.2683 1.84367L16.2565 1.53689L16.5633 5.5251C16.5844 5.80043 16.8248 6.00646 17.1001 5.98528C17.3755 5.9641 17.5815 5.72374 17.5603 5.44841L17.2152 0.961661ZM1.47728 19.5476L2.12808 18.7883L1.36882 18.1375L0.718028 18.8968L1.47728 19.5476ZM3.42966 17.2698L4.73124 15.7513L3.97198 15.1005L2.6704 16.619L3.42966 17.2698ZM6.03282 14.2328L7.33441 12.7143L6.57515 12.0635L5.27357 13.582L6.03282 14.2328ZM8.63599 11.1957L9.93757 9.67723L9.17832 9.02644L7.87673 10.5449L8.63599 11.1957ZM11.2392 8.15871L12.5407 6.6402L11.7815 5.98941L10.4799 7.50792L11.2392 8.15871ZM13.8423 5.12169L15.1439 3.60318L14.3846 2.95238L13.0831 4.4709L13.8423 5.12169ZM16.4455 2.08466L17.0963 1.32541L16.337 0.674614L15.6862 1.43387L16.4455 2.08466ZM17.7137 0.923312C17.6713 0.372655 17.1906 -0.0394035 16.64 0.0029545L7.66646 0.693224C7.1158 0.735582 6.70375 1.21632 6.7461 1.76697C6.78846 2.31763 7.2692 2.72969 7.81985 2.68733L15.7963 2.07376L16.4099 10.0502C16.4522 10.6009 16.933 11.0129 17.4836 10.9706C18.0343 10.9282 18.4463 10.4475 18.404 9.8968L17.7137 0.923312ZM1.85691 19.873L2.5077 19.1137L0.989191 17.8121L0.3384 18.5714L1.85691 19.873ZM3.80929 17.5952L5.11087 16.0767L3.59236 14.7751L2.29077 16.2936L3.80929 17.5952ZM6.41245 14.5582L7.71403 13.0396L6.19552 11.7381L4.89394 13.2566L6.41245 14.5582ZM9.01562 11.5211L10.3172 10.0026L8.79869 8.70104L7.4971 10.2196L9.01562 11.5211ZM11.6188 8.48411L12.9204 6.9656L11.4019 5.66401L10.1003 7.18253L11.6188 8.48411ZM14.2219 5.44708L15.5235 3.92857L14.005 2.62699L12.7034 4.1455L14.2219 5.44708ZM16.8251 2.41006L17.4759 1.6508L15.9574 0.349218L15.3066 1.10847L16.8251 2.41006Z" fill="#3B3035"/>
+                            </svg>
+                        </button>
+                        <button class="arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="m202 896-42-42 498-498H364v-60h396v396h-60V398L202 896Z"/></svg>
+                        </button>
+                        <button class="circle">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M480 976q-82 0-155-31.5t-127.5-86Q143 804 111.5 731T80 576q0-83 31.5-156t86-127Q252 239 325 207.5T480 176q83 0 156 31.5T763 293q54 54 85.5 127T880 576q0 82-31.5 155T763 858.5q-54 54.5-127 86T480 976Zm0-60q142 0 241-99.5T820 576q0-142-99-241t-241-99q-141 0-240.5 99T140 576q0 141 99.5 240.5T480 916Zm0-340Z"/></svg>
+                        </button>
+                        <button>
+                            <svg width="24" height="19" viewBox="0 0 24 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12.0977 19L0.684978 12.0902L5.04423 0.90983L19.1511 0.90983L23.5103 12.0902L12.0977 19Z" fill="#947886"/>
+                            </svg>
+                        </button>
+                        <button>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M120 936V768l377-377-72-72 41-41 92 92 142-142q11-11 23.5-11t23.5 11l81 81q11 11 11 23.5T828 356L686 498l92 92-41 41-72-72-377 377H120Zm60-60h87l355-355-87-87-355 355v87Zm463-420 124-124-43-43-124 124 43 43Zm0 0-43-43 43 43Z"/></svg>
+                        </button>
+                        <button>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M320 853V293l440 280-440 280Zm60-280Zm0 171 269-171-269-171v342Z"/></svg>
+                        </button>
+                        <button>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M330 726h300V426H330v300Zm150.266 250q-82.734 0-155.5-31.5t-127.266-86q-54.5-54.5-86-127.341Q80 658.319 80 575.5q0-82.819 31.5-155.659Q143 347 197.5 293t127.341-85.5Q397.681 176 480.5 176q82.819 0 155.659 31.5Q709 239 763 293t85.5 127Q880 493 880 575.734q0 82.734-31.5 155.5T763 858.316q-54 54.316-127 86Q563 976 480.266 976Zm.234-60Q622 916 721 816.5t99-241Q820 434 721.188 335 622.375 236 480 236q-141 0-240.5 98.812Q140 433.625 140 576q0 141 99.5 240.5t241 99.5Zm-.5-340Z"/></svg>
+                        </button>
+                        <button>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M220 816V336h60v480h-60Zm520 0L394 576l346-240v480Zm-60-240Zm0 125V451L499 576l181 125Z"/></svg>
+                        </button>
+                        <button>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M680 816V336h60v480h-60Zm-460 0V336l346 240-346 240Zm60-240Zm0 125 181-125-181-125v250Z"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="video_controls flex_row space_between center width_full">
+                    <div class="ranges flex_row center space_between">
+                        <p class="start">15:03:14</p>
+                        <p class="end">15:03:14</p>
+                    </div>
+                    <input type="range" value="0" name="seek_bar" class="seek_bar">
+                    <div class="volume_buttons flex_row space_between center">
+                        <button><svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M280 696V456h160l200-200v640L440 696H280Zm60-60h127l113 109V408L467 516H340v120Zm119-60Z"/></svg></button>
+                        <input type="range" min="0" max="1" step="0.1" name="volume" class="volume">
+                        <button><svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M560 925v-62q97-28 158.5-107.5T780 575q0-101-61-181T560 287v-62q124 28 202 125.5T840 575q0 127-78 224.5T560 925ZM120 696V456h160l200-200v640L280 696H120Zm420 48V407q55 17 87.5 64T660 576q0 57-33 104t-87 64ZM420 408 307 516H180v120h127l113 109V408Zm-94 168Z"/></svg></button>
+                    </div>
+                </div>
+                <div class="cut_section flex_row center justify_flex_start width_full">
+                    <div class="tracker flex_column justify_flex_start width_full">
+                        <div class="numbers flex_row space_between center width_full">
+                            <p>00:00</p>
+                            <p>03:00</p>
+                            <p>06:00</p>
+                            <p>09:00</p>
+                            <p>12:00</p>
+                            <p>15:00</p>
+                            <p>18:00</p>
+                            <p>21:00</p>
+                            <p>24:00</p>
+                            <p>27:00</p>
+                            <p>30:00</p>
+                            <p>33:00</p>
+                            <p>36:00</p>
+                            <p>39:00</p>
+                        </div>
+                        <div class="numbers flex_row space_between center width_full">
+                            <p>00:00</p>
+                            <p>03:00</p>
+                            <p>06:00</p>
+                            <p>09:00</p>
+                            <p>12:00</p>
+                            <p>15:00</p>
+                            <p>18:00</p>
+                            <p>21:00</p>
+                        </div>
+                        <div class="ticks flex_row align_flex_end width_full">
+        
+                        </div>
+                    </div>
+                    <div class="working_area width_full flex_column justify_flex_start">
+                        <span class="start_tracker"></span>
+                        <span class="end_tracker"></span>
+                        <div class="video flex_row justify_center center width_full" style="color: #FFF;">
+                            <p>Spotlight</p>
+                        </div>
+                        <!-- <div class="ring flex_row justify_center center width_full" style="color: #FFF;">
+                            <p>Spotlight</p>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom_buttons flex_row justify_center center width_full">
+            <div class="buttons_wrapper flex_row space_between center">
+                <a href="">
+                    <button class="flex_row center justify_center">
+                        <p>Home</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36">
+                            <path d="M220 876h150V626h220v250h150V486L480 291 220 486v390Zm-60 60V456l320-240 320 240v480H530V686H430v250H160Zm320-353Z"/>
+                        </svg>
+                    </button>
+                </a>
+                <a href="">
+                    <button class="flex_row center justify_center">
+                        <p>Media</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36">
+                            <path d="M840 373v503q0 24-18 42t-42 18H180q-24 0-42-18t-18-42V276q0-24 18-42t42-18h503l157 157Zm-60 27L656 276H180v600h600V400ZM479.765 811Q523 811 553.5 780.735q30.5-30.264 30.5-73.5Q584 664 553.735 633.5q-30.264-30.5-73.5-30.5Q437 603 406.5 633.265q-30.5 30.264-30.5 73.5Q376 750 406.265 780.5q30.264 30.5 73.5 30.5ZM233 472h358V329H233v143Zm-53-72v476-600 124Z"/>
+                        </svg>
+                    </button>
+                </a>
+                <a href="../Teams/teams.html">
+                    <button class="flex_row center justify_center">
+                        <p>Teams</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36">
+                            <path d="M480 606q-58 0-97.5-39.5T343 469q0-58 39.5-97.5T480 332q58 0 97.5 39.5T617 469q0 58-39.5 97.5T480 606Zm0-60q34 0 55.5-21.5T557 469q0-34-21.5-55.5T480 392q-34 0-55.5 21.5T403 469q0 34 21.5 55.5T480 546Zm0 429q-140-35-230-162.5T160 533V295l320-120 320 120v238q0 152-90 279.5T480 975Zm0-399Zm0-337-260 98v196q0 63 17.5 120.5T287 760q46-25 93.5-37.5T480 710q52 0 99.5 12.5T673 760q32-49 49.5-106.5T740 533V337l-260-98Zm0 531q-39 0-78 10t-77 30q32 35 71 61.5t84 41.5q45-15 84-41.5t71-61.5q-38-20-77-30t-78-10Z"/>
+                        </svg>
+                    </button>
+                </a>
+                <a href="../Players/players.html">
+                    <button class="flex_row center justify_center">
+                        <p>Players</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36">
+                            <path d="m532 994-60-12 31-168-146-110-55-240-105 90 31 148-60 12-37-180 174-155q21-19 49-15t55 15q34 14 70 20.5t72 1.5q33-5 61.5-22.5T667 340l38 47q-27 21-56 40t-62 28q-35 10-72 8t-72-11l33 150 154-29 196 139-36 48-168-117-170 34 121 89-41 228ZM320 296q-29 0-49.5-20.5T250 226q0-29 20.5-49.5T320 156q29 0 49.5 20.5T390 226q0 29-20.5 49.5T320 296Z"/>
+                        </svg>
+                    </button>
+                </a>
+                <a href="">
+                    <button class="flex_row center justify_center">
+                        <p>Tag</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36">
+                            <path d="M559 959q-18 18-43.5 18T472 959L97 584q-10-10-13.5-21T80 540V236q0-26 17-43t43-17h304q12 0 24 3.5t22 13.5l373 373q19 19 19 44.5T863 655L559 959Zm-41-41 304-304-378-378H140v304l378 378ZM245 392q21 0 36.5-15.5T297 340q0-21-15.5-36.5T245 288q-21 0-36.5 15.5T193 340q0 21 15.5 36.5T245 392ZM140 236Z"/>
+                        </svg>
+                    </button>
+                </a>
+                <a href="">
+                    <button class="flex_row center justify_center">
+                        <p>Statistics</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36">
+                            <path d="M120 936v-76l60-60v136h-60Zm165 0V700l60-60v296h-60Zm165 0V640l60 61v235h-60Zm165 0V701l60-60v295h-60Zm165 0V540l60-60v456h-60ZM120 700v-85l280-278 160 160 280-281v85L560 582 400 422 120 700Z"/>
+                        </svg>
+                    </button>
+                </a>
+                <a href="">
+                    <button class="flex_row center justify_center">
+                        <p>Tagging</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36">
+                            <path d="M440 856v-60h171l154-220-154-220H180v180h-60V356q0-24.75 17.625-42.375T180 296h420q22 0 40 11.5t31 29.5l169 239-169 239q-13 18-31 29.5T600 856H440Zm33-280ZM200 896V776H80v-60h120V596h60v120h120v60H260v120h-60Z"/>
+                        </svg>
+                    </button>
+                </a>
+                <a href="">
+                    <button class="active flex_row center justify_center">
+                        <p>Dynamic Drawing</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36">
+                            <path d="M560 936q-12 0-21-9t-9-21q0-13 9-21.5t21-8.5q59 0 99.5-24t40.5-56q0-23-29.5-45T591 717l47-47q63 19 92.5 52.5T760 796q0 67-61 103.5T560 936ZM240 642q-64-14-92-44t-28-62q0-35 26-63t120-62q66-24 85-39t19-35q0-25-22-43t-68-18q-27 0-46 7t-34 22q-8 8-20.5 9.5T157 308q-11-8-11.5-20t7.5-21q17-22 51-36.5t76-14.5q68 0 109 32.5t41 88.5q0 41-28.5 69.5T290 466q-67 25-88.5 39.5T180 536q0 16 27 30.5t81 27.5l-48 48Zm496-154L608 360l45-45q18-18 40-18t40 18l48 48q18 18 18 40t-18 40l-45 45ZM220 876h42l345-345-42-42-345 345v42Zm-60 60V808l405-405 128 128-405 405H160Zm405-447 42 42-42-42Z"/>
+                        </svg>
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
