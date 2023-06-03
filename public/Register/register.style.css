@@ -111,15 +111,15 @@ button:hover {
     width: 20%;
 }
 
-.container  .left_section img {
-    width: 55%;
+.container .left_section img {
+    width: 45%;
 }
 
-.container  .left_section .language p {
+.container .left_section .language p {
     margin: 0 1rem 0 0;
 }
 
-.container  nav img {
+.container nav img {
     height: 80%;
 }
 
