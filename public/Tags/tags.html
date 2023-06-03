@@ -42,7 +42,7 @@
                         <p>Enter Name</p>
                         <div class="actions flex_row space_between center width_full">
                             <input type="text" id="createTag">
-                            <button>Cancel</button>
+                            <button onclick="event.currentTarget.parentElement.parentElement.style.display = 'none'">Cancel</button>
                             <button onclick="addTag(event)">OK</button>
                         </div>
                     </div>
@@ -137,20 +137,20 @@
                         <div class="input">
                             <label for="color">Color</label>
                             <div class="buttons flex_row center">
-                                <button style="width: 2rem; height: 2rem; border-radius: 0.3rem; background: #FEAACD;"></button>
-                                <button style="width: 2rem; height: 2rem; border-radius: 0.3rem; background: #9747FF;"></button>
-                                <button style="width: 2rem; height: 2rem; border-radius: 0.3rem; background: #D399D9;"></button>
-                                <button style="width: 2rem; height: 2rem; border-radius: 0.3rem; background: #A9DB91;"></button>
-                                <button style="width: 2rem; height: 2rem; border-radius: 0.3rem; background: #FFC7A7;"></button>
-                                <button style="width: 2rem; height: 2rem; border-radius: 0.3rem; background: #DDC6F4;"></button>
-                                <button style="width: 2rem; height: 2rem; border-radius: 0.3rem; background: #A7FFFA;"></button>
-                                <button style="width: 2rem; height: 2rem; border-radius: 0.3rem; background: #F490CC;"></button>
-                                <button style="width: 2rem; height: 2rem; border-radius: 0.3rem; background: #601E94;"></button>
-                                <button style="width: 2rem; height: 2rem; border-radius: 0.3rem; background: #DEE871;"></button>
-                                <button style="width: 2rem; height: 2rem; border-radius: 0.3rem; background: #88D724;"></button>
-                                <button style="width: 2rem; height: 2rem; border-radius: 0.3rem; background: #D77A47;"></button>
-                                <button style="width: 2rem; height: 2rem; border-radius: 0.3rem; background: #601B67;"></button>
-                                <button style="width: 2rem; height: 2rem; border-radius: 0.3rem; background: #36ACA5;"></button>
+                                <button onclick="changeColor(event)" style="width: 2rem; height: 2rem; border-radius: 0.3rem; background: #FEAACD;"></button>
+                                <button onclick="changeColor(event)" style="width: 2rem; height: 2rem; border-radius: 0.3rem; background: #9747FF;"></button>
+                                <button onclick="changeColor(event)" style="width: 2rem; height: 2rem; border-radius: 0.3rem; background: #D399D9;"></button>
+                                <button onclick="changeColor(event)" style="width: 2rem; height: 2rem; border-radius: 0.3rem; background: #A9DB91;"></button>
+                                <button onclick="changeColor(event)" style="width: 2rem; height: 2rem; border-radius: 0.3rem; background: #FFC7A7;"></button>
+                                <button onclick="changeColor(event)" style="width: 2rem; height: 2rem; border-radius: 0.3rem; background: #DDC6F4;"></button>
+                                <button onclick="changeColor(event)" style="width: 2rem; height: 2rem; border-radius: 0.3rem; background: #A7FFFA;"></button>
+                                <button onclick="changeColor(event)" style="width: 2rem; height: 2rem; border-radius: 0.3rem; background: #F490CC;"></button>
+                                <button onclick="changeColor(event)" style="width: 2rem; height: 2rem; border-radius: 0.3rem; background: #601E94;"></button>
+                                <button onclick="changeColor(event)" style="width: 2rem; height: 2rem; border-radius: 0.3rem; background: #DEE871;"></button>
+                                <button onclick="changeColor(event)" style="width: 2rem; height: 2rem; border-radius: 0.3rem; background: #88D724;"></button>
+                                <button onclick="changeColor(event)" style="width: 2rem; height: 2rem; border-radius: 0.3rem; background: #D77A47;"></button>
+                                <button onclick="changeColor(event)" style="width: 2rem; height: 2rem; border-radius: 0.3rem; background: #601B67;"></button>
+                                <button onclick="changeColor(event)" style="width: 2rem; height: 2rem; border-radius: 0.3rem; background: #36ACA5;"></button>
                             </div>
                         </div>
                         <div class="input">

@@ -104,9 +104,6 @@ leftWorkspace.addEventListener('click', (e) => {
         });
     }
     if (menu.style.display === 'flex') menu.style.display = 'none';
-    Array.from(tags_wrapper.children).forEach(tag_button => {
-        tag_button.style.background = '#B83169';
-    })
 });
 
 function showEditTag(e) {
@@ -132,8 +129,12 @@ function showEditPanel(e) {
         right_workspace.children[2].style.display = 'block';
         right_workspace.children[3].style.display = 'flex';
         right_workspace.children[3].style.opacity = '1';
-        e.currentTarget.style.background = '#601E94';
     });
+    e.currentTarget.style.background = '#601E94';
+}
+
+function changeColor(event) {
+    tag_button.style.background = event.currentTarget.style.background;
 }
 
 function updateTag(e) {

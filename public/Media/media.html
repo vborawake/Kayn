@@ -42,7 +42,7 @@
                 <p>Enter Directory Name</p>
                 <div class="actions flex_row space_between center width_full">
                     <input type="text" id="createDirectory" placeholder="Directory Name">
-                    <button>Cancel</button>
+                    <button onclick="event.currentTarget.parentElement.parentElement.style.display = 'none'; isOpen = false;">Cancel</button>
                     <button onclick="createDirectory(event)">Ok</button>
                 </div>
             </div>
@@ -50,7 +50,7 @@
         <!-- Video and files section -->
         <div class="workspace flex_row width_full">
             <div class="files_section flex_column align_flex_start">
-                <!-- Second toolbar (search and filtery) -->
+                <!-- Second toolbar (search and filter) -->
                 <div class="toolbar flex_row justify_flex_start center width_full">
                     <div class="search flex_row center space_between">
                         <img src="../images/search_FILL0_wght400_GRAD0_opsz48 1.png" alt="search">
@@ -120,7 +120,7 @@
                     <div class="file_tree flex_column justify_flex_start align_flex_start">
                         <div class="row flex_row space_between center width_full">
                             <div class="file">
-                                <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M141 896q-24 0-42-18.5T81 836V316q0-23 18-41.5t42-18.5h280l60 60h340q23 0 41.5 18.5T881 376v460q0 23-18.5 41.5T821 896H141Zm0-580v520h680V376H456l-60-60H141Zm0 0v520-520Z"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M141 896q-24 0-42-18.5T81 836V316q0-23 18-41.5t42-18.5h280l60 60h340q23 0 41.5 18.5T881 376v460q0 23-18.5 41.5T821 896H141Zm0-580v520h680V376H456l-60-60H141Zm0 0v520-520Z"/></svg>
                             </div>
                             <div class="path flex_row justify_center center">
                                 <p>/</p>
@@ -160,7 +160,7 @@
             </div>
             <div class="player_section flex_column space_between width_full">
                 <div class="player flex_column">
-                    <video controls class="video" src="../video/defaultVideo2.mp4" width="100%"></video>
+                    <video controls class="video" src="../video/defaultVideo2.mp4" height="700px" width="100%"></video>
                     <div class="controls flex_column space_evenly width_full">
                         <input type="range" value="0" name="seek_bar" class="seek_bar">
                         <div class="buttons flex_row space_between center width_full">

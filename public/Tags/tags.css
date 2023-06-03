@@ -200,7 +200,6 @@ input:focus {
 
 .container .left_workspace .tags_container {
     /* position: relative; */
-    height: 92%;
     padding: 1rem 2rem;
     font-size: 1rem;
     font-weight: 400;
@@ -610,9 +609,159 @@ input:focus {
     border-radius: 0.5rem;
 }
 
-@media screen and (max-width: 1400px) {
+@media screen and (min-width: 768px) and (max-width: 992px) {
     .container .menu ul {
-        width: 18%;
+        width: 30%;
+    }
+
+    .container .menu .language {
+        width: 15%;
+    }
+
+    .container .left_workspace .search {
+        width: 40%;
+    }
+
+    .container .left_workspace .tags_container {
+        height: 88%;
+    }
+
+    .container .bottom_buttons .buttons_wrapper {
+        width: 80%;
+    }
+
+    .container .left_workspace .tags_container {
+        height: 88%;
+    }
+
+    .container .right_workspace {
+        width: 20%;
+        padding: 2rem 1rem;
+    }
+    
+    .container .right_workspace .tag_details .player_image {
+        width: 7rem;
+        height: 8rem;
+    }
+    
+    .container .right_workspace .tag_details .input {
+        font-size: 1rem;
+    }
+    
+    .container .right_workspace .tag_details .input input {
+        height: 2.5rem;
+        width: 90%;
+        font-size: 0.8rem;
+    }
+    
+    .container .right_workspace .tag_details input[type='date']::-webkit-calendar-picker-indicator {
+        margin-right: 0.5rem;  
+    }
+
+    .container .toolbar .create_menu {
+        width: 30%;
+    }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1400px) {
+    .container .menu ul {
+        width: 25%;
+    }
+
+    .container .menu .language {
+        width: 8%;
+    }
+
+    .container .left_workspace .search {
+        width: 30%;
+    }
+
+    .container .left_workspace .tags_container {
+        height: 88%;
+    }
+
+    .container .right_workspace {
+        width: 15%;
+        padding: 2rem 1rem;
+        overflow: scroll;
+    }
+    
+    .container .right_workspace .tag_details .player_image {
+        width: 8rem;
+        height: 9rem;
+    }
+    
+    .container .right_workspace .tag_details .input {
+        font-size: 1rem;
+    }
+    
+    .container .right_workspace .tag_details .input input {
+        height: 2.5rem;
+        width: 100%;
+        font-size: 0.8rem;
+    }
+    
+    .container .right_workspace .tag_details input[type='date']::-webkit-calendar-picker-indicator {
+        margin-right: 0.5rem;  
+    }
+
+    .container .toolbar .create_menu {
+        width: 25%;
+    }
+
+    .container .bottom_buttons .buttons_wrapper {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+    .container .menu ul {
+        width: 25%;
+    }
+
+    .container .menu .language {
+        width: 8%;
+    }
+
+    .container .left_workspace .search {
+        width: 40%;
+    }
+
+    .container .left_workspace .tags_container {
+        height: 88%;
+    }
+
+    .container .right_workspace {
+        width: 15%;
+        padding: 2rem 1rem;
+        overflow: scroll;
+    }
+    
+    .container .right_workspace .tag_details .player_image {
+        width: 8rem;
+        height: 9rem;
+    }
+    
+    .container .right_workspace .tag_details .input {
+        font-size: 1rem;
+    }
+    
+    .container .right_workspace .tag_details .input input {
+        height: 2.5rem;
+        width: 100%;
+        font-size: 0.8rem;
+    }
+    
+    .container .right_workspace .tag_details input[type='date']::-webkit-calendar-picker-indicator {
+        margin-right: 0.5rem;  
+    }
+
+    .container .toolbar .create_menu {
+        width: 26%;
+    }
+
+    .container .bottom_buttons .buttons_wrapper {
+        width: 50%;
     }
 }
 

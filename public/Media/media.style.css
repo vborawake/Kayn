@@ -213,6 +213,10 @@ input:focus {
     width: 50%;
 }
 
+.container .workspace {
+    min-height: 78vh;
+}
+
 .container .workspace .toolbar {
     height: 3rem;
     padding: 0 5%;
@@ -276,7 +280,8 @@ input:focus {
 }
 
 .container .files_section .file_tree .path p {
-    padding: 0.8rem 1.2rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
 }
 
 .container .files_section .file_tree .row {
@@ -389,7 +394,7 @@ input:focus {
 }
 
 .container .workspace .player {
-    height: 75vh;
+    height: 80vh;
 }
 
 .container .workspace .controls .seek_bar {
@@ -496,6 +501,7 @@ input:focus {
 .container .cut_section {
     background: #380E3C;
     padding: 1rem 1rem 0 1rem;
+    display: none;
 }
 
 .container .cut_section .button_wrapper {

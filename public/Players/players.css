@@ -196,7 +196,6 @@ input:focus {
 }
 
 .container .left_workspace .players_container {
-    height: 92%;
     padding: 1rem 2rem;
     font-size: 1rem;
     font-weight: 400;
@@ -237,13 +236,17 @@ input:focus {
     width: 15%;
     padding: 2rem 1rem;
     display: none;
-    /* overflow: scroll; */
+    overflow: scroll;
+}
+
+.container .right_workspace::-webkit-scrollbar {
+    display: none;
 }
 
 .container .right_workspace .player_details .player_image {
     position: relative;
-    width: 48%;
-    height: 6rem;
+    width: 8rem;
+    height: 9rem;
     background: #FFFFFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 0.8rem;
@@ -264,12 +267,13 @@ input:focus {
 
 .container .right_workspace .remove {
     position: absolute;
-    top: 2rem;
-    right: 2rem;
+    top: 0.5rem;
+    right: 0.5rem;
     margin: 0 0 0 3rem;
 }
 
 .container .right_workspace .player_details .input {
+    width: 100%;
     font-size: 0.9rem;
     margin: 0.8rem 0 0 0;
 }
@@ -409,9 +413,9 @@ input:focus {
     border-radius: 0.5rem;
 }
 
-@media screen and (min-width: 700px) and (max-width: 900px) {
+@media screen and (min-width: 768px) and (max-width: 992px) {
     .container .menu ul {
-        width: 35%;
+        width: 30%;
     }
 
     .container .menu .language {
@@ -430,15 +434,18 @@ input:focus {
         width: 80%;
     }
 
+    .container .left_workspace .players_container {
+        height: 88%;
+    }
+
     .container .right_workspace {
         width: 20%;
         padding: 2rem 1rem;
-        overflow: scroll;
     }
     
     .container .right_workspace .player_details .player_image {
-        width: 75%;
-        height: 6.5rem;
+        width: 7rem;
+        height: 8rem;
     }
     
     .container .right_workspace .player_details .input {
@@ -456,11 +463,11 @@ input:focus {
     }
 
     .container .toolbar .create_menu {
-        width: 40%;
+        width: 30%;
     }
 }
 
-@media screen and (min-width: 1300px) and (max-width: 1400px) {
+@media screen and (min-width: 1200px) and (max-width: 1400px) {
     .container .menu ul {
         width: 25%;
     }
@@ -470,11 +477,11 @@ input:focus {
     }
 
     .container .left_workspace .search {
-        width: 40%;
+        width: 30%;
     }
 
-    .container .bottom_buttons .buttons_wrapper {
-        width: 50%;
+    .container .left_workspace .players_container {
+        height: 88%;
     }
 
     .container .right_workspace {
@@ -484,8 +491,8 @@ input:focus {
     }
     
     .container .right_workspace .player_details .player_image {
-        width: 55%;
-        height: 6.5rem;
+        width: 8rem;
+        height: 9rem;
     }
     
     .container .right_workspace .player_details .input {
@@ -503,7 +510,62 @@ input:focus {
     }
 
     .container .toolbar .create_menu {
-        width: 20%;
+        width: 25%;
+    }
+
+    .container .bottom_buttons .buttons_wrapper {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+    .container .menu ul {
+        width: 25%;
+    }
+
+    .container .menu .language {
+        width: 8%;
+    }
+
+    .container .left_workspace .search {
+        width: 40%;
+    }
+
+    .container .left_workspace .players_container {
+        height: 88%;
+    }
+
+    .container .right_workspace {
+        width: 15%;
+        padding: 2rem 1rem;
+        overflow: scroll;
+    }
+    
+    .container .right_workspace .player_details .player_image {
+        width: 8rem;
+        height: 9rem;
+    }
+    
+    .container .right_workspace .player_details .input {
+        font-size: 1rem;
+    }
+    
+    .container .right_workspace .player_details .input input {
+        height: 2.5rem;
+        width: 100%;
+        font-size: 0.8rem;
+    }
+    
+    .container .right_workspace .player_details input[type='date']::-webkit-calendar-picker-indicator {
+        margin-right: 0.5rem;  
+    }
+
+    .container .toolbar .create_menu {
+        width: 26%;
+    }
+
+    .container .bottom_buttons .buttons_wrapper {
+        width: 50%;
     }
 }
 
@@ -573,7 +635,7 @@ input:focus {
         width: 80%;
     }
 
-    .container .left_workspace .players_container {
+    .container .left_workspace .teams_container {
         height: 80%;
     }
 
@@ -588,10 +650,9 @@ input:focus {
         min-width: 100%;
         min-height: 90%;
         z-index: 10;
-        overflow: scroll;
     }
 
-    .container .right_workspace .player_details .player_image {
+    .container .right_workspace .player_details .team_image {
         height: 12.5rem;
     }
 

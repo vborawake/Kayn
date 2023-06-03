@@ -137,9 +137,11 @@ function showPlayerDetails(e) {
     }
     if (window.innerWidth < 900) {
         right_workspace.style.display = 'flex';
-        leftWorkspace.style.minWidth = '80%';
+        leftWorkspace.style.minWidth = '75%';
+        right_workspace.style.minWidth = '25%';
     } else {
         right_workspace.style.display = 'flex';
-        leftWorkspace.style.minWidth = '85%';
+        right_workspace.style.minWidth = '20%';
+        leftWorkspace.style.minWidth = '80%';
     }
 }

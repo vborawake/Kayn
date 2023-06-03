@@ -85,8 +85,8 @@ leftWorkspace.addEventListener('click', (e) => {
     console.log(e.currentTarget);
     if (createMenu.style.display === 'flex') createMenu.style.display = 'none';
     if (!e.currentTarget.classList.contains('team_wrapper')) {
-        right_workspace.style.display = 'none';
         leftWorkspace.style.minWidth = '100%';
+        right_workspace.style.display = 'none';
 
         Array.from(e.currentTarget.getElementsByClassName('team_wrapper flex_column center space_between')).forEach(element => {
             element.classList.remove('active');
@@ -139,9 +139,9 @@ function addTeam() {
 function hideTeamDetails (e) {
     const teamsContainer = document.querySelector('.teams_container.flex_row.justify_flex_start');
     Array.from(teamsContainer.children).forEach(team => team.classList.remove('active'))
-    // e.currentTarget.parentElement.parentElement.remove();
-    right_workspace.style.display = 'none';
+    // e.currentTarget.parentElement.parentElement.remove();\
     leftWorkspace.style.minWidth = '100%';
+    right_workspace.style.display = 'none';
 }
 
 function uploadPhoto(e) {
@@ -169,22 +169,24 @@ function showTeamDetails(e) {
     if (e.currentTarget.querySelector('.team.flex_row.center.justify_center svg')) {
         right_workspace.querySelector('.team_image.flex_column.justify_center.center').innerHTML = `
             <input onchange="uploadPhoto(event)" type="file" class="image_upload">
-            <svg xmlns="http://www.w3.org/2000/svg" height="64" viewBox="0 96 960 960" width="64">
+            <svg xmlns="http://www.w3.org/2000/svg" height="54" viewBox="0 96 960 960" width="54">
                 <defs>
                     <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
                         <stop offset="0%" style="stop-color: #B83169;stop-opacity:1" />
                         <stop offset="100%" style="stop-color: #380E3C;stop-opacity:1" />
                     </linearGradient>
                 </defs>
-                <path fill="url(#grad1)" d="M480 575q-66 0-108-42t-42-108q0-66 42-108t108-42q66 0 108 42t42 108q0 66-42 108t-108 42ZM160 896v-94q0-38 19-65t49-41q67-30 128.5-45T480 636q62 0 123 15.5t127.921 44.694q31.301 14.126 50.19 40.966Q800 764 800 802v94H160Zm60-60h520v-34q0-16-9.5-30.5T707 750q-64-31-117-42.5T480 696q-57 0-111 11.5T252 750q-14 7-23 21.5t-9 30.5v34Zm260-321q39 0 64.5-25.5T570 425q0-39-25.5-64.5T480 335q-39 0-64.5 25.5T390 425q0 39 25.5 64.5T480 515Zm0-90Zm0 411Z"/>
+                <path fill="url(#grad1)" d="M480 606q-58 0-97.5-39.5T343 469q0-58 39.5-97.5T480 332q58 0 97.5 39.5T617 469q0 58-39.5 97.5T480 606Zm0-60q34 0 55.5-21.5T557 469q0-34-21.5-55.5T480 392q-34 0-55.5 21.5T403 469q0 34 21.5 55.5T480 546Zm0 429q-140-35-230-162.5T160 533V295l320-120 320 120v238q0 152-90 279.5T480 975Zm0-399Zm0-337-260 98v196q0 63 17.5 120.5T287 760q46-25 93.5-37.5T480 710q52 0 99.5 12.5T673 760q32-49 49.5-106.5T740 533V337l-260-98Zm0 531q-39 0-78 10t-77 30q32 35 71 61.5t84 41.5q45-15 84-41.5t71-61.5q-38-20-77-30t-78-10Z"/>
             </svg>
         `;
     }
     if (window.innerWidth < 900) {
         right_workspace.style.display = 'flex';
-        leftWorkspace.style.minWidth = '80%';
+        leftWorkspace.style.minWidth = '75%';
+        right_workspace.style.minWidth = '25%';
     } else {
         right_workspace.style.display = 'flex';
-        leftWorkspace.style.minWidth = '85%';
+        right_workspace.style.minWidth = '20%';
+        leftWorkspace.style.minWidth = '80%';;
     }
 }

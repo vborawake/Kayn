@@ -42,7 +42,7 @@
                         <p>Enter Name</p>
                         <div class="actions flex_row space_between center width_full">
                             <input type="text" id="createTeam">
-                            <button>Cancel</button>
+                            <button onclick="event.currentTarget.parentElement.parentElement.style.display = 'none'">Cancel</button>
                             <button onclick="addTeam(event)">OK</button>
                         </div>
                     </div>
@@ -64,7 +64,7 @@
                     </div>
                 </div>
             </div>
-            <div class="right_workspace flex_column justify_flex_start" style="display: none;">
+            <div class="right_workspace flex_column justify_flex_start">
                 <div class="remove" onclick="hideTeamDetails(event)">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg>
                 </div>
@@ -166,5 +166,6 @@
             </div>
         </div>
     </div>
+    <script>window.addEventListener('resize', () => { console.log(window.innerWidth); })</script>
 </body>
 </html>
