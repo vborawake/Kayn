@@ -9,6 +9,9 @@
     <title>Tagging</title>
 </head>
 <body>
+    <!-- <div class="loader flex_row center justify_center">
+        <img src="../images/loader.gif" alt="">
+    </div> -->
     <div class="container flex_column justify_flex_start center width_full">
         <div class="menu flex_row space_between center width_full">
             <div class="hamburger">
@@ -16,12 +19,11 @@
             </div>
             <ul class="flex_row space_between center">
                 <li class="flex_row justify_center center">Help</li>
+                <li class="flex_row justify_center center"><a href="../Home/index.html">Logout</a></li>
             </ul>
             <ul class="mobile_menu">
-                <li>File</li>
-                <li>View</li>
-                <li>Tools</li>
                 <li>Help</li>
+                <li class="flex_row justify_center center"><a href="../Home/index.html">Logout</a></li>
             </ul>
             <div class="language flex_row space_between center">
                 <p>EN</p>
@@ -118,7 +120,7 @@
                 </div>
                 <div class="directories flex_row width_full">
                     <div class="file_tree flex_column justify_flex_start align_flex_start">
-                        <div class="row flex_row space_between center width_full">
+                        <div class="row flex_row space_between center">
                             <div class="file">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M141 896q-24 0-42-18.5T81 836V316q0-23 18-41.5t42-18.5h280l60 60h340q23 0 41.5 18.5T881 376v460q0 23-18.5 41.5T821 896H141Zm0-580v520h680V376H456l-60-60H141Zm0 0v520-520Z"/></svg>
                             </div>
@@ -126,7 +128,7 @@
                                 <p>/</p>
                             </div>
                         </div>
-                        <div class="row flex_row space_between center width_full">
+                        <div class="row flex_row space_between center">
                             <div class="file">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M141 896q-24 0-42-18.5T81 836V316q0-23 18-41.5t42-18.5h280l60 60h340q23 0 41.5 18.5T881 376v460q0 23-18.5 41.5T821 896H141Zm0-580v520h680V376H456l-60-60H141Zm0 0v520-520Z"/></svg>
                             </div>
@@ -225,14 +227,6 @@
         </div>
         <div class="bottom_buttons flex_row justify_center center width_full">
             <div class="buttons_wrapper flex_row space_between center">
-                <a href="">
-                    <button class="flex_row center justify_center">
-                        <p>Home</p>
-                        <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36">
-                            <path d="M220 876h150V626h220v250h150V486L480 291 220 486v390Zm-60 60V456l320-240 320 240v480H530V686H430v250H160Zm320-353Z"/>
-                        </svg>
-                    </button>
-                </a>
                 <a href="../Media/media.html">
                     <button class="flex_row center justify_center">
                         <p>Media</p>
@@ -292,5 +286,6 @@
             </div>
         </div>
     </div>
+    <script>window.addEventListener('resize', () => { console.log(window.innerWidth); })</script>
 </body>
 </html>

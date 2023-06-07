@@ -52,26 +52,6 @@ a {
     color: #FFF;
 }
 
-a:hover::before {
-    content: '';
-    position: absolute;
-    bottom: -0.5rem;
-    width: 30%;
-    height: 0.2rem;
-    background: #B83169;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    margin: 0 0 0 35%;
-}
-
-a.active::before {
-    content: '';
-    position: absolute;
-    bottom: -0.5rem;
-    width: 100%;
-    height: 0.2rem;
-    background: #B83169;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
 
 button {
     border: none;
@@ -90,6 +70,25 @@ button:hover {
     background: #380E3C;
 }
 
+.loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 150;
+    background: #380E3C;
+    /* display: none; */
+}
+
+.loader img {
+    width: 30%;
+    height: 30%;
+    object-fit: contain;
+    /* display: inherit; */
+
+}
+
 .container {
     font-family: 'Inter', sans-serif;
     width: 100%;
@@ -97,6 +96,7 @@ button:hover {
     background: linear-gradient(123.23deg, #380E3C 30.21%, #B83169 101.44%);
     color: #FFF;
     overflow: hidden;
+    display: none;
 }
 
 .container > img {
@@ -107,6 +107,12 @@ button:hover {
     height: 35rem;
     margin: -4rem 5rem 0 0;
     width: 40%;
+}
+
+.container .right_section a {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .container .right_section img {

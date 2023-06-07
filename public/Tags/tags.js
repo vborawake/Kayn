@@ -21,6 +21,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// window.addEventListener('load', () => {
+//     setTimeout(() => {
+//         document.querySelector('.container.flex_column.justify_flex_start.center.width_full').style.display = 'flex';
+//         // document.querySelector('.loader.flex_row.center.justify_center').classList.remove('flex_row');
+//         document.querySelector('.loader.flex_row.center.justify_center').style.display = 'none';
+//     }, 500)
+// });
+
 hamburger.addEventListener('click', (e) => {
     e.stopPropagation();
     if (isOpen) {
@@ -108,13 +116,23 @@ leftWorkspace.addEventListener('click', (e) => {
 
 function showEditTag(e) {
     e.stopPropagation();
-    right_workspace.style.minWidth = '20%';
     right_workspace.style.display = 'flex';
     right_workspace.querySelector('.details_wrapper .input:nth-child(1) input').value = tagInCons;
     right_workspace.children[0].style.display = 'block';
     right_workspace.children[1].style.display = 'flex';
-    leftWorkspace.style.minWidth = '80%';
-    menu.style.display = 'none';
+    if (window.innerWidth > 1200) {
+        right_workspace.style.minWidth = '20%';
+        leftWorkspace.style.minWidth = '80%';
+        menu.style.display = 'none';
+    } else if (window.innerWidth < 1200 && window.innerWidth > 900) {
+        right_workspace.style.minWidth = '25%';
+        leftWorkspace.style.minWidth = '75%';
+        menu.style.display = 'none';
+    } else if (window.innerWidth < 900 && window.innerWidth > 600) {
+        right_workspace.style.minWidth = '35%';
+        leftWorkspace.style.minWidth = '65%';
+        menu.style.display = 'none';
+    }
 }
 
 function showEditPanel(e) {
@@ -122,14 +140,25 @@ function showEditPanel(e) {
     tagInCons = e.currentTarget.innerHTML;
     tag_button = e.currentTarget;
     right_workspace.querySelectorAll('.details_wrapper .input:nth-child(1) input')[1].value = tagInCons;
-    requestAnimationFrame(() => {
-        right_workspace.style.minWidth = '20%';
-        right_workspace.style.display = 'flex';
-        leftWorkspace.style.minWidth = '80%';
-        right_workspace.children[2].style.display = 'block';
-        right_workspace.children[3].style.display = 'flex';
-        right_workspace.children[3].style.opacity = '1';
-    });
+    if (window.innerWidth > 1200) {
+        requestAnimationFrame(() => {
+            right_workspace.style.minWidth = '20%';
+            right_workspace.style.display = 'flex';
+            leftWorkspace.style.minWidth = '80%';
+            right_workspace.children[2].style.display = 'block';
+            right_workspace.children[3].style.display = 'flex';
+            right_workspace.children[3].style.opacity = '1';
+        });
+    } else {
+        requestAnimationFrame(() => {
+            right_workspace.style.minWidth = '25%';
+            right_workspace.style.display = 'flex';
+            leftWorkspace.style.minWidth = '75%';
+            right_workspace.children[2].style.display = 'block';
+            right_workspace.children[3].style.display = 'flex';
+            right_workspace.children[3].style.opacity = '1';
+        });
+    }
     e.currentTarget.style.background = '#601E94';
 }
 
@@ -210,8 +239,6 @@ function showTagDetails(e) {
         console.log(e);
     } else if (e.target.nodeName === 'H1') {
         requestAnimationFrame(() => {
-            tag_information.style.transform = 'scale(0)';
-            tag_information.style.opacity = '0';
             tag_information.style.display = 'none';
         });
         tagsContainer.style.display = 'flex';
@@ -219,9 +246,28 @@ function showTagDetails(e) {
         console.log(e);
         tag_information.style.display = 'flex';
         requestAnimationFrame(() => {
-            tag_information.style.opacity = '1';
-            // tag_information.style.transform = 'scale(1)';
             tagsContainer.style.display = 'none';
         })
     }
 }
+
+window.addEventListener('resize', (e) => {
+    if (right_workspace.style.display) {
+        if (window.innerWidth > 1200) {
+            right_workspace.style.minWidth = '20%';
+            leftWorkspace.style.minWidth = '80%';
+            // menu.style.display = 'none';
+            document.querySelector('.search.flex_row.center').style.width = '25%';
+        } else if (window.innerWidth < 1200 && window.innerWidth > 900) {
+            right_workspace.style.minWidth = '25%';
+            leftWorkspace.style.minWidth = '75%';
+            // menu.style.display = 'none';
+        } else if (window.innerWidth < 900 && window.innerWidth > 600) {
+            right_workspace.style.minWidth = '35%';
+            leftWorkspace.style.minWidth = '65%';
+            // menu.style.display = 'none';
+            document.querySelector('.search.flex_row.center').style.width = '40%';
+        }
+    }
+    console.log(window.innerWidth);
+});

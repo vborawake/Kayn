@@ -16,6 +16,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// window.addEventListener('load', () => {
+//     setTimeout(() => {
+//         document.querySelector('.container.flex_column.justify_flex_start.center.width_full').style.display = 'flex';
+//         // document.querySelector('.loader.flex_row.center.justify_center').classList.remove('flex_row');
+//         document.querySelector('.loader.flex_row.center.justify_center').style.display = 'none';
+//     }, 2000)
+// });
+
 hamburger.addEventListener('click', (e) => {
     e.stopPropagation();
     if (isOpen) {
@@ -190,3 +198,22 @@ function showTeamDetails(e) {
         leftWorkspace.style.minWidth = '80%';;
     }
 }
+
+window.addEventListener('resize', (e) => {
+    if (right_workspace.style.display) {
+        if (window.innerWidth > 1200) {
+            right_workspace.style.minWidth = '20%';
+            leftWorkspace.style.minWidth = '80%';
+            // menu.style.display = 'none';
+        } else if (window.innerWidth < 1200 && window.innerWidth > 900) {
+            right_workspace.style.minWidth = '25%';
+            leftWorkspace.style.minWidth = '75%';
+            // menu.style.display = 'none';
+        } else if (window.innerWidth < 900 && window.innerWidth > 600) {
+            right_workspace.style.minWidth = '35%';
+            leftWorkspace.style.minWidth = '65%';
+            // menu.style.display = 'none';
+            document.querySelector('.search.flex_row.center').style.width = '70%';
+        }
+    }
+});

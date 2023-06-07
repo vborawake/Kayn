@@ -9,6 +9,9 @@
     <title>Dynamic Drawing</title>
 </head>
 <body>
+    <!-- <div class="loader flex_row center justify_center">
+        <img src="../images/loader.gif" alt="">
+    </div> -->
     <div class="container flex_column justify_flex_start center width_full">
         <div class="menu flex_row space_between center width_full">
             <div class="hamburger">
@@ -16,12 +19,11 @@
             </div>
             <ul class="flex_row space_between center">
                 <li class="flex_row justify_center center">Help</li>
+                <li class="flex_row justify_center center"><a href="../Home/index.html">Logout</a></li>
             </ul>
             <ul class="mobile_menu">
-                <li>File</li>
-                <li>View</li>
-                <li>Tools</li>
                 <li>Help</li>
+                <li class="flex_row justify_center center"><a href="../Home/index.html">Logout</a></li>
             </ul>
             <div class="language flex_row space_between center">
                 <p>EN</p>
@@ -29,85 +31,84 @@
             </div>
         </div>
         <!-- First toolbar (import files and create directory) -->
-        <div class="toolbar flex_row space_between center width_full">
-            <div class="left_side flex_row space_between center">
-                <button class="flex_row space_between center">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M280 856v-60h289q70 0 120.5-46.5T740 634q0-69-50.5-115.5T569 472H274l114 114-42 42-186-186 186-186 42 42-114 114h294q95 0 163.5 64T800 634q0 94-68.5 158T568 856H280Z"/></svg>
-                    <p>Undo</p>
-                </button>
-                <a href="../Media/media.html">
-                    <button class="flex_row space_between center">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M840 373v503q0 24-18 42t-42 18H180q-24 0-42-18t-18-42V276q0-24 18-42t42-18h503l157 157Zm-60 27L656 276H180v600h600V400ZM479.765 811Q523 811 553.5 780.735q30.5-30.264 30.5-73.5Q584 664 553.735 633.5q-30.264-30.5-73.5-30.5Q437 603 406.5 633.265q-30.5 30.264-30.5 73.5Q376 750 406.265 780.5q30.264 30.5 73.5 30.5ZM233 472h358V329H233v143Zm-53-72v476-600 124Z"/></svg>
-                        <p>Media</p>
+        <div class="dynamic_drawing_content width_full">
+            <div class="toolbar flex_row space_between center width_full">
+                <div class="left_side flex_row space_between center">
+                    <button onclick="undo(event)" class="flex_row space_between center">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M280 856v-60h289q70 0 120.5-46.5T740 634q0-69-50.5-115.5T569 472H274l114 114-42 42-186-186 186-186 42 42-114 114h294q95 0 163.5 64T800 634q0 94-68.5 158T568 856H280Z"/></svg>
+                        <p>Undo</p>
                     </button>
-                </a>
-                <a href="../Editing UI/edit.html">
-                    <button class="flex_row space_between center">
-                        <img src="../icons/icons8-object-64.png" alt="">
-                        <p>Object</p>
-                    </button>
-                </a>
-                <a href="../Dynamic Drawing/dynamic_drawing.html">
-                    <button class="flex_row space_between center">
-                        <img src="../icons/icons8-ai-48.png" alt="">
-                        <p>Tracking</p>
-                    </button>
-                </a>
+                    <a href="../Media/media.html">
+                        <button class="flex_row space_between center">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M840 373v503q0 24-18 42t-42 18H180q-24 0-42-18t-18-42V276q0-24 18-42t42-18h503l157 157Zm-60 27L656 276H180v600h600V400ZM479.765 811Q523 811 553.5 780.735q30.5-30.264 30.5-73.5Q584 664 553.735 633.5q-30.264-30.5-73.5-30.5Q437 603 406.5 633.265q-30.5 30.264-30.5 73.5Q376 750 406.265 780.5q30.264 30.5 73.5 30.5ZM233 472h358V329H233v143Zm-53-72v476-600 124Z"/></svg>
+                            <p>Media</p>
+                        </button>
+                    </a>
+                    <a href="../Editing UI/edit.html">
+                        <button class="flex_row space_between center">
+                            <img src="../icons/icons8-object-64.png" alt="">
+                            <p>Object</p>
+                        </button>
+                    </a>
+                    <a href="../Dynamic Drawing/dynamic_drawing.html">
+                        <button class="flex_row space_between center">
+                            <img src="../icons/icons8-ai-48.png" alt="">
+                            <p>Tracking</p>
+                        </button>
+                    </a>
+                </div>
             </div>
-            <div class="right_side flex_row space_between center">
-                <button class="flex_row space_between center">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M782 942 481 641 364 758q11 17 13.5 33t2.5 35q0 64-43 107t-107 43q-64 0-107-43T80 826q0-64 43-107t107-43q18 0 35.5 5t36.5 15l116-116-118-118q-17 8-34.5 11t-35.5 3q-64 0-107-43T80 326q0-64 43-107t107-43q64 0 107 43t43 107q0 19-2.5 36T367 394l514 514v34h-99ZM599 529l-66-66 249-249h99v33L599 529ZM230 416q38 0 64-26t26-64q0-38-26-64t-64-26q-38 0-64 26t-26 64q0 38 26 64t64 26Zm253 183q8 0 13.5-5.5T502 580q0-8-5.5-13.5T483 561q-8 0-13.5 5.5T464 580q0 8 5.5 13.5T483 599ZM230 916q38 0 64-26t26-64q0-38-26-64t-64-26q-38 0-64 26t-26 64q0 38 26 64t64 26Z"/></svg>
-                    <p>Render Selected</p>
-                </button>
+            <div class="workspace flex_row center width_full">
+                <div class="left_section flex_column justify_flex_start center">
+                    <div class="tracking_wrapper flex_column space_evenly">
+                        <h1>Player Tracking Mode</h1>
+                        <p>Virtual pitch object scale</p>
+                        <button>100 %</button>
+                        <button onclick="trackPlayers(event)" class="flex_row justify_center center">
+                            <img src="../icons/icons8-ai-48.png" alt="">
+                            <p>Detect Players</p>
+                        </button>
+                        <p style="display: none;">Tracking players done</p>
+                    </div>
+                </div>
+                <div class="right_section">
+                    <img src="../images/aerial-view-grass-field-hockey.jpg" alt="">
+                    <canvas id="canvas" width="1000px"></canvas>
+                </div>
+            </div>
+            <div class="controls flex_column space_evenly width_full">
+                <input type="range" value="0" name="seek_bar" class="seek_bar">
+                <div class="buttons flex_row space_between center width_full">
+                    <div class="playing_buttons flex_row space_between center">
+                        <button>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M320 853V293l440 280-440 280Zm60-280Zm0 171 269-171-269-171v342Z"/></svg>
+                            <!-- <svg fill="#000000" width="36" height="36" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M46.677 64.652c0-9.362 7.132-17.387 16.447-17.394 9.315-.007 24.677.007 34.55.007 9.875 0 17.138 7.594 17.138 16.998 0 9.403-.083 119.094-.083 127.82 0 8.726-7.58 16.895-16.554 16.837-8.975-.058-25.349.115-34.963.058-9.614-.058-16.646-7.74-16.646-17.254 0-9.515.11-117.71.11-127.072zm14.759.818s-.09 118.144-.09 123.691c0 5.547 3.124 5.315 6.481 5.832 3.358.518 21.454.47 24.402.47 2.947 0 7.085-1.658 7.167-6.14.08-4.483-.082-119.507-.082-123.249 0-3.742-4.299-4.264-7.085-4.66-2.787-.395-25.796 0-25.796 0l-4.997 4.056zm76.664-.793c.027-9.804 7.518-17.541 17.125-17.689 9.606-.147 25.283.148 35.004.148 9.72 0 17.397 8.52 17.397 17.77s-.178 117.809-.178 127c0 9.192-7.664 17.12-16.323 17.072-8.66-.05-26.354 0-34.991.048-8.638.05-17.98-8.582-18.007-17.783-.027-9.201-.055-116.763-.027-126.566zm16.917.554s-.089 118.145-.089 123.692c0 5.547 3.123 5.314 6.48 5.832 3.359.518 21.455.47 24.402.47 2.948 0 7.086-1.659 7.167-6.141.081-4.482-.08-119.506-.08-123.248 0-3.742-4.3-4.265-7.087-4.66-2.786-.396-25.796 0-25.796 0l-4.997 4.055z" fill-rule="evenodd"/>
+                            </svg> -->
+                        </button>
+                        <button><svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M220 816V336h60v480h-60Zm520 0L394 576l346-240v480Zm-60-240Zm0 125V451L499 576l181 125Z"/></svg></button>
+                        <button><svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M680 816V336h60v480h-60Zm-460 0V336l346 240-346 240Zm60-240Zm0 125 181-125-181-125v250Z"/></svg></button>
+                        <button><svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M330 726h300V426H330v300Zm150.266 250q-82.734 0-155.5-31.5t-127.266-86q-54.5-54.5-86-127.341Q80 658.319 80 575.5q0-82.819 31.5-155.659Q143 347 197.5 293t127.341-85.5Q397.681 176 480.5 176q82.819 0 155.659 31.5Q709 239 763 293t85.5 127Q880 493 880 575.734q0 82.734-31.5 155.5T763 858.316q-54 54.316-127 86Q563 976 480.266 976Zm.234-60Q622 916 721 816.5t99-241Q820 434 721.188 335 622.375 236 480 236q-141 0-240.5 98.812Q140 433.625 140 576q0 141 99.5 240.5t241 99.5Zm-.5-340Z"/></svg></button>
+                    </div>
+                    <div class="volume_buttons flex_row space_between center">
+                        <button><svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M280 696V456h160l200-200v640L440 696H280Zm60-60h127l113 109V408L467 516H340v120Zm119-60Z"/></svg></button>
+                        <input type="range" min="0" max="1" step="0.1" name="volume" class="volume">
+                        <button><svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M560 925v-62q97-28 158.5-107.5T780 575q0-101-61-181T560 287v-62q124 28 202 125.5T840 575q0 127-78 224.5T560 925ZM120 696V456h160l200-200v640L280 696H120Zm420 48V407q55 17 87.5 64T660 576q0 57-33 104t-87 64ZM420 408 307 516H180v120h127l113 109V408Zm-94 168Z"/></svg></button>
+                        <select name="speed">
+                            <option value="1">1.00x</option>
+                            <option value="1.2">1.25x</option>
+                            <option value="1.5">1.5x</option>
+                            <option value="1.7">1.75x</option>
+                            <option value="2">2.00x</option>
+                        </select>
+                        <button><svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M180 975q-24 0-42-18t-18-42V312h60v603h474v60H180Zm120-120q-24 0-42-18t-18-42V235q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300Zm0-60h440V235H300v560Zm0 0V235v560Z"/></svg></button>
+                        <button onclick="document.querySelector('video').requestFullscreen()"><svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M820 446V316H690v-60h130q24 0 42 18t18 42v130h-60Zm-740 0V316q0-24 18-42t42-18h130v60H140v130H80Zm610 450v-60h130V706h60v130q0 24-18 42t-42 18H690Zm-550 0q-24 0-42-18t-18-42V706h60v130h130v60H140Zm60-120V376h560v400H200Zm60-60h440V436H260v280Zm0 0V436v280Z"/></svg></button>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="workspace flex_row center width_full">
-            <div class="left_section flex_column justify_flex_start center">
-                <div class="tracking_wrapper flex_column space_evenly">
-                    <h1>Player Tracking Mode</h1>
-                    <p>Virtual pitch object scale</p>
-                    <button>100 %</button>
-                    <button onclick="trackPlayers(event)" class="flex_row justify_center center">
-                        <img src="../icons/icons8-ai-48.png" alt="">
-                        <p>Detect Players</p>
-                    </button>
-                    <p style="display: none;">Tracking players done</p>
-                </div>
-            </div>
-            <div class="right_section">
-                <img src="../images/aerial-view-grass-field-hockey.jpg" alt="">
-                <canvas id="canvas" width="1000px"></canvas>
-            </div>
-        </div>
-        <div class="controls flex_column space_evenly width_full">
-            <input type="range" value="0" name="seek_bar" class="seek_bar">
-            <div class="buttons flex_row space_between center width_full">
-                <div class="playing_buttons flex_row space_between center">
-                    <button>
-                        <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M320 853V293l440 280-440 280Zm60-280Zm0 171 269-171-269-171v342Z"/></svg>
-                        <!-- <svg fill="#000000" width="36" height="36" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M46.677 64.652c0-9.362 7.132-17.387 16.447-17.394 9.315-.007 24.677.007 34.55.007 9.875 0 17.138 7.594 17.138 16.998 0 9.403-.083 119.094-.083 127.82 0 8.726-7.58 16.895-16.554 16.837-8.975-.058-25.349.115-34.963.058-9.614-.058-16.646-7.74-16.646-17.254 0-9.515.11-117.71.11-127.072zm14.759.818s-.09 118.144-.09 123.691c0 5.547 3.124 5.315 6.481 5.832 3.358.518 21.454.47 24.402.47 2.947 0 7.085-1.658 7.167-6.14.08-4.483-.082-119.507-.082-123.249 0-3.742-4.299-4.264-7.085-4.66-2.787-.395-25.796 0-25.796 0l-4.997 4.056zm76.664-.793c.027-9.804 7.518-17.541 17.125-17.689 9.606-.147 25.283.148 35.004.148 9.72 0 17.397 8.52 17.397 17.77s-.178 117.809-.178 127c0 9.192-7.664 17.12-16.323 17.072-8.66-.05-26.354 0-34.991.048-8.638.05-17.98-8.582-18.007-17.783-.027-9.201-.055-116.763-.027-126.566zm16.917.554s-.089 118.145-.089 123.692c0 5.547 3.123 5.314 6.48 5.832 3.359.518 21.455.47 24.402.47 2.948 0 7.086-1.659 7.167-6.141.081-4.482-.08-119.506-.08-123.248 0-3.742-4.3-4.265-7.087-4.66-2.786-.396-25.796 0-25.796 0l-4.997 4.055z" fill-rule="evenodd"/>
-                        </svg> -->
-                    </button>
-                    <button><svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M220 816V336h60v480h-60Zm520 0L394 576l346-240v480Zm-60-240Zm0 125V451L499 576l181 125Z"/></svg></button>
-                    <button><svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M680 816V336h60v480h-60Zm-460 0V336l346 240-346 240Zm60-240Zm0 125 181-125-181-125v250Z"/></svg></button>
-                    <button><svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M330 726h300V426H330v300Zm150.266 250q-82.734 0-155.5-31.5t-127.266-86q-54.5-54.5-86-127.341Q80 658.319 80 575.5q0-82.819 31.5-155.659Q143 347 197.5 293t127.341-85.5Q397.681 176 480.5 176q82.819 0 155.659 31.5Q709 239 763 293t85.5 127Q880 493 880 575.734q0 82.734-31.5 155.5T763 858.316q-54 54.316-127 86Q563 976 480.266 976Zm.234-60Q622 916 721 816.5t99-241Q820 434 721.188 335 622.375 236 480 236q-141 0-240.5 98.812Q140 433.625 140 576q0 141 99.5 240.5t241 99.5Zm-.5-340Z"/></svg></button>
-                </div>
-                <div class="volume_buttons flex_row space_between center">
-                    <button><svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M280 696V456h160l200-200v640L440 696H280Zm60-60h127l113 109V408L467 516H340v120Zm119-60Z"/></svg></button>
-                    <input type="range" min="0" max="1" step="0.1" name="volume" class="volume">
-                    <button><svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M560 925v-62q97-28 158.5-107.5T780 575q0-101-61-181T560 287v-62q124 28 202 125.5T840 575q0 127-78 224.5T560 925ZM120 696V456h160l200-200v640L280 696H120Zm420 48V407q55 17 87.5 64T660 576q0 57-33 104t-87 64ZM420 408 307 516H180v120h127l113 109V408Zm-94 168Z"/></svg></button>
-                    <select name="speed">
-                        <option value="1">1.00x</option>
-                        <option value="1.2">1.25x</option>
-                        <option value="1.5">1.5x</option>
-                        <option value="1.7">1.75x</option>
-                        <option value="2">2.00x</option>
-                    </select>
-                    <button><svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M180 975q-24 0-42-18t-18-42V312h60v603h474v60H180Zm120-120q-24 0-42-18t-18-42V235q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300Zm0-60h440V235H300v560Zm0 0V235v560Z"/></svg></button>
-                    <button onclick="document.querySelector('video').requestFullscreen()"><svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M820 446V316H690v-60h130q24 0 42 18t18 42v130h-60Zm-740 0V316q0-24 18-42t42-18h130v60H140v130H80Zm610 450v-60h130V706h60v130q0 24-18 42t-42 18H690Zm-550 0q-24 0-42-18t-18-42V706h60v130h130v60H140Zm60-120V376h560v400H200Zm60-60h440V436H260v280Zm0 0V436v280Z"/></svg></button>
-                </div>
-            </div>
+        <div class="edit_content">
+            
         </div>
         <div class="cut_section flex_row center justify_flex_start width_full">
             <div class="files_section flex_column justify_flex_start">
@@ -134,6 +135,16 @@
                         <p>36:00</p>
                         <p>39:00</p>
                     </div>
+                    <div class="numbers_tablet flex_row space_between center width_full">
+                        <p>00:00</p>
+                        <p>03:00</p>
+                        <p>06:00</p>
+                        <p>09:00</p>
+                        <p>12:00</p>
+                        <p>15:00</p>
+                        <p>18:00</p>
+                        <p>21:00</p>
+                    </div>
                     <div class="ticks width_full">
     
                     </div>
@@ -149,14 +160,6 @@
         </div>
         <div class="bottom_buttons flex_row justify_center center width_full">
             <div class="buttons_wrapper flex_row space_between center">
-                <a href="">
-                    <button class="flex_row center justify_center">
-                        <p>Home</p>
-                        <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36">
-                            <path d="M220 876h150V626h220v250h150V486L480 291 220 486v390Zm-60 60V456l320-240 320 240v480H530V686H430v250H160Zm320-353Z"/>
-                        </svg>
-                    </button>
-                </a>
                 <a href="../Media/media.html">
                     <button class="flex_row center justify_center">
                         <p>Media</p>

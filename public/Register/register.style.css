@@ -90,6 +90,25 @@ button:hover {
     background: #380E3C;
 }
 
+.loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 150;
+    background: #380E3C;
+    /* display: none; */
+}
+
+.loader img {
+    width: 30%;
+    height: 30%;
+    object-fit: contain;
+    /* display: inherit; */
+
+}
+
 .container {
     background: #F2E8EC;
     width: 100%;
@@ -97,6 +116,7 @@ button:hover {
     font-family: 'Inter', sans-serif;
     color: #FFF;
     font-size: 1.2rem;
+    display: none;
 }
 
 .container  nav {
@@ -107,12 +127,19 @@ button:hover {
     background: #380E3C;
 }
 
+.container nav .left_section a {
+    width: 40%;
+    margin: 0;
+    padding: 0;
+}
+
 .container  nav .left_section {
     width: 20%;
 }
 
-.container .left_section img {
-    width: 45%;
+.container .left_section a img {
+    width: 100%;
+    height: 60%;
 }
 
 .container .left_section .language p {
@@ -408,7 +435,7 @@ form input:focus {
     }
     
     .container nav .right_section {
-        width: 65%;
+        width: 70%;
     }
 
     .container nav .right_section ul {
@@ -609,7 +636,11 @@ form input:focus {
     .container nav .left_section {
         flex-direction: row;
         align-items: center;
-        width: 60%;
+        width: 25%;
+    }
+
+    .container nav .left_section a img {
+        width: 120%;
     }
     
     .container nav img {
@@ -752,7 +783,7 @@ form input:focus {
     }
 }
 
-@media screen and (max-width: 800px) {
+/* @media screen and (max-width: 800px) {
 
     .container .mobile_menu {
         display: flex;
@@ -945,4 +976,4 @@ form input:focus {
         height: 14rem;
         font-weight: 600;
     }
-}
+} */

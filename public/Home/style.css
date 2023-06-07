@@ -6,10 +6,6 @@
     box-sizing: border-box;
 }
 
-html {
-    font-size: 16px;
-}
-
 .flex_column {
     display: flex;
     flex-direction: column;
@@ -112,6 +108,24 @@ body {
     font-family: 'Inter', sans-serif;
     color: #FFF;
     z-index: 10;
+    display: none;
+}
+
+.loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 150;
+    background: #380E3C;
+}
+
+.loader img {
+    width: 30%;
+    height: 30%;
+    object-fit: contain;
+
 }
 
 .container-fluid .hero_section {
@@ -121,6 +135,7 @@ body {
 }
 
 .container-fluid .hero_section nav {
+    position: relative;
     width: 95%;
     height: 6rem;
     margin: 0 auto;
@@ -128,9 +143,19 @@ body {
     color: #FFF;
 }
 
-.container-fluid .hero_section .left_section img {
+.container-fluid nav .left_section a {
     width: 50%;
-    z-index: 1;
+    cursor: pointer;
+}
+
+.container-fluid nav .left_section {
+    width: 15%;
+    z-index: 100;
+}
+
+.container-fluid .left_section a img {
+    width: 100%;
+    height: 60%;
 }
 
 .container-fluid .hero_section .left_section .language p {
@@ -392,6 +417,11 @@ body {
     border-radius: 10px;
 }
 
+.container-fluid .advantages_section .advantages .advantage h5 {
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
 .container-fluid .advantages_section .advantages .advantage:nth-child(3),
 .container-fluid .advantages_section .advantages .advantage:nth-child(6) {
     margin: 3rem 0 0 0;
@@ -475,10 +505,25 @@ body {
 }
 
 .container-fluid .pricing_section .plan .header {
+    align-items: center;
     border-bottom: 2px solid #DBD6D6;;
     width: 100%;
     height: 8rem;
     font-size: 1.2rem;
+}
+
+.container-fluid .pricing_section .plan .header h2, .container-fluid .pricing_section .plan .header p {
+    padding: 0;
+    margin: 0;
+}
+
+.container-fluid .pricing_section .plan .header h2 {
+    margin: 1rem 0 0 0;
+    font-weight: 600;
+}
+
+.container-fluid .pricing_section .plan .header p {
+    margin: -0.5rem 0 0 0;
 }
 
 .container-fluid .pricing_section .plan ul {
@@ -489,15 +534,17 @@ body {
 
 .container-fluid .pricing_section .plan h1 {
     margin: 2rem 0 0 0;
+    font-weight: 600;
     
 }
 
 .container-fluid .pricing_section .plan button {
-    height: 2.5rem;
+    height: 3rem;
     margin: 2rem 0;
     width: 40%;
     font-size: 1.2rem;
     font-weight: 700;
+    padding: 0;
 }
 
 .container-fluid .pricing_section .plan ul li {
@@ -611,11 +658,11 @@ body {
     
     .container-fluid .hero_section nav .left_section {
         align-items: center;
-        width: 25%;
+        width: 15%;
     }
     
     .container-fluid .hero_section .left_section img {
-        width: 50%;
+        width: 90%;
     }
     
     .container-fluid .hero_section nav img {
@@ -623,7 +670,7 @@ body {
     }
     
     .container-fluid .hero_section nav .right_section {
-        width: 65%;
+        width: 78%;
     }
     
     .container-fluid .hero_section .hero_section_display .hero_text {
@@ -652,7 +699,11 @@ body {
         font-size: 3.5rem;
     }
     
-    .container-fluid .features_section .row h1 {
+    .container-fluid .features_section .row .feature_description p, .container-fluid .features_section .row .feature_description ul li {
+        font-size: 1.1rem;
+    }
+
+    .container-fluid .features_section .row .feature_description h1 {
         font-size: 2rem;
     }
 
@@ -798,6 +849,14 @@ body {
 }
 
 @media screen and (min-width: 1200px) and (max-width: 1400px) {
+    .container-fluid .features_section .row .feature_description p, .container-fluid .features_section .row .feature_description ul li {
+        font-size: 1.1rem;
+    }
+
+    .container-fluid .features_section .row .feature_description h1 {
+        font-size: 2rem;
+    }
+    
     .container-fluid .working_section .step {
         width: 32%;
     }
@@ -910,7 +969,7 @@ body {
     }
 }
 
-@media screen and (min-width: 768px) and (max-width: 992px) {
+@media screen and (min-width: 600px) and (max-width: 992px) {
 
     .container-fluid .hero_section .mobile_menu {
         display: flex;
@@ -1022,14 +1081,20 @@ body {
     }
 
     .container-fluid .features_section {
-        text-align: center;
         font-size: 1.1rem;
     }
     
     .container-fluid .features_section .row {
         display: flex;
         justify-content: center;
-        font-size: 0.8rem;
+    }
+
+    .container-fluid .features_section .row .feature_description p, .container-fluid .features_section .row .feature_description ul li {
+        font-size: 1.1rem;
+    }
+
+    .container-fluid .features_section .row .feature_description h1 {
+        font-size: 2rem;
     }
     
     .container-fluid .features_section .row:not(:first-child) {
@@ -1062,7 +1127,7 @@ body {
     }
 
     .container-fluid .audience_section button {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
     }
 
     .container-fluid .working_section {
@@ -1098,17 +1163,16 @@ body {
     }
     
     .container-fluid .advantages_section .advantage .text {
+        font-size: 1rem;
+    }
+
+    .container-fluid .advantages_section .advantage .text h5 {
         font-size: 1.1rem;
     }
 
     .container-fluid .advantages_section .advantages .advantage:nth-child(3),
     .container-fluid .advantages_section .advantages .advantage:nth-child(6) {
         margin: 3rem 0 0 0;
-    }
-
-    .container-fluid .advantages_section .advantage .text {
-        height: 24rem;
-        font-size: 1.2rem;
     }
 
     .container-fluid .pricing_section {
@@ -1118,11 +1182,16 @@ body {
     .container-fluid .pricing_section h1 {
         text-align: center;
         margin: 4rem 0 2rem 0;
+        font-size: 2.5rem;
     }
     
     .container-fluid .pricing_section .payment_cycle {
         width: 80%;
         margin: 0 0 4rem 0;
+    }
+
+    .container-fluid .pricing_section .payment_cycle ul li {
+        font-size: 1.5rem;
     }
     
     .container-fluid .pricing_section .plans {
@@ -1135,17 +1204,32 @@ body {
         border-radius: 0.8rem;
     }
 
-    .container-fluid .pricing_section .plans .plan:not(:last-child) {
-        margin: 0 0 2rem 0;
+    .container-fluid .pricing_section .plans .plan .header h2 {
+        font-size: 1.5rem;
+    }
+
+    .container-fluid .pricing_section .plans .plan .header p {
+        font-size: 1rem;
     }
     
     .container-fluid .pricing_section .plan ul {
         height: fit-content;
         width: 70%;
+        font-size: 1rem;
+    }
+
+    .container-fluid .pricing_section .plan ul li {
+        margin: 0.8rem 0 0 0;
     }
 
     .container-fluid .pricing_section .plan h1 {
-        margin: 0;
+        /* margin: 0; */
+        font-size: 2rem;
+    }
+
+    .container-fluid .pricing_section .plan button {
+        font-size: 1rem;
+        padding: 0.3rem;
     }
 
     .container-fluid .action_section {

@@ -118,6 +118,24 @@ input:focus {
 .container {
     min-height: 100vh;
     font-family: 'Inter', 'sans-serif';
+    /* display: none; */
+}
+
+.loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 150;
+    background: #ececec;
+}
+
+.loader img {
+    width: 30%;
+    height: 30%;
+    object-fit: contain;
+
 }
 
 .hamburger {
@@ -137,7 +155,7 @@ input:focus {
 
 .container .menu ul {
     height: 100%;
-    width: 15%;
+    width: 10%;
 }
 
 .container .menu ul li {
@@ -211,6 +229,7 @@ input:focus {
 .container .workspace .video #canvas {
     position: absolute;
     z-index: 100;
+    /* border: 2px solid black; */
 }
 
 .container .workspace .video_editing .tools svg {
@@ -528,9 +547,13 @@ input:focus {
 .container .cut_section .working_area {
     position: relative;
     height: 20rem;
-    background: #1f1f1f;
+    background: #464648;
     padding: 0 1.8rem;
     overflow: scroll;
+}
+
+.container .cut_section .working_area::-webkit-scrollbar {
+    display: none;
 }
 
 .container .cut_section .working_area span {
@@ -574,6 +597,29 @@ input:focus {
 
 .container .cut_section .tracker .numbers:nth-child(2) {
     display: none;
+}
+
+.container .cut_section .files_section {
+    width: 20%;
+    min-height: 50vh;
+    background: #1F1F1F;
+}
+
+.container .cut_section .files_section .row {
+    background: #000;
+    color: #FFF;
+    height: 2rem;
+    padding-left: 0.3rem;
+    font-size: 0.8rem;
+}
+
+.container .cut_section .files_section .row svg {
+    fill: #FFF;
+    margin: 0 0.5rem 0 0;
+}
+
+.container .editing_section {
+    width: 80%;
 }
 
 @media screen and (max-width: 1400px) {

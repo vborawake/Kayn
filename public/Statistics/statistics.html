@@ -5,10 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="statistics.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.3.0/chart.umd.js" integrity="sha512-CMF3tQtjOoOJoOKlsS7/2loJlkyctwzSoDK/S40iAB+MqWSaf50uObGQSk5Ny/gfRhRCjNLvoxuCvdnERU4WGg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script defer src="statistics.js"></script>
     <title>Statistics</title>
 </head>
 <body>
+    <!-- <div class="loader flex_row center justify_center">
+        <img src="../images/loader.gif" alt="">
+    </div> -->
     <div class="container flex_column justify_flex_start center width_full">
         <div class="menu flex_row space_between center width_full">
             <div class="hamburger">
@@ -16,12 +20,11 @@
             </div>
             <ul class="flex_row space_between center">
                 <li class="flex_row justify_center center">Help</li>
+                <li class="flex_row justify_center center"><a href="../Home/index.html">Logout</a></li>
             </ul>
             <ul class="mobile_menu">
-                <li>File</li>
-                <li>View</li>
-                <li>Tools</li>
                 <li>Help</li>
+                <li class="flex_row justify_center center"><a href="../Home/index.html">Logout</a></li>
             </ul>
             <div class="language flex_row space_between center">
                 <p>EN</p>
@@ -87,19 +90,27 @@
                 </div>
             </div>
             <div class="right_section">
-                <div class="default_content flex_row space_between center">
+                <div class="default_content flex_row space_between">
                     <div class="item">
                         <p>Add Player To Compare</p>
-                        <button><a href="../Players/players.html">Add Player</a></button>
+                        <button onclick="localStorage.setItem('fromStats', 'true')"><a href="../Players/players.html">Add Player</a></button>
+                        <div class="players flex_column center justify_flex_start">
+                            <!-- <div class="player flex_row justify_center center">
+                                <p class="player_name"></p>
+                            </div> -->
+                        </div>
                     </div>
                     <div class="item">
                         <p>Add Team To Compare</p>
                         <button><a href="../Teams/teams.html">Add Team</a></button>
                     </div>
                 </div>
+                <div class="playerCharts flex_row space_evenly center">
+                    
+                </div>
             </div>
         </div>
-        <div class="cut_section flex_row center justify_flex_start width_full">
+        <!-- <div class="cut_section flex_row center justify_flex_start width_full">
             <div class="files_section flex_column justify_flex_start">
                 <div class="row flex_row justify_flex_start center width_full">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M180 936q-24 0-42-18t-18-42h60v60Zm-60-148v-83h60v83h-60Zm0-171v-83h60v83h-60Zm0-170v-83h60v83h-60Zm0-171q0-24 18-42t42-18v60h-60Zm148 512V364h424v424H268Zm0 148v-60h83v60h-83Zm0-660v-60h83v60h-83Zm60 452h304V424H328v304Zm111 208v-60h83v60h-83Zm0-660v-60h83v60h-83Zm170 660v-60h83v60h-83Zm0-660v-60h83v60h-83Zm171 660v-60h60q0 24-18 42t-42 18Zm0-148v-83h60v83h-60Zm0-171v-83h60v83h-60Zm0-170v-83h60v83h-60Zm0-171v-60q24 0 42 18t18 42h-60Z"/></svg>
@@ -134,22 +145,14 @@
                     <div class="video width_full flex_row justify_center" style="color: #FFF;">
                         <p>Spotlight</p>
                     </div>
-                    <!-- <div class="tag width_full flex_row justify_center" style="color: #FFF;">
+                    <div class="tag width_full flex_row justify_center" style="color: #FFF;">
                         <p>Tag</p>
-                    </div> -->
+                    </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="bottom_buttons flex_row justify_center center width_full">
             <div class="buttons_wrapper flex_row space_between center">
-                <a href="">
-                    <button class="flex_row center justify_center">
-                        <p>Home</p>
-                        <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36">
-                            <path d="M220 876h150V626h220v250h150V486L480 291 220 486v390Zm-60 60V456l320-240 320 240v480H530V686H430v250H160Zm320-353Z"/>
-                        </svg>
-                    </button>
-                </a>
                 <a href="../Media/media.html">
                     <button class="flex_row center justify_center">
                         <p>Media</p>
@@ -209,5 +212,6 @@
             </div>
         </div>
     </div>
+    <script>window.addEventListener('resize', () => { console.log(window.innerWidth); })</script>
 </body>
 </html>

@@ -12,9 +12,15 @@ const volumeInput = document.querySelector('.volume');
 const start = document.querySelectorAll('.ranges.flex_column input')[0];
 const end = document.querySelectorAll('.ranges.flex_column input')[1];
 const end_tracker = document.querySelector('.end_tracker');
-const mediaSource = new MediaSource();
+const directorySection = document.querySelector('.directories_container.flex_row.justify_flex_start.align_flex_start.width_full');
+const cutSection = document.querySelector('.cut_section.flex_row.center.justify_flex_start.width_full');
+const selectMenu = document.querySelector('.select_menu.flex_column.width_full');
 
-let fileMenu;
+let currentDirectory;
+let currentFile;
+const folders = {};
+
+let fileMenu = document.querySelector('.file_menu.space_between.flex_row.center');
 
 let isOpen = false;
 
@@ -39,6 +45,45 @@ const files = [
         videoSrc: 'video/soccer-5264.mp4'
     }
 ];
+
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        document.querySelector('.container.flex_column.justify_flex_start.center.width_full').style.display = 'flex';
+        // document.querySelector('.loader.flex_row.center.justify_center').classList.remove('flex_row');
+        document.querySelector('.loader.flex_row.center.justify_center').style.display = 'none';
+    }, 500)
+});
+
+directorySection.addEventListener('click', (e) => {
+    emptyFileContainer();
+    Array.from(directorySection.children).forEach(directory => {
+        directory.classList.remove('active');
+    });
+});
+
+fileMenu.addEventListener('click', (e) => {
+    e.stopPropagation();
+    handleMenuClick(e);
+});
+
+function showSelectMenu(e) {
+    e.stopPropagation();
+    requestAnimationFrame(() => {
+        if (selectMenu.style.transform === '' || selectMenu.style.transform === 'scale(0)') {
+            selectMenu.style.transform = 'scale(1)'
+            selectMenu.style.transformOrigin = '0 0';
+        } else selectMenu.style.transform = 'scale(0)';
+    });
+    console.log(selectMenu);
+}
+
+fileSection.addEventListener('click', (e) => {
+    Array.from(fileSection.children).forEach(file => {
+        file.classList.remove('active');
+    });
+    video.src = '';
+    fileMenu.style.display = 'none';
+});
 
 directoryCreateButton.addEventListener('click', (e) => {
     e.stopPropagation();
@@ -93,6 +138,103 @@ hamburger.addEventListener('click', (e) => {
     }
 });
 
+function handleMenuClick(e) {
+    // e.stopPropagation();
+    console.log(e);
+    if (e.target.id === 'cut' || e.target.parentElement.id === 'cut') {
+        console.log('In if');
+        fileMenu.style.display = 'none';
+        cutSection.style.display = 'flex';
+        folders[currentDirectory.querySelector('#directory_name').innerHTML].forEach(file => {
+            if (file.name === currentFile.querySelector('#file_name').innerHTML) {
+                console.log('In video if');
+                video.src = file.src;
+            }
+        })
+    }
+}
+
+function fileRightClick(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    currentFile = e.currentTarget;
+    console.log(fileMenu);
+    if (fileMenu.children.length === 0) {
+        const html = `
+        <div class="menu_item flex_row width_full justify_flex_start center" id="cut">
+            <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 96 960 960" width="18"><path d="M782 942 481 641 364 758q11 17 13.5 33t2.5 35q0 64-43 107t-107 43q-64 0-107-43T80 826q0-64 43-107t107-43q18 0 35.5 5t36.5 15l116-116-118-118q-17 8-34.5 11t-35.5 3q-64 0-107-43T80 326q0-64 43-107t107-43q64 0 107 43t43 107q0 19-2.5 36T367 394l514 514v34h-99ZM599 529l-66-66 249-249h99v33L599 529ZM230 416q38 0 64-26t26-64q0-38-26-64t-64-26q-38 0-64 26t-26 64q0 38 26 64t64 26Zm253 183q8 0 13.5-5.5T502 580q0-8-5.5-13.5T483 561q-8 0-13.5 5.5T464 580q0 8 5.5 13.5T483 599ZM230 916q38 0 64-26t26-64q0-38-26-64t-64-26q-38 0-64 26t-26 64q0 38 26 64t64 26Z"/></svg>
+            <p>Cut Video Clip</p>
+        </div>
+        <div class="menu_item flex_row width_full justify_flex_start center">
+            <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 96 960 960" width="18"><path d="M560 936q-12 0-21-9t-9-21q0-13 9-21.5t21-8.5q59 0 99.5-24t40.5-56q0-23-29.5-45T591 717l47-47q63 19 92.5 52.5T760 796q0 67-61 103.5T560 936ZM240 642q-64-14-92-44t-28-62q0-35 26-63t120-62q66-24 85-39t19-35q0-25-22-43t-68-18q-27 0-46 7t-34 22q-8 8-20.5 9.5T157 308q-11-8-11.5-20t7.5-21q17-22 51-36.5t76-14.5q68 0 109 32.5t41 88.5q0 41-28.5 69.5T290 466q-67 25-88.5 39.5T180 536q0 16 27 30.5t81 27.5l-48 48Zm496-154L608 360l45-45q18-18 40-18t40 18l48 48q18 18 18 40t-18 40l-45 45ZM220 876h42l345-345-42-42-345 345v42Zm-60 60V808l405-405 128 128-405 405H160Zm405-447 42 42-42-42Z"/></svg>
+            <p>Go to tagging mode</p>
+        </div>
+        <div class="menu_item flex_row width_full justify_flex_start center">
+            <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 96 960 960" width="18"><path d="M560 936q-12 0-21-9t-9-21q0-13 9-21.5t21-8.5q59 0 99.5-24t40.5-56q0-23-29.5-45T591 717l47-47q63 19 92.5 52.5T760 796q0 67-61 103.5T560 936ZM240 642q-64-14-92-44t-28-62q0-35 26-63t120-62q66-24 85-39t19-35q0-25-22-43t-68-18q-27 0-46 7t-34 22q-8 8-20.5 9.5T157 308q-11-8-11.5-20t7.5-21q17-22 51-36.5t76-14.5q68 0 109 32.5t41 88.5q0 41-28.5 69.5T290 466q-67 25-88.5 39.5T180 536q0 16 27 30.5t81 27.5l-48 48Zm496-154L608 360l45-45q18-18 40-18t40 18l48 48q18 18 18 40t-18 40l-45 45ZM220 876h42l345-345-42-42-345 345v42Zm-60 60V808l405-405 128 128-405 405H160Zm405-447 42 42-42-42Z"/></svg>
+            <p>Go to dynamic drawing mode</p>
+        </div>
+        <div class="menu_item flex_row width_full justify_flex_start center">
+            <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 96 960 960" width="18"><path d="M319 806h322v-60H319v60Zm0-170h322v-60H319v60Zm-99 340q-24 0-42-18t-18-42V236q0-24 18-42t42-18h361l219 219v521q0 24-18 42t-42 18H220Zm331-554V236H220v680h520V422H551ZM220 236v186-186 680-680Z"/></svg>
+            <p>Show in directory</p>
+        </div>
+        <div class="menu_item flex_row width_full justify_flex_start center">
+            <img src="icons/Aa.svg" alt="">
+            <p>Rename</p>
+        </div>
+        <div class="menu_item flex_row width_full justify_flex_start center">
+            <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 96 960 960" width="18"><path d="M782 942 481 641 364 758q11 17 13.5 33t2.5 35q0 64-43 107t-107 43q-64 0-107-43T80 826q0-64 43-107t107-43q18 0 35.5 5t36.5 15l116-116-118-118q-17 8-34.5 11t-35.5 3q-64 0-107-43T80 326q0-64 43-107t107-43q64 0 107 43t43 107q0 19-2.5 36T367 394l514 514v34h-99ZM599 529l-66-66 249-249h99v33L599 529ZM230 416q38 0 64-26t26-64q0-38-26-64t-64-26q-38 0-64 26t-26 64q0 38 26 64t64 26Zm253 183q8 0 13.5-5.5T502 580q0-8-5.5-13.5T483 561q-8 0-13.5 5.5T464 580q0 8 5.5 13.5T483 599ZM230 916q38 0 64-26t26-64q0-38-26-64t-64-26q-38 0-64 26t-26 64q0 38 26 64t64 26Z"/></svg>
+            <p>Delete</p>
+        </div>
+    `;
+    fileMenu.innerHTML += html;
+    }
+    fileMenu.style.display = 'flex';
+    fileMenu.style.position = 'absolute';
+    fileMenu.style.top = `${e.clientY}px`;
+    fileMenu.style.left = `${e.clientX}px`;
+    console.log(e);
+//     isOpen = true;
+}
+
+function importFile(e) {
+    let html = `
+        <div oncontextmenu="fileRightClick(event)" onclick="playVideo(event)" class="file_wrapper flex_row align_flex_start center">
+            <input type="checkbox">
+            <div class="file flex_column space_between center width_full">
+                <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M450 896V370L202 618l-42-42 320-320 320 320-42 42-248-248v526h-60Z"/></svg>
+                <p id="file_name">${ e.target.files[0].name }</p>
+            </div>
+        </div>
+    `;
+
+    folders[currentDirectory.querySelector('#directory_name').innerHTML].push({
+        name: e.target.files[0].name,
+        size: e.target.files[0].size,
+        src: URL.createObjectURL(e.target.files[0])
+    });
+    fileSection.innerHTML += html;
+    let fileTree = document.querySelector('.file_tree.flex_column.justify_flex_start.align_flex_start');
+    html = `
+        <div class="row flex_row space_between center width_full">
+            <div class="file">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M141 896q-24 0-42-18.5T81 836V316q0-23 18-41.5t42-18.5h280l60 60h340q23 0 41.5 18.5T881 376v460q0 23-18.5 41.5T821 896H141Zm0-580v520h680V376H456l-60-60H141Zm0 0v520-520Z"/></svg>
+            </div>
+            <div class="path flex_row justify_center center">
+                <p>${ e.target.files[0].name }</p>
+            </div>
+        </div>
+    `;
+    Array.from(fileTree.children).forEach(file => {
+        if (file.querySelector('.path p').innerHTML === currentDirectory.querySelector('#directory_name').innerHTML) {
+            file.insertAdjacentHTML('afterend', html);
+            file.nextElementSibling.style.marginTop = '1rem';
+            file.nextElementSibling.style.marginLeft = '1.6rem';
+        }
+    });
+    console.log(folders);
+    e.target.value = null;
+}
+
 function resetRanges() {
     start.value = start.min;
     end.value = end.min;
@@ -103,11 +245,11 @@ function resetRanges() {
     console.log(videoBar.style.left);
 }
 
-function handleMenuClick (e) {
-    if (e.target.classList.contains('menu_item')) {
-        e.target.children[1].innerHTML;
-    }
-}
+// function handleMenuClick (e) {
+//     if (e.target.classList.contains('menu_item')) {
+//         e.target.children[1].innerHTML;
+//     }
+// }
 
 video.addEventListener('timeupdate', (e) => {
     seekBar.max = e.target.duration;
@@ -120,6 +262,12 @@ start_tracker.addEventListener('drag', moveSlider)
 end_tracker.addEventListener('drag', moveEndSlider)
 start_tracker.addEventListener('dragend', setPosition)
 end_tracker.addEventListener('dragend', setEndPosition)
+
+function emptyFileContainer(e) {
+    Array.from(fileSection.children).forEach(file => {
+        file.remove();
+    });
+}
 
 function cutVideo(e) {
     const start = start_tracker.style.left.split('px')[0] ? start_tracker.style.left.split('px')[0] : (start_tracker.getBoundingClientRect().x - 12);
@@ -149,26 +297,21 @@ document.addEventListener('click', (e) => {
         isOpen = false;
         console.log(e);
         createMenu.style.display = 'none';
-        if (fileMenu) {
-            fileMenu.style.display = 'none';
-            fileMenu.style.position = '';
-            fileMenu.style.top = '';
-            fileMenu.style.left = '';
-        };
     }
+    if (selectMenu.style.transform === 'scale(1)') selectMenu.style.transform = 'scale(0)';
 });
 
 function createDirectory(e) {
     console.log(e);
     e.stopPropagation();
     const input = document.querySelector('#createDirectory');
-    console.log(input.value);
+    if (!input.value || folders[input.value]) return;
     const html = `
     <div onclick="directorySelect(event)" class="directory_wrapper flex_row align_flex_start center">
         <input type="checkbox">
         <div class="directory flex_column space_between center width_full">
             <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M141 896q-24 0-42-18.5T81 836V316q0-23 18-41.5t42-18.5h280l60 60h340q23 0 41.5 18.5T881 376v460q0 23-18.5 41.5T821 896H141Zm0-580v520h680V376H456l-60-60H141Zm0 0v520-520Z"/></svg>
-            <p>${ input.value ? input.value : 'Individual Concept' }</p>
+            <p id="directory_name">${ input.value ? input.value : 'Individual Concept' }</p>
         </div>
         <div class="remove">
             <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 96 960 960" width="18"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg>
@@ -189,8 +332,10 @@ function createDirectory(e) {
     fileTree = document.querySelector('.row.flex_row.space_between.center:last-child');
     fileTree.style.marginLeft = '0.8rem';
     fileTree.style.marginTop = '1rem';
-    console.log(fileTree);
+    createMenu.style.display = 'none';
+    isOpen = false;
     directoriesContainer.innerHTML += html;
+    folders[input.value] = [];
     input.value = '';
 }
 
@@ -269,35 +414,53 @@ function setEndPosition(e) {
 }
 
 function directorySelect(e) {
+    e.stopPropagation();
+    console.log(e);
     if (e.target.classList.contains('remove') || e.target.parentElement.classList.contains('remove')) {
+        const fileName = e.currentTarget.querySelector('#directory_name').innerHTML;
         e.currentTarget.remove();
-        Array.from(fileSection.children).forEach(file => {
-            file.remove();
+        emptyFileContainer();
+        let fileTree = document.querySelector('.file_tree.flex_column.justify_flex_start.align_flex_start');
+        Array.from(fileTree.children).forEach(file => {
+            if (file.querySelector('.path p').innerHTML === fileName) file.remove();
         });
+        folders[fileName].forEach(file => {
+            Array.from(fileTree.children).forEach(row => {
+                console.log(row.querySelector('.path p').innerHTML);
+                if (row.querySelector('.path p').innerHTML === file.name) row.remove();
+            });
+        });
+        delete folders[fileName];
+        
     } else {
         const directories = document.getElementsByClassName('directory_wrapper flex_row align_flex_start center');
+        currentDirectory = e.currentTarget;
         Array.from(directories).forEach(directory => {
             directory.classList.remove('active');
         });
         e.currentTarget.classList.add('active');
-    
-        files.forEach(file => {
-            const html = `<div oncontextmenu="fileRightClick(event)" onclick="playVideo(event)" class="file_wrapper flex_row align_flex_start center">
-            <input type="checkbox">
-            <div. class="file flex_column space_between center width_full">
-                <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M450 896V370L202 618l-42-42 320-320 320 320-42 42-248-248v526h-60Z"/></svg>
-                <p id="file_name">${ file.name }</p>
-            </div>
-        </div>`;
+        folders[e.currentTarget.querySelector('#directory_name').innerHTML].forEach(file => {
+            const html = `
+                <div oncontextmenu="fileRightClick(event)" class="file_wrapper flex_row align_flex_start center">
+                    <input type="checkbox">
+                    <div class="file flex_column space_between center width_full">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M450 896V370L202 618l-42-42 320-320 320 320-42 42-248-248v526h-60Z"/></svg>
+                        <p>${ file.name }</p>
+                    </div>
+                </div>
+            `;
             fileSection.innerHTML += html;
         });
     }
 }
 
 function playVideo(e) {
+    e.stopPropagation();
     const fileName = e.currentTarget.querySelector('#file_name').innerHTML;
-    const src = files.filter(file => file.name === fileName);;
-    video.src = src[0].videoSrc;
+    const path = folders[currentDirectory.querySelector('#directory_name').innerHTML].filter(file => file.name === fileName);;
+    video.src = path[0].src;
+    e.currentTarget.classList.add('active');
+    currentFile = e.currentTarget;
 }
 
 function populateTicks() {

@@ -1,6 +1,11 @@
-const express = require('express');
+import express from 'express';
+import path from 'path';
+import * as url from 'url';
+// const express = require('express');
 const app = express();
-const path = require('path');
+const __filename = url.fileURLToPath(import.meta.url);
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
+// const path = require('path');
 
 app.use(express.static(path.join(__dirname, '/public')));
 

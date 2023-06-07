@@ -114,6 +114,25 @@ input:focus {
 .container {
     min-height: 100vh;
     font-family: 'Inter', 'sans-serif';
+    background: #1f1f1f;
+    /* display: none; */
+}
+
+.loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 150;
+    background: #ececec;
+}
+
+.loader img {
+    width: 30%;
+    height: 30%;
+    object-fit: contain;
+
 }
 
 .hamburger {
@@ -126,14 +145,14 @@ input:focus {
 
 .container .menu, .container .toolbar {
     height: 3rem;
-    background: #380E3C;
+    background: #000;
     color: #FFF;
     padding: 0 2.5%;
 }
 
 .container .menu ul {
     height: 100%;
-    width: 15%;
+    width: 10%;
 }
 
 .container .menu ul li {
@@ -154,7 +173,7 @@ input:focus {
 
 .container .toolbar {
     position: relative;
-    background: #B83169;
+    background: #1f1f1f;
     border-bottom: 2px solid white;
 }
 
@@ -235,7 +254,7 @@ input:focus {
     font-size: 0.8rem;
 }
 
-.container .toolbar .leftt_side button {
+.container .toolbar .left_side button {
     font-size: 1rem;
 }
 
@@ -249,7 +268,7 @@ input:focus {
 }
 
 .container .workspace .left_section {
-    background: #F2E8ED;
+    background: #464648;
     width: 22%;
     height: 100%;
 }
@@ -257,6 +276,7 @@ input:focus {
 .container .workspace .left_section .tracking_wrapper {
     width: 80%;
     height: 12rem;
+    color: #FFF;
 }
 
 .container .workspace .left_section .tracking_wrapper h1 {
@@ -282,7 +302,7 @@ input:focus {
 }
 
 .container .workspace .left_section .tracking_wrapper button:nth-child(4) {
-    background: #380E3C;
+    background: #1f1f1f;
     border: none;
     border-radius: 0.3rem;
     color: #FFF;
@@ -311,6 +331,7 @@ input:focus {
 
 .container .bottom_buttons {
     height: 4rem;
+    background: #000000EB;
 }
 
 .container .bottom_buttons .buttons_wrapper {
@@ -319,6 +340,10 @@ input:focus {
 
 .container .bottom_buttons .buttons_wrapper button {
     position: relative;
+}
+
+.container .bottom_buttons .buttons_wrapper button svg {
+    fill: #FFF;
 }
 
 .container .bottom_buttons .buttons_wrapper button p {
@@ -412,6 +437,7 @@ input:focus {
     height: 6rem;
     width: 55%;
     margin: 0 0 0 15rem;
+    background: #1f1f1f;
 }
 
 .container .controls .seek_bar {
@@ -420,6 +446,10 @@ input:focus {
     height: 0.1rem;
     background: #A4A4A4;
     margin: 0 auto;
+}
+
+.container .controls svg {
+    fill: #FFF;
 }
 
 .container .seek_bar span {
@@ -467,7 +497,7 @@ input:focus {
 
 .container .cut_section .files_section {
     width: 20%;
-    min-height: 50vh;
+    min-height: 46.4vh;
     background: #1F1F1F;
 }
 
@@ -484,13 +514,30 @@ input:focus {
     margin: 0 0.5rem 0 0;
 }
 
-@media screen and (max-width: 1400px) {
+.cut_section .editing_section .tracker .numbers_tablet {
+    display: none;
+}
+
+.container .cut_section .working_area .ring {
+    height: 1.3rem;
+    width: 20%;
+    background: #D77A47;
+    border-bottom-left-radius: 0.3rem;
+    border-top-right-radius: 0.3rem;
+    border: 2px solid black;
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1400px) {
     .container .workspace .toolbar .filter {
         width: 35%;
     }
 
     .container .menu ul {
-        width: 18%;
+        width: 12%;
+    }
+
+    .container .toolbar .left_side {
+        width: 30%;
     }
 
     .container .cut_section .button_wrapper {
@@ -499,6 +546,112 @@ input:focus {
 
     .container .cut_section .tracker {
         overflow: hidden;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+    .container .workspace .toolbar .filter {
+        width: 35%;
+    }
+
+    .container .menu ul {
+        width: 13%;
+    }
+
+    .container .toolbar .left_side {
+        width: 35%;
+    }
+
+    .container .workspace .left_section {
+        width: 28%;
+    }
+
+    .container .workspace .right_section {
+        width: 82%;
+    }
+
+    .container .cut_section .button_wrapper {
+        width: 60%;
+    }
+
+    .container .cut_section .tracker {
+        overflow: hidden;
+    }
+
+    .container .controls {
+        width: 65%;
+    }
+    
+    .container .controls svg {
+        width: 28px;
+        height: 28px;
+    }
+}
+
+@media screen and (min-width: 700px) and (max-width: 992px) {
+    .container .workspace .toolbar .filter {
+        width: 35%;
+    }
+
+    .container .menu ul {
+        width: 20%;
+        /* border: 2px solid white; */
+    }
+
+    .container .menu .language {
+        width: 10%;
+    }
+
+    .container .toolbar .left_side {
+        width: 55%;
+    }
+
+    .container .workspace .left_section {
+        width: 32%;
+    }
+
+    .container .workspace .right_section {
+        width: 78%;
+    }
+
+    .container .cut_section .button_wrapper {
+        width: 60%;
+    }
+
+    .container .bottom_buttons .buttons_wrapper {
+        width: 60%;
+    }
+
+    .container .cut_section .tracker {
+        overflow: hidden;
+    }
+
+    .container .controls {
+        width: 85%;
+        margin: 0 0 0 6rem;
+    }
+    
+    .container .controls svg {
+        width: 28px;
+        height: 28px;
+    }
+
+    .cut_section .editing_section .tracker .numbers {
+        display: none;
+    }
+
+    .cut_section .editing_section .tracker .numbers_tablet {
+        display: flex;
+    }
+
+    .container .cut_section .files_section {
+        width: 30%;
+        min-height: 46.4vh;
+        background: #1F1F1F;
+    }
+
+    .container .cut_section .editing_section {
+        width: 70%;
     }
 }
 

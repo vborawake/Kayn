@@ -111,9 +111,27 @@ input:focus {
     margin: 4rem 0 0 0;
 }
 
+.loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 150;
+    background: #380E3C;
+}
+
+.loader img {
+    width: 30%;
+    height: 30%;
+    object-fit: contain;
+
+}
+
 .container {
     min-height: 100vh;
     font-family: 'Inter', 'sans-serif';
+    display: none;
 }
 
 .hamburger {
@@ -126,14 +144,14 @@ input:focus {
 
 .container .menu, .container > .toolbar {
     height: 3rem;
-    background: #380E3C;
+    background: #000;
     color: #FFF;
     padding: 0 2.5%;
 }
 
 .container .menu ul {
     height: 100%;
-    width: 15%;
+    width: 10%;
 }
 
 .container .menu ul li {
@@ -154,13 +172,28 @@ input:focus {
 
 .container .toolbar {
     position: relative;
-    background: #B83169;
-    border-bottom: 2px solid white;
+    background: #1f1f1f;
+    border-bottom: 2px solid gray;
 }
 
 .container .toolbar .import {
+    position: relative;
     padding: 0 1rem 0 0;
-    border-right: 1px solid white;
+    border-right: 1px solid gray;
+}
+
+.container .toolbar .import #file_import {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    border: 2px solid black;
+}
+
+.container .toolbar .import input[type=file]::-webkit-file-upload-button {
     cursor: pointer;
 }
 
@@ -207,19 +240,28 @@ input:focus {
 
 .container .files_section {
     width: 50%;
+    border: 1px solid gray;
 }
 
 .container .player_section {
     width: 50%;
+    border: 1px solid gray;
 }
 
 .container .workspace {
     min-height: 78vh;
+    background: #1F1F1F;
+    color: #FFF;
 }
 
 .container .workspace .toolbar {
     height: 3rem;
     padding: 0 5%;
+}
+
+.container .toolbar svg {
+    fill: #FFF;
+    margin: 0 0.6rem 0 0;
 }
 
 .container .workspace .toolbar .search {
@@ -231,22 +273,90 @@ input:focus {
     padding: 0.5rem;
     border-radius: 0.5rem;
     font-size: 1.1rem;
+    background: #131313;
+    color: #FFF;
 }
 
 .container .workspace .toolbar .filter {
     width: 35%;
 }
 
-.container .workspace .toolbar .filter select {
-    width: 80%;
-    height: 2rem;
-    border-radius: 0.5rem;
-    font-size: 1.1rem;
-    font-weight: 500;
+.container .workspace .toolbar .select {
+    position: relative;
+    width: 82%;
 }
 
-.container .workspace .toolbar .filter select .item svg {
+.container .workspace .toolbar .select .selected_item {
+    font-size: 1rem;
+    font-weight: 400;
+    height: 2rem;
+    padding: 0.3rem;
+    background: #131313;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 0.3rem;
+    /* margin: 0 0 2rem 0; */
+}
+
+.container .workspace .toolbar .select .selected_item p {
+    margin: -0.5rem 0 0 0;
+}
+
+.container .workspace .toolbar .select .selected_item svg {
+    fill: #FFF;
+    margin: -0.5rem 0 0 0;
+}
+
+.container .workspace .toolbar .select .select_menu {
+    position: absolute;
+    top: 2rem;
+    background: #1f1f1f;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 0.3rem;
+    transform: scale(0);
+    transition: all 0.5s ease;
+}
+
+.container .workspace .toolbar .select .select_menu .item {
+    width: 100%;
+}
+
+.container .workspace .toolbar .select .select_menu .item:hover {
+    background: #B83169;
+    color: #FFF;
+}
+
+.container .workspace .toolbar .select .select_menu .item:hover svg {
+    fill: #FFF;
+}
+
+.container .workspace .toolbar .select .select_menu .item svg {
     fill: #B83169;
+}
+
+.container .workspace .toolbar .select .select_menu p {
+    font-size: 1rem;
+    font-weight: 400;
+    height: 2rem;
+    padding: 0.3rem;
+}
+
+.container .workspace .toolbar .select .select_menu p:hover {
+    background: #B83169;
+    color: #FFF;
+    cursor: pointer;
+}
+
+.container .workspace .toolbar .selection_content {
+    width: 80%;
+    margin: 0 auto 2rem auto;
+}
+
+.container .workspace .toolbar .selection_content .buttons button {
+    width: 8rem;
+    height: 2.5rem;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+    margin: 0 0 0.6rem 0;
 }
 
 .container .workspace .files_section .directories {
@@ -261,6 +371,10 @@ input:focus {
     padding: 1rem 0 0 1rem;
     white-space: nowrap;
     overflow-x: scroll;
+}
+
+.container .workspace .files_section .file_tree::-webkit-scrollbar {
+    display: none;
 }
 
 .container .files_section .file_tree .file {
@@ -285,7 +399,6 @@ input:focus {
 }
 
 .container .files_section .file_tree .row {
-    white-space: nowrap;
     width: fit-content;
 }
 
@@ -327,6 +440,13 @@ input:focus {
     width: 25%;
 }
 
+.container .workspace .files_section .file_manager .files_container .file_wrapper.active {
+    width: fit-content;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    border: 2px solid #B83169;
+}
+
 .container .workspace .files_section .file_manager .directories_container .directory_wrapper p,
 .container .workspace .files_section .file_manager .files_container .file_wrapper p {
     margin-top: 0.5rem;
@@ -349,11 +469,11 @@ input:focus {
     display: block;
 }
 
-.container .workspace .files_section .file_manager .files_container .file_menu {
+.container .workspace .files_section .file_manager .file_menu {
     display: none;
     position: absolute;
-    padding: 0.5rem;
-    z-index: 10;
+    /* padding: 0.5rem; */
+    z-index: 100;
     height: fit-content;
     width: 18rem;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -361,40 +481,45 @@ input:focus {
     background: #FFF;
 }
 
-.container .workspace .files_section .file_manager .files_container .file_menu .menu_item:hover {
+.container .workspace .files_section .file_manager .file_menu .menu_item:hover {
     background: #380E3C;
     color: #FFF;
     cursor: pointer;
 }
 
-.container .workspace .files_section .file_manager .files_container .file_menu .menu_item:hover svg {
+.container .workspace .files_section .file_manager .file_menu .menu_item:hover svg {
     fill: #FFF;
 }
 
-.container .workspace .files_section .file_manager .files_container .file_menu .menu_item:nth-child(4) {
+.container .workspace .files_section .file_manager .file_menu .menu_item:nth-child(4) {
     border-bottom: 2px solid #A4A4A4;
 }
 
-.container .workspace .files_section .file_manager .files_container .file_menu .menu_item {
+.container .workspace .files_section .file_manager .file_menu .menu_item {
     height: 2.5rem;
+    padding: 0.5rem;
 }
 
-.container .workspace .files_section .file_manager .files_container .file_menu .menu_item svg {
+.container .workspace .files_section .file_manager .file_menu .menu_item svg {
     background: transparent;
     fill: #B83169;
 }
 
-.container .workspace .files_section .file_manager .files_container .file_menu .menu_item p {
+.container .workspace .files_section .file_manager .file_menu .menu_item p {
     margin: 0 0 0 0.5rem;
     padding: 0;
 }
 
 .container .workspace .controls {
-    height: 10rem;
+    height: 7rem;
 }
 
 .container .workspace .player {
-    height: 80vh;
+    height: fit-content;
+}
+
+.container .workspace .player video {
+    object-fit: fill;
 }
 
 .container .workspace .controls .seek_bar {
@@ -430,7 +555,7 @@ input:focus {
 }
 
 .container button svg {
-    fill: #380E3C;
+    fill: #FFF;
 }
 
 .container .workspace .player_section input[type='range'] {
@@ -459,6 +584,7 @@ input:focus {
 
 .container .bottom_buttons {
     height: 4rem;
+    background: #1F1F1F;
 }
 
 .container .bottom_buttons .buttons_wrapper {
@@ -608,6 +734,29 @@ input:focus {
     border-radius: 0.3rem;
 }
 
+.container .cut_section .files_section {
+    width: 20%;
+    min-height: 50vh;
+    background: #1F1F1F;
+}
+
+.container .cut_section .files_section .row {
+    background: #000;
+    color: #FFF;
+    height: 2rem;
+    padding-left: 0.3rem;
+    font-size: 0.8rem;
+}
+
+.container .cut_section .files_section .row svg {
+    fill: #FFF;
+    margin: 0 0.5rem 0 0;
+}
+
+.container .editing_section {
+    width: 80%;
+}
+
 .container .video img, .container .cut_video img {
     height: 100%;
 }
@@ -623,7 +772,7 @@ input:focus {
     }
 
     .container .workspace .player {
-        height: 60vh;
+        height: fit-content;
     }
 
     .container .workspace .player_section .controls {
@@ -704,6 +853,7 @@ input:focus {
         flex-direction: column;
         justify-content: flex-start;
         align-items: flex-start;
+        height: fit-content;
         padding: 0.5rem;
     }
     
@@ -725,7 +875,7 @@ input:focus {
     }
 
     .container .workspace .player {
-        height: 50vh;
+        height: fit-content;
     }
 
     .container .workspace .player_section .controls {

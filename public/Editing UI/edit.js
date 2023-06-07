@@ -24,6 +24,14 @@ let end_coords = {};
 let fileMenu;
 let selectedTool;
 let isOpen = false;
+let ringCount = 0;
+
+const canvasElems = {
+    ring: [],
+    line: [],
+    arrow: [],
+    dashedArrow: []
+};
 
 const video = document.querySelector('video');
 
@@ -49,6 +57,15 @@ const files = [
 //     else video.pause()
 // });
 
+// window.addEventListener('load', () => {
+//     setTimeout(() => {
+//         document.querySelector('.container.flex_column.justify_flex_start.center.width_full').style.display = 'flex';
+//         // document.querySelector('.loader.flex_row.center.justify_center').classList.remove('flex_row');
+//         document.querySelector('.loader.flex_row.center.justify_center').style.display = 'none';
+//         setCanvasSize();
+//     }, 500);
+// });
+
 function setCanvasSize() {
     canvas.width = image.getBoundingClientRect().width;
     canvas.height = image.getBoundingClientRect().height;
@@ -62,6 +79,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 canvas.addEventListener('click', (e) => {
+    // e.stopPropagation();
+    console.log(selectedTool);
     if (selectedTool) {
         console.log(selectedTool);
         if (selectedTool.classList.contains('circle')) {
@@ -72,6 +91,12 @@ canvas.addEventListener('click', (e) => {
             ctx.arc(e.layerX, e.layerY, 20, 0, 2 * Math.PI);
             ctx.stroke();
             ctx.fill();
+            canvasElems.ring.push({
+                x: e.layerX,
+                y: e.layerY,
+                radius: 20
+            });
+            console.log(canvasElems);
             addVideoBar();
         } else if (selectedTool.classList.contains('line')) {
             if (!start_coords.x) {
@@ -119,12 +144,23 @@ canvas.addEventListener('click', (e) => {
     }
 });
 
+function undo(e) {
+    console.log(canvasElems);
+    ctx.clearRect(
+        canvasElems.ring[canvasElems.ring.length - 1].x - canvasElems.ring[canvasElems.ring.length - 1].radius,
+        canvasElems.ring[canvasElems.ring.length - 1].y - canvasElems.ring[canvasElems.ring.length - 1].radius,
+        canvasElems.ring[canvasElems.ring.length - 1].radius * 2,
+        canvasElems.ring[canvasElems.ring.length - 1].radius * 2
+    );
+   canvasElems.ring.splice(canvasElems.ring.length - 1, 1);
+}
+
 function addVideoBar() {
     const workingArea = document.querySelector('.working_area.width_full.flex_column.justify_flex_start');
     let top = 0;
     const html = `
         <div class="ring flex_row justify_center center width_full" style="color: #FFF;">
-            <p>Ring</p>
+            <p>Ring_${ ringCount++ }</p>
         </div>
     `;
 
@@ -202,23 +238,20 @@ end_tracker.addEventListener('dragend', setEndPosition)
 
 document.addEventListener('click', (e) => {
     e.stopPropagation();
+    console.log('Clicked');
     if (isOpen) {
         mobileMenu.style.display = 'none';
         isOpen = false;
-        console.log(e);
-        createMenu.style.display = 'none';
-        if (fileMenu) {
-            fileMenu.style.display = 'none';
-            fileMenu.style.position = '';
-            fileMenu.style.top = '';
-            fileMenu.style.left = '';
-        };
     }
+    if (renderMenu) {
+        if (renderMenu.style.transform === 'scaleY(1)') renderMenu.style.transform = 'scale(0)';
+    }
+    console.log(e);
 });
 
 function showRender (e) {
     requestAnimationFrame(() => {
-        if (renderMenu.style.transform === 'scale(0)') {
+        if (renderMenu.style.transform === '' || renderMenu.style.transform === 'scale(0)') {
             renderMenu.style.transform = 'scaleX(1)';
             renderMenu.style.transform = 'scaleY(1)';
             renderMenu.style.transformOrigin = 'left';
@@ -227,6 +260,7 @@ function showRender (e) {
 }
 
 function selectTool(e) {
+    e.stopPropagation();
     let button;
 
     if (e.target.localName === 'path') button = e.target.parentElement.parentElement;
@@ -364,9 +398,9 @@ function playVideo(e) {
 function populateTicks() {
     let numbersPosition = document.querySelectorAll('.numbers.flex_row.space_between.center.width_full p');
     if (window.innerWidth < 1400) numbersPosition = document.querySelectorAll('.numbers.flex_row.space_between.center.width_full:nth-child(2) p');
-    console.log(numbersPosition);
+    // console.log(numbersPosition);
     let tick = undefined;
-    console.log(trackerPosition);
+    // console.log(trackerPosition);
     Array.from(numbersPosition).forEach(numberPosition => {
         tick = document.createElement('span');
         tick.style.width = '1.5px';

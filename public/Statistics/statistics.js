@@ -1,3 +1,5 @@
+// import Chart from 'chart.js/auto';
+
 const hamburger = document.querySelector('.hamburger');
 const mobileMenu = document.querySelector('.mobile_menu');
 const directoryCreateButton = document.querySelector('.create.flex_row.center.space_between');
@@ -18,6 +20,13 @@ const selectMenu = document.querySelector('.select_menu.flex_column.width_full')
 const tagList = document.querySelector('.tags_list.flex_column.center.width_full');
 const buttonsList = document.querySelector('.buttons.flex_row.space_between.center.width_full');
 const workingArea = document.querySelector('.working_area.width_full.flex_column.justify_flex_start');
+const playerCharts = document.querySelector('.playerCharts.flex_row.space_evenly.center');
+let chartCanvas;
+let chartctx1;
+let chartCanvas2;
+let chartctx2;
+
+const playersContainer = document.querySelector('.players.flex_column.center.justify_flex_start');
 
 let fileMenu;
 
@@ -42,16 +51,150 @@ const files = [
     {
         name: 'Football 2',
         videoSrc: 'video/soccer-5264.mp4'
-    }
+    },
 ];
 
+// window.addEventListener('load', () => {
+//     setTimeout(() => {
+//         document.querySelector('.container.flex_column.justify_flex_start.center.width_full').style.display = 'flex';
+//         // document.querySelector('.loader.flex_row.center.justify_center').classList.remove('flex_row');
+//         document.querySelector('.loader.flex_row.center.justify_center').style.display = 'none';
+//     }, 500)
+// });
+
+function createChart () {
+    new Chart(chartctx1, {
+        type: 'doughnut',
+        data: {labels: [
+            'Depth',
+            'Unsuccessful',
+            'Width'
+          ],
+          datasets: [{
+            label: 'My First Dataset',
+            data: [1300, 50, 100],
+            backgroundColor: [
+              '#380E3C',
+              '#D77A47',
+              '#F490CC'
+            ],
+            borderWidth: 0,
+            hoverOffset: 4
+          }]},
+          options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: {
+                legend: { display: false }
+            },
+            cutout: 100
+          }
+    });
+    
+    new Chart(chartctx2, {
+        type: 'doughnut',
+        data: {labels: [
+            'Successful',
+            'Mobility'
+          ],
+          datasets: [{
+            label: 'My First Dataset',
+            data: [300, 50],
+            backgroundColor: [
+              '#68A74B',
+              '#E5E927'
+            ],
+            borderWidth: 0,
+            hoverOffset: 4
+          }]},
+          options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: {
+                legend: { display: false }
+            },
+            cutout: 100
+          }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-    canvas.style.position = 'absolute';
-    canvas.style.left = '20%';
-    canvas.style.top = '6rem';
-    canvas.height = 595;
-    canvas.width = 1210;
+    if (localStorage.getItem('fromPlayer')) {
+        let html = `
+            <div class="player flex_row justify_center center">
+                <p class="player_name">${ localStorage.getItem('fromPlayer') }</p>
+            </div>
+        `;
+        playersContainer.innerHTML = html;
+        html = `
+            <div class="first_chart flex_row justify_center center">
+                <canvas id="chart1"></canvas>
+                <p>Match Statistics</p>
+            </div>
+            <div class="second_chart flex_column justify_center center">
+                <canvas id="chart2"></canvas>
+                <div class="content">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="64" viewBox="0 96 960 960" width="64">
+                        <defs>
+                            <linearGradient id="grad1" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color: #B83169;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color: #380E3C;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <path fill="url(#grad1)" d="M480 575q-66 0-108-42t-42-108q0-66 42-108t108-42q66 0 108 42t42 108q0 66-42 108t-108 42ZM160 896v-94q0-38 19-65t49-41q67-30 128.5-45T480 636q62 0 123 15.5t127.921 44.694q31.301 14.126 50.19 40.966Q800 764 800 802v94H160Zm60-60h520v-34q0-16-9.5-30.5T707 750q-64-31-117-42.5T480 696q-57 0-111 11.5T252 750q-14 7-23 21.5t-9 30.5v34Zm260-321q39 0 64.5-25.5T570 425q0-39-25.5-64.5T480 335q-39 0-64.5 25.5T390 425q0 39 25.5 64.5T480 515Zm0-90Zm0 411Z"/>
+                    </svg>
+                    <p>${ localStorage.getItem('fromPlayer') }</p>
+                </div>
+            </div>
+        `;
+        playerCharts.innerHTML = html;
+        chartCanvas = document.querySelector('#chart1');
+        chartctx1 = chartCanvas.getContext('2d');
+        chartCanvas2 = document.querySelector('#chart2');
+        chartctx2 = chartCanvas2.getContext('2d');
+        createChart();
+        // localStorage.removeItem('fromPlayer');
+    }
 });
+
+function populateTicks() {
+    const ticksElement = document.querySelector('.ticks.width_full');
+    const numbersPosition = document.querySelectorAll('.numbers.flex_row.space_between.center.width_full p');
+    let tick = undefined;
+    console.log(trackerPosition);
+    Array.from(numbersPosition).forEach(numberPosition => {
+        tick = document.createElement('span');
+        tick.style.width = '1.5px';
+        tick.style.height = '1rem';
+        tick.style.position = 'absolute';
+        tick.style.top = `${ trackerPosition.getBoundingClientRect().top + window.scrollY + 25 }px`;
+        tick.style.left = `${ numberPosition.getBoundingClientRect().x + (numberPosition.getBoundingClientRect().width / 2) }px`;
+        tick.style.background = '#52AEE5';
+        tick.style.zIndex = '20';
+        ticksElement.appendChild(tick);
+    });
+    const ticks = Array.from(trackerPosition.querySelectorAll('.ticks span'));
+    for (let i = 0; i < ticks.length; i++) {
+        if (i === ticks.length - 1) break;
+        let distance = ticks[i + 1].getBoundingClientRect().x - ticks[i].getBoundingClientRect().x;
+        let start = ticks[i].getBoundingClientRect().x;
+        let end = ticks[i + 1].getBoundingClientRect().x;
+        let element = ticks[i + 1];
+        while (start < end) {
+            tick = document.createElement('span');
+            tick.style.width = '1.5px';
+            tick.style.height = '0.4rem';
+            tick.style.position = 'absolute';
+            tick.style.top = `${ trackerPosition.getBoundingClientRect().top + window.scrollY + 30 }px`;
+            tick.style.left = `${ start + 5 }px`;
+            tick.style.background = '#52AEE5';
+            ticksElement.insertBefore(tick, element);
+            start += 5;
+        }
+    }
+}
+
+populateTicks();
 
 // seekBar.max = video.duration;
 
@@ -95,6 +238,7 @@ hamburger.addEventListener('click', (e) => {
 });
 
 function showSelectMenu(e) {
+    e.stopPropagation();
     requestAnimationFrame(() => {
         if (selectMenu.style.transform === '' || selectMenu.style.transform === 'scale(0)') {
             selectMenu.style.transform = 'scale(1)'
@@ -277,17 +421,17 @@ document.addEventListener('click', (e) => {
 //     }
 // }
 
-canvas.addEventListener('click', (e) => {
-    ctx.setLineDash([5, 5]);
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
-    ctx.beginPath();
-    ctx.lineWidth = 2;
-    ctx.strokeStyle = '#FFF';
-    ctx.arc(e.layerX, e.layerY, 15, 0, 2 * Math.PI);
-    ctx.stroke();
-    ctx.fill();
-    console.log(e);
-});
+// canvas.addEventListener('click', (e) => {
+//     ctx.setLineDash([5, 5]);
+//     ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+//     ctx.beginPath();
+//     ctx.lineWidth = 2;
+//     ctx.strokeStyle = '#FFF';
+//     ctx.arc(e.layerX, e.layerY, 15, 0, 2 * Math.PI);
+//     ctx.stroke();
+//     ctx.fill();
+//     console.log(e);
+// });
 
 function trackPlayers(e) {
     const p = e.currentTarget.nextElementSibling;
@@ -303,7 +447,7 @@ function playVideo(e) {
     video.src = src[0].videoSrc;
 }
 
-function populateTicks() {
+function populateTicks2() {
     const ticksElement = document.querySelector('.ticks.width_full');
     const numbersPosition = document.querySelectorAll('.numbers.flex_row.space_between.center.width_full p');
     let tick = undefined;
@@ -340,4 +484,4 @@ function populateTicks() {
     }
 }
 
-// populateTicks();
+populateTicks2();

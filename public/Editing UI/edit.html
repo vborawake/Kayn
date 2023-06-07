@@ -9,22 +9,21 @@
     <title>Edit</title>
 </head>
 <body>
+    <!-- <div class="loader flex_row center justify_center">
+        <img src="../images/loader.gif" alt="">
+    </div> -->
     <div class="container flex_column justify_flex_start center width_full">
         <div class="menu flex_row space_between center width_full">
             <div class="hamburger">
                 <span></span>
             </div>
             <ul class="flex_row space_between center">
-                <li class="flex_row justify_center center">File</li>
-                <li class="flex_row justify_center center">View</li>
-                <li class="flex_row justify_center center">Tools</li>
                 <li class="flex_row justify_center center">Help</li>
+                <li class="flex_row justify_center center"><a href="../Home/index.html">Logout</a></li>
             </ul>
             <ul class="mobile_menu">
-                <li>File</li>
-                <li>View</li>
-                <li>Tools</li>
                 <li>Help</li>
+                <li class="flex_row justify_center center"><a href="../Home/index.html">Logout</a></li>
             </ul>
             <div class="language flex_row space_between center">
                 <p>EN</p>
@@ -34,10 +33,12 @@
         <!-- First toolbar (import files and create directory) -->
         <div class="toolbar flex_row space_between center width_full">
             <div class="left_side flex_row space_between center">
-                <div class="undo flex_row center space_between">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M280 856v-60h289q70 0 120.5-46.5T740 634q0-69-50.5-115.5T569 472H274l114 114-42 42-186-186 186-186 42 42-114 114h294q95 0 163.5 64T800 634q0 94-68.5 158T568 856H280Z"/></svg>
-                    <p>Undo</p>
-                </div>
+                <button style="padding: 0;" onclick="undo(event)">
+                    <div class="undo flex_row center space_between">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M280 856v-60h289q70 0 120.5-46.5T740 634q0-69-50.5-115.5T569 472H274l114 114-42 42-186-186 186-186 42 42-114 114h294q95 0 163.5 64T800 634q0 94-68.5 158T568 856H280Z"/></svg>
+                        <p>Undo</p>
+                    </div>
+                </button>
                 <div class="media flex_row center space_between">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M840 373v503q0 24-18 42t-42 18H180q-24 0-42-18t-18-42V276q0-24 18-42t42-18h503l157 157Zm-60 27L656 276H180v600h600V400ZM479.765 811Q523 811 553.5 780.735q30.5-30.264 30.5-73.5Q584 664 553.735 633.5q-30.264-30.5-73.5-30.5Q437 603 406.5 633.265q-30.5 30.264-30.5 73.5Q376 750 406.265 780.5q30.264 30.5 73.5 30.5ZM233 472h358V329H233v143Zm-53-72v476-600 124Z"/></svg>
                     <button><a href="../Media/media.html">Media</button></a>
@@ -100,7 +101,7 @@
                 <div class="video">
                     <!-- <video src="../video/defaultVideo2.mp4" width="1404px" height="520px"></video> -->
                     <img src="../images/aerial-view-grass-field-hockey.jpg" alt="">
-                    <canvas id="canvas"></canvas>
+                    <canvas onclick="event.stopPropagation()" id="canvas"></canvas>
                     <div class="render_menu flex_column center">
                         <h4>Render Video Clip</h4>
                         <div class="video_image">
@@ -193,61 +194,61 @@
                     </div>
                 </div>
                 <div class="cut_section flex_row center justify_flex_start width_full">
-                    <div class="tracker flex_column justify_flex_start width_full">
-                        <div class="numbers flex_row space_between center width_full">
-                            <p>00:00</p>
-                            <p>03:00</p>
-                            <p>06:00</p>
-                            <p>09:00</p>
-                            <p>12:00</p>
-                            <p>15:00</p>
-                            <p>18:00</p>
-                            <p>21:00</p>
-                            <p>24:00</p>
-                            <p>27:00</p>
-                            <p>30:00</p>
-                            <p>33:00</p>
-                            <p>36:00</p>
-                            <p>39:00</p>
-                        </div>
-                        <div class="numbers flex_row space_between center width_full">
-                            <p>00:00</p>
-                            <p>03:00</p>
-                            <p>06:00</p>
-                            <p>09:00</p>
-                            <p>12:00</p>
-                            <p>15:00</p>
-                            <p>18:00</p>
-                            <p>21:00</p>
-                        </div>
-                        <div class="ticks flex_row align_flex_end width_full">
-        
+                    <div class="files_section flex_column justify_flex_start">
+                        <div class="row flex_row justify_flex_start center width_full">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M180 936q-24 0-42-18t-18-42h60v60Zm-60-148v-83h60v83h-60Zm0-171v-83h60v83h-60Zm0-170v-83h60v83h-60Zm0-171q0-24 18-42t42-18v60h-60Zm148 512V364h424v424H268Zm0 148v-60h83v60h-83Zm0-660v-60h83v60h-83Zm60 452h304V424H328v304Zm111 208v-60h83v60h-83Zm0-660v-60h83v60h-83Zm170 660v-60h83v60h-83Zm0-660v-60h83v60h-83Zm171 660v-60h60q0 24-18 42t-42 18Zm0-148v-83h60v83h-60Zm0-171v-83h60v83h-60Zm0-170v-83h60v83h-60Zm0-171v-60q24 0 42 18t18 42h-60Z"/></svg>
+                            <p>Select All</p>
                         </div>
                     </div>
-                    <div class="working_area width_full flex_column justify_flex_start">
-                        <span class="start_tracker"></span>
-                        <span class="end_tracker"></span>
-                        <div class="video flex_row justify_center center width_full" style="color: #FFF;">
-                            <p>Spotlight</p>
+                    <div class="editing_section">
+                        <div class="tracker flex_column justify_flex_start width_full">
+                            <div class="numbers flex_row space_between center width_full">
+                                <p>00:00</p>
+                                <p>03:00</p>
+                                <p>06:00</p>
+                                <p>09:00</p>
+                                <p>12:00</p>
+                                <p>15:00</p>
+                                <p>18:00</p>
+                                <p>21:00</p>
+                                <p>24:00</p>
+                                <p>27:00</p>
+                                <p>30:00</p>
+                                <p>33:00</p>
+                                <p>36:00</p>
+                                <p>39:00</p>
+                            </div>
+                            <div class="numbers flex_row space_between center width_full">
+                                <p>00:00</p>
+                                <p>03:00</p>
+                                <p>06:00</p>
+                                <p>09:00</p>
+                                <p>12:00</p>
+                                <p>15:00</p>
+                                <p>18:00</p>
+                                <p>21:00</p>
+                            </div>
+                            <div class="ticks flex_row align_flex_end width_full">
+            
+                            </div>
                         </div>
-                        <!-- <div class="ring flex_row justify_center center width_full" style="color: #FFF;">
-                            <p>Spotlight</p>
-                        </div> -->
+                        <div class="working_area width_full flex_column justify_flex_start">
+                            <span class="start_tracker"></span>
+                            <span class="end_tracker"></span>
+                            <div class="video flex_row justify_center center width_full" style="color: #FFF;">
+                                <p>Spotlight</p>
+                            </div>
+                            <!-- <div class="ring flex_row justify_center center width_full" style="color: #FFF;">
+                                <p>Spotlight</p>
+                            </div> -->
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="bottom_buttons flex_row justify_center center width_full">
             <div class="buttons_wrapper flex_row space_between center">
-                <a href="">
-                    <button class="flex_row center justify_center">
-                        <p>Home</p>
-                        <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36">
-                            <path d="M220 876h150V626h220v250h150V486L480 291 220 486v390Zm-60 60V456l320-240 320 240v480H530V686H430v250H160Zm320-353Z"/>
-                        </svg>
-                    </button>
-                </a>
-                <a href="">
+                <a href="../Media/media.html">
                     <button class="flex_row center justify_center">
                         <p>Media</p>
                         <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36">
@@ -271,7 +272,7 @@
                         </svg>
                     </button>
                 </a>
-                <a href="">
+                <a href="../Tags/tags.html">
                     <button class="flex_row center justify_center">
                         <p>Tag</p>
                         <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36">
@@ -279,7 +280,7 @@
                         </svg>
                     </button>
                 </a>
-                <a href="">
+                <a href="../Statistics/">
                     <button class="flex_row center justify_center">
                         <p>Statistics</p>
                         <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36">
@@ -287,7 +288,7 @@
                         </svg>
                     </button>
                 </a>
-                <a href="">
+                <a href="../Tagging/tagging.html">
                     <button class="flex_row center justify_center">
                         <p>Tagging</p>
                         <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36">
@@ -295,7 +296,7 @@
                         </svg>
                     </button>
                 </a>
-                <a href="">
+                <a href="../Dynamic Drawing/dynamic_drawing.html">
                     <button class="active flex_row center justify_center">
                         <p>Dynamic Drawing</p>
                         <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36">

@@ -9,6 +9,9 @@
     <title>Players</title>
 </head>
 <body>
+    <!-- <div class="loader flex_row center justify_center">
+        <img src="../images/loader.gif" alt="">
+    </div> -->
     <div class="container flex_column justify_flex_start center width_full">
         <div class="menu flex_row space_between center width_full">
             <div class="hamburger">
@@ -16,12 +19,11 @@
             </div>
             <ul class="flex_row space_between center">
                 <li class="flex_row justify_center center">Help</li>
+                <li class="flex_row justify_center center"><a href="../Home/index.html">Logout</a></li>
             </ul>
             <ul class="mobile_menu">
-                <li>File</li>
-                <li>View</li>
-                <li>Tools</li>
                 <li>Help</li>
+                <li class="flex_row justify_center center"><a href="../Home/index.html">Logout</a></li>
             </ul>
             <div class="language flex_row space_between center">
                 <p>EN</p>
@@ -105,7 +107,7 @@
                     </div>
                     <div class="buttons flex_row center space_between">
                         <button style="color: #000; background: #D9D9D9;">Delete</button>
-                        <button style="color: #FFF; background: #380E3C;">Edit</button>
+                        <button style="color: #FFF; background: #380E3C;" onclick="showEditTag(event)">Edit</button>
                     </div>
                 </div>
             </div>
@@ -125,7 +127,7 @@
                 </div>
                 <p style="display: none;">Edit Tag</p>
                 <div style="display: none;" class="tag_details flex_column justify_flex_start center width_full">
-                    <div class="details_wrapper flex_column center space_between">
+                    <div class="details_wrapper flex_column center space_between width">
                         <div class="input flex_column space_between align_flex_start width_full">
                             <label for="tag_name">Tag Name</label>
                             <input name="tag_name" placeholder="Enter Tag Name" type="text">
@@ -182,13 +184,6 @@
         
         <div class="bottom_buttons flex_row justify_center center width_full">
             <div class="buttons_wrapper flex_row space_between center">
-                <a href="">
-                    <button class="flex_row center justify_center">
-                        <p>Home</p>
-                        <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36">
-                            <path d="M220 876h150V626h220v250h150V486L480 291 220 486v390Zm-60 60V456l320-240 320 240v480H530V686H430v250H160Zm320-353Z"/>
-                        </svg>
-                    </button>
                 </a>
                 <a href="../Media/media.html">
                     <button class="flex_row center justify_center">

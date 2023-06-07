@@ -15,9 +15,17 @@ const end_tracker = document.querySelector('.end_tracker');
 const mediaSource = new MediaSource();
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
+const image = document.querySelector('.right_section img');
+
+const canvasElems = {
+    ring: [],
+    line: [],
+    arrow: [],
+    dashedArrow: []
+};
 
 let fileMenu;
-
+let ringCount = 0;
 let isOpen = false;
 
 // const video = document.querySelector('video');
@@ -42,12 +50,16 @@ const files = [
     }
 ];
 
+// window.addEventListener('load', () => {
+//     setTimeout(() => {
+//         document.querySelector('.container.flex_column.justify_flex_start.center.width_full').style.display = 'flex';
+//         // document.querySelector('.loader.flex_row.center.justify_center').classList.remove('flex_row');
+//         document.querySelector('.loader.flex_row.center.justify_center').style.display = 'none';
+//     }, 500)
+// });
+
 document.addEventListener('DOMContentLoaded', () => {
-    canvas.style.position = 'absolute';
-    canvas.style.left = '20%';
-    canvas.style.top = '6rem';
-    canvas.height = 595;
-    canvas.width = 1210;
+    setCanvasSize();
 });
 
 // seekBar.max = video.duration;
@@ -78,6 +90,27 @@ document.addEventListener('DOMContentLoaded', () => {
 //     video.pause();
 //     playPause.innerHTML = playSvg;
 // });
+
+function throttleFunc(func, delay) {
+    let timeoutId;
+    return (...args) => {
+        if (timeoutId) {
+            return;
+        }
+        timeoutId = setTimeout(() => {
+            func(...args);
+            timeoutId = null;
+        }, 1000);
+    }
+}
+
+function setCanvasSize() {
+    canvas.width = image.getBoundingClientRect().width;
+    canvas.height = image.getBoundingClientRect().height;
+    canvas.style.position = 'absolute';
+    canvas.style.left = `${ image.getBoundingClientRect().left }px`;
+    canvas.style.top = `${ image.getBoundingClientRect().top }px`;
+}
 
 hamburger.addEventListener('click', (e) => {
     e.stopPropagation();
@@ -230,6 +263,17 @@ document.addEventListener('click', (e) => {
 //     }
 // }
 
+function undo(e) {
+    console.log(canvasElems);
+    ctx.clearRect(
+        canvasElems.ring[canvasElems.ring.length - 1].x - canvasElems.ring[canvasElems.ring.length - 1].radius,
+        canvasElems.ring[canvasElems.ring.length - 1].y - canvasElems.ring[canvasElems.ring.length - 1].radius,
+        canvasElems.ring[canvasElems.ring.length - 1].radius * 2,
+        canvasElems.ring[canvasElems.ring.length - 1].radius * 2
+    );
+   canvasElems.ring.splice(canvasElems.ring.length - 1, 1);
+}
+
 canvas.addEventListener('click', (e) => {
     ctx.setLineDash([5, 5]);
     ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
@@ -239,8 +283,36 @@ canvas.addEventListener('click', (e) => {
     ctx.arc(e.layerX, e.layerY, 15, 0, 2 * Math.PI);
     ctx.stroke();
     ctx.fill();
+    canvasElems.ring.push({
+        x: e.layerX,
+        y: e.layerY,
+        radius: 20
+    });
+    addVideoBar();
     console.log(e);
 });
+
+function addVideoBar() {
+    const workingArea = document.querySelector('.working_area.width_full.flex_column.justify_flex_start');
+    let top = 0;
+    const html = `
+        <div class="ring flex_row justify_center center width_full" style="color: #FFF;">
+            <p>Ring_${ ringCount++ }</p>
+        </div>
+    `;
+
+    Array.from(workingArea.children).forEach(element => {
+        if (element.classList.contains('video') || element.classList.contains('ring')) {
+            top += 1.3;
+        }
+    });
+
+    workingArea.innerHTML += html;
+    const ring = workingArea.querySelector('.ring:last-child');
+    ring.style.position = 'absolute';
+    ring.style.top = `${ top }rem`;
+    ring.style.right = '20rem';
+}
 
 function trackPlayers(e) {
     const p = e.currentTarget.nextElementSibling;
@@ -258,9 +330,11 @@ function playVideo(e) {
 
 function populateTicks() {
     const ticksElement = document.querySelector('.ticks.width_full');
-    const numbersPosition = document.querySelectorAll('.numbers.flex_row.space_between.center.width_full p');
+    let numbersPosition = document.querySelectorAll('.numbers.flex_row.space_between.center.width_full p');
     let tick = undefined;
     console.log(trackerPosition);
+    if (window.innerWidth < 992) numbersPosition = document.querySelectorAll('.numbers_tablet.flex_row.space_between.center.width_full p');
+    Array.from(ticksElement.children).forEach(tick => { tick.remove(); });
     Array.from(numbersPosition).forEach(numberPosition => {
         tick = document.createElement('span');
         tick.style.width = '1.5px';
@@ -294,3 +368,14 @@ function populateTicks() {
 }
 
 populateTicks();
+
+window.addEventListener('resize', throttleFunc(() => {
+    console.log(window.innerWidth);
+    setCanvasSize();
+    populateTicks();
+}), 1000);
+
+// window.addEventListener('resize', () => {
+//     console.log(window.innerWidth);
+//     setCanvasSize();
+// });
