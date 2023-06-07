@@ -317,6 +317,19 @@ function setPosition(e) {
     // }
 }
 
+function throttleFunc(func, delay) {
+    let timeoutId;
+    return (...args) => {
+        if (timeoutId) {
+            return;
+        }
+        timeoutId = setTimeout(() => {
+            func(...args);
+            timeoutId = null;
+        }, 1000);
+    }
+}
+
 function moveEndSlider(e) {
     e.stopPropagation();
     end_tracker.style.position = 'absolute';
@@ -396,11 +409,12 @@ function playVideo(e) {
 }
 
 function populateTicks() {
+    const ticksElement = document.querySelector('.ticks.width_full');
     let numbersPosition = document.querySelectorAll('.numbers.flex_row.space_between.center.width_full p');
-    if (window.innerWidth < 1400) numbersPosition = document.querySelectorAll('.numbers.flex_row.space_between.center.width_full:nth-child(2) p');
-    // console.log(numbersPosition);
     let tick = undefined;
-    // console.log(trackerPosition);
+    console.log(trackerPosition);
+    if (window.innerWidth < 992) numbersPosition = document.querySelectorAll('.numbers_tablet.flex_row.space_between.center.width_full p');
+    Array.from(ticksElement.children).forEach(tick => { tick.remove(); });
     Array.from(numbersPosition).forEach(numberPosition => {
         tick = document.createElement('span');
         tick.style.width = '1.5px';
@@ -424,7 +438,7 @@ function populateTicks() {
             tick.style.width = '1.5px';
             tick.style.height = '0.4rem';
             tick.style.position = 'absolute';
-            tick.style.top = `${ trackerPosition.getBoundingClientRect().top + window.scrollY + 35 }px`;
+            tick.style.top = `${ trackerPosition.getBoundingClientRect().top + window.scrollY + 30 }px`;
             tick.style.left = `${ start + 5 }px`;
             tick.style.background = '#52AEE5';
             ticksElement.insertBefore(tick, element);
@@ -435,8 +449,9 @@ function populateTicks() {
 
 populateTicks();
 
-window.addEventListener('resize', () => {
+window.addEventListener('resize', throttleFunc(() => {
+    console.log(window.innerWidth);
     Array.from(ticksElement.children).forEach(tick => { tick.remove() });
     setCanvasSize();
     populateTicks();
-});
+}), 1000);
