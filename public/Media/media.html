@@ -121,7 +121,7 @@
                         <div class="folders flex_column width_full">
                             <p>Directories</p>
                             <div class="directories_container flex_row justify_flex_start align_flex_start width_full">
-                                <div onclick="directorySelect(event)" class="directory_wrapper flex_row align_flex_start center">
+                                <!-- <div onclick="directorySelect(event)" class="directory_wrapper flex_row align_flex_start center">
                                     <input type="checkbox" id="directory_checkbox">
                                     <div class="directory flex_column space_between center width_full">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M141 896q-24 0-42-18.5T81 836V316q0-23 18-41.5t42-18.5h280l60 60h340q23 0 41.5 18.5T881 376v460q0 23-18.5 41.5T821 896H141Zm0-580v520h680V376H456l-60-60H141Zm0 0v520-520Z"/></svg>
@@ -130,7 +130,7 @@
                                     <div class="remove">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 96 960 960" width="18"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <div class="files flex_column width_full">
@@ -150,8 +150,12 @@
                 </div>
             </div>
             <div class="player_section flex_column space_between width_full">
-                <div class="player flex_column">
-                    <video controls class="video" src="../video/defaultVideo2.mp4" width="100%"></video>
+                <div class="player flex_column justify_center center">
+                    <video class="video" width="100%"></video>
+                    <div class="default_video flex_column center">
+                        <img src="../images/icons8-play-100 1.png" alt="">
+                        <p>No files selected</p>
+                    </div>
                     <div class="controls flex_column space_evenly width_full">
                         <input type="range" value="0" name="seek_bar" class="seek_bar">
                         <div class="buttons flex_row space_between center width_full">

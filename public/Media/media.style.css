@@ -122,8 +122,8 @@ input:focus {
 }
 
 .loader img {
-    width: 30%;
-    height: 30%;
+    width: 15%;
+    height: 15%;
     object-fit: contain;
 
 }
@@ -241,6 +241,7 @@ input:focus {
 .container .files_section {
     width: 50%;
     border: 1px solid gray;
+    background: #464648;
 }
 
 .container .player_section {
@@ -257,6 +258,7 @@ input:focus {
 .container .workspace .toolbar {
     height: 3rem;
     padding: 0 5%;
+    background: #110F0D;
 }
 
 .container .toolbar svg {
@@ -273,8 +275,12 @@ input:focus {
     padding: 0.5rem;
     border-radius: 0.5rem;
     font-size: 1.1rem;
-    background: #131313;
-    color: #FFF;
+    background: #D9D9D9;
+    color: #000;
+}
+
+.container .workspace .toolbar input::placeholder {
+    color: #000;
 }
 
 .container .workspace .toolbar .filter {
@@ -291,9 +297,10 @@ input:focus {
     font-weight: 400;
     height: 2rem;
     padding: 0.3rem;
-    background: #131313;
+    background: #D9D9D9;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 0.3rem;
+    color: #000;
     /* margin: 0 0 2rem 0; */
 }
 
@@ -302,7 +309,7 @@ input:focus {
 }
 
 .container .workspace .toolbar .select .selected_item svg {
-    fill: #FFF;
+    fill: #000;
     margin: -0.5rem 0 0 0;
 }
 
@@ -369,6 +376,7 @@ input:focus {
     width: 30%;
     border-right: 2px solid #A4A4A4;
     padding: 1rem 0 0 1rem;
+    background: #2F2D2E;
     white-space: nowrap;
     overflow-x: scroll;
 }
@@ -378,13 +386,13 @@ input:focus {
 }
 
 .container .files_section .file_tree .file {
-    background: #380E3C;
+    background: #464648;
     padding: 0.2rem;
     border-radius: 0.25rem;
 }
 
 .container .files_section .file_tree .path {
-    background: #D9D9D9;
+    /* background: #D9D9D9; */
     /* padding: 0.2rem; */
     border-radius: 0.25rem;
     font-size: 1.2rem;
@@ -454,7 +462,7 @@ input:focus {
 
 .container .workspace .files_section .file_manager .directories_container .directory svg,
 .container .workspace .files_section .file_manager .files_container .file svg {
-    background: linear-gradient(180deg, #B83169 0%, #380E3C 100%);
+    background: #A4A4A4;
     border-radius: 0.25rem;
 }
 
@@ -511,11 +519,21 @@ input:focus {
 }
 
 .container .workspace .controls {
+    position: absolute;
+    bottom: 0;
+    left: 0;
     height: 7rem;
+    background: #F5F5F5;
+}
+
+.container .workspace .controls svg {
+    fill: #000;
 }
 
 .container .workspace .player {
-    height: fit-content;
+    position: relative;
+    background: #656565;
+    height: 36rem;
 }
 
 .container .workspace .player video {
@@ -584,7 +602,8 @@ input:focus {
 
 .container .bottom_buttons {
     height: 4rem;
-    background: #1F1F1F;
+    background: #241728;
+    border-top: 4px solid #B83169;
 }
 
 .container .bottom_buttons .buttons_wrapper {

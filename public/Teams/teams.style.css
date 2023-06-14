@@ -177,7 +177,7 @@ input:focus {
 .container .workspace {
     height: 80%;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    background: #181818;
+    background: #656565;
 }
 
 .container .left_workspace {
@@ -246,7 +246,7 @@ input:focus {
     width: 4rem;
     height: 4rem;
     border-radius: 0.8rem;
-    background: #F2E8ED;
+    background: #A4A4A4;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     overflow: hidden;
 }
@@ -330,7 +330,7 @@ input:focus {
 
 .container .toolbar {
     position: relative;
-    background: #1f1f1f;
+    background: #2F2D2E;
     border-bottom: 2px solid white;
 }
 
@@ -348,9 +348,9 @@ input:focus {
     padding: 0 0.5rem;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     z-index: 10;
-    background: #FFF;
+    background: #464648;
     border-radius: 0.25rem;
-    color: #380E3C;
+    color: #FFF;
 }
 
 .container .toolbar .create_menu .actions input {
@@ -360,10 +360,11 @@ input:focus {
     border-radius: 0.25rem;
     font-size: 1.2rem;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.14);
+    background: #2F2D2E;
 }
 
 .container .toolbar .create_menu .actions button {
-    background: #B83169;
+    background: #2F2D2E;
     border-radius: 0.3rem;
     padding: 0.5rem;
 }
@@ -375,7 +376,7 @@ input:focus {
 
 .container .bottom_buttons {
     height: 3rem;
-    /* background: #1f1f1f; */
+    background: #241728;
     margin: 1rem 0 0 0;
 }
 

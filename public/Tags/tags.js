@@ -98,6 +98,7 @@ leftWorkspace.addEventListener('click', (e) => {
     console.log(e.currentTarget);
     if (createMenu.style.display === 'flex') {
         createMenu.style.display = 'none';
+        isOpen = false;
     }
     if (!e.currentTarget.classList.contains('tag_wrapper')) {
         right_workspace.style.display = 'none';
@@ -110,6 +111,10 @@ leftWorkspace.addEventListener('click', (e) => {
         Array.from(e.currentTarget.getElementsByClassName('tag_wrapper flex_column center space_between')).forEach(element => {
             element.classList.remove('active');
         });
+
+        Array.from(e.currentTarget.querySelectorAll('.tag_information.flex_column.center .tags_wrapper.width_full button')).forEach(element => {
+            element.classList.remove('active');
+        });
     }
     if (menu.style.display === 'flex') menu.style.display = 'none';
 });
@@ -120,18 +125,16 @@ function showEditTag(e) {
     right_workspace.querySelector('.details_wrapper .input:nth-child(1) input').value = tagInCons;
     right_workspace.children[0].style.display = 'block';
     right_workspace.children[1].style.display = 'flex';
+    menu.style.display = 'none';
     if (window.innerWidth > 1200) {
         right_workspace.style.minWidth = '20%';
         leftWorkspace.style.minWidth = '80%';
-        menu.style.display = 'none';
     } else if (window.innerWidth < 1200 && window.innerWidth > 900) {
         right_workspace.style.minWidth = '25%';
         leftWorkspace.style.minWidth = '75%';
-        menu.style.display = 'none';
     } else if (window.innerWidth < 900 && window.innerWidth > 600) {
         right_workspace.style.minWidth = '35%';
         leftWorkspace.style.minWidth = '65%';
-        menu.style.display = 'none';
     }
 }
 
@@ -141,25 +144,21 @@ function showEditPanel(e) {
     tag_button = e.currentTarget;
     right_workspace.querySelectorAll('.details_wrapper .input:nth-child(1) input')[1].value = tagInCons;
     if (window.innerWidth > 1200) {
+        right_workspace.style.display = 'flex';
+        right_workspace.children[2].style.display = 'block';
+        right_workspace.children[3].style.display = 'flex';
+        right_workspace.children[3].style.opacity = '1';
         requestAnimationFrame(() => {
             right_workspace.style.minWidth = '20%';
-            right_workspace.style.display = 'flex';
             leftWorkspace.style.minWidth = '80%';
-            right_workspace.children[2].style.display = 'block';
-            right_workspace.children[3].style.display = 'flex';
-            right_workspace.children[3].style.opacity = '1';
         });
     } else {
         requestAnimationFrame(() => {
             right_workspace.style.minWidth = '25%';
-            right_workspace.style.display = 'flex';
             leftWorkspace.style.minWidth = '75%';
-            right_workspace.children[2].style.display = 'block';
-            right_workspace.children[3].style.display = 'flex';
-            right_workspace.children[3].style.opacity = '1';
         });
     }
-    e.currentTarget.style.background = '#601E94';
+    e.currentTarget.classList.add('active');
 }
 
 function changeColor(event) {
@@ -218,7 +217,8 @@ function addTag() {
 function hideTagDetails (e) {
     const tagsContainer = document.querySelector('.tags_container.flex_row.justify_flex_start');
     Array.from(tagsContainer.children).forEach(team => team.classList.remove('active'))
-    e.currentTarget.parentElement.parentElement.remove();
+    // e.currentTarget.parentElement.parentElement.remove();
+    Array.from(right_workspace.children).forEach(child => { child.style.display = 'none' });
     requestAnimationFrame(() => {
         right_workspace.style.display = 'none';
         leftWorkspace.style.minWidth = '100%';
@@ -252,7 +252,7 @@ function showTagDetails(e) {
 }
 
 window.addEventListener('resize', (e) => {
-    if (right_workspace.style.display) {
+    if (right_workspace.style.display === 'flex') {
         if (window.innerWidth > 1200) {
             right_workspace.style.minWidth = '20%';
             leftWorkspace.style.minWidth = '80%';

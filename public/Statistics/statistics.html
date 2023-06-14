@@ -68,16 +68,16 @@
                         <div class="content_wrapper flex_column space_between center">
                             <h4>Attacking Principles</h4>
                             <div class="buttons flex_row space_between center width_full">
-                                <button onclick="addToTagList(event)" style="background: #601E94;">Depth</button>
-                                <button onclick="addToTagList(event)" style="background: #A9DB91;">Support</button>
-                                <button onclick="addToTagList(event)" style="background: #36ACA5;">Penetration</button>
-                                <button onclick="addToTagList(event)" style="background: #D399D9;">Transition</button>
-                                <button onclick="addToTagList(event)" style="background: #DEE871;">Mobility</button>
-                                <button onclick="addToTagList(event)" style="background: #B83169;">Creativity</button>
-                                <button onclick="addToTagList(event)" style="background: #F490CC;">Width</button>
-                                <button onclick="addToTagList(event)" style="background: #D9D9D9;">No Text</button>
-                                <button onclick="addToTagList(event)" style="background: #68A74B;">Successful</button>
-                                <button onclick="addToTagList(event)" style="background: #D77A47;">Unsuccessful</button>
+                                <button onclick="addToTagList(event)" style="background: #4E4C4C;">Depth</button>
+                                <button onclick="addToTagList(event)" style="background: #A4A4A4;">Support</button>
+                                <button onclick="addToTagList(event)" style="background: #4E4C4C;">Penetration</button>
+                                <button onclick="addToTagList(event)" style="background: #A4A4A4;">Transition</button>
+                                <button onclick="addToTagList(event)" style="background: #4E4C4C;">Mobility</button>
+                                <button onclick="addToTagList(event)" style="background: #A4A4A4;">Creativity</button>
+                                <button onclick="addToTagList(event)" style="background: #4E4C4C;">Width</button>
+                                <button onclick="addToTagList(event)" style="background: #A4A4A4;">No Text</button>
+                                <button onclick="addToTagList(event)" style="background: #4E4C4C;">Successful</button>
+                                <button onclick="addToTagList(event)" style="background: #A4A4A4;">Unsuccessful</button>
                             </div>
                         </div>
                     </div>
@@ -105,8 +105,201 @@
                         <button><a href="../Teams/teams.html">Add Team</a></button>
                     </div>
                 </div>
-                <div class="playerCharts flex_row space_evenly center">
-                    
+                <div class="playerCharts flex_column">
+                    <div onclick="selectTab(event)" class="tabs flex_row space_between">
+                        <p class="active">Match Statistics</p>
+                        <p>Passes</p>
+                        <p>Ball Possession</p>
+                    </div>
+                    <div class="selection_content flex_column">
+                        <div class="score_section flex_row center">
+                            <div class="team flex_row center">
+                                <div class="team_image flex_column center">
+                                    <img src="../images/team 1.png" alt="">
+                                    <p>Soccer Club</p>
+                                </div>
+                                <p class="score">3</p>
+                            </div>
+                            <p>:</p>
+                            <div class="team flex_row_reverse center">
+                                <div class="team_image flex_column center">
+                                    <img src="../images/team 2.png" alt="">
+                                    <p>Best Foot</p>
+                                </div>
+                                <p class="score">1</p>
+                            </div>
+                        </div>
+                        <div class="chart_wrapper flex_row space_between center">
+                            <div class="chart flex_row justify_center center">
+                                <div>
+                                    <span class="team_1">
+                                        <p>Yara Toure 34'</p>
+                                    </span>
+                                    <span class="team_2">
+                                        <p>74' Ibarra</p>
+                                    </span>
+                                    <span class="team_1">
+                                        <p>Yara Toure 34'</p>
+                                    </span>
+                                    <span class="team_1">
+                                        <p>Yara Toure 34'</p>
+                                    </span>
+                                    <span class="team_2">
+                                        <p>74' Ibarra</p>
+                                    </span>
+                                    <span class="team_2">
+                                        <p>74' Ibarra</p>
+                                    </span>
+                                    <span class="team_1">
+                                        <p>Yara Toure 34'</p>
+                                    </span>
+                                    <span class="team_1">
+                                        <p>Yara Toure 34'</p>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="stats flex_column center">
+                                <div class="ball_possession flex_column">
+                                    <h1 style="text-align: center;">Ball Possession</h1>
+                                    <div class="values flex_row space_between">
+                                        <div class="bar_left flex_row center justify_flex_end">
+                                            <span style="width: 100%;"></span>
+                                            <p>62%</p>
+                                        </div>
+                                        <div class="bar_right flex_row center justify_flex_start">
+                                            <span style="width: 80%;"></span>
+                                            <p>38%</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ball_possession flex_column">
+                                    <h1 style="text-align: center;">Shots</h1>
+                                    <div class="values flex_row space_between">
+                                        <div class="bar_left flex_row center justify_flex_end">
+                                            <span style="width: 100%;"></span>
+                                            <p>7</p>
+                                        </div>
+                                        <div class="bar_right flex_row center justify_flex_start">
+                                            <span style="width: 60%;"></span>
+                                            <p>4</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ball_possession flex_column">
+                                    <h1 style="text-align: center;">Free Kicks</h1>
+                                    <div class="values flex_row space_between">
+                                        <div class="bar_left flex_row center justify_flex_end">
+                                            <span style="width: 80%;"></span>
+                                            <p>9</p>
+                                        </div>
+                                        <div class="bar_right flex_row center justify_flex_end">
+                                            <span style="width: 100%;"></span>
+                                            <p>14</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="wrapper flex_row space_between">
+                            <div class="left_side">
+                                <canvas id="chart"></canvas>
+                                <div class="pass_stats flex_row">
+                                    <div class="column flex_column">
+                                        <p>PASSES IN 1ST HALF</p>
+                                        <p>264</p>
+                                    </div>
+                                    <div class="column flex_column">
+                                        <p>ACCURATE PASSES</p>
+                                        <p>208</p>
+                                    </div>
+                                    <div class="column flex_column">
+                                        <p>ACCURACY</p>
+                                        <p>78.25%</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="right_side flex_column">
+                                <h1>PASS ATTEMPTS AND BREAKDOWN</h1>
+                                <div class="passes flex_row">
+                                    <div class="input flex_row">
+                                        <input type="checkbox" name="" id="">
+                                        <p>Successful Passes</p>
+                                    </div>
+                                    <div class="input flex_row">
+                                        <input type="checkbox" name="" id="">
+                                        <p>Unsuccessful Passes</p>
+                                    </div>
+                                </div>
+                                <div class="boards flex_row space_between">
+                                    <div class="board flex_column">
+                                        <span>23</span>
+                                        <span>59</span>
+                                    </div>
+                                    <div class="board flex_column">
+                                        <span>23</span>
+                                        <span>59</span>
+                                    </div>
+                                    <div class="board flex_column">
+                                        <span>23</span>
+                                        <span>59</span>
+                                    </div>
+                                </div>
+                                <div class="football_field flex_row space_between center">
+                                    <div class="goal_post">
+                                        <span></span>
+                                        <div class="mid_field flex_row justify_center center">
+                                            <p>82</p>
+                                        </div>
+                                    </div>
+                                    <div class="mid_field flex_row justify_center center">
+                                        <p>121</p>
+                                    </div>
+                                    <div class="goal_post">
+                                        <div class="mid_field flex_row justify_center center">
+                                            <p>61</p>
+                                        </div>
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <div class="pass_stats flex_row space_between">
+                                    <div class="column flex_column">
+                                        <p>31%</p>
+                                        <p>DEF</p>
+                                    </div>
+                                    <div class="column flex_column">
+                                        <p>46%</p>
+                                        <p>MID</p>
+                                    </div>
+                                    <div class="column flex_column">
+                                        <p>23%</p>
+                                        <p>ATK</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                        <!-- <div class="wrapper flex_row space_between">
+                            <div class="left_side">
+                                <h1>BALL POSSESSION</h1>
+                                <canvas id="line_chart"></canvas>
+                            </div>
+                            <div class="right_side">
+                                <div class="stats flex_row space_between">
+                                    <div class="stat">
+                                        <p>BALL POSSESSSION</p>
+                                        <p>60 / <span>40</span></p>
+                                    </div>
+                                    <div class="stat">
+                                        <p>1ST HALF</p>
+                                        <p>58 / <span>44</span></p>
+                                    </div>
+                                    <div class="stat">
+                                        <p>2ND HALF</p>
+                                        <p>63 / <span>37</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
                 </div>
             </div>
         </div>

@@ -119,6 +119,7 @@ input:focus {
 .container {
     min-height: 100vh;
     font-family: 'Inter', 'sans-serif';
+    background: #656565;
     /* display: none; */
 }
 
@@ -149,7 +150,7 @@ input:focus {
 
 .container .menu, .container .toolbar {
     height: 3rem;
-    background: #380E3C;
+    background: #110F0D;
     color: #FFF;
     padding: 0 2.5%;
 }
@@ -261,14 +262,15 @@ input:focus {
     width: 13rem;
     margin: 0 1rem 1rem 0;
     cursor: pointer;
-    background: #F2E8ED;
+    background: #DBD6D6;
     border-radius: 0.8rem;
+    color: #000;
 }
 
 .container .left_workspace .tags_container .tag_wrapper > span {
     width: 1rem;
     height: 100%;
-    background: #D399D9;
+    background: #2F2D2E;
     border-radius: 0.6rem;
 }
 
@@ -319,7 +321,7 @@ input:focus {
 }
 
 .container .right_workspace {
-    background: #F2E8ED;
+    background: #464648;
     height: 82vh;
     width: 20%;
     padding: 2rem 1rem;
@@ -327,6 +329,11 @@ input:focus {
     overflow: scroll;
     flex-wrap: nowrap;
     transition: all 0.5s ease;
+    color: #FFF;
+}
+
+.container .right_workspace::-webkit-scrollbar {
+    display: none;
 }
 
 .container .right_workspace p {
@@ -349,7 +356,7 @@ input:focus {
     border-radius: 0.3rem;
     margin: 0.8rem 0 0 0;
     font-family: 'Inter', 'sans-serif';
-    color: #4E4C4C;
+    color: #A4A4A4;
 }
 
 .container .right_workspace .tag_details .input:nth-child(2) input {
@@ -371,7 +378,7 @@ input:focus {
     border-right: 1px solid black;
     border-left: 1px solid black;
     height: 100%;
-    background: #B83169;
+    background: #A4A4A4;
 }
 
 .container .right_workspace .tag_details .input:nth-child(4) .timeline .frame::before {
@@ -441,9 +448,11 @@ input:focus {
     margin: auto;
     border: 1px solid rgba(0, 0, 0, 0.08);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background: #2F2D2E;
     border-radius: 4px;
     padding: 1.5rem;
     transition: all 0.5s ease;
+    color: #FFF;
 }
 
 .container .tag_information > h1 {
@@ -480,10 +489,6 @@ input:focus {
     margin: 0.5rem 0 0 0;
 }
 
-.container .tag_information .information_wrapper .left_section .information .information_item p:nth-child(2) {
-    color: rgba(78, 76, 76, 0.92);
-}
-
 .container .tag_information .information_wrapper .left_section > h1 {
     font-size: 1rem;
     font-weight: 600;
@@ -506,6 +511,7 @@ input:focus {
 .container .tag_information .information_wrapper .right_section .tag_layout h1 {
     font-size: 1rem;
     font-weight: 600;
+    color: #000;
 }
 
 .container .tag_information .information_wrapper .right_section .tag_layout button {
@@ -513,6 +519,11 @@ input:focus {
     height: 4rem;
     margin-bottom: 0.5rem;
     border-radius: 0.3rem;
+    background: #777073;
+}
+
+.container .tag_information .information_wrapper .right_section .tag_layout button.active {
+    background: #601E94;
 }
 
 .container .tag_information .information_wrapper .right_section .tag_layout button:nth-child(1),
@@ -539,7 +550,7 @@ input:focus {
 
 .container .toolbar {
     position: relative;
-    background: #B83169;
+    background: #2F2D2E;
     border-bottom: 2px solid white;
 }
 
@@ -557,9 +568,9 @@ input:focus {
     padding: 0 0.5rem;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     z-index: 10;
-    background: #FFF;
+    background: #464648;
     border-radius: 0.25rem;
-    color: #380E3C;
+    color: #FFF;
 }
 
 .container .toolbar .create_menu .actions input {
@@ -569,10 +580,12 @@ input:focus {
     border-radius: 0.25rem;
     font-size: 1.2rem;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.14);
+    background: #2F2D2E;
+    color: #FFF;
 }
 
 .container .toolbar .create_menu .actions button {
-    background: #B83169;
+    background: #2F2D2E;
     border-radius: 0.3rem;
     padding: 0.5rem;
 }
@@ -584,8 +597,12 @@ input:focus {
 
 .container .bottom_buttons {
     height: 4rem;
-    background: #FFF;
+    background: #241728;
     margin: 1rem 0 0 0;
+}
+
+.container .bottom_buttons svg {
+    fill: #FFF;
 }
 
 .container .bottom_buttons .buttons_wrapper {

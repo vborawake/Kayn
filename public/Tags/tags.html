@@ -44,7 +44,7 @@
                         <p>Enter Name</p>
                         <div class="actions flex_row space_between center width_full">
                             <input type="text" id="createTag">
-                            <button onclick="event.currentTarget.parentElement.parentElement.style.display = 'none'">Cancel</button>
+                            <button onclick="event.currentTarget.parentElement.parentElement.style.display = 'none'; isOpen = false;">Cancel</button>
                             <button onclick="addTag(event)">OK</button>
                         </div>
                     </div>
@@ -107,7 +107,7 @@
                     </div>
                     <div class="buttons flex_row center space_between">
                         <button style="color: #000; background: #D9D9D9;">Delete</button>
-                        <button style="color: #FFF; background: #380E3C;" onclick="showEditTag(event)">Edit</button>
+                        <button style="color: #FFF; background: #1e1c1d;" onclick="showEditTag(event)">Edit</button>
                     </div>
                 </div>
             </div>
@@ -120,7 +120,7 @@
                             <input name="title" placeholder="Enter Tag Name" type="text">
                         </div>
                         <div class="input buttons flex_row space_between center width_full">
-                            <button style="background: #D9D9D9; color: #000;">Cancel</button>
+                            <button style="background: #D9D9D9; color: #000;" onclick="hideTagDetails(event)">Cancel</button>
                             <button>OK</button>
                         </div>
                     </div>
@@ -174,8 +174,8 @@
                             <label for="shortcut_key">Continuous Mode</label>
                         </div>
                         <div class="input buttons flex_row space_between center width_full">
-                            <button style="background: #D9D9D9; color: #000;">Cancel</button>
-                            <button style="background: #B83169; color: #FFF;" onclick="updateTag(event)">OK</button>
+                            <button style="background: #D9D9D9; color: #000;" onclick="hideTagDetails(event)">Cancel</button>
+                            <button style="background: #1e1c1d; color: #FFF;" onclick="updateTag(event)">OK</button>
                         </div>
                     </div>
                 </div>

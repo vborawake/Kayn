@@ -46,6 +46,14 @@ const files = [
     }
 ];
 
+document.addEventListener('DOMContentLoaded', () => {
+    console.log(video.src);
+    if (video.src === '') {
+        video.style.display = 'none';
+        video.nextElementSibling.style.display = 'flex';
+    }
+});
+
 window.addEventListener('load', () => {
     setTimeout(() => {
         document.querySelector('.container.flex_column.justify_flex_start.center.width_full').style.display = 'flex';
@@ -82,6 +90,8 @@ fileSection.addEventListener('click', (e) => {
         file.classList.remove('active');
     });
     video.src = '';
+    video.style.display = 'none';
+    video.nextElementSibling.style.display = 'flex';
     fileMenu.style.display = 'none';
 });
 
@@ -458,6 +468,8 @@ function playVideo(e) {
     e.stopPropagation();
     const fileName = e.currentTarget.querySelector('#file_name').innerHTML;
     const path = folders[currentDirectory.querySelector('#directory_name').innerHTML].filter(file => file.name === fileName);;
+    video.style.display = 'block';
+    video.nextElementSibling.style.display = 'none';
     video.src = path[0].src;
     e.currentTarget.classList.add('active');
     currentFile = e.currentTarget;

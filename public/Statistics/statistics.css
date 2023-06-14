@@ -11,6 +11,11 @@
     flex-direction: column;
 }
 
+.flex_column_reverse {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
 .space_between {
     flex-wrap: wrap;
     justify-content: space-between;
@@ -27,6 +32,11 @@
 
 .justify_flex_start {
     justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.justify_flex_end {
+    justify-content: flex-end;
     flex-wrap: wrap;
 }
 
@@ -143,7 +153,7 @@ input:focus {
 
 .container .menu, .container .toolbar {
     height: 3rem;
-    background: #380E3C;
+    background: #110F0D;
     color: #FFF;
     padding: 0 2.5%;
 }
@@ -171,8 +181,8 @@ input:focus {
 
 .container .toolbar {
     position: relative;
-    background: #B83169;
-    border-bottom: 2px solid white;
+    background: #2F2D2E;
+    /* border-bottom: 2px solid white; */
 }
 
 .container .toolbar .import {
@@ -266,11 +276,16 @@ input:focus {
 }
 
 .container .workspace .left_section {
-    background: #FFF;
+    background: #1F1E1E;
     width: 25%;
     height: 100%;
     padding: 1rem;
     overflow: scroll;
+    color: #FFF;
+}
+
+.container .workspace .left_section::-webkit-scrollbar {
+    display: none;
 }
 
 .container .workspace .left_section h4 {
@@ -292,6 +307,7 @@ input:focus {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 0.3rem;
     margin: 0 0 2rem 0;
+    color: #000;
 }
 
 .container .workspace .left_section .select .selected_item p {
@@ -311,6 +327,7 @@ input:focus {
     border-radius: 0.3rem;
     transform: scale(0);
     transition: all 0.5s ease;
+    color: #000;
 }
 
 .container .workspace .left_section .select .select_menu p {
@@ -327,7 +344,7 @@ input:focus {
 }
 
 .container .workspace .left_section .selection_content {
-    width: 95%;
+    width: 82%;
     margin: 0 auto 2rem auto;
 }
 
@@ -363,24 +380,33 @@ input:focus {
     width: 75%;
     height: 100%;
     overflow: hidden;
-    background: #F2E8ED;
+    background: #464648;
     padding: 1rem;
+    overflow: scroll;
+}
+
+.container .workspace .right_section::-webkit-scrollbar {
+    display: none;
 }
 
 .container .workspace .right_section .default_content {
     width: 50%;
     font-size: 1rem;
     font-weight: 600;
+    color: #FFF;
 }
 
 .container .workspace .right_section .default_content .item button {
     width: 100%;
     height: 2rem;
-    background: #380E3C;
-    color: #FFF;
+    background: #A4A4A4;
     border-radius: 0.3rem;
     margin: 0.5rem 0 0.5rem 0;
     font-size: 1rem;
+}
+
+.container .workspace .right_section .default_content .item button a {
+    color: #000;
 }
 
 .container .workspace .right_section .default_content .item .player {
@@ -534,6 +560,7 @@ input:focus {
 
 .container .bottom_buttons {
     height: 4rem;
+    background: #241728;
 }
 
 .container .bottom_buttons .buttons_wrapper {
@@ -563,7 +590,7 @@ input:focus {
     background: #B83169;
 }
 
-.container .bottom_buttons .buttons_wrapper button.active svg {
+.container .bottom_buttons .buttons_wrapper button.active svg, .container .bottom_buttons .buttons_wrapper svg {
     fill: #FFF;
 }
 
@@ -577,30 +604,378 @@ input:focus {
     width: 80%;
 }
 
-.container .playerCharts .first_chart, .container .playerCharts .second_chart {
+.container .playerCharts {
+    margin: 2rem 0 0 0;
+    /* border: 2px solid black; */
+    color: #FFF;
+    display: none;
+}
+
+.container .playerCharts .selection_content {
+    background: #1F1E1E;
+    padding: 2rem;
+    border-radius: 1rem;
+    width: 100%;
+}
+
+.container .playerCharts .tabs {
+    width: 35%;
+    padding: 0 0 1.5rem 0;
+}
+
+.container .playerCharts .tabs p {
+    cursor: pointer;
+}
+
+.container .playerCharts .tabs .active {
+    text-decoration: underline;
+}
+
+.container .playerCharts .score_section {
+    margin: 0 auto 2rem auto;
+}
+
+.container .playerCharts .score_section > p, .container .playerCharts .score_section .team > p {
+    font-size: 3rem;
+    font-weight: 600;
+}
+
+.container .playerCharts .score_section .team .team_image {
+    font-weight: 600;
+    margin-right: 2rem;
+}
+
+.container .playerCharts .score_section .team > p {
+    margin-right: 0.8rem;
+}
+
+.container .playerCharts .score_section .team:nth-child(3) .team_image {
+    margin-left: 2rem;
+}
+
+.container .playerCharts .score_section .team:nth-child(3) > p {
+    margin-left: 0.8rem;
+}
+
+.container .playerCharts .score_section .team:nth-child(1) img {
+    width: 90%;
+}
+
+.container .playerCharts .chart_wrapper .chart {
+    width: 45%;
+    padding: 1rem;
+    background: #FFF;
+    border-radius: 0.5rem;
+    color: #000;
+}
+
+.container .playerCharts .chart_wrapper .chart div {
     position: relative;
-    height: 20rem;
-    width: 50%;
-    margin: 5rem 0 0 0;
+    width: 2px;
+    height: 25rem;
+    background: #000;
 }
 
-.container .playerCharts .first_chart p, .container .playerCharts .second_chart .content {
+.container .playerCharts .chart_wrapper .chart div span.team_1 p {
+    /* position: absolute;
+    top: 0;
+    left: 0; */
+    position: relative;
+    width: fit-content;
+    margin: 0 0 2rem -7.6rem;
+}
+
+.container .playerCharts .chart_wrapper .chart div span.team_1 p::before {
+    content: '';
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 0;
+    bottom: 0;
+    right: -1rem;
+    margin: auto 0;
+    width: 0.5rem;
+    height: 0.5rem;
+    background: #000;
+    border-radius: 50%;
 }
 
-/* .container .playerCharts .second_chart .content {
-    height: fit-content;
-} */
+.container .playerCharts .chart_wrapper .chart div span.team_2 p {
+    /* position: absolute;
+    top: 0;
+    left: 0; */
+    position: relative;
+    width: 100%;
+    margin: 0 0 2rem 0.8rem;
+}
+
+.container .playerCharts .chart_wrapper .chart div span.team_2 p::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -1rem;
+    margin: auto 0;
+    width: 0.5rem;
+    height: 0.5rem;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
+.container .playerCharts .chart_wrapper .stats {
+    width: 45%;
+    height: 27rem;
+    padding: 1rem;
+}
+
+.container .playerCharts .chart_wrapper .stats h1 {
+    font-size: 1.5rem;
+    margin: 0 0 1rem 0;
+}
+
+.container .playerCharts .chart_wrapper .stats .ball_possession {
+    margin: 0 0 1rem 0;
+    width: 100%;
+}
+
+.container .playerCharts .chart_wrapper .stats .bar_left {
+    position: relative;
+    height: 3rem;
+    width: 46%;
+    background: #D9D9D9;
+    border-radius: 0.3rem;
+}
+
+.container .playerCharts .chart_wrapper .stats .bar_left p {
+    position: absolute;
+    margin: auto 0;
+    right: 0.5rem;
+}
+
+.container .playerCharts .chart_wrapper .stats .bar_left span {
+    height: 100%;
+    background: linear-gradient(180deg, #A4A4A4 0%, #232323 100%);
+    border-radius: 0.3rem;
+}
+
+.container .playerCharts .chart_wrapper .stats .bar_right {
+    position: relative;
+    height: 3rem;
+    width: 46%;
+    background: #D9D9D9;
+    border-radius: 0.3rem;
+}
+
+.container .playerCharts .chart_wrapper .stats .bar_right p {
+    position: absolute;
+    margin: auto 0;
+    left: 0.5rem;
+}
+
+.container .playerCharts .chart_wrapper .stats .bar_right span {
+    height: 100%;
+    background: linear-gradient(180deg, rgba(196, 194, 194, 0.92) 0%, rgba(100, 99, 99, 0.92) 100%);
+    border-radius: 0.3rem;
+}
+
+.container .playerCharts .left_side {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 45%;
+}
+
+.container .playerCharts .left_side .pass_stats {
+    width: 100%;
+    margin: 2rem 0 0 0;
+}
+
+.container .playerCharts .left_side .pass_stats .column {
+    width: 30%;
+}
+
+.container .playerCharts .left_side .pass_stats .column p:nth-child(1) {
+    font-size: 0.8rem;
+    margin: 0 0 1rem 0;
+}
+
+.container .playerCharts .left_side .pass_stats .column p:nth-child(2) {
+    font-size: 1.1rem;
+}
+
+.container .playerCharts .left_side .pass_stats .column:nth-child(1) p:nth-child(2) {
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+.container .playerCharts .wrapper .right_side {
+    width: 45%;
+    padding: 1rem;
+}
+
+.container .playerCharts .right_side h1 {
+    font-weight: 500;
+    font-size: 1rem;
+    color: #FFF;
+    margin: 0 0 2rem 0;
+}
+
+.container .playerCharts .right_side .passes {
+    margin: 0 0 2rem 0;
+}
+
+.container .playerCharts .right_side .input p {
+    font-size: 1.1rem;
+    margin: 0 1rem 0 0;
+}
+
+.container .playerCharts .right_side .input input {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: 0 0.5rem 0 0;
+}
+
+.container .playerCharts .right_side .boards {
+    align-items: flex-end;
+    margin: 0 0 2rem 0;
+}
+
+.container .playerCharts .right_side .boards .board {
+    width: 30%;
+}
+
+.container .playerCharts .right_side .boards .board:nth-child(2) {
+    width: 32%;
+}
+
+.container .playerCharts .right_side .boards .board:nth-child(2) span {
+    height: 2.3rem;
+}
+
+.container .playerCharts .right_side .boards .board span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    height: 2rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border: 1px solid black;
+}
+
+.container .playerCharts .right_side .boards .board span:nth-child(1) {
+    background: #D9D9D9;
+}
+
+.container .playerCharts .right_side .boards .board span:nth-child(2) {
+    background: #FFF;
+}
+
+.container .playerCharts .right_side .pass_stats {
+    width: 80%;
+    margin: 1rem auto 0 auto;
+}
+
+.container .playerCharts .right_side .pass_stats p:nth-child(1) {
+    font-size: 1.2rem;
+}
+
+.container .playerCharts .right_side .pass_stats p:nth-child(2) {
+    font-weight: 300;
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+.container .football_field {
+    width: 100%;
+    height: 15rem;
+    background: #4A4A4A;
+}
+
+.container .football_field .goal_post {
+    position: relative;
+    height: 50%;
+    width: 16.6%;
+    background: #D9D9D9;
+    /* margin: 12.5% 0 0 0; */
+}
+
+.container .football_field .goal_post span {
+    display: block;
+    width: 50%;
+    height: 70%;
+    border-top: 2px solid black;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    margin: 25% 0 0 0;
+}
+
+.container .football_field .goal_post:nth-child(3) {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.container .football_field .goal_post:nth-child(3) span {
+    border-top: 2px solid black;
+    border-left: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+.container .football_field .goal_post:nth-child(3) .mid_field {
+    position: absolute;
+    left: -50%;
+}
+
+.container .football_field .goal_post .mid_field {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 100%;
+    height: 70%;
+    margin: auto 0;
+    transform: scale(0.8);
+}
+
+.container .football_field .mid_field {
+    width: 16.6%;
+    height: 35%;
+    clip-path: polygon(100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%, 50% 0);
+    background: #FFF;
+    color: #000;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.container .wrapper h1 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0 0 1rem 0;
+}
+
+.container .wrapper .right_side .stats {
+    font-size: 0.8rem;
+}
+
+.container .wrapper .right_side .stats .stat p:nth-child(2) {
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin: 1rem 0 0 0;
+}
+
+.container .wrapper .right_side .stats .stat span {
+    color: #A4A4A4;
+}
+
+.container .wrapper .right_side .stats .stat:nth-child(1) p:nth-child(2) {
+    font-size: 2rem;
+    font-weight: 700;
+}
 
 @media screen and (min-width: 1200px) and (max-width: 1400px) {
     .container .workspace .left_section .selection_content {
         width: 90%;
         margin: 0 auto 2rem auto;
     }
-
+    
     .container .workspace .left_section .selection_content .buttons button {
         width: 6.5rem;
         height: 2.5rem;
