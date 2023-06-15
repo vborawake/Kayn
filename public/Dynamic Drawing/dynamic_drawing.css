@@ -331,7 +331,8 @@ input:focus {
 
 .container .bottom_buttons {
     height: 4rem;
-    background: #000000EB;
+    background: #241728;
+    border-top: 4px solid black;
 }
 
 .container .bottom_buttons .buttons_wrapper {

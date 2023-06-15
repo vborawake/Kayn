@@ -19,6 +19,7 @@ const tagList = document.querySelector('.tags_list.flex_column.center.width_full
 const buttonsList = document.querySelector('.buttons.flex_row.space_between.center.width_full');
 const workingArea = document.querySelector('.working_area.width_full.flex_column.justify_flex_start');
 const selectionContent = document.querySelector('.selection_content.flex_column:nth-child(2)');
+const defaultContent = document.querySelector('.default_content.flex_row.space_between');
 let lineChart = document.getElementById('line_chart');
 let lineCtx = lineChart ? lineChart.getContext('2d') : undefined;
 
@@ -395,6 +396,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }
+        document.getElementById('initial').remove();
+    }
+
+    if (playersContainer.children.length === 0) {
+        const html = `<h1 id="initial">Please select a player to view its statistics</h1>`;
+        defaultContent.innerHTML += html;
     }
 });
 

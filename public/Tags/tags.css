@@ -598,6 +598,7 @@ input:focus {
 .container .bottom_buttons {
     height: 4rem;
     background: #241728;
+    border-top: 4px solid #B83169;
     margin: 1rem 0 0 0;
 }
 

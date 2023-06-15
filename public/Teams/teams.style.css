@@ -183,7 +183,7 @@ input:focus {
 .container .left_workspace {
     position: relative;
     min-width: 100%;
-    height: 84vh;
+    height: 82vh;
     transition: all 0.5s ease;
     color: #FFF;
 }
@@ -375,8 +375,9 @@ input:focus {
 }
 
 .container .bottom_buttons {
-    height: 3rem;
+    height: 4rem;
     background: #241728;
+    border-top: 4px solid #B83169;
     margin: 1rem 0 0 0;
 }
 

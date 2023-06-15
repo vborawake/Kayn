@@ -492,7 +492,7 @@ input:focus {
     width: 18rem;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 4px;
-    background: #FFF;
+    background: #2F2D2E;
 }
 
 .container .workspace .files_section .file_manager .file_menu .menu_item:hover {
