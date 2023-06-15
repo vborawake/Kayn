@@ -214,7 +214,7 @@ input:focus {
 }
 
 .container .workspace .video {
-    position: relative;
+    /* position: relative; */
     width: 80%;
     height: 80vh;
     overflow: hidden;

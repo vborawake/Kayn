@@ -67,10 +67,13 @@ const files = [
 // });
 
 function setCanvasSize() {
+    console.log(image.getBoundingClientRect());
     canvas.width = image.getBoundingClientRect().width;
     canvas.height = image.getBoundingClientRect().height;
+    canvas.style.position = 'absolute';
     canvas.style.left = `${ image.getBoundingClientRect().left }px`;
     canvas.style.top = `${ image.getBoundingClientRect().top }px`;
+    // canvas.style.border = '4px solid black';
 }
 
 document.addEventListener('DOMContentLoaded', () => {
