@@ -52,6 +52,10 @@ document.addEventListener('DOMContentLoaded', () => {
         video.style.display = 'none';
         video.nextElementSibling.style.display = 'flex';
     }
+
+    // if (fileSection.children.length === 0) {
+    //     let 
+    // }
 });
 
 window.addEventListener('load', () => {
@@ -216,6 +220,8 @@ function importFile(e) {
             </div>
         </div>
     `;
+
+    if (fileSection.children[0].tagName === 'H1') fileSection.innerHTML = '';
 
     folders[currentDirectory.querySelector('#directory_name').innerHTML].push({
         name: e.target.files[0].name,

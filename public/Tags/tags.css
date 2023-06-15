@@ -188,16 +188,16 @@ input:focus {
     transition: all 0.5s ease;
 }
 
-.container .left_workspace > h1 {
+.container .left_workspace .tags_container h1 {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 4rem;
-    width: 80%;
-    color: #B83169;
+    font-size: 1.5rem;
+    font-weight: 500;
+    width: 50%;
+    color: #000;
     text-align: center;
-    opacity: 0.5;
 }
 
 .container .left_workspace .search {

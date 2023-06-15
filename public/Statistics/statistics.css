@@ -344,7 +344,7 @@ input:focus {
 }
 
 .container .workspace .left_section .selection_content {
-    width: 82%;
+    width: 98%;
     margin: 0 auto 2rem auto;
 }
 
@@ -354,6 +354,25 @@ input:focus {
     border-radius: 0.3rem;
     font-size: 1rem;
     margin: 0 0 0.6rem 0;
+}
+
+.container .workspace .left_section .selection_content .buttons button.tall_button {
+    height: 3.5rem;
+}
+
+.container .workspace .left_section .selection_content .buttons button.long_button {
+    width: 60%;
+}
+
+.container .workspace .left_section .selection_content .buttons button.small_button {
+    width: 30%;
+}
+
+.container .workspace .left_section .selection_content .buttons button.short_button {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 46%;
 }
 
 .container .workspace .left_section .tag_list {
@@ -1036,6 +1055,10 @@ input:focus {
     .container .cut_section .tracker {
         overflow: hidden;
     }
+
+    .container .playerCharts .tabs {
+        width: 45%;
+    }
 }
 
 @media screen and (min-width: 768px) and (max-width: 992px) {
@@ -1131,6 +1154,134 @@ input:focus {
 
     .container .bottom_buttons .buttons_wrapper {
         width: 45%;
+    }
+
+    .container .playerCharts .tabs {
+        width: 75%;
+    }
+
+    .container .playerCharts .selection_content .chart_wrapper,
+    .container .playerCharts .selection_content .wrapper {
+        flex-direction: column;
+    }
+
+    .container .playerCharts .selection_content .chart_wrapper .chart,
+    .container .playerCharts .selection_content .chart_wrapper .stats,
+    .container .playerCharts .selection_content .wrapper .left_side,
+    .container .playerCharts .selection_content .wrapper .right_side {
+        width: 80%;
+    }
+}
+
+@media screen and (min-width: 500px) and (max-width: 768px) {
+    .container .workspace .left_section .selection_content {
+        width: 100%;
+        margin: 0 auto 2rem auto;
+    }
+
+    .container .workspace .left_section .selection_content .buttons button {
+        width: 6rem;
+        height: 2rem;
+        border-radius: 0.3rem;
+        font-size: 0.9rem;
+        margin: 0 0 0.6rem 0;
+    }
+
+    .container .workspace .right_section .default_content {
+        width: 60%;
+        font-size: 1rem;
+        font-weight: 600;
+    }
+    
+    .container .workspace .toolbar .filter {
+        width: 35%;
+    }
+
+    .container .menu ul {
+        width: 14%;
+    }
+
+    .container .cut_section .button_wrapper {
+        width: 60%;
+    }
+
+    .container .cut_section .tracker {
+        overflow: hidden;
+    }
+
+    .container .workspace .left_section {
+        width: 35%;
+    }
+
+    .container .workspace .left_section .select {
+        position: relative;
+    }
+    
+    .container .workspace .left_section .select .selected_item {
+        font-size: 1rem;
+        font-weight: 400;
+        height: fit-content;
+        padding: 0.3rem;
+        background: #FFF;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 0.3rem;
+        margin: 0 0 2rem 0;
+        width: fit-content;
+    }
+    
+    .container .workspace .left_section .select .selected_item p {
+        margin: -0.5rem 0 0 0;
+        width: fit-content;
+        font-size: 0.9rem;
+    }
+    
+    .container .workspace .left_section .select .selected_item svg {
+        fill: #000;
+        margin: -0.5rem 0 0 0;
+    }
+    
+    .container .workspace .left_section .select .select_menu {
+        position: absolute;
+        top: 2rem;
+        background: #FFF;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 0.3rem;
+        transform: scale(0);
+        transition: all 0.5s ease;
+    }
+    
+    .container .workspace .left_section .select .select_menu p {
+        font-size: 1rem;
+        font-weight: 400;
+        height: fit-content;
+        padding: 0.3rem;
+        margin: 0 0 0.7rem 0;
+    }
+    
+    .container .workspace .left_section .select .select_menu p:hover {
+        background: #B83169;
+        color: #FFF;
+        cursor: pointer;
+    }
+
+    .container .bottom_buttons .buttons_wrapper {
+        width: 45%;
+    }
+
+    .container .playerCharts .tabs {
+        width: 85%;
+    }
+
+    .container .playerCharts .selection_content .chart_wrapper,
+    .container .playerCharts .selection_content .wrapper {
+        flex-direction: column;
+    }
+
+    .container .playerCharts .selection_content .chart_wrapper .chart,
+    .container .playerCharts .selection_content .chart_wrapper .stats,
+    .container .playerCharts .selection_content .wrapper .left_side,
+    .container .playerCharts .selection_content .wrapper .right_side {
+        width: 80%;
     }
 }
 

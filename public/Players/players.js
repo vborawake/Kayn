@@ -13,7 +13,7 @@ let playerCounter = 0;
 document.addEventListener('DOMContentLoaded', () => {
     if (playersContainer.children.length === 0) {
         const html = '<h1>You have not created any players yet. Please click on the + button above and start creating players.</h1>';
-        leftWorkspace.innerHTML += html;
+        playersContainer.innerHTML += html;
     }
 });
 
@@ -92,6 +92,7 @@ function addPlayer() {
                             </div>
                             <p class="player_name">${ name.value ? name.value : 'Player_' + playerCounter++ }</p>
                    </div>`;
+    if (playersContainer.children[0].tagName === 'H1') playersContainer.innerHTML = '';
     playersContainer.innerHTML += html
     createMenu.style.display = 'none';
 }
@@ -152,7 +153,7 @@ function showPlayerDetails(e) {
 }
 
 window.addEventListener('resize', (e) => {
-    if (right_workspace.style.display) {
+    if (right_workspace.style.display === 'flex') {
         if (window.innerWidth > 1200) {
             right_workspace.style.minWidth = '20%';
             leftWorkspace.style.minWidth = '80%';

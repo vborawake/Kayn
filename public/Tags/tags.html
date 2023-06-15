@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="tags.css">
     <script defer src="tags.js"></script>
-    <title>Players</title>
+    <title>Tags</title>
 </head>
 <body>
     <!-- <div class="loader flex_row center justify_center">
@@ -49,14 +49,14 @@
                         </div>
                     </div>
                 </div>
+                <div class="tag_menu flex_row center">
+                    <ul class="flex_column height_full width_full">
+                        <li onclick="showEditTag(event)">Edit</li>
+                        <li>Delete</li>
+                    </ul>
+                </div>
                 <div class="tags_container flex_row justify_flex_start">
-                    <div class="tag_menu flex_row center">
-                        <ul class="flex_column height_full width_full">
-                            <li onclick="showEditTag(event)">Edit</li>
-                            <li>Delete</li>
-                        </ul>
-                    </div>
-                    <div onclick="showTagDetails(event)" class="tag_wrapper flex_row center justify_flex_start width_full">
+                    <!-- <div onclick="showTagDetails(event)" class="tag_wrapper flex_row center justify_flex_start width_full">
                         <span></span>
                         <div class="text_wrapper height_full flex_column space_evenly">
                             <p>Football Tag Panel</p>
@@ -66,7 +66,7 @@
                         <div class="menu flex_column justify_center align_flex_start">
                             <span></span>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="tag_information flex_column center" style="display: none;">
                     <h1 onclick="showTagDetails(event)">Back To Panels</h1>

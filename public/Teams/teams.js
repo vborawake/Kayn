@@ -1,10 +1,10 @@
 const hamburger = document.querySelector('.hamburger');
 const mobileMenu = document.querySelector('.mobile_menu');
-const addButton = document.querySelector('.add_team');
 const createMenu = document.querySelector('.create_menu.flex_column.space_evenly');
 const leftWorkspace = document.querySelector('.left_workspace.flex_column.justify_flex_start');
 const right_workspace = document.querySelector('.right_workspace.flex_column.justify_flex_start');
 const teamsContainer = document.querySelector('.teams_container.flex_row.justify_flex_start');
+const addButton = document.querySelector('.add_team');
 
 let isOpen = false;
 let teamCounter = 0;
@@ -12,7 +12,7 @@ let teamCounter = 0;
 document.addEventListener('DOMContentLoaded', () => {
     if (teamsContainer.children.length === 0) {
         const html = '<h1>You have not created any teams yet. Please click on the + button above and start creating teams.</h1>';
-        leftWorkspace.innerHTML += html;
+        teamsContainer.innerHTML += html;
     }
 });
 
@@ -105,27 +105,31 @@ leftWorkspace.addEventListener('click', (e) => {
     }
 });
 
-addButton.addEventListener('click', (e) => {
+function showCreateMenu (e) {
     e.stopPropagation();
     console.log('clicked');
-    if (isOpen) {
+    console.log(createMenu.style);
+    if (createMenu.style.display === 'flex') {
         createMenu.style.display = 'none';
         isOpen = false;
     } else {
         createMenu.style.display = 'flex';
         isOpen = true;
     }
+}
+
+addButton.addEventListener('click', (e) => {
 });
 
-document.addEventListener('click', (e) => {
-    e.stopPropagation();
-    if (isOpen) {
-        mobileMenu.style.display = 'none';
-        isOpen = false;
-        console.log(e);
-        createMenu.style.display = 'none';
-    }
-});
+// document.addEventListener('click', (e) => {
+//     e.stopPropagation();
+//     if (isOpen) {
+//         mobileMenu.style.display = 'none';
+//         isOpen = false;
+//         console.log(e);
+//         createMenu.style.display = 'none';
+//     }
+// });
 
 function addTeam() {
     const name = document.getElementById('createTeam');
@@ -137,6 +141,7 @@ function addTeam() {
                             </div>
                             <p class="team_name">${ name.value ? name.value : 'Team_' + teamCounter++ }</p>
                    </div>`;
+    if (playersContainer.children[0].tagName === 'H1') playersContainer.innerHTML = '';
     teamsContainer.innerHTML += html;
     createMenu.style.display = 'none';
 }
@@ -191,7 +196,7 @@ function showTeamDetails(e) {
 }
 
 window.addEventListener('resize', (e) => {
-    if (right_workspace.style.display) {
+    if (right_workspace.style.display === 'flex') {
         if (window.innerWidth > 1200) {
             right_workspace.style.minWidth = '20%';
             leftWorkspace.style.minWidth = '80%';

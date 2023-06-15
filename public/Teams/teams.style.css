@@ -188,7 +188,7 @@ input:focus {
     color: #FFF;
 }
 
-.container .left_workspace > h1 {
+.container .left_workspace .teams_container h1 {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -222,7 +222,7 @@ input:focus {
 }
 
 .container .left_workspace .teams_container {
-    /* height: 92%; */
+    height: 50%;
     padding: 1rem 2rem;
     font-size: 1rem;
     font-weight: 400;
@@ -347,7 +347,7 @@ input:focus {
     width: 20%;
     padding: 0 0.5rem;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-    z-index: 10;
+    z-index: 1000;
     background: #464648;
     border-radius: 0.25rem;
     color: #FFF;

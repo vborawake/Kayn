@@ -5,7 +5,7 @@ const createMenu = document.querySelector('.create_menu.flex_column.space_evenly
 const leftWorkspace = document.querySelector('.left_workspace.flex_column.justify_flex_start');
 const right_workspace = document.querySelector('.right_workspace.flex_column.justify_flex_start');
 const tagsContainer = document.querySelector('.tags_container.flex_row.justify_flex_start');
-const menu = document.querySelector('.tag_menu.flex_row.center');
+let menu = document.querySelector('.tag_menu.flex_row.center');
 const tag_information = document.querySelector('.tag_information.flex_column.center');
 const tags_wrapper = tag_information.querySelector('.tags_wrapper.width_full');
 
@@ -17,7 +17,7 @@ let tagCounter = 0;
 document.addEventListener('DOMContentLoaded', () => {
     if (tagsContainer.children.length === 0) {
         const html = '<h1>You have not created any tags yet. Please click on the + button above and start creating tags.</h1>';
-        leftWorkspace.innerHTML += html;
+        tagsContainer.innerHTML += html;
     }
 });
 
@@ -210,6 +210,8 @@ function addTag() {
                     </div>
                 </div>
     `;
+    if (tagsContainer.children[0].tagName === 'H1') tagsContainer.innerHTML = '';
+    // menu = tagsContainer.querySelector('.tag_menu.flex_row.center');
     createMenu.style.display = 'none';
     tagsContainer.innerHTML += html
 }
@@ -228,15 +230,16 @@ function hideTagDetails (e) {
 function showTagDetails(e) {
     e.stopPropagation();
     if (e.target.classList.contains('menu') || e.target.parentElement.classList.contains('menu')) {
+        console.log('Menu');
         tagInCons = e.currentTarget.querySelector('.text_wrapper p:nth-child(1)').innerHTML;
+        menu.style.display = 'flex';
         menu.style.position = 'absolute';
         menu.style.top = `${ e.clientY - 20 }px`;
         menu.style.left = `${ e.clientX }px`;
-        menu.style.display = 'flex';
         requestAnimationFrame(() => {
             menu.style.transform = 'scale(1)';
         });
-        console.log(e);
+        // console.log(e);
     } else if (e.target.nodeName === 'H1') {
         requestAnimationFrame(() => {
             tag_information.style.display = 'none';

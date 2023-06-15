@@ -37,7 +37,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30"><path d="M796 935 533 672q-30 26-69.959 40.5T378 727q-108.162 0-183.081-75Q120 577 120 471t75-181q75-75 181.5-75t181 75Q632 365 632 471.15 632 514 618 554q-14 40-42 75l264 262-44 44ZM377 667q81.25 0 138.125-57.5T572 471q0-81-56.875-138.5T377 275q-82.083 0-139.542 57.5Q180 390 180 471t57.458 138.5Q294.917 667 377 667Z"/></svg>
                         <input placeholder="Find Teams" type="text">
                     </div>
-                    <div class="add_team">
+                    <div class="add_team" onclick="showCreateMenu(event)">
                         <svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30"><path d="M450 776h60V606h170v-60H510V376h-60v170H280v60h170v170ZM180 936q-24 0-42-18t-18-42V276q0-24 18-42t42-18h600q24 0 42 18t18 42v600q0 24-18 42t-42 18H180Zm0-60h600V276H180v600Zm0-600v600-600Z"/></svg>
                     </div>
                     <div onclick="event.stopPropagation()" class="create_menu flex_column space_evenly">
@@ -50,14 +50,14 @@
                     </div>
                 </div>
                 <div class="teams_container flex_row justify_flex_start">
-                    <div onclick="showTeamDetails(event)" class="team_wrapper flex_column center space_between">
+                    <!-- <div onclick="showTeamDetails(event)" class="team_wrapper flex_column center space_between">
                         <div class="team flex_row center justify_center">
                             <svg xmlns="http://www.w3.org/2000/svg" height="54" viewBox="0 96 960 960" width="54">
                                 <path d="M480 606q-58 0-97.5-39.5T343 469q0-58 39.5-97.5T480 332q58 0 97.5 39.5T617 469q0 58-39.5 97.5T480 606Zm0-60q34 0 55.5-21.5T557 469q0-34-21.5-55.5T480 392q-34 0-55.5 21.5T403 469q0 34 21.5 55.5T480 546Zm0 429q-140-35-230-162.5T160 533V295l320-120 320 120v238q0 152-90 279.5T480 975Zm0-399Zm0-337-260 98v196q0 63 17.5 120.5T287 760q46-25 93.5-37.5T480 710q52 0 99.5 12.5T673 760q32-49 49.5-106.5T740 533V337l-260-98Zm0 531q-39 0-78 10t-77 30q32 35 71 61.5t84 41.5q45-15 84-41.5t71-61.5q-38-20-77-30t-78-10Z"/>
                             </svg>
                         </div>
                         <p class="team_name">Team_1</p>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="right_workspace flex_column justify_flex_start">
