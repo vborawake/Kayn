@@ -17,11 +17,13 @@ let lineCtx = lineChart ? lineChart.getContext('2d') : undefined;
 const ticksElement = document.querySelector('.ticks.flex_row.align_flex_end.width_full');
 const fileSection = document.querySelector('.files_section.flex_column.justify_flex_start');
 const cutSection = document.querySelector('.cut_section.flex_row.center.justify_flex_start.width_full');
+const barMenu = document.querySelector('.bar_menu.flex_column');
 
 let chartCanvas;
 let chartctx1;
 let chartCanvas2;
 let chartctx2;
+let barInCons;
 
 const playersContainer = document.querySelector('.players.flex_column.center.justify_flex_start');
 
@@ -542,93 +544,34 @@ function addToTagList (e) {
     });
     if (tagListContains === 0) {
         tagList.appendChild(e.currentTarget);
-        const html = `<div class="tag width_full flex_row justify_center" style="color: #FFF;">
+        const html = `<div oncontextmenu="tagRightClick(event)" class="tag width_full flex_row justify_center" style="color: #FFF;">
                         <p>${ e.currentTarget.innerHTML }</p>
                     </div>`
         workingArea.innerHTML += html;
         adjustBars();
         addSelectRow(e.currentTarget.innerHTML);
+        populateTicks();
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    if (localStorage.getItem('fromPlayer') || localStorage.getItem('fromTeam')) {
-        document.querySelector('.playerCharts.flex_column').style.display = 'flex';
-        if (ctx) {
-            const gradient = ctx.createLinearGradient(canvas.width / 2, 0, canvas.width / 2, canvas.height * 2);
-            gradient.addColorStop(0, '#BCBCBC');
-            gradient.addColorStop(1, '#5A5858');
-            
-            const data = {
-                labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
-                datasets: [{
-                    label: 'My First Dataset',
-                    data: [65, 59, 80, 81, 56, 55, 40, 81, 65, 80, 59, 40, 56, 55],
-                    backgroundColor: [
-                    gradient
-                    ],
-                    borderRadius: ['50'],
-                    borderWidth: 1,
-                    barThickness: 20
-                }],
-            };
-        
-            new Chart(ctx, {
-                type: 'bar',
-                data: data,
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: true,
-                    scales: {
-                        xAxes: [
-                            {
-                                ticks: {
-                                    fontColor: '#FFF'
-                                }
-                            }
-                        ]
-                    }
-                }
-            });
-            canvas.width = selectionContent.getBoundingClientRect().width / 2.5;
-            canvas.height = 383;
-        }
-    
-        if (lineCtx) {
-            new Chart(lineCtx, {
-                type: 'line',
-                data: {
-                    labels: [1, 2, 3, 4, 5, 6],
-                    datasets: [
-                        {
-                            data: [122, 110, 98, 110, 122, 115]
-                        },
-                        {
-                            data: [10, 22, 34, 22, 10, 17],
-                            fill: '-1',
-                            backgroundColor: 'rgba(95, 95, 95, 0.3)'
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: true,
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
-        }
-        document.getElementById('initial').remove();
-    }
+function tagRightClick(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    console.log(window.scrollY);
+    barMenu.style.display = 'flex';
+    barMenu.style.top = `${ e.clientY + window.scrollY }px`;
+    barMenu.style.left = `${ e.clientX }px`;
+    barMenu.style.zIndex = '100';
+    barInCons = e.currentTarget;
+}
 
-    if (playersContainer.children.length === 0) {
-        const html = `<h1 id="initial">Please select a player to view its statistics</h1>`;
-        defaultContent.innerHTML += html;
-    }
-});
+// document.addEventListener('DOMContentLoaded', () => {
+
+//     if (playersContainer.children.length === 0) {
+//         const html = `<h1 id="initial">Please select a player to view its statistics</h1>`;
+//         defaultContent.innerHTML += html;
+//     }
+// });
 
 function selectItem (e) {
     const content = document.querySelector('.content_wrapper.flex_column.space_between.center');
@@ -693,7 +636,32 @@ document.addEventListener('click', (e) => {
             fileMenu.style.left = '';
         };
     }
+    if (barMenu.style.display === 'flex') barMenu.style.display = 'none';
 });
+
+function handleBarClick(e) {
+    e.stopPropagation();
+    let action;
+    if (e.target.nodeName === 'DIV') action = e.target.querySelector('p').innerHTML;
+    else if (e.target.nodeName === 'P') action = e.target.innerHTML;
+
+    if (action === 'Add Player') {
+        localStorage.setItem('fromCutSection', 'true');
+        window.location.href = '../Players/players.html';
+    }
+    if (action === 'Set Team') {
+        localStorage.setItem('fromCutSection', 'true');
+        window.location.href = '../Teams/teams.html';
+    }
+    if (action === 'Remove') {
+        localStorage.setItem('fromCutSection', 'true');
+        removeSelectRow(barInCons.querySelector('p').innerHTML);
+        removeBar(barInCons.querySelector('p').innerHTML);
+        // window.location.href = '../Teams/teams.html';
+    }
+    barMenu.style.display = 'none';
+    // console.log(e);
+}
 
 function trackPlayers(e) {
     const p = e.currentTarget.nextElementSibling;
@@ -773,7 +741,7 @@ function throttleFunc(func, delay) {
     }
 }
 
-populateTicks();
+// populateTicks();
 
 window.addEventListener('resize', throttleFunc(() => {
     console.log(window.innerWidth);

@@ -3,10 +3,23 @@ const mobileMenu = document.querySelector('.mobile_menu');
 const directoryCreateButton = document.querySelector('.create.flex_row.center.space_between');
 const createMenu = document.querySelector('.create_menu.flex_column.space_evenly');
 const fileSection = document.querySelector('.files_container.flex_row.justify_flex_start.center.width_full');
+const trackerPosition = document.querySelector('.tracker.flex_column.justify_flex_start.width_full');
 const videoDiv = document.querySelector('.video img');
 const videoBar = document.querySelector('.video');
 const seekBar = document.querySelector('.seek_bar');
+const start_tracker = document.querySelector('.start_tracker');
 const volumeInput = document.querySelector('.volume');
+const start = document.querySelectorAll('.ranges.flex_column input')[0];
+const end = document.querySelectorAll('.ranges.flex_column input')[1];
+const end_tracker = document.querySelector('.end_tracker');
+const directorySection = document.querySelector('.directories_container.flex_row.justify_flex_start.align_flex_start.width_full');
+const cutSection = document.querySelector('.cut_section.flex_row.center.justify_flex_start.width_full');
+const selectMenu = document.querySelector('.select_menu.flex_column.width_full');
+
+let currentDirectory;
+let currentFile;
+const folders = {};
+
 let fileMenu = document.querySelector('.file_menu.space_between.flex_row.center');
 
 let isOpen = false;
@@ -33,13 +46,60 @@ const files = [
     }
 ];
 
-// window.addEventListener('load', () => {
-//     setTimeout(() => {
-//         document.querySelector('.container.flex_column.justify_flex_start.center.width_full').style.display = 'flex';
-//         // document.querySelector('.loader.flex_row.center.justify_center').classList.remove('flex_row');
-//         document.querySelector('.loader.flex_row.center.justify_center').style.display = 'none';
-//     }, 500)
-// });
+document.addEventListener('DOMContentLoaded', () => {
+    console.log(video.src);
+    if (video.src === '') {
+        video.style.display = 'none';
+        video.nextElementSibling.style.display = 'flex';
+    }
+
+    if (fileSection.children.length === 0) {
+        fileSection.querySelector('h1').style.display = 'block';
+    } else {
+        fileSection.querySelector('h1').style.display = 'none';
+    }
+});
+
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        document.querySelector('.container.flex_column.justify_flex_start.center.width_full').style.display = 'flex';
+        // document.querySelector('.loader.flex_row.center.justify_center').classList.remove('flex_row');
+        document.querySelector('.loader.flex_row.center.justify_center').style.display = 'none';
+    }, 500)
+});
+
+directorySection.addEventListener('click', (e) => {
+    emptyFileContainer();
+    Array.from(directorySection.children).forEach(directory => {
+        directory.classList.remove('active');
+    });
+});
+
+fileMenu.addEventListener('click', (e) => {
+    e.stopPropagation();
+    handleMenuClick(e);
+});
+
+function showSelectMenu(e) {
+    e.stopPropagation();
+    requestAnimationFrame(() => {
+        if (selectMenu.style.transform === '' || selectMenu.style.transform === 'scale(0)') {
+            selectMenu.style.transform = 'scale(1)'
+            selectMenu.style.transformOrigin = '0 0';
+        } else selectMenu.style.transform = 'scale(0)';
+    });
+    console.log(selectMenu);
+}
+
+fileSection.addEventListener('click', (e) => {
+    Array.from(fileSection.children).forEach(file => {
+        file.classList.remove('active');
+    });
+    video.src = '';
+    video.style.display = 'none';
+    video.nextElementSibling.style.display = 'flex';
+    fileMenu.style.display = 'none';
+});
 
 directoryCreateButton.addEventListener('click', (e) => {
     e.stopPropagation();
@@ -93,91 +153,6 @@ hamburger.addEventListener('click', (e) => {
         isOpen = true;
     }
 });
-
-video.addEventListener('timeupdate', (e) => {
-    seekBar.max = e.target.duration;
-    seekBar.value = e.target.currentTime;
-    if (!video.paused) playPause.innerHTML = pauseSvg;
-    else if (video.paused) playPause.innerHTML = playSvg;
-});
-
-document.addEventListener('click', (e) => {
-    e.stopPropagation();
-    if (isOpen) {
-        mobileMenu.style.display = 'none';
-        isOpen = false;
-        console.log(e);
-        createMenu.style.display = 'none';
-        if (fileMenu) {
-            fileMenu.style.display = 'none';
-            fileMenu.style.position = '';
-            fileMenu.style.top = '';
-            fileMenu.style.left = '';
-        };
-    }
-});
-
-function createDirectory(e) {
-    console.log(e);
-    e.stopPropagation();
-    const input = document.querySelector('#createDirectory');
-    console.log(input.value);
-    const html = `
-    <div onclick="directorySelect(event)" class="directory_wrapper flex_row align_flex_start center">
-        <input type="checkbox">
-        <div class="directory flex_column space_between center width_full">
-            <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M141 896q-24 0-42-18.5T81 836V316q0-23 18-41.5t42-18.5h280l60 60h340q23 0 41.5 18.5T881 376v460q0 23-18.5 41.5T821 896H141Zm0-580v520h680V376H456l-60-60H141Zm0 0v520-520Z"/></svg>
-            <p>${ input.value ? input.value : 'Individual Concept' }</p>
-        </div>
-        <div class="remove">
-            <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 96 960 960" width="18"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg>
-        </div>
-    </div>
-    `;
-    const fileTreeHtml = `<div class="row flex_row space_between center">
-    <div class="file">
-        <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M141 896q-24 0-42-18.5T81 836V316q0-23 18-41.5t42-18.5h280l60 60h340q23 0 41.5 18.5T881 376v460q0 23-18.5 41.5T821 896H141Zm0-580v520h680V376H456l-60-60H141Zm0 0v520-520Z"/></svg>
-    </div>
-    <div class="path flex_row justify_center center">
-        <p>${ input.value ? input.value : 'Individual Concept' }</p>
-    </div>
-</div>`;
-    const directoriesContainer = document.querySelector('.directories_container.flex_row.justify_flex_start.align_flex_start.width_full');
-    let fileTree = document.querySelector('.file_tree.flex_column.justify_flex_start.align_flex_start');
-    fileTree.innerHTML += fileTreeHtml;
-    fileTree = document.querySelector('.row.flex_row.space_between.center:last-child');
-    fileTree.style.marginLeft = '1.5rem';
-    fileTree.style.marginTop = '1rem';
-    console.log(fileTree);
-    directoriesContainer.innerHTML += html;
-    input.value = '';
-}
-
-function directorySelect(e) {
-    if (e.target.classList.contains('remove') || e.target.parentElement.classList.contains('remove')) {
-        e.currentTarget.remove();
-        Array.from(fileSection.children).forEach(file => {
-            file.remove();
-        });
-    } else {
-        const directories = document.getElementsByClassName('directory_wrapper flex_row align_flex_start center');
-        Array.from(directories).forEach(directory => {
-            directory.classList.remove('active');
-        });
-        e.currentTarget.classList.add('active');
-    
-        files.forEach(file => {
-            const html = `<div oncontextmenu="fileRightClick(event)" onclick="playVideo(event)" class="file_wrapper flex_row align_flex_start center">
-            <input type="checkbox">
-            <div. class="file flex_column space_between center width_full">
-                <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M450 896V370L202 618l-42-42 320-320 320 320-42 42-248-248v526h-60Z"/></svg>
-                <p id="file_name">${ file.name }</p>
-            </div>
-        </div>`;
-            fileSection.innerHTML += html;
-        });
-    }
-}
 
 function handleMenuClick(e) {
     // e.stopPropagation();
@@ -237,8 +212,312 @@ function fileRightClick(e) {
 //     isOpen = true;
 }
 
-function playVideo(e) {
-    const fileName = e.currentTarget.querySelector('#file_name').innerHTML;
-    const src = files.filter(file => file.name === fileName);;
-    video.src = src[0].videoSrc;
+function importFile(e) {
+    let html = `
+        <div oncontextmenu="fileRightClick(event)" onclick="playVideo(event)" class="file_wrapper flex_row align_flex_start center">
+            <input type="checkbox">
+            <div class="file flex_column space_between center width_full">
+                <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M450 896V370L202 618l-42-42 320-320 320 320-42 42-248-248v526h-60Z"/></svg>
+                <p id="file_name">${ e.target.files[0].name }</p>
+            </div>
+        </div>
+    `;
+
+    if (fileSection.children[0].tagName === 'H1') fileSection.innerHTML = '';
+
+    folders[currentDirectory.querySelector('#directory_name').innerHTML].push({
+        name: e.target.files[0].name,
+        size: e.target.files[0].size,
+        src: URL.createObjectURL(e.target.files[0])
+    });
+    fileSection.innerHTML += html;
+    let fileTree = document.querySelector('.file_tree.flex_column.justify_flex_start.align_flex_start');
+    html = `
+        <div class="row flex_row space_between center width_full">
+            <div class="file">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M141 896q-24 0-42-18.5T81 836V316q0-23 18-41.5t42-18.5h280l60 60h340q23 0 41.5 18.5T881 376v460q0 23-18.5 41.5T821 896H141Zm0-580v520h680V376H456l-60-60H141Zm0 0v520-520Z"/></svg>
+            </div>
+            <div class="path flex_row justify_center center">
+                <p>${ e.target.files[0].name }</p>
+            </div>
+        </div>
+    `;
+    Array.from(fileTree.children).forEach(file => {
+        if (file.querySelector('.path p').innerHTML === currentDirectory.querySelector('#directory_name').innerHTML) {
+            file.insertAdjacentHTML('afterend', html);
+            file.nextElementSibling.style.marginTop = '1rem';
+            file.nextElementSibling.style.marginLeft = '1.6rem';
+        }
+    });
+    console.log(folders);
+    e.target.value = null;
 }
+
+function resetRanges() {
+    start.value = start.min;
+    end.value = end.min;
+    start_tracker.style.left = videoBar.style.left;
+    end_tracker.style.position = 'absolute';
+    end_tracker.style.left = videoBar.style.left;
+    console.log(end_tracker.style.left);
+    console.log(videoBar.style.left);
+}
+
+// function handleMenuClick (e) {
+//     if (e.target.classList.contains('menu_item')) {
+//         e.target.children[1].innerHTML;
+//     }
+// }
+
+video.addEventListener('timeupdate', (e) => {
+    seekBar.max = e.target.duration;
+    seekBar.value = e.target.currentTime;
+    if (!video.paused) playPause.innerHTML = pauseSvg;
+    else if (video.paused) playPause.innerHTML = playSvg;
+});
+
+start_tracker.addEventListener('drag', moveSlider)
+end_tracker.addEventListener('drag', moveEndSlider)
+start_tracker.addEventListener('dragend', setPosition)
+end_tracker.addEventListener('dragend', setEndPosition)
+
+function emptyFileContainer(e) {
+    Array.from(fileSection.children).forEach(file => {
+        file.remove();
+    });
+}
+
+function cutVideo(e) {
+    const start = start_tracker.style.left.split('px')[0] ? start_tracker.style.left.split('px')[0] : (start_tracker.getBoundingClientRect().x - 12);
+    const end = end_tracker.style.left.split('px')[0] ? end_tracker.style.left.split('px')[0] : (end_tracker.getBoundingClientRect().x - 12);
+    console.log(start, end);
+    const percent = Math.abs(parseFloat(start) - parseFloat(end));
+    const html = `<div class="cut_video">
+                    <img src="../video/gif.gif" alt="">
+                </div>
+    `;
+    const workingArea = document.querySelector('.working_area.width_full.flex_column.justify_flex_start');
+    workingArea.innerHTML += html;
+    const cutVideo = document.querySelector('.working_area.width_full.flex_column.justify_flex_start .cut_video');
+    cutVideo.style.width = `${ percent }px`;
+    cutVideo.style.height = '2rem';
+    cutVideo.style.background = '#FFF';
+    cutVideo.style.position = 'absolute';
+    cutVideo.style.left = `${ start }px`;
+    cutVideo.style.borderRight = '1px solid black';
+    cutVideo.style.borderLeft = '1px solid black';
+}
+
+document.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (isOpen) {
+        mobileMenu.style.display = 'none';
+        isOpen = false;
+        console.log(e);
+        createMenu.style.display = 'none';
+    }
+    if (selectMenu.style.transform === 'scale(1)') selectMenu.style.transform = 'scale(0)';
+});
+
+function createDirectory(e) {
+    console.log(e);
+    e.stopPropagation();
+    const input = document.querySelector('#createDirectory');
+    if (!input.value || folders[input.value]) return;
+    const html = `
+    <div onclick="directorySelect(event)" class="directory_wrapper flex_row align_flex_start center">
+        <input type="checkbox">
+        <div class="directory flex_column space_between center width_full">
+            <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M141 896q-24 0-42-18.5T81 836V316q0-23 18-41.5t42-18.5h280l60 60h340q23 0 41.5 18.5T881 376v460q0 23-18.5 41.5T821 896H141Zm0-580v520h680V376H456l-60-60H141Zm0 0v520-520Z"/></svg>
+            <p id="directory_name">${ input.value ? input.value : 'Individual Concept' }</p>
+        </div>
+        <div class="remove">
+            <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 96 960 960" width="18"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg>
+        </div>
+    </div>
+    `;
+    const fileTreeHtml = `<div class="row flex_row space_between center">
+    <div class="file">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M141 896q-24 0-42-18.5T81 836V316q0-23 18-41.5t42-18.5h280l60 60h340q23 0 41.5 18.5T881 376v460q0 23-18.5 41.5T821 896H141Zm0-580v520h680V376H456l-60-60H141Zm0 0v520-520Z"/></svg>
+    </div>
+    <div class="path flex_row justify_center center">
+        <p>${ input.value ? input.value : 'Individual Concept' }</p>
+    </div>
+</div>`;
+    const directoriesContainer = document.querySelector('.directories_container.flex_row.justify_flex_start.align_flex_start.width_full');
+    let fileTree = document.querySelector('.file_tree.flex_column.justify_flex_start.align_flex_start');
+    fileTree.innerHTML += fileTreeHtml;
+    fileTree = document.querySelector('.row.flex_row.space_between.center:last-child');
+    fileTree.style.marginLeft = '0.8rem';
+    fileTree.style.marginTop = '1rem';
+    createMenu.style.display = 'none';
+    isOpen = false;
+    directoriesContainer.innerHTML += html;
+    folders[input.value] = [];
+    input.value = '';
+}
+
+function moveSlider(e) {
+    e.stopPropagation();
+    if (e.pageX > 30 && e.pageX < 1430) {
+        let percent = 1 - ((start_tracker.getBoundingClientRect().x - videoDiv.getBoundingClientRect().x) / 1430);
+        start_tracker.style.position = 'absolute';
+        start_tracker.style.left = `${ e.pageX }px`;
+        video.currentTime = video.duration - (percent * video.duration);
+        seekBar.max = video.duration;
+        seekBar.value = video.currentTime;
+        const value = video.currentTime / 60;
+        if (value > 1) {
+            let minutes = Math.floor(value);
+            let seconds = Math.floor((value % 1) * 60);
+            start.value = `${ minutes }.${ seconds }`;
+        } else {
+            start.value = `${ value * 60 }`
+        }
+    }
+}
+
+function setPosition(e) {
+    e.stopPropagation();
+    if (30 < e.pageX) {
+        start_tracker.style.left = `${ e.pageX }px`;
+        const value = video.currentTime / 60;
+        if (value > 1) {
+            let minutes = Math.floor(value);
+            let seconds = Math.floor((value % 1) * 60);
+            start.value = `${ minutes }.${ seconds }`;
+        } else {
+            start.value = `${ value * 60 }`
+        }
+    } else {
+        start_tracker.style.left = '30px';
+        start.value = start.value.min;
+    }
+}
+
+function moveEndSlider(e) {
+    e.stopPropagation();
+    if (e.pageX > 30 && e.pageX < 1460) {
+        let percent = 1 - ((end_tracker.getBoundingClientRect().x - videoDiv.getBoundingClientRect().x) / 1430);
+        end_tracker.style.position = 'absolute';
+        end_tracker.style.left = `${ e.pageX }px`;
+        video.currentTime = video.duration - (percent * video.duration);
+        const value = (video.duration - (percent * video.duration)) / 60;
+        if (value > 1) {
+            let minutes = Math.floor(value);
+            let seconds = Math.floor((value % 1) * 60);
+            end.value = `${ minutes }.${ seconds }`;
+        } else {
+            end.value = `${ value * 60 }`
+        }
+    }
+}
+
+function setEndPosition(e) {
+    e.stopPropagation();
+    const value = video.currentTime / 60;
+    if (30 < e.pageX) {
+        end_tracker.style.left = `${ e.pageX }px`;
+        if (value > 1) {
+            let minutes = Math.floor(value);
+            let seconds = Math.floor((value % 1) * 60);
+            end.value = `${ minutes }.${ seconds }`;
+        } else {
+            end.value = `${ value * 60 }`
+        }
+    } else {
+        end_tracker.style.left = '30px';
+        end.value = '0.00';
+    }
+}
+
+function directorySelect(e) {
+    e.stopPropagation();
+    console.log(e);
+    if (e.target.classList.contains('remove') || e.target.parentElement.classList.contains('remove')) {
+        const fileName = e.currentTarget.querySelector('#directory_name').innerHTML;
+        e.currentTarget.remove();
+        emptyFileContainer();
+        let fileTree = document.querySelector('.file_tree.flex_column.justify_flex_start.align_flex_start');
+        Array.from(fileTree.children).forEach(file => {
+            if (file.querySelector('.path p').innerHTML === fileName) file.remove();
+        });
+        folders[fileName].forEach(file => {
+            Array.from(fileTree.children).forEach(row => {
+                console.log(row.querySelector('.path p').innerHTML);
+                if (row.querySelector('.path p').innerHTML === file.name) row.remove();
+            });
+        });
+        delete folders[fileName];
+        
+    } else {
+        const directories = document.getElementsByClassName('directory_wrapper flex_row align_flex_start center');
+        currentDirectory = e.currentTarget;
+        Array.from(directories).forEach(directory => {
+            directory.classList.remove('active');
+        });
+        e.currentTarget.classList.add('active');
+        folders[e.currentTarget.querySelector('#directory_name').innerHTML].forEach(file => {
+            const html = `
+                <div oncontextmenu="fileRightClick(event)" onclick="playVideo(event)" class="file_wrapper flex_row align_flex_start center">
+                    <input type="checkbox">
+                    <div class="file flex_column space_between center width_full">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M450 896V370L202 618l-42-42 320-320 320 320-42 42-248-248v526h-60Z"/></svg>
+                        <p id='file_name'>${ file.name }</p>
+                    </div>
+                </div>
+            `;
+            fileSection.innerHTML += html;
+        });
+    }
+}
+
+function playVideo(e) {
+    e.stopPropagation();
+    const fileName = e.currentTarget.querySelector('#file_name').innerHTML;
+    const path = folders[currentDirectory.querySelector('#directory_name').innerHTML].filter(file => file.name === fileName);;
+    video.style.display = 'block';
+    video.nextElementSibling.style.display = 'none';
+    video.src = path[0].src;
+    e.currentTarget.classList.add('active');
+    currentFile = e.currentTarget;
+}
+
+function populateTicks() {
+    const ticksElement = document.querySelector('.ticks.width_full');
+    const numbersPosition = document.querySelectorAll('.numbers.flex_row.space_between.center.width_full p');
+    let tick = undefined;
+    console.log(trackerPosition);
+    Array.from(numbersPosition).forEach(numberPosition => {
+        tick = document.createElement('span');
+        tick.style.width = '1.5px';
+        tick.style.height = '1rem';
+        tick.style.position = 'absolute';
+        tick.style.top = `${ trackerPosition.getBoundingClientRect().top + window.scrollY + 25 }px`;
+        tick.style.left = `${ numberPosition.getBoundingClientRect().x + (numberPosition.getBoundingClientRect().width / 2) }px`;
+        tick.style.background = '#000';
+        tick.style.zIndex = '20';
+        ticksElement.appendChild(tick);
+    });
+    const ticks = Array.from(trackerPosition.querySelectorAll('.ticks span'));
+    for (let i = 0; i < ticks.length; i++) {
+        if (i === ticks.length - 1) break;
+        let distance = ticks[i + 1].getBoundingClientRect().x - ticks[i].getBoundingClientRect().x;
+        let start = ticks[i].getBoundingClientRect().x;
+        let end = ticks[i + 1].getBoundingClientRect().x;
+        let element = ticks[i + 1];
+        while (start < end) {
+            tick = document.createElement('span');
+            tick.style.width = '1.5px';
+            tick.style.height = '0.4rem';
+            tick.style.position = 'absolute';
+            tick.style.top = `${ trackerPosition.getBoundingClientRect().top + window.scrollY + 30 }px`;
+            tick.style.left = `${ start + 5 }px`;
+            tick.style.background = '#000';
+            ticksElement.insertBefore(tick, element);
+            start += 5;
+        }
+    }
+}
+
+populateTicks();

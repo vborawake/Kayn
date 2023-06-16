@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="statistics.css">
+    <link rel="stylesheet" href="desktop.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.3.0/chart.umd.js" integrity="sha512-CMF3tQtjOoOJoOKlsS7/2loJlkyctwzSoDK/S40iAB+MqWSaf50uObGQSk5Ny/gfRhRCjNLvoxuCvdnERU4WGg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script defer src="statistics.js"></script>
+    <script defer src="desktop.js"></script>
     <title>Statistics</title>
 </head>
 <body>
@@ -89,217 +89,9 @@
                     </div>
                 </div>
             </div>
-            <div class="right_section">
-                <div class="default_content flex_row space_between">
-                    <div class="item">
-                        <p>Add Player To Compare</p>
-                        <button onclick="localStorage.setItem('fromStats', 'true')"><a href="../Players/players.html">Add Player</a></button>
-                        <div class="players flex_column center justify_flex_start">
-                            <!-- <div class="player flex_row justify_center center">
-                                <p class="player_name"></p>
-                            </div> -->
-                        </div>
-                    </div>
-                    <div class="item">
-                        <p>Add Team To Compare</p>
-                        <button><a href="../Teams/teams.html">Add Team</a></button>
-                    </div>
-                </div>
-                <div class="playerCharts flex_column">
-                    <div onclick="selectTab(event)" class="tabs flex_row space_between">
-                        <p class="active">Match Statistics</p>
-                        <p>Passes</p>
-                        <p>Ball Possession</p>
-                    </div>
-                    <div class="selection_content flex_column">
-                        <div class="score_section flex_row center">
-                            <div class="team flex_row center">
-                                <div class="team_image flex_column center">
-                                    <img src="../images/team 1.png" alt="">
-                                    <p>Soccer Club</p>
-                                </div>
-                                <p class="score">3</p>
-                            </div>
-                            <p>:</p>
-                            <div class="team flex_row_reverse center">
-                                <div class="team_image flex_column center">
-                                    <img src="../images/team 2.png" alt="">
-                                    <p>Best Foot</p>
-                                </div>
-                                <p class="score">1</p>
-                            </div>
-                        </div>
-                        <div class="chart_wrapper flex_row space_between center">
-                            <div class="chart flex_row justify_center center">
-                                <div>
-                                    <span class="team_1">
-                                        <p>Yara Toure 34'</p>
-                                    </span>
-                                    <span class="team_2">
-                                        <p>74' Ibarra</p>
-                                    </span>
-                                    <span class="team_1">
-                                        <p>Yara Toure 34'</p>
-                                    </span>
-                                    <span class="team_1">
-                                        <p>Yara Toure 34'</p>
-                                    </span>
-                                    <span class="team_2">
-                                        <p>74' Ibarra</p>
-                                    </span>
-                                    <span class="team_2">
-                                        <p>74' Ibarra</p>
-                                    </span>
-                                    <span class="team_1">
-                                        <p>Yara Toure 34'</p>
-                                    </span>
-                                    <span class="team_1">
-                                        <p>Yara Toure 34'</p>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="stats flex_column center">
-                                <div class="ball_possession flex_column">
-                                    <h1 style="text-align: center;">Ball Possession</h1>
-                                    <div class="values flex_row space_between">
-                                        <div class="bar_left flex_row center justify_flex_end">
-                                            <span style="width: 100%;"></span>
-                                            <p>62%</p>
-                                        </div>
-                                        <div class="bar_right flex_row center justify_flex_start">
-                                            <span style="width: 80%;"></span>
-                                            <p>38%</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="ball_possession flex_column">
-                                    <h1 style="text-align: center;">Shots</h1>
-                                    <div class="values flex_row space_between">
-                                        <div class="bar_left flex_row center justify_flex_end">
-                                            <span style="width: 100%;"></span>
-                                            <p>7</p>
-                                        </div>
-                                        <div class="bar_right flex_row center justify_flex_start">
-                                            <span style="width: 60%;"></span>
-                                            <p>4</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="ball_possession flex_column">
-                                    <h1 style="text-align: center;">Free Kicks</h1>
-                                    <div class="values flex_row space_between">
-                                        <div class="bar_left flex_row center justify_flex_end">
-                                            <span style="width: 80%;"></span>
-                                            <p>9</p>
-                                        </div>
-                                        <div class="bar_right flex_row center justify_flex_end">
-                                            <span style="width: 100%;"></span>
-                                            <p>14</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- <div class="wrapper flex_row space_between">
-                            <div class="left_side">
-                                <canvas id="chart"></canvas>
-                                <div class="pass_stats flex_row">
-                                    <div class="column flex_column">
-                                        <p>PASSES IN 1ST HALF</p>
-                                        <p>264</p>
-                                    </div>
-                                    <div class="column flex_column">
-                                        <p>ACCURATE PASSES</p>
-                                        <p>208</p>
-                                    </div>
-                                    <div class="column flex_column">
-                                        <p>ACCURACY</p>
-                                        <p>78.25%</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="right_side flex_column">
-                                <h1>PASS ATTEMPTS AND BREAKDOWN</h1>
-                                <div class="passes flex_row">
-                                    <div class="input flex_row">
-                                        <input type="checkbox" name="" id="">
-                                        <p>Successful Passes</p>
-                                    </div>
-                                    <div class="input flex_row">
-                                        <input type="checkbox" name="" id="">
-                                        <p>Unsuccessful Passes</p>
-                                    </div>
-                                </div>
-                                <div class="boards flex_row space_between">
-                                    <div class="board flex_column">
-                                        <span>23</span>
-                                        <span>59</span>
-                                    </div>
-                                    <div class="board flex_column">
-                                        <span>23</span>
-                                        <span>59</span>
-                                    </div>
-                                    <div class="board flex_column">
-                                        <span>23</span>
-                                        <span>59</span>
-                                    </div>
-                                </div>
-                                <div class="football_field flex_row space_between center">
-                                    <div class="goal_post">
-                                        <span></span>
-                                        <div class="mid_field flex_row justify_center center">
-                                            <p>82</p>
-                                        </div>
-                                    </div>
-                                    <div class="mid_field flex_row justify_center center">
-                                        <p>121</p>
-                                    </div>
-                                    <div class="goal_post">
-                                        <div class="mid_field flex_row justify_center center">
-                                            <p>61</p>
-                                        </div>
-                                        <span></span>
-                                    </div>
-                                </div>
-                                <div class="pass_stats flex_row space_between">
-                                    <div class="column flex_column">
-                                        <p>31%</p>
-                                        <p>DEF</p>
-                                    </div>
-                                    <div class="column flex_column">
-                                        <p>46%</p>
-                                        <p>MID</p>
-                                    </div>
-                                    <div class="column flex_column">
-                                        <p>23%</p>
-                                        <p>ATK</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
-                        <!-- <div class="wrapper flex_row space_between">
-                            <div class="left_side">
-                                <h1>BALL POSSESSION</h1>
-                                <canvas id="line_chart"></canvas>
-                            </div>
-                            <div class="right_side">
-                                <div class="stats flex_row space_between">
-                                    <div class="stat">
-                                        <p>BALL POSSESSSION</p>
-                                        <p>60 / <span>40</span></p>
-                                    </div>
-                                    <div class="stat">
-                                        <p>1ST HALF</p>
-                                        <p>58 / <span>44</span></p>
-                                    </div>
-                                    <div class="stat">
-                                        <p>2ND HALF</p>
-                                        <p>63 / <span>37</span></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
-                    </div>
+            <div class="right_section flex_column">
+                <div class="image_container">
+                    <img src="../images/soccer-players-action-professional-stadium.jpg" alt="">
                 </div>
             </div>
         </div>
@@ -336,15 +128,35 @@
     
                     </div>
                 </div>
+                <div class="bar_menu flex_column" onclick="handleBarClick(event)">
+                    <div class="item flex_row center">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="m532 994-60-12 31-168-146-110-55-240-105 90 31 148-60 12-37-180 174-155q21-19 49-15t55 15q34 14 70 20.5t72 1.5q33-5 61.5-22.5T667 340l38 47q-27 21-56 40t-62 28q-35 10-72 8t-72-11l33 150 154-29 196 139-36 48-168-117-170 34 121 89-41 228ZM320 296q-29 0-49.5-20.5T250 226q0-29 20.5-49.5T320 156q29 0 49.5 20.5T390 226q0 29-20.5 49.5T320 296Z"/></svg>
+                        <p>Add Player</p>
+                    </div>
+                    <div class="item flex_row center">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M480 606q-58 0-97.5-39.5T343 469q0-58 39.5-97.5T480 332q58 0 97.5 39.5T617 469q0 58-39.5 97.5T480 606Zm0-60q34 0 55.5-21.5T557 469q0-34-21.5-55.5T480 392q-34 0-55.5 21.5T403 469q0 34 21.5 55.5T480 546Zm0 429q-140-35-230-162.5T160 533V295l320-120 320 120v238q0 152-90 279.5T480 975Zm0-399Zm0-337-260 98v196q0 63 17.5 120.5T287 760q46-25 93.5-37.5T480 710q52 0 99.5 12.5T673 760q32-49 49.5-106.5T740 533V337l-260-98Zm0 531q-39 0-78 10t-77 30q32 35 71 61.5t84 41.5q45-15 84-41.5t71-61.5q-38-20-77-30t-78-10Z"/></svg>
+                        <p>Set Team</p>
+                    </div>
+                    <div class="item flex_row center">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M240 656h480v-60H240v60Zm0-130h480v-60H240v60Zm0-130h480v-60H240v60Zm640 580L720 816H140q-23 0-41.5-18.5T80 756V236q0-23 18.5-41.5T140 176h680q24 0 42 18.5t18 41.5v740ZM140 236v520h605l75 75V236H140Zm0 0v595-595Z"/></svg>
+                        <p>Set Comment</p>
+                    </div>
+                    <div class="item flex_row center">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M261 936q-24.75 0-42.375-17.625T201 876V306h-41v-60h188v-30h264v30h188v60h-41v570q0 24-18 42t-42 18H261Zm438-630H261v570h438V306ZM367 790h60V391h-60v399Zm166 0h60V391h-60v399ZM261 306v570-570Z"/></svg>
+                        <p>Remove</p>
+                    </div>
+                </div>
                 <div class="working_area width_full flex_column justify_flex_start">
                     <span class="start_tracker"></span>
                     <span class="end_tracker"></span>
-                    <div class="video width_full flex_row justify_center" style="color: #FFF;">
-                        <p>Spotlight</p>
+                    <div class="bars width_full">
+                        <div class="video width_full flex_row justify_center" style="color: #FFF;">
+                            <p>Spotlight</p>
+                        </div>
+                        <!-- <div class="tag width_full flex_row justify_center" style="color: #FFF;">
+                            <p>Tag</p>
+                        </div> -->
                     </div>
-                    <!-- <div class="tag width_full flex_row justify_center" style="color: #FFF;">
-                        <p>Tag</p>
-                    </div> -->
                 </div>
             </div>
         </div>

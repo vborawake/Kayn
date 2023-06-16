@@ -9,7 +9,6 @@
 .flex_column {
     display: flex;
     flex-direction: column;
-    /* flex-wrap: wrap; */
 }
 
 .space_between {
@@ -42,7 +41,6 @@
 
 .flex_row {
     display: flex;
-    /* flex-wrap: wrap; */
 }
 
 .flex_row_reverse {
@@ -124,8 +122,8 @@ input:focus {
 }
 
 .loader img {
-    width: 30%;
-    height: 30%;
+    width: 15%;
+    height: 15%;
     object-fit: contain;
 
 }
@@ -133,7 +131,7 @@ input:focus {
 .container {
     min-height: 100vh;
     font-family: 'Inter', 'sans-serif';
-    /* display: none; */
+    display: none;
 }
 
 .hamburger {
@@ -243,6 +241,13 @@ input:focus {
 .container .files_section {
     width: 50%;
     border: 1px solid gray;
+    background: #464648;
+}
+
+.container .files_section h1 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-align: center;
 }
 
 .container .player_section {
@@ -259,6 +264,7 @@ input:focus {
 .container .workspace .toolbar {
     height: 3rem;
     padding: 0 5%;
+    background: #110F0D;
 }
 
 .container .toolbar svg {
@@ -275,7 +281,7 @@ input:focus {
     padding: 0.5rem;
     border-radius: 0.5rem;
     font-size: 1.1rem;
-    background: #A4A4A4;
+    background: #D9D9D9;
     color: #000;
 }
 
@@ -297,11 +303,11 @@ input:focus {
     font-weight: 400;
     height: 2rem;
     padding: 0.3rem;
-    background: #A4A4A4;
+    background: #D9D9D9;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 0.3rem;
-    /* margin: 0 0 2rem 0; */
     color: #000;
+    /* margin: 0 0 2rem 0; */
 }
 
 .container .workspace .toolbar .select .selected_item p {
@@ -309,7 +315,7 @@ input:focus {
 }
 
 .container .workspace .toolbar .select .selected_item svg {
-    fill: #FFF;
+    fill: #000;
     margin: -0.5rem 0 0 0;
 }
 
@@ -376,6 +382,7 @@ input:focus {
     width: 30%;
     border-right: 2px solid #A4A4A4;
     padding: 1rem 0 0 1rem;
+    background: #2F2D2E;
     white-space: nowrap;
     overflow-x: scroll;
 }
@@ -391,6 +398,7 @@ input:focus {
 }
 
 .container .files_section .file_tree .path {
+    /* background: #D9D9D9; */
     /* padding: 0.2rem; */
     border-radius: 0.25rem;
     font-size: 1.2rem;
@@ -406,10 +414,6 @@ input:focus {
 
 .container .files_section .file_tree .row {
     width: fit-content;
-}
-
-.container .files_section .file_tree .row:nth-child(2) {
-    transform: translateX(1rem);
 }
 
 .container svg {
@@ -466,7 +470,6 @@ input:focus {
 .container .workspace .files_section .file_manager .files_container .file svg {
     background: #A4A4A4;
     border-radius: 0.25rem;
-    padding: 0 0.2rem;
 }
 
 .container .workspace .files_section .file_manager .directory_wrapper svg:last-child {
@@ -489,7 +492,7 @@ input:focus {
     width: 18rem;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 4px;
-    background: #FFF;
+    background: #2F2D2E;
 }
 
 .container .workspace .files_section .file_manager .file_menu .menu_item:hover {
@@ -522,11 +525,21 @@ input:focus {
 }
 
 .container .workspace .controls {
+    position: absolute;
+    bottom: 0;
+    left: 0;
     height: 7rem;
+    background: #F5F5F5;
+}
+
+.container .workspace .controls svg {
+    fill: #000;
 }
 
 .container .workspace .player {
-    height: fit-content;
+    position: relative;
+    background: #656565;
+    height: 36rem;
 }
 
 .container .workspace .player video {
@@ -775,16 +788,20 @@ input:focus {
 
 @media screen and (min-width: 1200px) and (max-width: 1400px) {
     
+    html {
+        font-size: 14px;
+    }
+    
     .container .workspace .toolbar .filter {
         width: 45%;
     }
 
     .container .menu ul {
-        width: 18%;
+        width: 10%;
     }
 
     .container .workspace .player {
-        height: fit-content;
+        height: 36rem;
     }
 
     .container .workspace .player_section .controls {
@@ -807,12 +824,24 @@ input:focus {
     .container .cut_section .tracker {
         overflow: hidden;
     }
+
+    .container .workspace {
+        height: 81vh;
+    }
 }
 
 @media screen and (min-width: 1030px) and (max-width: 1200px) {
     
+    html {
+        font-size: 14px;
+    }
+    
     .container .workspace .toolbar .filter {
         width: 45%;
+    }
+
+    .container .workspace .toolbar .filter .select {
+        width: 80%;
     }
 
     .container .workspace .toolbar .search {
@@ -825,11 +854,11 @@ input:focus {
     }
 
     .container .menu ul {
-        width: 18%;
+        width: 11%;
     }
 
     .container .workspace .player {
-        height: 55vh;
+        height: 36rem;
     }
 
     .container .workspace .player_section .controls {
@@ -856,9 +885,17 @@ input:focus {
     .container .workspace .player_section .volume_buttons {
         width: 65%;
     }
+
+    .container .workspace {
+        height: 81vh;
+    }
 }
 
 @media screen and (min-width: 766px) and (max-width: 1030px) {
+    
+    html {
+        font-size: 13px;
+    }
     
     .container .workspace .toolbar {
         display: flex;
@@ -883,11 +920,11 @@ input:focus {
     }
 
     .container .menu ul {
-        width: 18%;
+        width: 13%;
     }
 
     .container .workspace .player {
-        height: fit-content;
+        height: 36rem;
     }
 
     .container .workspace .player_section .controls {
@@ -925,5 +962,91 @@ input:focus {
 
     .container .bottom_buttons .buttons_wrapper {
         width: 65%;
+    }
+
+    .container .workspace {
+        height: 83.5vh;
+    }
+}
+
+@media screen and (min-width: 400px) and (max-width: 768px) {
+
+    html {
+        font-size: 12px;
+    }
+    
+    .container .workspace .toolbar {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        height: fit-content;
+        padding: 0.5rem;
+    }
+    
+    .container .workspace .toolbar .filter {
+        width: 80%;
+    }
+
+    .container .workspace .toolbar .search {
+        width: 80%;
+        margin: 0 1rem 1rem 0;
+    }
+
+    .container .workspace .toolbar .search input {
+        width: 78%;
+    }
+
+    .container .menu ul {
+        width: 15%;
+    }
+
+    .container .menu .language {
+        width: 15%;
+    }
+
+    .container .workspace .player {
+        height: 36rem;
+    }
+
+    .container .workspace .player_section .controls {
+        height: 8rem;
+    }
+
+    .container .workspace .player_section button {
+        padding: 0;
+    }
+
+    .container .workspace .player_section button svg {
+        width: 26px;
+        height: 26px;
+    }
+
+    .container .cut_section .button_wrapper {
+        width: 100%;
+    }
+
+    .container .cut_section .button_wrapper button {
+        padding: 0.8rem;
+    }
+
+    .container .cut_section .tracker {
+        overflow: hidden;
+    }
+
+    .container .workspace .player_section .player .playing_buttons {
+        width: 85%;
+    }
+
+    .container .workspace .player_section .player .volume_buttons {
+        width: 100%;
+    }
+
+    .container .bottom_buttons .buttons_wrapper {
+        width: 65%;
+    }
+
+    .container .workspace {
+        height: 83.5vh;
     }
 }

@@ -84,6 +84,8 @@ document.addEventListener('DOMContentLoaded', () => {
 canvas.addEventListener('click', (e) => {
     // e.stopPropagation();
     console.log(selectedTool);
+    if (renderMenu.style.transform === 'scaleY(1)') renderMenu.style.transform = 'scaleY(0)';
+    console.log(renderMenu.style.transform);
     if (selectedTool) {
         console.log(selectedTool);
         if (selectedTool.classList.contains('circle')) {

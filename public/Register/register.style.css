@@ -250,7 +250,11 @@ button:hover {
 }
 
 .container .form_section form > .input {
-    margin: 0 0 4rem 0;
+    margin: 0 0 2rem 0;
+}
+
+.container .form_section form > .input:nth-child(7) {
+    margin: 0;
 }
 
 form input {
@@ -267,7 +271,7 @@ form input:focus {
 }
 
 .container .form_section .names {
-    margin: 0 0 4rem 0;
+    margin: 0 0 2rem 0;
     width: 100%;
 }
 
@@ -324,7 +328,7 @@ form input:focus {
 }
 
 .container .form_section .payment_method .inputs {
-    margin: 2rem 0 0 0;
+    margin: 1rem 0 0 0;
     width: 100%;
 }
 
@@ -421,6 +425,10 @@ form input:focus {
 
 @media screen and (min-width: 992px) and (max-width: 1200px) {
     
+    html {
+        font-size: 14px;
+    }
+    
     .container nav .left_section {
         align-items: center;
         width: 20%;
@@ -463,18 +471,8 @@ form input:focus {
         font-size: 1.3rem;
     }
     
-    .container .form_section form > .input {
-        margin: 0 0 4rem 0;
-    }
-    
     form input {
-        height: 3rem;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.14);
-        border-radius: 0.8rem;
-        border: none;
-        padding: 0.5rem;
-        font-size: 1.2rem;
-        width: 90%;
+        width: 100%;
     }
     
     form input:focus {
@@ -482,12 +480,11 @@ form input:focus {
     }
     
     .container .form_section .names {
-        margin: 0 0 4rem 0;
-        width: 100%;
+        width: 95%;
     }
     
     .container .form_section .names .input {
-        width: 50%;
+        width: 48%;
     }
     
     .container .form_section .product_info {
@@ -501,6 +498,11 @@ form input:focus {
         height: 5rem;
         background: linear-gradient(180deg, #B83169 0%, #380E3C 100%);
     }
+
+    .container .form_section .product_info .header h1 {
+        font-size: 2.2rem;
+        font-weight: 600;
+    }
     
     .container .form_section .product_info .plan {
         width: 100%;
@@ -509,37 +511,6 @@ form input:focus {
     
     .container .form_section .product_info .row {
         margin: 1rem 0 0 0;
-        width: 100%;
-    }
-    
-    .container .form_section .payment_method {
-        margin: 2rem 0 0 0;
-    }
-    
-    .container .form_section .payment_method .header .input {
-        justify-content: flex-start;
-        padding: 0 0 0 3rem;
-        font-size: 1.5rem;
-        width: 50%;
-        height: 100%;
-    }
-    
-    .container input[type='radio'] {
-        border: 1px solid white;
-        background: transparent;
-        width: 1.3rem;
-        height: 1.3rem;
-        margin: 0 1rem 0 0;
-    }
-    
-    .container .form_section .payment_method .payment {
-        line-height: 1.8;
-        font-size: 1rem;
-        margin: 1rem 0 0 0;
-    }
-    
-    .container .form_section .payment_method .inputs {
-        margin: 2rem 0 0 0;
         width: 100%;
     }
     
@@ -564,14 +535,35 @@ form input:focus {
     .container .form_section form button {
         margin: 0;
         width: 100%;
-        height: 6.2rem;
+        height: 5.4rem;
         font-size: 2.2rem;
         font-weight: 600;
+    }
+
+    .container .footer .social_media {
+        width: 80%;
+    }
+    
+    .container .footer .social_media img {
+        width: 60%;
+    }
+    
+    .container .footer .social_media .element:nth-child(4) img {
+        transform: scale(2);
+    }
+    
+    .container .footer .element {
+        width: 2.5rem;
+        height: 2.5rem;
     }
 }
 
 @media screen and (min-width: 768px) and (max-width: 992px) {
 
+    html {
+        font-size: 13px;
+    }
+    
     .container .mobile_menu {
         display: flex;
         position: absolute;
@@ -677,17 +669,11 @@ form input:focus {
     }
     
     .container .form_section form > .input {
-        margin: 0 0 4rem 0;
+        margin: 0 0 2rem 0;
     }
     
     form input {
-        height: 3rem;
-        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.14);
-        border-radius: 0.8rem;
-        border: none;
-        padding: 0.5rem;
-        font-size: 1.2rem;
-        width: 90%;
+        width: 100%;
     }
     
     form input:focus {
@@ -695,24 +681,17 @@ form input:focus {
     }
     
     .container .form_section .names {
-        margin: 0 0 4rem 0;
-        width: 100%;
+        margin: 0 0 2rem 0;
+        width: 95%;
     }
     
     .container .form_section .names .input {
-        width: 50%;
+        width: 48%;
     }
     
     .container .form_section .product_info {
         font-size: 1.3rem;
         font-weight: 500;
-    }
-    
-    .container .form_section .product_info .header {
-        color: #FFF;
-        width: 100%;
-        height: 5rem;
-        background: linear-gradient(180deg, #B83169 0%, #380E3C 100%);
     }
     
     .container .form_section .product_info .plan {
@@ -723,6 +702,11 @@ form input:focus {
     .container .form_section .product_info .row {
         margin: 1rem 0 0 0;
         width: 100%;
+    }
+
+    .container .form_section .product_info .header h1 {
+        font-size: 2.2rem;
+        font-weight: 600;
     }
     
     .container .form_section .payment_method {
@@ -745,46 +729,38 @@ form input:focus {
         margin: 0 1rem 0 0;
     }
     
-    .container .form_section .payment_method .payment {
-        line-height: 1.8;
-        font-size: 1rem;
-        margin: 1rem 0 0 0;
-    }
-    
-    .container .form_section .payment_method .inputs {
-        margin: 2rem 0 0 0;
-        width: 100%;
-    }
-    
-    .container .form_section .payment_method .inputs .input {
-        width: 20%;
-        height: fit-content;
-    }
-    
-    .container .form_section .payment_method .inputs .input input {
-        width: 100%;
-        box-shadow: none;
-    }
-    
-    .container .form_section .payment_method .inputs .input:nth-child(1) {
-        width: 40%;
-    }
-    
-    .container .form_section .payment_method .inputs .input:nth-child(1) input {
-        width: 80%;
-    }
-    
     .container .form_section form button {
         margin: 0;
         width: 100%;
-        height: 6.2rem;
+        height: 5.4rem;
         font-size: 2.2rem;
         font-weight: 600;
     }
+
+    .container .footer .social_media {
+        width: 80%;
+    }
+    
+    .container .footer .social_media img {
+        width: 60%;
+    }
+    
+    .container .footer .social_media .element:nth-child(4) img {
+        transform: scale(2);
+    }
+    
+    .container .footer .element {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
 }
 
-/* @media screen and (max-width: 800px) {
+@media screen and (min-width: 400px) and (max-width: 768px) {
 
+    html {
+        font-size: 13px;
+    }
+    
     .container .mobile_menu {
         display: flex;
         position: absolute;
@@ -849,7 +825,11 @@ form input:focus {
     .container nav .left_section {
         flex-direction: row;
         align-items: center;
-        width: 60%;
+        width: 25%;
+    }
+
+    .container nav .left_section a img {
+        width: 120%;
     }
     
     .container nav img {
@@ -864,29 +844,13 @@ form input:focus {
         width: 100%;
     }
 
-    .container .register_section {
-        flex-direction: column;
-        width: 90%;
-        background: #F2E8EC;
-        margin: 0 auto;
-        padding: 2.5%;
-    }
-    
-    .container .register_section .text_section {
-        width: 100%;
-        margin: 0 0 2rem 0;
-        justify-content: flex-start;
-        color: #000;
-    }
-    
-    .container .register_section .text_section p {
-        margin: 1rem 0 0 0;
-        width: 100%;
-    }
-    
     .container .form_section {
-        width: 100%;
+        width: 60%;
+        background: #FFF;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 0.8rem;
         padding: 1.5rem;
+        color: #000;
     }
     
     .container form, .container .form_section .product_info,
@@ -896,63 +860,80 @@ form input:focus {
     
     .container .form_section .input {
         height: 6rem;
-        width: 100%;
+        width: 95%;
         font-weight: 500;
+        font-size: 1.3rem;
     }
     
-    .container .form_section form .input {
-        margin: 0 0 4rem 0;
+    .container .form_section form > .input {
+        margin: 0 0 2rem 0;
+    }
+    
+    form input {
+        width: 100%;
+    }
+    
+    form input:focus {
+        outline: none;
     }
     
     .container .form_section .names {
-        flex-direction: column;
-        margin: 0 0 0 0;
-        width: 100%;
+        margin: 0 0 2rem 0;
+        width: 95%;
     }
     
     .container .form_section .names .input {
+        width: 48%;
+    }
+    
+    .container .form_section .product_info {
+        font-size: 1.3rem;
+        font-weight: 500;
+    }
+    
+    .container .form_section .product_info .plan {
+        width: 100%;
+        margin: 1rem 0 0 0;
+    }
+    
+    .container .form_section .product_info .row {
+        margin: 1rem 0 0 0;
         width: 100%;
     }
 
-    .container .form_section .product_info .plan > p:nth-child(2) {
-        width: 60%;
+    .container .form_section .product_info .header h1 {
+        font-size: 2.2rem;
+        font-weight: 600;
+    }
+    
+    .container .form_section .payment_method {
+        margin: 2rem 0 0 0;
     }
     
     .container .form_section .payment_method .header .input {
-        padding: 0 0 0 1rem;
-        font-size: 1rem;
+        justify-content: flex-start;
+        padding: 0 0 0 3rem;
+        font-size: 1.5rem;
+        width: 50%;
+        height: 100%;
     }
     
-    .container .form_section .payment_method .inputs .input {
-        width: 100%;
-    }
-    
-    .container .form_section .payment_method .inputs .input:nth-child(1) {
-        width: 100%;
+    .container input[type='radio'] {
+        border: 1px solid white;
+        background: transparent;
+        width: 1.3rem;
+        height: 1.3rem;
+        margin: 0 1rem 0 0;
     }
     
     .container .form_section form button {
-        width: 80%;
-    }
-    
-    .container .footer {
-        flex-direction: column;
-        height: fit-content;
-        padding: 2rem 0;
-    }
-    
-    .container .footer .column {
-        height: 100%;
+        margin: 0;
         width: 100%;
-        padding: 4rem 0 0 1rem;
-    
+        height: 5.4rem;
+        font-size: 2.2rem;
+        font-weight: 600;
     }
-    
-    .container .footer img.logo {
-        width: 60%;
-        margin-bottom: 3rem;
-    }
-    
+
     .container .footer .social_media {
         width: 80%;
     }
@@ -961,19 +942,12 @@ form input:focus {
         width: 60%;
     }
     
+    .container .footer .social_media .element:nth-child(4) img {
+        transform: scale(2);
+    }
+    
     .container .footer .element {
-        width: 4rem;
-        height: 4rem;
-        border-radius: 50%;
+        width: 2.5rem;
+        height: 2.5rem;
     }
-    
-    .container .footer .column h1 {
-        color: #B83169;
-    }
-    
-    .container .footer .column ul {
-        width: 80%;
-        height: 14rem;
-        font-weight: 600;
-    }
-} */
+}

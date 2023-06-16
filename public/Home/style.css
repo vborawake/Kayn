@@ -234,7 +234,7 @@ body {
 .container-fluid .introduction_section {
     background: url('../images/Vector\ 4.png');
     background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-size: 100% 90%;
     /* height: 80vh; */
 }
 
@@ -245,16 +245,17 @@ body {
 } */
 
 .container-fluid .introduction_section .introduction_wrapper img {
-    margin: 6rem 0 0 0;
-    width: 38%;
-    height: 38%;
+    margin: 4rem 0 0 0;
+    width: 30%;
+    height: 30%;
 }
 
 .container-fluid .introduction_section .introduction_wrapper h1 {
     /* width: 45%; */
-    font-size: 4rem;
+    font-size: 3.5rem;
     line-height: 1;
     font-weight: 700;
+    margin: -6rem 0 0 0;
 }
 
 .container-fluid .introduction_section .introduction_wrapper h1 span {
@@ -647,11 +648,13 @@ body {
 
 .container-fluid .footer .column h1 {
     color: #B83169;
+    padding: 0;
 }
 
 .container-fluid .footer .column ul {
     height: 14rem;
     font-weight: 600;
+    padding: 0;
 }
 
 @media screen and (min-width: 992px) and (max-width: 1200px) {
@@ -672,13 +675,17 @@ body {
     .container-fluid .hero_section nav .right_section {
         width: 78%;
     }
+
+    .container-fluid .hero_section .hero_section_display {
+        height: 70%;
+    }
     
     .container-fluid .hero_section .hero_section_display .hero_text {
-        height: 30%;
+        height: 100%;
     }
     
     .container-fluid .hero_section .hero_section_display .hero_text h1 {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
     
     .container-fluid .hero_section .hero_section_display .hero_text p {
@@ -696,7 +703,8 @@ body {
     
     .container-fluid .introduction_section .introduction_wrapper h1 {
         /* width: 60%; */
-        font-size: 3.5rem;
+        font-size: 3rem;
+        margin: -3rem 0 0 0;
     }
     
     .container-fluid .features_section .row .feature_description p, .container-fluid .features_section .row .feature_description ul li {
@@ -727,6 +735,14 @@ body {
         margin: 4rem 0 0 0;
     }
 
+    .container-fluid .audience_section h1 {
+        font-size: 2.3rem;
+    }
+
+    .container-fluid .audience_section p {
+        font-size: 1.2rem;
+    }
+    
     .container-fluid .audience_section button {
         font-size: 1rem;
     }
@@ -753,16 +769,16 @@ body {
         width: 80%;
         height: fit-content;
         color: #000;
-        margin: 0 auto;
+        margin: 5rem auto 0 auto;
     }
     
     .container-fluid .pricing_section .payment_cycle {
         width: 55%;
-        height: 4.5rem;
+        height: 3.8rem;
     }
     
     .container-fluid .pricing_section .payment_cycle ul li {
-        height: 4.5rem;
+        height: 3.8rem;
     }
     
     .container-fluid .pricing_section .plans {
@@ -780,6 +796,7 @@ body {
     }
 
     .container-fluid .action_section {
+        height: 45vh;
         padding: 0 4rem;
     }
     
@@ -814,7 +831,7 @@ body {
         height: fit-content;
         width: 25%;
         padding: 1rem 0 0 1rem;
-    
+        font-size: 1rem;
     }
     
     .container-fluid .footer img.logo {
@@ -822,8 +839,12 @@ body {
         margin-bottom: 3rem;
     }
     
+    .container-fluid .footer .social_media {
+        width: 80%;
+    }
+    
     .container-fluid .footer .social_media img {
-        width: 60%;
+        width: 55%;
     }
     
     .container-fluid .footer .social_media .element:nth-child(4) img {
@@ -831,8 +852,8 @@ body {
     }
     
     .container-fluid .footer .element {
-        width: 3rem;
-        height: 3rem;
+        width: 2.5rem;
+        height: 2.5rem;
     }
     
     .container-fluid .footer .column h1 {
@@ -849,6 +870,11 @@ body {
 }
 
 @media screen and (min-width: 1200px) and (max-width: 1400px) {
+    .container-fluid .introduction_section .introduction_wrapper h1 {
+        /* width: 60%; */
+        font-size: 3rem;
+    }
+    
     .container-fluid .features_section .row .feature_description p, .container-fluid .features_section .row .feature_description ul li {
         font-size: 1.1rem;
     }
@@ -971,12 +997,24 @@ body {
 
 @media screen and (min-width: 600px) and (max-width: 992px) {
 
+    html {
+        font-size: 13px;
+    }
+
+    .container-fluid .hero_section {
+        height: 80vh;
+    }
+
+    .container-fluid .hero_section > img {
+        height: 80vh;
+    }
+
     .container-fluid .hero_section .mobile_menu {
         display: flex;
         position: absolute;
         top: 5rem;
         right: 0;
-        width: 50%;
+        width: 25%;
         height: 15rem;
         background: #B83169;
         color: #FFF;
@@ -1031,10 +1069,14 @@ body {
         border-radius: 0.2rem;
         background: #FFF;
     }
-    
-    .container-fluid .hero_section nav .left_section {
-        display: none;
+
+    .container-fluid nav .left_section {
+        width: 30%;
     }
+    
+    /* .container-fluid .hero_section nav .left_section {
+        display: none;
+    } */
     
     .container-fluid .hero_section nav img {
         height: 80%;
@@ -1048,39 +1090,58 @@ body {
         width: 50%;
     }
     
-    /* .container-fluid .hero_section .hero_section_display .hero_text {
-        width: 80%;
+    .container-fluid .hero_section .hero_section_display .hero_text {
+        width: 40%;
         height: 50%;
-    } */
+        margin: 0 0 0 2rem;
+    }
     
     .container-fluid .hero_section .hero_section_display .hero_text h1 {
-        font-size: 2.5rem;
+        font-size: 3rem;
         width: 100%;
     }
     
     .container-fluid .hero_section .hero_section_display .hero_text p {
-        font-size: 1.1rem;
+        font-size: 1.4rem;
     }
     
     /* .container-fluid .hero_section .hero_section_display img {
-        display: none;
+        width: 100%;
     } */
 
-    /* .container-fluid .introduction_section {
+    .container-fluid .introduction_section {
         height: 50vh;
-    } */
+    }
+
+    .container-fluid .introduction_section img {
+        width: 80%;
+        height: 80%;
+    }
     
     .container-fluid .introduction_section .introduction_wrapper h1 {
-        margin: -3rem 0 0 0;
-        width: 60%;
-        font-size: 3rem;
+        margin: 0 0 0 0;
+        width: 50%;
+        font-size: 2.5rem;
+    }
+
+    .container-fluid .introduction_section .introduction_wrapper h1 p {
+        width: 100%;
     }
     
     .container-fluid .introduction_section .introduction_wrapper h1 span {
         background: transparent;
     }
 
+    .container-fluid .introduction_section .introduction_wrapper h1 span::after {
+        display: none;
+    }
+
+    .container-fluid .introduction_section .introduction_wrapper h1 span::before {
+        display: none;
+    }
+
     .container-fluid .features_section {
+        margin: 2rem 0 0 0;
         font-size: 1.1rem;
     }
     
@@ -1098,7 +1159,7 @@ body {
     }
     
     .container-fluid .features_section .row:not(:first-child) {
-        margin: 0 0 0 0;
+        margin: -4rem 0 0 0;
     }
     
     .container-fluid .features_section .feature_description ul li {
@@ -1127,7 +1188,7 @@ body {
     }
 
     .container-fluid .audience_section button {
-        font-size: 0.8rem;
+        font-size: 1rem;
     }
 
     .container-fluid .working_section {
@@ -1186,12 +1247,17 @@ body {
     }
     
     .container-fluid .pricing_section .payment_cycle {
-        width: 80%;
+        width: 60%;
+        height: 3.2rem;
         margin: 0 0 4rem 0;
     }
 
     .container-fluid .pricing_section .payment_cycle ul li {
         font-size: 1.5rem;
+    }
+
+    .container-fluid .pricing_section .payment_cycle ul li.active {
+        height: 3.2rem;
     }
     
     .container-fluid .pricing_section .plans {

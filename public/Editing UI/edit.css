@@ -298,12 +298,13 @@ input:focus {
     left: 6%;
     width: 23rem;
     height: 31rem;
-    background: #FFF;
+    background: #464648;
     border-radius: 0.6rem;
     margin: auto 0;
     padding: 1.5rem;
     transform: scale(0);
     transition: all 0.5s ease;
+    color: #FFF;
 }
 
 .container .workspace .video .render_menu h4 {
@@ -335,16 +336,16 @@ input:focus {
 .container .workspace .video .render_menu .input input {
     height: 2.3rem;
     width: 100%;
-    background: #F2E8ED;
+    background: #2F2D2E;
     border-radius: 0.6rem;
     padding: 0.5rem;
     font-size: 0.9rem;
     font-weight: 400;
-    color: #000;
+    color: #FFF;
 }
 
 .container .workspace .video .render_menu .input input::placeholder {
-    color: #000;
+    color: #FFF;
 }
 
 .container .workspace .video .render_menu .ranges {
@@ -366,6 +367,7 @@ input:focus {
 
 .container .workspace .video .render_menu .ranges .start, .container .workspace .video .render_menu .ranges .end {
     width: 40%;
+    color: #FFF;
 }
 
 .container .workspace .video .render_menu .range {
@@ -384,7 +386,7 @@ input:focus {
     margin: auto 0;
     height: 120%;
     width: 20%;
-    background: #B83169;
+    background: #2F2D2E;
 }
 
 .container .workspace .video .range .start_tracker {
@@ -414,7 +416,7 @@ input:focus {
     width: 35%;
     border: 0.6rem;
     color: #FFF;
-    background: #380E3C;
+    background: #2F2D2E;
     padding: 0;
 }
 
@@ -627,6 +629,10 @@ input:focus {
 }
 
 @media screen and (min-width: 1200px) and (max-width: 1400px) {
+    html {
+        font-size: 14px;
+    }
+    
     .container .workspace .toolbar .filter {
         width: 35%;
     }
@@ -823,6 +829,10 @@ input:focus {
 }
 
 @media screen and (min-width: 992px) and (max-width: 1200px) {
+    html {
+        font-size: 14px;
+    }
+    
     .container .workspace .toolbar .filter {
         width: 35%;
     }
@@ -892,6 +902,10 @@ input:focus {
 }
 
 @media screen and (min-width: 768px) and (max-width: 992px) {
+    html {
+        font-size: 14px;
+    }
+    
     .container .workspace .toolbar .filter {
         width: 35%;
     }

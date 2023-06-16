@@ -16,6 +16,7 @@ const mediaSource = new MediaSource();
 const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 const image = document.querySelector('.right_section img');
+const fileSection2 = document.querySelector('.files_section.flex_column.justify_flex_start');
 
 const canvasElems = {
     ring: [],
@@ -289,7 +290,18 @@ canvas.addEventListener('click', (e) => {
         radius: 20
     });
     addVideoBar();
-    console.log(e);
+//     ring
+// : 
+// Array(3)
+// 0
+// : 
+// {x: 528, y: 181, radius: 20}
+// 1
+// : 
+// {x: 530, y: 297, radius: 20}
+// 2
+// : 
+// {x: 930, y: 450, radius: 20}
 });
 
 function addVideoBar() {
@@ -315,11 +327,67 @@ function addVideoBar() {
 }
 
 function trackPlayers(e) {
+    setCanvasSize();
     const p = e.currentTarget.nextElementSibling;
     p.style.display = 'block';
     setTimeout(() => {
         p.style.display = 'none';
     }, 1000);
+    ctx.setLineDash([5, 5]);
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+    ctx.beginPath();
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = '#FFF';
+    ctx.arc(528, 181 + window.scrollY, 20, 0, 2 * Math.PI);
+    ctx.stroke();
+    ctx.fill();
+    canvasElems.ring.push({
+        x: 528,
+        y: 181,
+        radius: 20
+    });
+    addVideoBar();
+    addSelectRow();
+    ctx.beginPath();
+    ctx.arc(530, 297 + window.scrollY, 20, 0, 2 * Math.PI);
+    ctx.stroke();
+    ctx.fill();
+    canvasElems.ring.push({
+        x: 530,
+        y: 297,
+        radius: 20
+    });
+    addVideoBar();
+    addSelectRow();
+    ctx.beginPath();
+    ctx.arc(930, 450 + window.scrollY, 20, 0, 2 * Math.PI);
+    ctx.stroke();
+    ctx.fill();
+    canvasElems.ring.push({
+        x: 930,
+        y: 450,
+        radius: 20
+    });
+    addVideoBar();
+    addSelectRow();
+}
+
+function addSelectRow (name) {
+    const html = `
+        <div class="row flex_row justify_flex_start center width_full">
+            <input type="checkbox">
+            <p class="tag_name">Ring_${ ringCount - 1 }</p>
+        </div>
+    `;
+
+    fileSection2.innerHTML += html;
+}
+
+function removeSelectRow (name) {
+    console.log(fileSection2.children);
+    Array.from(fileSection2.children).forEach(row => {
+        if (row.querySelector('p').innerHTML === name) row.remove();
+    });
 }
 
 function playVideo(e) {

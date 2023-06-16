@@ -426,12 +426,16 @@ input:focus {
 }
 
 @media screen and (min-width: 768px) and (max-width: 992px) {
+    html {
+        font-size: 14px;
+    }
+    
     .container .menu ul {
-        width: 30%;
+        width: 14%;
     }
 
     .container .menu .language {
-        width: 15%;
+        width: 12%;
     }
 
     .container .left_workspace .search {
@@ -477,11 +481,23 @@ input:focus {
     .container .toolbar .create_menu {
         width: 30%;
     }
+
+    .container .workspace {
+        height: 84.5vh;
+    }
 }
 
 @media screen and (min-width: 1200px) and (max-width: 1400px) {
+    html {
+        font-size: 14px;
+    }
+
+    .container .workspace {
+        height: 84.5vh;
+    }
+    
     .container .menu ul {
-        width: 25%;
+        width: 10%;
     }
 
     .container .menu .language {
@@ -531,8 +547,16 @@ input:focus {
 }
 
 @media screen and (min-width: 992px) and (max-width: 1200px) {
+    html {
+        font-size: 14px;
+    }
+
+    .container .workspace {
+        height: 84.5vh;
+    }
+    
     .container .menu ul {
-        width: 25%;
+        width: 11%;
     }
 
     .container .menu .language {
@@ -581,94 +605,64 @@ input:focus {
     }
 }
 
-@media screen and (max-width: 500px) {
-    .hamburger {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 2.5rem;
-        height: 2.5rem;
-        border-radius: 0.3rem;
+@media screen and (min-width: 400px) and (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+    
+    .container .menu ul {
+        width: 17%;
     }
 
-    .hamburger span {
-        position: relative;
-        width: 90%;
-        height: 0.2rem;
-        background: #FFF;
-    }
-
-    .hamburger span::before {
-        content: '';
-        width: 100%;
-        height: 100%;
-        background: #FFF;
-        position: absolute;
-        top: -0.75rem;
-        left: 0;
-    }
-
-    .hamburger span::after {
-        content: '';
-        width: 100%;
-        height: 100%;
-        background: #FFF;
-        position: absolute;
-        bottom: -0.75rem;
-        left: 0;
-    }
-
-    .menu ul.mobile_menu {
-        position: absolute;
-        top: 3rem;
-        left: 1rem;
-        width: 25%;
-        height: 8rem;
-        background: #B83169;
-        border-radius: 0.5rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: center;
-        display: none;
-        z-index: 20;
-        border: 2px solid #380E3C;
-    }
-
-    .menu ul:nth-child(2) {
-        display: none;
+    .container .workspace {
+        height: 84.5vh;
     }
 
     .container .menu .language {
-        width: 25%;
+        width: 12%;
     }
 
     .container .left_workspace .search {
+        width: 40%;
+    }
+
+    .container .left_workspace .players_container {
+        height: 88%;
+    }
+
+    .container .bottom_buttons .buttons_wrapper {
         width: 80%;
     }
 
     .container .left_workspace .teams_container {
-        height: 80%;
-    }
-
-    .container .bottom_buttons .buttons_wrapper {
-        width: 100%;
+        height: 88%;
     }
 
     .container .right_workspace {
-        position: absolute;
-        top: 0;
-        left: 0;
-        min-width: 100%;
-        min-height: 90%;
-        z-index: 10;
+        width: 20%;
+        padding: 2rem 1rem;
     }
-
+    
     .container .right_workspace .team_details .team_image {
-        height: 12.5rem;
+        width: 85%;
+        height: 6.5rem;
+    }
+    
+    .container .right_workspace .team_details .input {
+        font-size: 1rem;
+    }
+    
+    .container .right_workspace .team_details .input input {
+        height: 2.5rem;
+        width: 90%;
+        font-size: 0.8rem;
+    }
+    
+    .container .right_workspace .team_details input[type='date']::-webkit-calendar-picker-indicator {
+        margin-right: 0.5rem;  
     }
 
     .container .toolbar .create_menu {
-        width: 80%;
+        width: 30%;
     }
 }

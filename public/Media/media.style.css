@@ -793,7 +793,11 @@ input:focus {
     }
 
     .container .menu ul {
-        width: 12%;
+        width: 9%;
+    }
+
+    .container .menu ul li {
+        padding: 0;
     }
 
     .container .workspace .player {
@@ -824,6 +828,14 @@ input:focus {
 
 @media screen and (min-width: 1030px) and (max-width: 1200px) {
     
+    html {
+        font-size: 14px;
+    }
+
+    .container .workspace {
+        height: 81vh;
+    }
+    
     .container .workspace .toolbar .filter {
         width: 45%;
     }
@@ -842,7 +854,11 @@ input:focus {
     }
 
     .container .menu ul {
-        width: 13%;
+        width: 10%;
+    }
+
+    .container .menu ul li {
+        padding: 0;
     }
 
     .container .workspace .player {
@@ -877,6 +893,14 @@ input:focus {
 
 @media screen and (min-width: 766px) and (max-width: 1030px) {
     
+    html {
+        font-size: 13px;
+    }
+
+    .container .workspace {
+        height: 82vh;
+    }
+    
     .container .workspace .toolbar {
         display: flex;
         flex-direction: column;
@@ -900,7 +924,11 @@ input:focus {
     }
 
     .container .menu ul {
-        width: 18%;
+        width: 12%;
+    }
+
+    .container .menu ul li {
+        padding: 0;
     }
 
     .container .workspace .player {
@@ -946,6 +974,14 @@ input:focus {
 }
 
 @media screen and (min-width: 400px) and (max-width: 768px) {
+
+    html {
+        font-size: 13px;
+    }
+
+    .container .workspace {
+        height: 82vh;
+    }
     
     .container .workspace .toolbar {
         display: flex;
@@ -970,7 +1006,11 @@ input:focus {
     }
 
     .container .menu ul {
-        width: 18%;
+        width: 16%;
+    }
+
+    .container .menu .language {
+        width: 15%;
     }
 
     .container .workspace .player {

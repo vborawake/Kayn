@@ -386,7 +386,7 @@ input:focus {
 
 .container .cut_section .tracker {
     padding: 0 0.6rem;
-    margin: 1rem 0 0 0;
+    margin: 0 0 0 0;
     background: #000;
     color: #52AEE5;
 }
@@ -437,7 +437,7 @@ input:focus {
 .container .controls {
     height: 6rem;
     width: 55%;
-    margin: 0 0 0 15rem;
+    margin: 0 auto;
     background: #1f1f1f;
 }
 
@@ -498,7 +498,7 @@ input:focus {
 
 .container .cut_section .files_section {
     width: 20%;
-    min-height: 46.4vh;
+    min-height: 48vh;
     background: #1F1F1F;
 }
 
@@ -529,12 +529,16 @@ input:focus {
 }
 
 @media screen and (min-width: 1200px) and (max-width: 1400px) {
+    html {
+        font-size: 14px;
+    }
+    
     .container .workspace .toolbar .filter {
         width: 35%;
     }
 
     .container .menu ul {
-        width: 12%;
+        width: 10%;
     }
 
     .container .toolbar .left_side {
@@ -551,12 +555,16 @@ input:focus {
 }
 
 @media screen and (min-width: 992px) and (max-width: 1200px) {
+    html {
+        font-size: 14px;
+    }
+    
     .container .workspace .toolbar .filter {
         width: 35%;
     }
 
     .container .menu ul {
-        width: 13%;
+        width: 12%;
     }
 
     .container .toolbar .left_side {
@@ -590,6 +598,85 @@ input:focus {
 }
 
 @media screen and (min-width: 700px) and (max-width: 992px) {
+    html {
+        font-size: 14px;
+    }
+    
+    .container .workspace .toolbar .filter {
+        width: 35%;
+    }
+
+    .container .menu ul {
+        width: 12%;
+        /* border: 2px solid white; */
+    }
+
+    .container .menu ul li {
+        padding: 0;
+    }
+
+    .container .menu .language {
+        width: 10%;
+    }
+
+    .container .toolbar .left_side {
+        width: 55%;
+    }
+
+    .container .workspace .left_section {
+        width: 32%;
+    }
+
+    .container .workspace .right_section {
+        width: 78%;
+    }
+
+    .container .cut_section .button_wrapper {
+        width: 60%;
+    }
+
+    .container .bottom_buttons .buttons_wrapper {
+        width: 60%;
+    }
+
+    .container .cut_section .tracker {
+        overflow: hidden;
+    }
+
+    .container .controls {
+        width: 85%;
+        margin: 0 0 0 6rem;
+    }
+    
+    .container .controls svg {
+        width: 28px;
+        height: 28px;
+    }
+
+    .cut_section .editing_section .tracker .numbers {
+        display: none;
+    }
+
+    .cut_section .editing_section .tracker .numbers_tablet {
+        display: flex;
+    }
+
+    .container .cut_section .files_section {
+        width: 30%;
+        min-height: 46.4vh;
+        background: #1F1F1F;
+    }
+
+    .container .cut_section .editing_section {
+        width: 70%;
+    }
+}
+
+@media screen and (min-width: 400px) and (max-width: 700px) {
+    html {
+        font-size: 14px;
+    }
+    
     .container .workspace .toolbar .filter {
         width: 35%;
     }
@@ -653,108 +740,5 @@ input:focus {
 
     .container .cut_section .editing_section {
         width: 70%;
-    }
-}
-
-@media screen and (max-width: 500px) {
-    .hamburger {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 2.5rem;
-        height: 2.5rem;
-        border-radius: 0.3rem;
-    }
-
-    .hamburger span {
-        position: relative;
-        width: 90%;
-        height: 0.2rem;
-        background: #FFF;
-    }
-
-    .hamburger span::before {
-        content: '';
-        width: 100%;
-        height: 100%;
-        background: #FFF;
-        position: absolute;
-        top: -0.75rem;
-        left: 0;
-    }
-
-    .hamburger span::after {
-        content: '';
-        width: 100%;
-        height: 100%;
-        background: #FFF;
-        position: absolute;
-        bottom: -0.75rem;
-        left: 0;
-    }
-
-    .menu ul.mobile_menu {
-        position: absolute;
-        top: 3rem;
-        left: 1rem;
-        width: 25%;
-        height: 8rem;
-        background: #B83169;
-        border-radius: 0.5rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: center;
-        display: none;
-        z-index: 20;
-        border: 2px solid #380E3C;
-    }
-
-    .menu ul:nth-child(2) {
-        display: none;
-    }
-
-    .container .menu .language {
-        width: 25%;
-    }
-
-    .container .workspace {
-        flex-direction: column;
-    }
-
-    .container .files_section {
-        width: 100%;
-    }
-    
-    .container .player_section {
-        width: 100%;
-    }
-
-    .container .bottom_buttons .buttons_wrapper {
-        width: 90%;
-    }
-
-    .container .workspace .toolbar {
-        height: 10rem;
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: flex-start;
-    }
-
-    .container .workspace .toolbar .search {
-        width: 80%;
-    }
-
-    .container .workspace .toolbar .filter {
-        width: 90%;
-    }
-
-    .container .cut_section .button_wrapper .row {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .container .cut_section .button_wrapper .row .range {
-        flex-direction: column;
     }
 }
