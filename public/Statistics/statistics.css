@@ -1043,6 +1043,39 @@ input:focus {
     .container .workspace {
         height: 81vh;
     }
+
+    .container .playerCharts .chart_wrapper .stats {
+        width: 40%;
+    }
+
+    .container .playerCharts .chart_wrapper .stats .bar_left {
+        height: 2.5rem;
+    }
+    
+    .container .playerCharts .chart_wrapper .stats .bar_right {
+        height: 2.5rem;
+    }
+
+    .container .playerCharts .chart_wrapper .chart {
+        width: 40%;
+        padding: 1rem;
+        background: #FFF;
+        border-radius: 0.5rem;
+        color: #000;
+    }
+    
+    .container .playerCharts .chart_wrapper .chart div {
+        position: relative;
+        width: 2px;
+        height: 20rem;
+        background: #000;
+    }
+
+    .container .playerCharts .chart_wrapper .chart div span:nth-child(5),
+    .container .playerCharts .chart_wrapper .chart div span:nth-child(6),
+    .container .playerCharts .chart_wrapper .chart div span:nth-child(7) {
+        display: none;
+    }
 }
 
 @media screen and (min-width: 992px) and (max-width: 1200px) {
@@ -1091,6 +1124,39 @@ input:focus {
 
     .container .workspace {
         height: 81vh;
+    }
+
+    .container .playerCharts .chart_wrapper .stats {
+        width: 40%;
+    }
+
+    .container .playerCharts .chart_wrapper .stats .bar_left {
+        height: 2.5rem;
+    }
+    
+    .container .playerCharts .chart_wrapper .stats .bar_right {
+        height: 2.5rem;
+    }
+
+    .container .playerCharts .chart_wrapper .chart {
+        width: 40%;
+        padding: 1rem;
+        background: #FFF;
+        border-radius: 0.5rem;
+        color: #000;
+    }
+    
+    .container .playerCharts .chart_wrapper .chart div {
+        position: relative;
+        width: 2px;
+        height: 20rem;
+        background: #000;
+    }
+
+    .container .playerCharts .chart_wrapper .chart div span:nth-child(5),
+    .container .playerCharts .chart_wrapper .chart div span:nth-child(6),
+    .container .playerCharts .chart_wrapper .chart div span:nth-child(7) {
+        display: none;
     }
 }
 
@@ -1220,6 +1286,39 @@ input:focus {
     .container .workspace {
         height: 81vh;
     }
+
+    .container .playerCharts .chart_wrapper .stats {
+        width: 40%;
+    }
+
+    .container .playerCharts .chart_wrapper .stats .bar_left {
+        height: 2.5rem;
+    }
+    
+    .container .playerCharts .chart_wrapper .stats .bar_right {
+        height: 2.5rem;
+    }
+
+    .container .playerCharts .chart_wrapper .chart {
+        width: 40%;
+        padding: 1rem;
+        background: #FFF;
+        border-radius: 0.5rem;
+        color: #000;
+    }
+    
+    .container .playerCharts .chart_wrapper .chart div {
+        position: relative;
+        width: 2px;
+        height: 20rem;
+        background: #000;
+    }
+
+    .container .playerCharts .chart_wrapper .chart div span:nth-child(5),
+    .container .playerCharts .chart_wrapper .chart div span:nth-child(6),
+    .container .playerCharts .chart_wrapper .chart div span:nth-child(7) {
+        display: none;
+    }
 }
 
 @media screen and (min-width: 500px) and (max-width: 768px) {
@@ -1347,6 +1446,39 @@ input:focus {
 
     .container .workspace {
         height: 81vh;
+    }
+
+    .container .playerCharts .chart_wrapper .stats {
+        width: 40%;
+    }
+
+    .container .playerCharts .chart_wrapper .stats .bar_left {
+        height: 2.5rem;
+    }
+    
+    .container .playerCharts .chart_wrapper .stats .bar_right {
+        height: 2.5rem;
+    }
+
+    .container .playerCharts .chart_wrapper .chart {
+        width: 40%;
+        padding: 1rem;
+        background: #FFF;
+        border-radius: 0.5rem;
+        color: #000;
+    }
+    
+    .container .playerCharts .chart_wrapper .chart div {
+        position: relative;
+        width: 2px;
+        height: 20rem;
+        background: #000;
+    }
+
+    .container .playerCharts .chart_wrapper .chart div span:nth-child(5),
+    .container .playerCharts .chart_wrapper .chart div span:nth-child(6),
+    .container .playerCharts .chart_wrapper .chart div span:nth-child(7) {
+        display: none;
     }
 }
 

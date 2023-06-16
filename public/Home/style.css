@@ -608,6 +608,7 @@ body {
     height: fit-content;
     background: #380E3C;
     font-size: 1.2rem;
+    align-items: flex-start;
 }
 
 .container-fluid .footer a {
@@ -615,16 +616,13 @@ body {
 }
 
 .container-fluid .footer a:hover::before {
-    margin: 0;
-    width: 30%;
-    left: 35%;
+    display: none;
 }
 
 .container-fluid .footer .column {
     height: 100%;
-    width: 25%;
+    width: 20%;
     padding: 3rem 0 0 3rem;
-
 }
 
 .container-fluid .footer img.logo {
@@ -640,9 +638,9 @@ body {
     transform: scale(2);
 }
 
-.container-fluid .footer .element {
-    width: 4rem;
-    height: 4rem;
+.container-fluid .footer .social_media .element {
+    width: 3rem;
+    height: 3rem;
     border-radius: 50%;
 }
 
@@ -829,6 +827,7 @@ body {
         margin: 0;
         width: 30%;
         left: 35%;
+        display: none;
     }
     
     .container-fluid .footer .column {
@@ -963,13 +962,13 @@ body {
         margin: 0;
         width: 30%;
         left: 35%;
+        display: none;
     }
     
     .container-fluid .footer .column {
         height: fit-content;
         width: 25%;
         padding: 1rem 0 0 1rem;
-    
     }
     
     .container-fluid .footer img.logo {
@@ -977,8 +976,12 @@ body {
         margin-bottom: 3rem;
     }
     
+    .container-fluid .footer .social_media {
+        width: 80%;
+    }
+    
     .container-fluid .footer .social_media img {
-        width: 60%;
+        width: 55%;
     }
     
     .container-fluid .footer .social_media .element:nth-child(4) img {
@@ -986,8 +989,8 @@ body {
     }
     
     .container-fluid .footer .element {
-        width: 3rem;
-        height: 3rem;
+        width: 2.5rem;
+        height: 2.5rem;
     }
     
     .container-fluid .footer .column h1 {
@@ -1355,17 +1358,21 @@ body {
         margin-bottom: 3rem;
     }
     
+    .container-fluid .footer .social_media {
+        width: 70%;
+    }
+    
     .container-fluid .footer .social_media img {
-        width: 60%;
+        width: 70%;
     }
     
     .container-fluid .footer .social_media .element:nth-child(4) img {
-        transform: scale(2);
+        transform: scale(1.7);
     }
     
-    .container-fluid .footer .element {
-        width: 3rem;
-        height: 3rem;
+    .container-fluid .footer .social_media .element {
+        width: 2rem;
+        height: 2rem;
     }
     
     .container-fluid .footer .column h1 {
