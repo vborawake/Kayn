@@ -788,6 +788,10 @@ input:focus {
 
 @media screen and (min-width: 1200px) and (max-width: 1400px) {
     
+    html {
+        font-size: 14px;
+    }
+    
     .container .workspace .toolbar .filter {
         width: 45%;
     }
@@ -894,7 +898,7 @@ input:focus {
 @media screen and (min-width: 766px) and (max-width: 1030px) {
     
     html {
-        font-size: 13px;
+        font-size: 14px;
     }
 
     .container .workspace {
@@ -976,7 +980,7 @@ input:focus {
 @media screen and (min-width: 400px) and (max-width: 768px) {
 
     html {
-        font-size: 13px;
+        font-size: 14px;
     }
 
     .container .workspace {

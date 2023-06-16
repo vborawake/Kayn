@@ -967,6 +967,10 @@ input:focus {
     transform: scale(0.8);
 }
 
+.container .numbers_tablet {
+    display: none;
+}
+
 .container .football_field .mid_field {
     width: 16.6%;
     height: 35%;
@@ -1094,6 +1098,14 @@ input:focus {
     html {
         font-size: 14px;
     }
+
+    .container .numbers_tablet {
+        display: flex;
+    }
+
+    .container .numbers {
+        display: none;
+    }
     
     .container .workspace .left_section .selection_content {
         width: 100%;
@@ -1212,7 +1224,15 @@ input:focus {
 
 @media screen and (min-width: 500px) and (max-width: 768px) {
     html {
-        font-size: 12px;
+        font-size: 14px;
+    }
+
+    .container .numbers_tablet {
+        display: flex;
+    }
+
+    .container .numbers {
+        display: none;
     }
     
     .container .workspace .left_section .selection_content {

@@ -658,6 +658,10 @@ body {
 }
 
 @media screen and (min-width: 992px) and (max-width: 1200px) {
+
+    html {
+        font-size: 14px;
+    }
     
     .container-fluid .hero_section nav .left_section {
         align-items: center;
@@ -870,6 +874,10 @@ body {
 }
 
 @media screen and (min-width: 1200px) and (max-width: 1400px) {
+    html {
+        font-size: 14px;
+    }
+    
     .container-fluid .introduction_section .introduction_wrapper h1 {
         /* width: 60%; */
         font-size: 3rem;
@@ -998,7 +1006,7 @@ body {
 @media screen and (min-width: 600px) and (max-width: 992px) {
 
     html {
-        font-size: 13px;
+        font-size: 14px;
     }
 
     .container-fluid .hero_section {

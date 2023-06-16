@@ -580,6 +580,10 @@ input:focus {
     background: #0d4098;
 }
 
+.container .numbers_tablet {
+    display: none;
+}
+
 .container .bar_menu .item svg {
     margin: 0 1rem 0 0;
 }

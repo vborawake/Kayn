@@ -744,7 +744,7 @@ function throttleFunc(func, delay) {
 // populateTicks();
 
 window.addEventListener('resize', throttleFunc(() => {
-    console.log(window.innerWidth);
+    // console.log(window.innerWidth);
     Array.from(ticksElement.children).forEach(tick => { tick.remove() });
     // setCanvasSize();
     populateTicks();

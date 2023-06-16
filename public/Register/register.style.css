@@ -400,6 +400,10 @@ form input:focus {
 }
 
 @media screen and (min-width: 1200px) and (max-width: 1400px) {
+
+    html {
+        font-size: 14px;
+    }
     
     .container nav .left_section {
         align-items: center;
@@ -561,7 +565,7 @@ form input:focus {
 @media screen and (min-width: 768px) and (max-width: 992px) {
 
     html {
-        font-size: 13px;
+        font-size: 14px;
     }
     
     .container .mobile_menu {
@@ -758,7 +762,7 @@ form input:focus {
 @media screen and (min-width: 400px) and (max-width: 768px) {
 
     html {
-        font-size: 13px;
+        font-size: 14px;
     }
     
     .container .mobile_menu {

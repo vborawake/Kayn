@@ -638,7 +638,7 @@ input:focus {
     }
 
     .container .menu ul {
-        width: 12%;
+        width: 10%;
     }
 
     .container .toolbar .left_side {
@@ -838,11 +838,11 @@ input:focus {
     }
 
     .container .menu ul {
-        width: 15%;
+        width: 12%;
     }
 
     .container .toolbar .left_side {
-        width: 20%;
+        width: 17%;
     }
 
     .container .cut_section .tracker {
@@ -911,11 +911,15 @@ input:focus {
     }
 
     .container .menu ul {
-        width: 18%;
+        width: 15%;
     }
 
     .container .toolbar .left_side {
-        width: 23%;
+        width: 22%;
+    }
+
+    .container .menu .language {
+        width: 15%;
     }
 
     .container .cut_section .tracker {
@@ -979,5 +983,106 @@ input:focus {
 
     .container .numbers_tablet {
         display: flex;
+    }
+
+    .container .numbers_tablet {
+        display: flex;
+    }
+
+    .container .numbers {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 500px) and (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+    
+    .container .workspace .toolbar .filter {
+        width: 35%;
+    }
+
+    .container .menu ul {
+        width: 20%;
+    }
+
+    .container .toolbar .left_side {
+        width: 27%;
+    }
+
+    .container .menu .language {
+        width: 15%;
+    }
+
+    .container .cut_section .tracker {
+        overflow: hidden;
+    }
+
+    .container .workspace .ranges {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #B2B1B0;
+        width: 30%;
+    }
+    
+    .container .workspace .seek_bar {
+        position: relative;
+        width: 50%;
+        height: 0.1rem;
+        background: #A4A4A4;
+        margin: 0 auto;
+    }
+    
+    .container .workspace input[type='range'] {
+        appearance: none;
+        background: transparent;
+        cursor: pointer;
+    }
+    
+    .container .workspace input[type='range']::-webkit-slider-runnable-track {
+        height: 0.1rem;
+        background: #A4A4A4;
+    }
+    
+    .container .workspace input[type='range']::-webkit-slider-thumb {
+        appearance: none;
+        background-color: #52AEE5;
+        height: 0.8rem;
+        width: 0.8rem;
+        border-radius: 50%;
+        margin: -0.3rem 0 0 0;
+    }
+    
+    .container .workspace .volume_buttons {
+        width: 45%;
+    }
+    
+    .container .workspace .volume_buttons button {
+        padding: 0;
+    }
+    
+    .container .workspace .volume_buttons input {
+        width: 70%;
+    }
+    
+    .container .workspace .volume_buttons svg {
+        fill: #FFF;
+    }
+
+    .container .numbers {
+        display: none;
+    }
+
+    .container .numbers_tablet {
+        display: flex;
+    }
+
+    .container .numbers_tablet {
+        display: flex;
+    }
+
+    .container .numbers {
+        display: none;
     }
 }
