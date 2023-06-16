@@ -457,11 +457,11 @@ function directorySelect(e) {
         e.currentTarget.classList.add('active');
         folders[e.currentTarget.querySelector('#directory_name').innerHTML].forEach(file => {
             const html = `
-                <div oncontextmenu="fileRightClick(event)" class="file_wrapper flex_row align_flex_start center">
+                <div oncontextmenu="fileRightClick(event)" onclick="playVideo(event)" class="file_wrapper flex_row align_flex_start center">
                     <input type="checkbox">
                     <div class="file flex_column space_between center width_full">
                         <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M450 896V370L202 618l-42-42 320-320 320 320-42 42-248-248v526h-60Z"/></svg>
-                        <p>${ file.name }</p>
+                        <p id='file_name'>${ file.name }</p>
                     </div>
                 </div>
             `;
