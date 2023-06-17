@@ -206,6 +206,7 @@ body {
 .container-fluid .hero_section .hero_section_display .hero_text {
     margin: 0 0 0 8rem;
     font-weight: 700;
+    height: 75%;
 }
 
 .container-fluid .hero_section .hero_section_display .hero_text h1 {
@@ -675,7 +676,7 @@ body {
     }
     
     .container-fluid .hero_section nav .right_section {
-        width: 78%;
+        width: 70%;
     }
 
     .container-fluid .hero_section .hero_section_display {
@@ -683,16 +684,17 @@ body {
     }
     
     .container-fluid .hero_section .hero_section_display .hero_text {
-        height: 100%;
+        margin-top: 4rem;
+        height: 65%;
     }
     
     .container-fluid .hero_section .hero_section_display .hero_text h1 {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
     }
     
     .container-fluid .hero_section .hero_section_display .hero_text p {
-        font-size: 1rem;
-        line-height: 1.6rem;
+        font-size: 1.2rem;
+        line-height: 1.8rem;
     }
 
     /* .container-fluid .introduction_section {
@@ -726,7 +728,7 @@ body {
     }
     
     .container-fluid .features_section .row:not(:first-child) {
-        margin: -4rem 0 0 0;
+        margin: -8rem 0 0 0;
     }
 
     .container-fluid .working_section .step > img:nth-child(2) {
@@ -875,6 +877,14 @@ body {
 @media screen and (min-width: 1200px) and (max-width: 1400px) {
     html {
         font-size: 14px;
+    }
+
+    .container-fluid nav .right_section {
+        width: 60%;
+    }
+
+    .container-fluid .hero_section .hero_section_display .hero_text {
+        height: 70%;
     }
     
     .container-fluid .introduction_section .introduction_wrapper h1 {
@@ -1103,17 +1113,17 @@ body {
     
     .container-fluid .hero_section .hero_section_display .hero_text {
         width: 40%;
-        height: 50%;
-        margin: 0 0 0 2rem;
+        height: 80%;
+        margin: 0 0 0 4rem;
     }
     
     .container-fluid .hero_section .hero_section_display .hero_text h1 {
-        font-size: 3rem;
+        font-size: 2.5rem;
         width: 100%;
     }
     
     .container-fluid .hero_section .hero_section_display .hero_text p {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
     }
     
     /* .container-fluid .hero_section .hero_section_display img {
@@ -1152,13 +1162,12 @@ body {
     }
 
     .container-fluid .features_section {
-        margin: 2rem 0 0 0;
+        margin: 2rem auto 0 auto;
         font-size: 1.1rem;
     }
-    
-    .container-fluid .features_section .row {
-        display: flex;
-        justify-content: center;
+
+    .container-fluid .features_section .row img {
+        width: 40%;
     }
 
     .container-fluid .features_section .row .feature_description p, .container-fluid .features_section .row .feature_description ul li {
@@ -1170,11 +1179,15 @@ body {
     }
     
     .container-fluid .features_section .row:not(:first-child) {
-        margin: -4rem 0 0 0;
+        margin: 0 0 0 0;
     }
     
     .container-fluid .features_section .feature_description ul li {
         text-align: left;
+    }
+
+    .container-fluid .features_section .feature_description {
+        width: 60%;
     }
     
     /* .container-fluid .features_section .row:nth-child(3) .feature_description {
