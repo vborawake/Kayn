@@ -89,15 +89,9 @@ function showSelectMenu(e) {
     console.log(selectMenu);
 }
 
-fileSection.addEventListener('click', (e) => {
-    Array.from(fileSection.children).forEach(file => {
-        file.classList.remove('active');
-    });
-    video.src = '';
-    video.style.display = 'none';
-    video.nextElementSibling.style.display = 'flex';
-    fileMenu.style.display = 'none';
-});
+// fileSection.addEventListener('click', (e) => {
+    
+// });
 
 directoryCreateButton.addEventListener('click', (e) => {
     e.stopPropagation();
@@ -315,6 +309,13 @@ document.addEventListener('click', (e) => {
         createMenu.style.display = 'none';
     }
     if (selectMenu.style.transform === 'scale(1)') selectMenu.style.transform = 'scale(0)';
+    Array.from(fileSection.children).forEach(file => {
+        file.classList.remove('active');
+    });
+    video.src = '';
+    video.style.display = 'none';
+    video.nextElementSibling.style.display = 'flex';
+    fileMenu.style.display = 'none';
 });
 
 function createDirectory(e) {

@@ -210,9 +210,9 @@ input:focus {
     padding: 0 0.5rem;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     z-index: 10;
-    background: #FFF;
+    background: #464648;
     border-radius: 0.5rem;
-    color: #380E3C;
+    color: #FFF;
     display: none;
 }
 
@@ -221,12 +221,19 @@ input:focus {
     border: 2px solid #380E3C;
     border-radius: 0.3rem;
     font-size: 1.2rem;
+    background: #2F2D2E;
+    color: #FFF;
+}
+
+.container .toolbar .create_menu .actions input::placeholder {
+    color: #FFF;
 }
 
 .container .toolbar .create_menu .actions button {
-    background: #B83169;
+    background: #2F2D2E;
     border-radius: 0.3rem;
     padding: 0.3rem;
+    color: #FFF;
 }
 
 .container .toolbar .create_menu .actions button:nth-child(2) {

@@ -123,8 +123,8 @@ body {
 
 .loader img {
     width: 15%;
-    height: 15%;
-    object-fit: contain;
+    height: 7%;
+    object-fit: fill;
 
 }
 
