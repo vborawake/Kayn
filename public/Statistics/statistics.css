@@ -328,6 +328,7 @@ input:focus {
     transform: scale(0);
     transition: all 0.5s ease;
     color: #000;
+    z-index: 10;
 }
 
 .container .workspace .left_section .select .select_menu p {
@@ -348,12 +349,37 @@ input:focus {
     margin: 0 auto 2rem auto;
 }
 
+.container .workspace .left_section .selection_content .buttons {
+    margin: 0 auto;
+}
+
 .container .workspace .left_section .selection_content .buttons button {
+    position: relative;
     width: 8rem;
     height: 2.5rem;
     border-radius: 0.3rem;
     font-size: 1rem;
     margin: 0 0 0.6rem 0;
+    transition: all 0.5s ease;
+}
+
+.container .workspace .left_section .selection_content .buttons button span {
+    /* display: none; */
+    opacity: 0;
+    position: absolute;
+    top: -1rem;
+    right: -1rem;
+    padding: 0.3rem;
+    background: #241728;
+    color: #FFF;
+    font-size: 0.9rem;
+    height: 1.5rem;
+    z-index: 8;
+    transition: all 0.5s ease;
+}
+
+.container .workspace .left_section .selection_content .buttons button:hover span {
+    opacity: 1;
 }
 
 .container .workspace .left_section .selection_content .buttons button.tall_button {
@@ -369,10 +395,14 @@ input:focus {
 }
 
 .container .workspace .left_section .selection_content .buttons button.short_button {
+    position: relative;
+    width: 48%;
+}
+
+.container .workspace .left_section .selection_content .buttons button.short_button p {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-    width: 48%;
 }
 
 .container .workspace .left_section .tag_list {

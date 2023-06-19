@@ -64,29 +64,55 @@ const selectContent = {
         </div>
     `,
     'Transitions': `
-        <h4>Transition</h4>
-        <div class="buttons flex_row space_between center width_full">
-            <button class="tall_button" onclick="addToTagList(event)" style="background: #4E4C4C;">Defensive</button>
-            <button class="tall_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Attacking</button>
-            <button onclick="addToTagList(event)" style="background: #4E4C4C;">Speed Of Awareness</button>
-            <button onclick="addToTagList(event)" style="background: #A4A4A4;">Speed Of Decision</button>
-            <button onclick="addToTagList(event)" style="background: #4E4C4C;">Speed Of Perception</button>
-            <button onclick="addToTagList(event)" style="background: #A4A4A4;">Speed Of Action</button>
-            <button onclick="addToTagList(event)" style="background: #4E4C4C;">Recovery Time</button>
-            <div class="flex_row space_between" style="width: 38%;">
-                <button class="short_button" onclick="addToTagList(event)" style="background: #4E4C4C;">Successful</button>
-                <button class="short_button" onclick="addToTagList(event)" style="background: #A4A4A4;">UnSuccessful</button>
-            </div>
-            <button onclick="addToTagList(event)" style="background: #4E4C4C;">Pressing Inside</button>
-            <button onclick="addToTagList(event)" style="background: #D9D9D9;">No Text</button>
-            <button onclick="addToTagList(event)" style="background: #4E4C4C;">Pressing Outside</button>
-            <button onclick="addToTagList(event)" style="background: #D9D9D9;">No Text</button>
-            <div class="flex_row space_between" style="width: 38%;">
-            <button class="short_button" onclick="addToTagList(event)" style="background: #4E4C4C;">Successful</button>
-                <button class="short_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Unsuccessful</button>
-            </div>
-            <button onclick="addToTagList(event)" style="background: #D9D9D9;">No Text</button>
+    <h4>Transition</h4>
+    <div class="buttons flex_row space_between center width_full">
+        <button class="tall_button" onclick="addToTagList(event)" style="background: #4E4C4C;">Defensive</button>
+        <button class="tall_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Attacking</button>
+        <button onclick="addToTagList(event)" style="background: #4E4C4C;">
+            Speed Of Awareness
+        </button>
+        <button onclick="addToTagList(event)" style="background: #A4A4A4;">
+            Speed Of Decision
+        </button>
+        <button onclick="addToTagList(event)" style="background: #4E4C4C;">
+            Speed Of Perception
+        </button>
+        <button onclick="addToTagList(event)" style="background: #A4A4A4;">
+            Speed Of Action
+        </button>
+        <button onclick="addToTagList(event)" style="background: #4E4C4C;">
+            Recovery Time
+        </button>
+        <div class="flex_row space_between" style="width: 38%;">
+            <button class="short_button" onclick="addToTagList(event)" style="background: #4E4C4C;">
+                <p>Successful</p>
+                <span>Successful</span>
+            </button>
+            <button class="short_button" onclick="addToTagList(event)" style="background: #A4A4A4;">
+                <p>UnSuccessful</p>
+                <span>UnSuccessful</span>
+            </button>
         </div>
+        <button onclick="addToTagList(event)" style="background: #4E4C4C;">
+            Pressing Inside
+        </button>
+        <button onclick="addToTagList(event)" style="background: #D9D9D9;">No Text</button>
+        <button onclick="addToTagList(event)" style="background: #4E4C4C;">
+            Pressing Outside
+        </button>
+        <button onclick="addToTagList(event)" style="background: #D9D9D9;">No Text</button>
+        <div class="flex_row space_between" style="width: 38%;">
+            <button class="short_button" onclick="addToTagList(event)" style="background: #4E4C4C;">
+                <p>Successful</p>
+                <span>Successful</span>
+            </button>
+            <button class="short_button" onclick="addToTagList(event)" style="background: #A4A4A4;">
+                <p>UnSuccessful</p>
+                <span>UnSuccessful</span>
+            </button>
+        </div>
+        <button onclick="addToTagList(event)" style="background: #D9D9D9;">No Text</button>
+    </div>
     `,
     'Phases Of Play': `
         <h4>Phases Of Play</h4>
@@ -120,10 +146,10 @@ const selectContent = {
             <button onclick="addToTagList(event)" style="background: #4E4C4C;">Cover</button>
             <button onclick="addToTagList(event)" style="background: #4E4C4C;">Balance</button>
             <button onclick="addToTagList(event)" style="background: #4E4C4C;">Compact</button>
-            <button onclick="addToTagList(event)" style="background: #D9D9D9;">&lt;No Text%gt;</button>
-            <button onclick="addToTagList(event)" style="background: #D9D9D9;">&lt;No Text%gt;</button>
-            <button onclick="addToTagList(event)" style="background: #D9D9D9;">&lt;No Text%gt;</button>
-            <button onclick="addToTagList(event)" style="background: #D9D9D9;">&lt;No Text%gt;</button>
+            <button onclick="addToTagList(event)" style="background: #D9D9D9;">&lt;No Text&gt;</button>
+            <button onclick="addToTagList(event)" style="background: #D9D9D9;">&lt;No Text&gt;</button>
+            <button onclick="addToTagList(event)" style="background: #D9D9D9;">&lt;No Text&gt;</button>
+            <button onclick="addToTagList(event)" style="background: #D9D9D9;">&lt;No Text&gt;</button>
         </div>
     `,
     'Set Plays': `
@@ -154,7 +180,7 @@ const selectContent = {
     `,
     'Attempts At Goal': `
         <h4>Attempts At Goal</h4>
-        <div class="buttons flex_row space_between center width_full">
+        <div class="buttons flex_row space_evenly center width_full">
             <button class="long_button" onclick="addToTagList(event)" style="background: #4E4C4C;">Goal</button>
             <div class="flex_row space_between" style="width: 60%;">
                 <button class="short_button" onclick="addToTagList(event)" style="background: #4E4C4C;">On Target</button>
@@ -168,7 +194,7 @@ const selectContent = {
     `,
     'Defensive Actions': `
         <h4>Defensive Actions</h4>
-        <div class="buttons flex_row space_between center width_full">
+        <div class="buttons flex_row space_evenly center width_full">
             <button class="long_button" onclick="addToTagList(event)" style="background: #4E4C4C;">Forced Turnover</button>
             <div class="flex_row space_between" style="width: 60%;">
                 <button class="short_button" onclick="addToTagList(event)" style="background: #4E4C4C;">On Target</button>
@@ -197,7 +223,7 @@ const selectContent = {
     `,
     'Goalkeeping': `
         <h4>Goalkeeping</h4>
-        <div class="buttons flex_row space_between center width_full">
+        <div class="buttons flex_row space_evenly center width_full">
             <button class="long_button" onclick="addToTagList(event)" style="background: #4E4C4C;">Goalkeeping Distribution</button>
             <button class="long_button" onclick="addToTagList(event)" style="background: #4E4C4C;">Goal Prevention</button>
             <button class="long_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Aerial Control</button>
