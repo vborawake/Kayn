@@ -422,7 +422,8 @@ input:focus {
 
 .container .bottom_buttons {
     height: 4rem;
-    background: #000000EB;
+    background: #241728;
+    border-top: 4px solid #B83169;
 }
 
 .container .bottom_buttons .buttons_wrapper {
@@ -443,6 +444,7 @@ input:focus {
     padding: 0.2rem;
     color: #000;
     transition: all 0.5s ease;
+    width: 500%;
 }
 
 .container .bottom_buttons .buttons_wrapper button:hover p {
