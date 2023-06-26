@@ -141,7 +141,7 @@ function addTeam() {
                             </div>
                             <p class="team_name">${ name.value ? name.value : 'Team_' + teamCounter++ }</p>
                    </div>`;
-    if (playersContainer.children[0].tagName === 'H1') playersContainer.innerHTML = '';
+    if (teamsContainer.children[0].tagName === 'H1') teamsContainer.innerHTML = '';
     teamsContainer.innerHTML += html;
     createMenu.style.display = 'none';
 }
@@ -176,22 +176,35 @@ function showTeamDetails(e) {
     e.currentTarget.classList.add('active');
     const teamName = e.currentTarget.querySelector('.team_name').innerHTML;
     right_workspace.querySelector('.details_wrapper .input:nth-child(1) input').value = teamName;
-    if (e.currentTarget.querySelector('.team.flex_row.center.justify_center svg')) {
-        right_workspace.querySelector('.team_image.flex_column.justify_center.center').innerHTML = `
-            <input onchange="uploadPhoto(event)" type="file" class="image_upload">
-            <svg xmlns="http://www.w3.org/2000/svg" height="54" viewBox="0 96 960 960" width="54">
-                <path d="M480 606q-58 0-97.5-39.5T343 469q0-58 39.5-97.5T480 332q58 0 97.5 39.5T617 469q0 58-39.5 97.5T480 606Zm0-60q34 0 55.5-21.5T557 469q0-34-21.5-55.5T480 392q-34 0-55.5 21.5T403 469q0 34 21.5 55.5T480 546Zm0 429q-140-35-230-162.5T160 533V295l320-120 320 120v238q0 152-90 279.5T480 975Zm0-399Zm0-337-260 98v196q0 63 17.5 120.5T287 760q46-25 93.5-37.5T480 710q52 0 99.5 12.5T673 760q32-49 49.5-106.5T740 533V337l-260-98Zm0 531q-39 0-78 10t-77 30q32 35 71 61.5t84 41.5q45-15 84-41.5t71-61.5q-38-20-77-30t-78-10Z"/>
-            </svg>
-        `;
+    if (localStorage.getItem('select')) {
+        let name = localStorage.getItem('select');
+        name = name + ' - ' + teamName;
+        localStorage.setItem('fromCutSection', name);
+        window.location.href = '../Desktop/desktop.html';
     }
-    if (window.innerWidth < 900) {
-        right_workspace.style.display = 'flex';
-        leftWorkspace.style.minWidth = '75%';
-        right_workspace.style.minWidth = '25%';
-    } else {
-        right_workspace.style.display = 'flex';
-        right_workspace.style.minWidth = '20%';
-        leftWorkspace.style.minWidth = '80%';;
+    if (localStorage.getItem('fromStats')) {
+        localStorage.removeItem('fromStats');
+        localStorage.setItem('fromPlayer', e.currentTarget.querySelector('.team_name').innerHTML);
+        window.location.href = '../Statistics/statistics.html'
+    }
+    if (!localStorage.getItem('fromStats')) {
+        if (e.currentTarget.querySelector('.team.flex_row.center.justify_center svg')) {
+            right_workspace.querySelector('.team_image.flex_column.justify_center.center').innerHTML = `
+                <input onchange="uploadPhoto(event)" type="file" class="image_upload">
+                <svg xmlns="http://www.w3.org/2000/svg" height="54" viewBox="0 96 960 960" width="54">
+                    <path d="M480 606q-58 0-97.5-39.5T343 469q0-58 39.5-97.5T480 332q58 0 97.5 39.5T617 469q0 58-39.5 97.5T480 606Zm0-60q34 0 55.5-21.5T557 469q0-34-21.5-55.5T480 392q-34 0-55.5 21.5T403 469q0 34 21.5 55.5T480 546Zm0 429q-140-35-230-162.5T160 533V295l320-120 320 120v238q0 152-90 279.5T480 975Zm0-399Zm0-337-260 98v196q0 63 17.5 120.5T287 760q46-25 93.5-37.5T480 710q52 0 99.5 12.5T673 760q32-49 49.5-106.5T740 533V337l-260-98Zm0 531q-39 0-78 10t-77 30q32 35 71 61.5t84 41.5q45-15 84-41.5t71-61.5q-38-20-77-30t-78-10Z"/>
+                </svg>
+            `;
+        }
+        if (window.innerWidth < 900) {
+            right_workspace.style.display = 'flex';
+            leftWorkspace.style.minWidth = '75%';
+            right_workspace.style.minWidth = '25%';
+        } else {
+            right_workspace.style.display = 'flex';
+            right_workspace.style.minWidth = '20%';
+            leftWorkspace.style.minWidth = '80%';;
+        }
     }
 }
 

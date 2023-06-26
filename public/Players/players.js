@@ -124,9 +124,20 @@ function uploadPhoto(e) {
 
 function showPlayerDetails(e) {
     e.stopPropagation();
+    const teamName = e.currentTarget.querySelector('.player_name').innerHTML;
+    if (localStorage.getItem('select')) {
+        let name = localStorage.getItem('select');
+        name = name + ' - ' + teamName;
+        localStorage.setItem('fromCutSection', name);
+        window.location.href = '../Desktop/desktop.html';
+    }
+    if (localStorage.getItem('fromStats')) {
+        localStorage.removeItem('fromStats');
+        localStorage.setItem('fromPlayer', e.currentTarget.querySelector('.player_name').innerHTML);
+        window.location.href = '../Statistics/statistics.html'
+    }
     if (!localStorage.getItem('fromStats')) {
         e.currentTarget.classList.add('active');
-        const teamName = e.currentTarget.querySelector('.player_name').innerHTML;
         right_workspace.querySelector('.details_wrapper .input:nth-child(2) input').value = teamName;
         if (e.currentTarget.querySelector('.player.flex_row.center.justify_center svg')) {
             right_workspace.querySelector('.player_image.flex_column.justify_center.center').innerHTML = `
@@ -145,10 +156,6 @@ function showPlayerDetails(e) {
             right_workspace.style.minWidth = '20%';
             leftWorkspace.style.minWidth = '80%';
         }
-    } else {
-        localStorage.removeItem('fromStats');
-        localStorage.setItem('fromPlayer', e.currentTarget.querySelector('.player_name').innerHTML);
-        window.location.href = '../Statistics/statistics.html'
     }
 }
 

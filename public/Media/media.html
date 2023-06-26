@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="media.style.css">
+    <script defer src="../slider.js"></script>
     <script defer src="media.js"></script>
     <link rel="stylesheet" href="../helper.css">
     <title>Media</title>
@@ -66,7 +67,7 @@
                                 <p>No Selection</p>
                                 <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M480 696 280 497h400L480 696Z"/></svg>
                             </div>
-                            <div class="select_menu flex_column width_full">
+                            <div class="select_menu flex_column width_full" onclick="filter(event)">
                                 <div class="item flex_row justify_flex_start center">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="18" viewBox="0 96 960 960" width="18"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg>
                                     <p>No Filter</p>
@@ -109,7 +110,7 @@
                 </div>
                 <div class="directories flex_row width_full">
                     <div class="file_tree flex_column justify_flex_start align_flex_start">
-                        <div class="row flex_row space_between center width_full">
+                        <div class="row flex_row center width_full">
                             <div class="file">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M141 896q-24 0-42-18.5T81 836V316q0-23 18-41.5t42-18.5h280l60 60h340q23 0 41.5 18.5T881 376v460q0 23-18.5 41.5T821 896H141Zm0-580v520h680V376H456l-60-60H141Zm0 0v520-520Z"/></svg>
                             </div>
@@ -148,6 +149,19 @@
                             </div>
                             <div class="file_menu space_between flex_row center" oncontextmenu="fileRightClick(event)"></div>
                         </div>
+                        <div class="cuts flex_column width_full">
+                            <p>Cut</p>
+                            <div class="cut_container flex_row justify_flex_start center width_full">
+                                <!-- <div oncontextmenu="fileRightClick(event)" class="cut_wrapper flex_row align_flex_start center">
+                                    <input type="checkbox">
+                                    <div class="cut flex_column space_between center width_full">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M450 896V370L202 618l-42-42 320-320 320 320-42 42-248-248v526h-60Z"/></svg>
+                                        <p>Individual Concept</p>
+                                    </div>
+                                </div> -->
+                            </div>
+                            <!-- <div class="file_menu space_between flex_row center" oncontextmenu="fileRightClick(event)"></div> -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -176,15 +190,6 @@
                                 <button><svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M280 696V456h160l200-200v640L440 696H280Zm60-60h127l113 109V408L467 516H340v120Zm119-60Z"/></svg></button>
                                 <input type="range" min="0" max="1" step="0.1" name="volume" class="volume">
                                 <button><svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M560 925v-62q97-28 158.5-107.5T780 575q0-101-61-181T560 287v-62q124 28 202 125.5T840 575q0 127-78 224.5T560 925ZM120 696V456h160l200-200v640L280 696H120Zm420 48V407q55 17 87.5 64T660 576q0 57-33 104t-87 64ZM420 408 307 516H180v120h127l113 109V408Zm-94 168Z"/></svg></button>
-                                <select name="speed">
-                                    <option value="1">1.00x</option>
-                                    <option value="1.2">1.25x</option>
-                                    <option value="1.5">1.5x</option>
-                                    <option value="1.7">1.75x</option>
-                                    <option value="2">2.00x</option>
-                                </select>
-                                <button><svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M180 975q-24 0-42-18t-18-42V312h60v603h474v60H180Zm120-120q-24 0-42-18t-18-42V235q0-24 18-42t42-18h440q24 0 42 18t18 42v560q0 24-18 42t-42 18H300Zm0-60h440V235H300v560Zm0 0V235v560Z"/></svg></button>
-                                <button onclick="document.querySelector('video').requestFullscreen()"><svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M820 446V316H690v-60h130q24 0 42 18t18 42v130h-60Zm-740 0V316q0-24 18-42t42-18h130v60H140v130H80Zm610 450v-60h130V706h60v130q0 24-18 42t-42 18H690Zm-550 0q-24 0-42-18t-18-42V706h60v130h130v60H140Zm60-120V376h560v400H200Zm60-60h440V436H260v280Zm0 0V436v280Z"/></svg></button>
                             </div>
                         </div>
                     </div>
@@ -200,7 +205,7 @@
             </div> -->
             <div class="button_wrapper flex_column">
                 <div class="row flex_row space_between center">
-                    <button>Create Cut Here</button>
+                    <button onclick="cutHere(event)">Create Cut Here</button>
                     <button>Create Cut To New Directory</button>
                     <button onclick="cutVideo(event)"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M782 942 481 641 364 758q11 17 13.5 33t2.5 35q0 64-43 107t-107 43q-64 0-107-43T80 826q0-64 43-107t107-43q18 0 35.5 5t36.5 15l116-116-118-118q-17 8-34.5 11t-35.5 3q-64 0-107-43T80 326q0-64 43-107t107-43q64 0 107 43t43 107q0 19-2.5 36T367 394l514 514v34h-99ZM599 529l-66-66 249-249h99v33L599 529ZM230 416q38 0 64-26t26-64q0-38-26-64t-64-26q-38 0-64 26t-26 64q0 38 26 64t64 26Zm253 183q8 0 13.5-5.5T502 580q0-8-5.5-13.5T483 561q-8 0-13.5 5.5T464 580q0 8 5.5 13.5T483 599ZM230 916q38 0 64-26t26-64q0-38-26-64t-64-26q-38 0-64 26t-26 64q0 38 26 64t64 26Z"/></svg></button>
                 </div>
@@ -233,14 +238,30 @@
                     <p>36:00</p>
                     <p>39:00</p>
                 </div>
+                <div class="numbers_tablet flex_row space_between center width_full">
+                    <p>00:00</p>
+                    <p>03:00</p>
+                    <p>06:00</p>
+                    <p>09:00</p>
+                    <p>12:00</p>
+                    <p>15:00</p>
+                    <p>18:00</p>
+                    <p>21:00</p>
+                </div>
                 <div class="ticks width_full">
 
+                </div>
+            </div>
+            <div class="bar_menu flex_column" onclick="handleBarClick(event)">
+                <div class="item flex_row center">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M261 936q-24.75 0-42.375-17.625T201 876V306h-41v-60h188v-30h264v30h188v60h-41v570q0 24-18 42t-42 18H261Zm438-630H261v570h438V306ZM367 790h60V391h-60v399Zm166 0h60V391h-60v399ZM261 306v570-570Z"/></svg>
+                    <p>Remove</p>
                 </div>
             </div>
             <div class="working_area width_full flex_column justify_flex_start">
                 <span class="start_tracker"></span>
                 <span class="end_tracker"></span>
-                <div class="video width_full">
+                <div class="video width_full" oncontextmenu="tagRightClick(event)">
                     <img src="../video/gif.gif" alt="">
                 </div>
             </div>

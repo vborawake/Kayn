@@ -44,7 +44,7 @@
                         <p>Enter Name</p>
                         <div class="actions flex_row space_between center width_full">
                             <input type="text" id="createPlayer">
-                            <button onclick="event.currentTarget.parentElement.parentElement.style.display = 'none'; isOpen = false;">Cancel</button>
+                            <button onclick="event.currentTarget.parentElement.parentElement.style.display = 'none'; isOpen = false; document.getElementById('createTeam').value = '';">Cancel</button>
                             <button onclick="addPlayer(event)">OK</button>
                         </div>
                     </div>

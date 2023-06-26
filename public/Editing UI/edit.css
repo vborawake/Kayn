@@ -213,6 +213,11 @@ input:focus {
     background: #1f1f1f;
 }
 
+.container .workspace .video_editing .tools img {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
 .container .workspace .video {
     /* position: relative; */
     width: 80%;
@@ -220,7 +225,25 @@ input:focus {
     overflow: hidden;
 }
 
-.container .workspace .video img {
+.container .workspace .video video {
+    width: 100%;
+    height: 90%;
+}
+
+.container .workspace .video .spotlight {
+    position: absolute;
+    background: url('../images/spotlight2.jpg');
+    background-size: cover;
+    mix-blend-mode: lighten;
+    /* background: #000; */
+    top: 10rem;
+    left: 10rem;
+    width: 20rem;
+    height: 40rem;
+    z-index: 20;
+}
+
+.container .workspace .video > img {
     width: 100%;
     object-position: 0 0;
     object-fit: cover;
@@ -228,8 +251,8 @@ input:focus {
 
 .container .workspace .video #canvas {
     position: absolute;
-    z-index: 100;
-    /* border: 2px solid black; */
+    z-index: 10;
+    border: 2px solid black;
 }
 
 .container .workspace .video_editing .tools svg {
@@ -305,6 +328,7 @@ input:focus {
     transform: scale(0);
     transition: all 0.5s ease;
     color: #FFF;
+    z-index: 20;
 }
 
 .container .workspace .video .render_menu h4 {
@@ -319,11 +343,12 @@ input:focus {
     border-radius: 0.6rem;
     overflow: hidden;
     margin: 0 0 1rem 0;
+    
 }
 
 .container .workspace .video .render_menu .video_image img {
+    width: 100%;
     object-fit: cover;
-    object-position: 0 -5rem;
 }
 
 .container .workspace .video .render_menu .input {
@@ -418,6 +443,67 @@ input:focus {
     color: #FFF;
     background: #2F2D2E;
     padding: 0;
+}
+
+.container .canvas_menu {
+    position: absolute;
+    z-index: 20;
+}
+
+.container .canvas_menu .selected_item {
+    background: #D9D9D9;
+    cursor: pointer;
+}
+
+.container .canvas_menu .players {
+    display: none;
+    transform: scale(0);
+    transition: all 0.5s ease;
+}
+
+.container .canvas_menu button {
+    background: #D9D9D9;
+    color: #000;
+    padding: 0.3rem;
+    border-radius: 0.3rem;
+}
+
+.container .polygon_menu {
+    position: absolute;
+    padding: 1rem;
+    background: #2F2D2E;
+    color: #FFF;
+    border-radius: 0.6rem;
+    transform: scale(0);
+    z-index: 30;
+    transition: all 0.5s ease;
+    display: none;
+}
+
+.container .polygon_menu p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.container .polygon_menu input {
+    height: 2rem;
+    padding: 0.4rem;
+    font-size: 1.1rem;
+    background: #1f1f1f;
+    color: #FFF;
+    border-radius: 0.3rem;
+    margin: 0 0.5rem 0 0;
+}
+
+.container .polygon_menu button {
+    padding: 0.3rem;
+    color: #FFF;
+    margin: 0 0.5rem 0 0;
+}
+
+.container .polygon_menu button:nth-child(2) {
+    background: #A4A4A4;
+    color: #000;
 }
 
 .container .bottom_buttons {
@@ -590,13 +676,28 @@ input:focus {
     border-top-right-radius: 0.3rem;
 }
 
-.container .cut_section .working_area .ring {
+.container .cut_section .working_area .tag {
+    position: relative;
     height: 1.3rem;
     width: 20%;
     background: #D77A47;
     border-bottom-left-radius: 0.3rem;
     border-top-right-radius: 0.3rem;
     border: 2px solid black;
+}
+
+.container .cut_section .working_area .tag span#left_resizer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: e-resize;
+}
+
+.container .cut_section .working_area .tag span#right_resizer {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    cursor: e-resize;
 }
 
 .container .video img {
@@ -628,6 +729,15 @@ input:focus {
 
 .container .editing_section {
     width: 80%;
+}
+
+.container .workspace .video .render_menu button {
+    height: 2.3rem;
+    width: 35%;
+    border: 0.6rem;
+    color: #FFF;
+    background: #2F2D2E;
+    padding: 0;
 }
 
 @media screen and (min-width: 1200px) and (max-width: 1400px) {

@@ -175,7 +175,7 @@ input:focus {
 }
 
 .container .workspace {
-    height: 80%;
+    height: calc(100vh - 7rem);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     background: #656565;
 }
@@ -401,7 +401,6 @@ input:focus {
     height: 4rem;
     background: #241728;
     border-top: 4px solid #B83169;
-    margin: 1rem 0 0 0;
 }
 
 .container .bottom_buttons .buttons_wrapper {

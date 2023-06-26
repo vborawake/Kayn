@@ -40,14 +40,6 @@
                     <div class="add_tag">
                         <svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30"><path d="M450 776h60V606h170v-60H510V376h-60v170H280v60h170v170ZM180 936q-24 0-42-18t-18-42V276q0-24 18-42t42-18h600q24 0 42 18t18 42v600q0 24-18 42t-42 18H180Zm0-60h600V276H180v600Zm0-600v600-600Z"/></svg>
                     </div>
-                    <div onclick="event.stopPropagation()" class="create_menu flex_column space_evenly">
-                        <p>Enter Name</p>
-                        <div class="actions flex_row space_between center width_full">
-                            <input type="text" id="createTag">
-                            <button onclick="event.currentTarget.parentElement.parentElement.style.display = 'none'; isOpen = false;">Cancel</button>
-                            <button onclick="addTag(event)">OK</button>
-                        </div>
-                    </div>
                 </div>
                 <div class="tag_menu flex_row center">
                     <ul class="flex_column height_full width_full">
@@ -68,46 +60,48 @@
                         </div>
                     </div> -->
                 </div>
-                <div class="tag_information flex_column center" style="display: none;">
-                    <h1 onclick="showTagDetails(event)">Back To Panels</h1>
-                    <div class="information_wrapper flex_row width_full">
-                        <div class="left_section">
-                            <span></span>
-                            <h1>1st Team Tag</h1>
-                            <div class="information">
-                                <div class="information_item">
-                                    <p>Created By</p>
-                                    <p>John</p>
+                <div class="edit_tag flex_row justify_center center" style="display: none;">
+                    <div class="tag_information flex_column center">
+                        <h1 onclick="showTagDetails(event)">Back To Panels</h1>
+                        <div class="information_wrapper flex_row width_full">
+                            <div class="left_section">
+                                <span></span>
+                                <h1>1st Team Tag</h1>
+                                <div class="information">
+                                    <div class="information_item">
+                                        <p>Created By</p>
+                                        <p>John</p>
+                                    </div>
+                                    <div class="information_item">
+                                        <p>Layout</p>
+                                        <p>Standard Tag Panel (11)</p>
+                                    </div>
                                 </div>
-                                <div class="information_item">
-                                    <p>Layout</p>
-                                    <p>Standard Tag Panel (11)</p>
+                            </div>
+                            <div class="right_section">
+                                <p>Click tags to edit</p>
+                                <div class="tag_layout flex_column space_evenly center">
+                                    <h1>Standard Tag Panel (11)</h1>
+                                    <div class="tags_wrapper width_full">
+                                        <button onclick="showEditPanel(event)">No Text</button>
+                                        <button onclick="showEditPanel(event)">No Text</button>
+                                        <button onclick="showEditPanel(event)">No Text</button>
+                                        <button onclick="showEditPanel(event)">No Text</button>
+                                        <button onclick="showEditPanel(event)">No Text</button>
+                                        <button onclick="showEditPanel(event)">No Text</button>
+                                        <button onclick="showEditPanel(event)">No Text</button>
+                                        <button onclick="showEditPanel(event)">No Text</button>
+                                        <button onclick="showEditPanel(event)">No Text</button>
+                                        <button onclick="showEditPanel(event)">No Text</button>
+                                        <button onclick="showEditPanel(event)">No Text</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="right_section">
-                            <p>Click tags to edit</p>
-                            <div class="tag_layout flex_column space_evenly center">
-                                <h1>Standard Tag Panel (11)</h1>
-                                <div class="tags_wrapper width_full">
-                                    <button onclick="showEditPanel(event)">No Text</button>
-                                    <button onclick="showEditPanel(event)">No Text</button>
-                                    <button onclick="showEditPanel(event)">No Text</button>
-                                    <button onclick="showEditPanel(event)">No Text</button>
-                                    <button onclick="showEditPanel(event)">No Text</button>
-                                    <button onclick="showEditPanel(event)">No Text</button>
-                                    <button onclick="showEditPanel(event)">No Text</button>
-                                    <button onclick="showEditPanel(event)">No Text</button>
-                                    <button onclick="showEditPanel(event)">No Text</button>
-                                    <button onclick="showEditPanel(event)">No Text</button>
-                                    <button onclick="showEditPanel(event)">No Text</button>
-                                </div>
-                            </div>
+                        <div class="buttons flex_row center space_between">
+                            <button style="color: #000; background: #D9D9D9;">Delete</button>
+                            <button style="color: #FFF; background: #1e1c1d;" onclick="showEditTag(event)">Edit</button>
                         </div>
-                    </div>
-                    <div class="buttons flex_row center space_between">
-                        <button style="color: #000; background: #D9D9D9;">Delete</button>
-                        <button style="color: #FFF; background: #1e1c1d;" onclick="showEditTag(event)">Edit</button>
                     </div>
                 </div>
             </div>
@@ -117,11 +111,11 @@
                     <div class="details_wrapper">
                         <div class="input flex_column space_between align_flex_start width_full">
                             <label for="title">Title</label>
-                            <input name="title" placeholder="Enter Tag Name" type="text">
+                            <input id="title" placeholder="Enter Tag Name" type="text">
                         </div>
                         <div class="input buttons flex_row space_between center width_full">
                             <button style="background: #D9D9D9; color: #000;" onclick="hideTagDetails(event)">Cancel</button>
-                            <button>OK</button>
+                            <button onclick="document.querySelector('.text_wrapper.height_full.flex_column.space_evenly p:nth-child(1)').innerHTML = document.getElementById('title').value; hideTagDetails();">OK</button>
                         </div>
                     </div>
                 </div>
@@ -158,7 +152,10 @@
                         <div class="input">
                             <label for="time">Time</label>
                             <div class="timeline width_full">
-                                <div class="frame"></div>
+                                <div class="frame">
+                                    <div id="start" ondrag="moveSlider(event)" ondragend="setSlider(event)"></div>
+                                    <div id="end" ondrag="moveSlider(event)" ondragend="setSlider(event)"></div>
+                                </div>
                             </div>
                             <div class="inputs flex_row space_between width_full center">
                                 <input placeholder="Before: 00:005s" type="text">
@@ -241,6 +238,41 @@
                         </svg>
                     </button>
                 </a>
+            </div>
+        </div>
+        <div class="menus flex_row justify_center center">
+            <div class="tag_information flex_column center" style="display: none;">
+                <div class="information_wrapper flex_row width_full">
+                    <div class="left_section">
+                        <div class="input flex_column">
+                            <p>Title</p>
+                            <input type="text" id="tag_name" placeholder="Name for the panel">
+                        </div>
+                    </div>
+                    <div class="right_section">
+                        <p>Click tags to edit</p>
+                        <div class="tag_layout flex_column space_evenly center">
+                            <h1>Standard Tag Panel (11)</h1>
+                            <div class="tags_wrapper width_full">
+                                <button>No Text</button>
+                                <button>No Text</button>
+                                <button>No Text</button>
+                                <button>No Text</button>
+                                <button>No Text</button>
+                                <button>No Text</button>
+                                <button>No Text</button>
+                                <button>No Text</button>
+                                <button>No Text</button>
+                                <button>No Text</button>
+                                <button>No Text</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="buttons flex_row center space_between">
+                    <button style="color: #000; background: #D9D9D9;">Delete</button>
+                    <button style="color: #FFF; background: #1e1c1d;" onclick="addTag(event)">Create</button>
+                </div>
             </div>
         </div>
     </div>

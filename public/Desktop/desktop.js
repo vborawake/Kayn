@@ -19,11 +19,8 @@ const fileSection = document.querySelector('.files_section.flex_column.justify_f
 const cutSection = document.querySelector('.cut_section.flex_row.center.justify_flex_start.width_full');
 const barMenu = document.querySelector('.bar_menu.flex_column');
 
-let chartCanvas;
-let chartctx1;
-let chartCanvas2;
-let chartctx2;
 let barInCons;
+const bars = [];
 
 const playersContainer = document.querySelector('.players.flex_column.center.justify_flex_start');
 
@@ -407,83 +404,21 @@ const content = {
     `
 };
 
-function createChart() {
-    lineChart = document.getElementById('line_chart');
-    lineCtx = lineChart ? lineChart.getContext('2d') : undefined;
-
-    canvas = document.getElementById('chart');
-    ctx = canvas ? canvas.getContext('2d') : undefined;
-    
-    if (ctx) {
-        const gradient = ctx.createLinearGradient(canvas.width / 2, 0, canvas.width / 2, canvas.height * 2);
-        gradient.addColorStop(0, '#BCBCBC');
-        gradient.addColorStop(1, '#5A5858');
-        
-        const data = {
-            labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
-            datasets: [{
-                label: 'My First Dataset',
-                data: [65, 59, 80, 81, 56, 55, 40, 81, 65, 80, 59, 40, 56, 55],
-                backgroundColor: [
-                gradient
-                ],
-                borderRadius: ['50'],
-                borderWidth: 1,
-                barThickness: 20
-            }],
-        };
-    
-        new Chart(ctx, {
-            type: 'bar',
-            data: data,
-            options: {
-                responsive: true,
-                maintainAspectRatio: true,
-                scales: {
-                    xAxes: [
-                        {
-                            ticks: {
-                                fontColor: '#FFF'
-                            }
-                        }
-                    ]
-                }
-            }
-        });
-        canvas.width = selectionContent.getBoundingClientRect().width / 2.5;
-        canvas.height = 383;
+document.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('fromCutSection') || localStorage.getItem('cutSection')) {
+        const name = localStorage.getItem('fromCutSection') ? localStorage.getItem('fromCutSection') : localStorage.getItem('cutSection');
+        const html = `<div oncontextmenu="tagRightClick(event)" class="tag width_full flex_row justify_center" style="color: #FFF;">
+                            <p>${ name }</p>
+                        </div>`
+        workingArea.innerHTML += html;
+        adjustBars();
+        addSelectRow(name);
+        cutSection.style.display = 'flex';
+        populateTicks();
+        localStorage.removeItem('fromCutSection');
+        localStorage.setItem('cutSection', name);
     }
-
-    if (lineCtx) {
-        new Chart(lineCtx, {
-            type: 'line',
-            data: {
-                labels: [1, 2, 3, 4, 5, 6],
-                datasets: [
-                    {
-                        data: [122, 110, 98, 110, 122, 115],
-                        pointBackgroundColor: '#FFF'
-                    },
-                    {
-                        data: [10, 22, 34, 22, 10, 17],
-                        fill: '-1',
-                        backgroundColor: 'rgba(95, 95, 95, 0.3)',
-                        pointBackgroundColor: '#FFF'
-                    }
-                ],
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: true,
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    }
-}
+});
 
 function adjustBars () {
     let top = 1.4;
@@ -534,11 +469,11 @@ function addToTagList (e) {
     
     Array.from(tagList.children).forEach(button => {
         if (button === e.currentTarget) {
-            console.log(button);
             buttonsList.appendChild(e.currentTarget);
             tagListContains = 1;
             removeSelectRow(e.currentTarget.innerHTML);
             removeBar(e.currentTarget.innerHTML);
+            removeFromBar(e.currentTarget.innerHTML);
             // return;
         }
     });
@@ -551,7 +486,13 @@ function addToTagList (e) {
         adjustBars();
         addSelectRow(e.currentTarget.innerHTML);
         populateTicks();
+        bars.push(e.currentTarget.innerHTML);
     }
+}
+
+function removeFromBar (name) {
+    const index = bars.indexOf(name);
+    if (index !== -1) bars.splice(index, 1);
 }
 
 function tagRightClick(e) {
@@ -646,18 +587,19 @@ function handleBarClick(e) {
     else if (e.target.nodeName === 'P') action = e.target.innerHTML;
 
     if (action === 'Add Player') {
-        localStorage.setItem('fromCutSection', 'true');
+        localStorage.setItem('select', barInCons.querySelector('p').innerHTML);
+        localStorage.setItem('currentBar', barInCons.querySelector('p').innerHTML);
         window.location.href = '../Players/players.html';
     }
-    if (action === 'Set Team') {
-        localStorage.setItem('fromCutSection', 'true');
+    else if (action === 'Set Team') {
+        localStorage.setItem('select', barInCons.querySelector('p').innerHTML);
+        localStorage.setItem('currentBar', barInCons.querySelector('p').innerHTML);
         window.location.href = '../Teams/teams.html';
     }
-    if (action === 'Remove') {
-        localStorage.setItem('fromCutSection', 'true');
+    else if (action === 'Remove') {
         removeSelectRow(barInCons.querySelector('p').innerHTML);
         removeBar(barInCons.querySelector('p').innerHTML);
-        // window.location.href = '../Teams/teams.html';
+        localStorage.removeItem('cutSection');
     }
     barMenu.style.display = 'none';
     // console.log(e);
@@ -669,24 +611,6 @@ function trackPlayers(e) {
     setTimeout(() => {
         p.style.display = 'none';
     }, 1000);
-}
-
-function selectTab(e) {
-    Array.from(e.currentTarget.children).forEach(tab => {
-        tab.classList.remove('active');
-    });
-
-    e.target.classList.add('active');
-
-    if (e.target.innerHTML === 'Match Statistics') selectionContent.innerHTML = content['match_statistics'];
-    else if (e.target.innerHTML === 'Passes') {
-        selectionContent.innerHTML = content['passes'];
-        createChart();
-    }
-    else if (e.target.innerHTML === 'Ball Possession') {
-        selectionContent.innerHTML = content['ball_possession'];
-        createChart();
-    }
 }
 
 function populateTicks() {

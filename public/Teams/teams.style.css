@@ -175,7 +175,7 @@ input:focus {
 }
 
 .container .workspace {
-    height: 80%;
+    height: calc(100vh - 7rem);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     background: #656565;
 }
@@ -227,6 +227,7 @@ input:focus {
     font-size: 1rem;
     font-weight: 400;
     /* overflow: scroll; */
+    flex-grow: 1;
 }
 
 .container .left_workspace .teams_container .team_wrapper {
@@ -361,6 +362,11 @@ input:focus {
     font-size: 1.2rem;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.14);
     background: #2F2D2E;
+    color: #FFF;
+}
+
+.container .toolbar .create_menu .actions input::placeholder {
+    color: #FFF;
 }
 
 .container .toolbar .create_menu .actions button {
@@ -378,7 +384,7 @@ input:focus {
     height: 4rem;
     background: #241728;
     border-top: 4px solid #B83169;
-    margin: 1rem 0 0 0;
+    /* margin: 1rem 0 0 0; */
 }
 
 .container .bottom_buttons .buttons_wrapper {

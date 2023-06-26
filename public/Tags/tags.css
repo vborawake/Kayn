@@ -177,7 +177,7 @@ input:focus {
 }
 
 .container .workspace {
-    height: 80%;
+    height: calc(100vh - 7rem);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
@@ -356,7 +356,7 @@ input:focus {
     border-radius: 0.3rem;
     margin: 0.8rem 0 0 0;
     font-family: 'Inter', 'sans-serif';
-    color: #A4A4A4;
+    color: #000;
 }
 
 .container .right_workspace .tag_details .input:nth-child(2) input {
@@ -381,28 +381,29 @@ input:focus {
     background: #A4A4A4;
 }
 
-.container .right_workspace .tag_details .input:nth-child(4) .timeline .frame::before {
+.container .right_workspace .tag_details .input:nth-child(4) .timeline .frame #start {
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
-    content: '';
     width: 0.2rem;
     height: 130%;
     background: #000;
-    margin: auto 0;
+    cursor: e-resize;
+    z-index: 10;
 }
 
-.container .right_workspace .tag_details .input:nth-child(4) .timeline .frame::after {
+.container .right_workspace .tag_details .input:nth-child(4) .timeline #end {
     position: absolute;
     top: 0;
     bottom: 0;
     right: 0;
-    content: '';
     width: 0.2rem;
     height: 130%;
     background: #000;
     margin: auto 0;
+    cursor: e-resize;
+    z-index: 10;
 }
 
 .container .right_workspace .tag_details .input:nth-child(4) .inputs input {
@@ -442,7 +443,23 @@ input:focus {
     margin: 0 0.5rem 0.5rem 0;
 }
 
+.container .menus .tag_information {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.container .edit_tag {
+    width: 100%;
+    position: absolute;
+    top: 3rem;
+    height: calc(100vh - 10rem);
+    background: #656565;
+}
+
 .container .tag_information {
+    /* position: relative; */
     width: 45rem;
     height: 30rem;
     margin: auto;
@@ -453,11 +470,12 @@ input:focus {
     padding: 1.5rem;
     transition: all 0.5s ease;
     color: #FFF;
+    z-index: 10;
 }
 
 .container .tag_information > h1 {
     position: absolute;
-    top: 4rem;
+    top: 1rem;
     left: 1rem;
     font-size: 1rem;
     font-weight: 500;
@@ -548,6 +566,12 @@ input:focus {
     font-size: 0.9rem;
 }
 
+.container .tag_information input {
+    margin: 1rem 0 0 0;
+    padding: 0.3rem 0.3rem 0.3rem 0.5rem;
+    border-radius: 0.4rem;
+}
+
 .container .toolbar {
     position: relative;
     background: #2F2D2E;
@@ -599,7 +623,6 @@ input:focus {
     height: 4rem;
     background: #241728;
     border-top: 4px solid #B83169;
-    margin: 1rem 0 0 0;
 }
 
 .container .bottom_buttons svg {

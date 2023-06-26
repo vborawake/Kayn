@@ -603,7 +603,7 @@ input:focus {
 }
 
 .container .workspace .player_section .volume_buttons {
-    width: 55%;
+    width: 30%;
 }
 
 .container .bottom_buttons {
@@ -806,7 +806,7 @@ input:focus {
     }
 
     .container .workspace .player_section .controls {
-        height: 5rem;
+        height: 8rem;
     }
 
     .container .workspace .player_section button {
@@ -828,6 +828,10 @@ input:focus {
 
     .container .workspace {
         height: 81vh;
+    }
+
+    .container .workspace .player_section .controls .volume_buttons {
+        width: 36%;
     }
 }
 
@@ -884,7 +888,7 @@ input:focus {
     }
 
     .container .workspace .player_section .volume_buttons {
-        width: 65%;
+        width: 38%;
     }
 
     .container .workspace {
@@ -958,7 +962,7 @@ input:focus {
     }
 
     .container .workspace .player_section .player .volume_buttons {
-        width: 100%;
+        width: 50%;
     }
 
     .container .bottom_buttons .buttons_wrapper {
@@ -1040,7 +1044,7 @@ input:focus {
     }
 
     .container .workspace .player_section .player .volume_buttons {
-        width: 100%;
+        width: 65%;
     }
 
     .container .bottom_buttons .buttons_wrapper {
