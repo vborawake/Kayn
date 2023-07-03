@@ -92,6 +92,11 @@ canvas.addEventListener('click', (e) => {
         if (distance < 20) clicked = 1;
     }
 
+    if (renderMenu.style.transform === 'scaleY(1)') {
+        renderMenu.style.transform = 'scaleY(0)';
+        return;
+    }
+    
     if (clicked === 1) {
         const trackingMenu = document.querySelector('.tracking_menu.flex_column');
         trackingMenu.style.display = 'flex';

@@ -255,11 +255,11 @@ input:focus {
 }
 
 .container .toolbar .right_side {
-    width: 5%;
+    width: 12%;
 }
 
 .container .toolbar .right_side button {
-    font-size: 0.8rem;
+    font-size: 1rem;
 }
 
 .container .toolbar .left_side button {
@@ -478,6 +478,20 @@ input:focus {
     border: 1px solid black;
 }
 
+.container .cut_section .working_area .tag span#left_resizer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: e-resize;
+}
+
+.container .cut_section .working_area .tag span#right_resizer {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    cursor: e-resize;
+}
+
 .container .controls {
     height: 6rem;
     width: 55%;
@@ -633,6 +647,137 @@ input:focus {
 
 .container .editing_section {
     width: 80%;
+}
+
+.container .render_menu button {
+    height: 2.3rem;
+    width: 35%;
+    border: 0.6rem;
+    color: #FFF;
+    background: #2F2D2E;
+    padding: 0;
+}
+
+.container .render_menu {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 6%;
+    width: 23rem;
+    height: 31rem;
+    background: #464648;
+    border-radius: 0.6rem;
+    margin: auto 0;
+    padding: 1.5rem;
+    transform: scale(0);
+    transition: all 0.5s ease;
+    color: #FFF;
+    z-index: 20;
+}
+
+.container .render_menu h4 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0 0 1rem -12rem;
+}
+
+.container .render_menu .video_image {
+    width: 100%;
+    height: 7.5rem;
+    border-radius: 0.6rem;
+    overflow: hidden;
+    margin: 0 0 1rem 0;
+    
+}
+
+.container .render_menu .video_image img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.container .render_menu .input {
+    font-size: 0.8rem;
+    font-weight: 500;
+    height: 3.8rem;
+    margin: 0 0 1rem 0;
+}
+
+.container .render_menu .input input {
+    height: 2.3rem;
+    width: 100%;
+    background: #2F2D2E;
+    border-radius: 0.6rem;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #FFF;
+}
+
+.container .render_menu .input input::placeholder {
+    color: #FFF;
+}
+
+.container .render_menu .ranges {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #000;
+    width: 100%;
+}
+
+.container .render_menu .input:nth-child(5) {
+    font-size: 0.9rem;
+    height: 4rem;
+}
+
+.container .render_menu .ranges input {
+    width: 4.2rem;
+    height: 2.3rem;
+}
+
+.container .render_menu .ranges .start, .container .render_menu .ranges .end {
+    width: 40%;
+    color: #FFF;
+}
+
+.container .render_menu .range {
+    position: relative;
+    width: 100%;
+    height: 0.8rem;
+    background: #00000021;
+    margin: 0 0 1rem 0;
+}
+
+.container .range .slider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto 0;
+    height: 120%;
+    width: 20%;
+    background: #2F2D2E;
+}
+
+.container .range .start_tracker {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto 0;
+    width: 0.2rem;
+    height: 150%;
+    background: #000;
+}
+
+.container .range .end_tracker {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 20%;
+    margin: auto 0;
+    width: 0.2rem;
+    height: 150%;
+    background: #000;
 }
 
 @media screen and (min-width: 1200px) and (max-width: 1400px) {

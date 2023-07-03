@@ -125,6 +125,7 @@ input:focus {
     min-height: 100vh;
     font-family: 'Inter', 'sans-serif';
     /* display: none; */
+    overflow: hidden;
 }
 
 .loader {
@@ -528,13 +529,27 @@ input:focus {
 }
 
 .container .cut_section .working_area .tag {
-    position: absolute;
+    position: relative;
     left: 60%;
     background: #0d4098;
     height: 1.3rem;
     width: 25%;
     border-radius: 0.3rem;
     border: 1px solid black;
+}
+
+.container .cut_section .working_area .tag span#left_resizer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: e-resize;
+}
+
+.container .cut_section .working_area .tag span#right_resizer {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    cursor: e-resize;
 }
 
 .container .controls {

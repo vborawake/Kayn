@@ -18,6 +18,7 @@ const ticksElement = document.querySelector('.ticks.flex_row.align_flex_end.widt
 const fileSection = document.querySelector('.files_section.flex_column.justify_flex_start');
 const cutSection = document.querySelector('.cut_section.flex_row.center.justify_flex_start.width_full');
 const barMenu = document.querySelector('.bar_menu.flex_column');
+const renderMenu = document.querySelector('.render_menu.flex_column.center');
 
 let barInCons;
 const bars = [];
@@ -479,9 +480,13 @@ function addToTagList (e) {
     });
     if (tagListContains === 0) {
         tagList.appendChild(e.currentTarget);
-        const html = `<div oncontextmenu="tagRightClick(event)" class="tag width_full flex_row justify_center" style="color: #FFF;">
-                        <p>${ e.currentTarget.innerHTML }</p>
-                    </div>`
+        const html = `
+            <div oncontextmenu="tagRightClick(event)" class="tag flex_row justify_center center width_full" style="color: #FFF;">
+                <span onmousedown='resize(event)' id='left_resizer'></span>
+                <p>${ e.currentTarget.innerHTML }</p>
+                <span onmousedown='resize(event)' id='right_resizer'></span>
+            </div>
+        `;
         workingArea.innerHTML += html;
         adjustBars();
         addSelectRow(e.currentTarget.innerHTML);
@@ -490,9 +495,73 @@ function addToTagList (e) {
     }
 }
 
+function showRender (e) {
+    requestAnimationFrame(() => {
+        if (renderMenu.style.transform === '' || renderMenu.style.transform === 'scale(0)') {
+            renderMenu.style.transform = 'scaleX(1)';
+            renderMenu.style.transform = 'scaleY(1)';
+            renderMenu.style.transformOrigin = 'left';
+        } else renderMenu.style.transform = 'scale(0)'
+    });
+}
+
+function selectAllTags(event) {
+    if (cutSection.style.display !== 'flex') cutSection.style.display = 'flex';
+    
+    if (buttonsList.children.length > 0) {
+        Array.from(buttonsList.children).forEach(button => {
+            tagList.appendChild(button);
+            const html = `
+                <div class="tag flex_row justify_center center width_full" style="color: #FFF;">
+                    <span onmousedown='resize(event)' id='left_resizer'></span>
+                    <p>${ button.innerHTML }</p>
+                    <span onmousedown='resize(event)' id='right_resizer'></span>
+                </div>
+            `;
+            workingArea.innerHTML += html;
+            adjustBars();
+            addSelectRow(button.innerHTML);
+        });
+
+    } else if (buttonsList.children.length === 0) {
+        Array.from(tagList.children).forEach(tag => {
+            buttonsList.appendChild(tag);
+            removeSelectRow(tag.innerHTML);
+            removeBar(tag.innerHTML);
+        });
+    }
+
+    console.log(buttonsList.children.length);
+}
+
 function removeFromBar (name) {
     const index = bars.indexOf(name);
     if (index !== -1) bars.splice(index, 1);
+}
+
+function resize(e) {
+    const element = e.currentTarget.parentElement;
+    const left = element.getBoundingClientRect().left;
+    const right = element.getBoundingClientRect().right;
+
+    window.addEventListener('mousemove', move);
+    window.addEventListener('mouseup', () => {
+        console.log('Mouse Up');
+        window.removeEventListener('mousemove', move);
+    });
+    
+    function move(e2) {
+        e.preventDefault();
+        // console.log(e.target);
+        // element.style.width = `${ e2.pageX - element.getBoundingClientRect().left }px`;
+        if (e.target.id === 'right_resizer') {
+            element.style.left = `${ e2.pageX - fileSection.getBoundingClientRect().width - element.getBoundingClientRect().width }px`;
+            element.style.width = `${ e2.pageX - left }px`;
+        } else {
+            element.style.left = `${ e2.pageX - fileSection.getBoundingClientRect().width }px`;
+            element.style.width = `${ right - e2.pageX }px`;
+        }
+    }
 }
 
 function tagRightClick(e) {
@@ -578,6 +647,9 @@ document.addEventListener('click', (e) => {
         };
     }
     if (barMenu.style.display === 'flex') barMenu.style.display = 'none';
+    if (renderMenu) {
+        if (renderMenu.style.transform === 'scaleY(1)') renderMenu.style.transform = 'scale(0)';
+    }
 });
 
 function handleBarClick(e) {

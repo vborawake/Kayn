@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="desktop.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.3.0/chart.umd.js" integrity="sha512-CMF3tQtjOoOJoOKlsS7/2loJlkyctwzSoDK/S40iAB+MqWSaf50uObGQSk5Ny/gfRhRCjNLvoxuCvdnERU4WGg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script defer src="desktop.js"></script>
-    <title>Statistics</title>
+    <title>Tagging</title>
 </head>
 <body>
     <!-- <div class="loader flex_row center justify_center">
@@ -37,9 +37,9 @@
                 <p>Match Statistics</p>
             </div>
             <div class="right_side flex_row space_between center">
-                <button class="flex_row space_between center">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M280 856v-60h289q70 0 120.5-46.5T740 634q0-69-50.5-115.5T569 472H274l114 114-42 42-186-186 186-186 42 42-114 114h294q95 0 163.5 64T800 634q0 94-68.5 158T568 856H280Z"/></svg>
-                    <p>Undo</p>
+                <button onclick="showRender(event)" class="flex_row space_between center">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M782 942 481 641 364 758q11 17 13.5 33t2.5 35q0 64-43 107t-107 43q-64 0-107-43T80 826q0-64 43-107t107-43q18 0 35.5 5t36.5 15l116-116-118-118q-17 8-34.5 11t-35.5 3q-64 0-107-43T80 326q0-64 43-107t107-43q64 0 107 43t43 107q0 19-2.5 36T367 394l514 514v34h-99ZM599 529l-66-66 249-249h99v33L599 529ZM230 416q38 0 64-26t26-64q0-38-26-64t-64-26q-38 0-64 26t-26 64q0 38 26 64t64 26Zm253 183q8 0 13.5-5.5T502 580q0-8-5.5-13.5T483 561q-8 0-13.5 5.5T464 580q0 8 5.5 13.5T483 599ZM230 916q38 0 64-26t26-64q0-38-26-64t-64-26q-38 0-64 26t-26 64q0 38 26 64t64 26Z"/></svg>
+                    <p>Render Selected</p>
                 </button>
             </div>
         </div>
@@ -83,7 +83,7 @@
                     </div>
                     <div class="tag_list">
                         <p>Select Tag List</p>
-                        <button>Select All Tags Used</button>
+                        <button onclick="selectAllTags(event)">Select All Tags Used</button>
                         <div class="tags_list flex_column center width_full">
                         </div>
                     </div>
@@ -92,6 +92,39 @@
             <div class="right_section flex_column">
                 <div class="image_container">
                     <img src="../images/soccer-players-action-professional-stadium.jpg" alt="">
+                </div>
+                <div class="render_menu flex_column center">
+                    <h4>Render Video Clip</h4>
+                    <div class="video_image">
+                        <img src="../images/aerial-view-grass-field-hockey.jpg" alt="">
+                    </div>
+                    <div class="input flex_column space_between width_full">
+                        <p>Video Name</p>
+                        <input type="text" placeholder="Lorem Ipsum" style="text-align: center;">
+                    </div>
+                    <div class="input flex_column space_between width_full">
+                        <p>Output Path</p>
+                        <input type="text" placeholder="Desktop/Folder1/filename">
+                    </div>
+                    <div class="input flex_column space_between width_full">
+                        <p>Select Range</p>
+                        <div class="ranges flex_row space_between">
+                            <div class="start flex_row space_between center">
+                                <p>Start</p>
+                                <input type="number" name="" id="">
+                            </div>
+                            <div class="end flex_row space_between center">
+                                <p>End</p>
+                                <input type="number" name="" id="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="range">
+                        <div class="slider"></div>
+                        <span class="start_tracker"></span>
+                        <span class="end_tracker"></span>
+                    </div>
+                    <button>Render</button>
                 </div>
             </div>
         </div>
@@ -205,7 +238,7 @@
                     </button>
                 </a>
                 <a href="../Statistics/statistics.html">
-                    <button class="active flex_row center justify_center">
+                    <button class="flex_row center justify_center">
                         <p>Statistics</p>
                         <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36">
                             <path d="M120 936v-76l60-60v136h-60Zm165 0V700l60-60v296h-60Zm165 0V640l60 61v235h-60Zm165 0V701l60-60v295h-60Zm165 0V540l60-60v456h-60ZM120 700v-85l280-278 160 160 280-281v85L560 582 400 422 120 700Z"/>
@@ -213,7 +246,7 @@
                     </button>
                 </a>
                 <a href="../Tagging/tagging.html">
-                    <button class="flex_row center justify_center">
+                    <button class="active flex_row center justify_center">
                         <p>Tagging</p>
                         <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36">
                             <path d="M440 856v-60h171l154-220-154-220H180v180h-60V356q0-24.75 17.625-42.375T180 296h420q22 0 40 11.5t31 29.5l169 239-169 239q-13 18-31 29.5T600 856H440Zm33-280ZM200 896V776H80v-60h120V596h60v120h120v60H260v120h-60Z"/>

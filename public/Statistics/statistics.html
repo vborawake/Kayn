@@ -83,7 +83,7 @@
                     </div>
                     <div class="tag_list">
                         <p>Select Tag List</p>
-                        <button>Select All Tags Used</button>
+                        <button onclick="selectAllTags(event)">Select All Tags Used</button>
                         <div class="tags_list flex_column center width_full">
                         </div>
                     </div>
@@ -102,7 +102,7 @@
                     </div>
                     <div class="item">
                         <p>Add Team To Compare</p>
-                        <button><a href="../Teams/teams.html">Add Team</a></button>
+                        <button onclick="localStorage.setItem('fromStats', 'true')"><a href="../Teams/teams.html">Add Team</a></button>
                     </div>
                 </div>
                 <div class="playerCharts flex_column">

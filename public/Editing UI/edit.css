@@ -119,6 +119,7 @@ input:focus {
     min-height: 100vh;
     font-family: 'Inter', 'sans-serif';
     /* display: none; */
+    overflow: hidden;
 }
 
 .loader {
@@ -214,8 +215,8 @@ input:focus {
 }
 
 .container .workspace .video_editing .tools img {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1rem;
+    height: 1rem;
 }
 
 .container .workspace .video {
@@ -680,7 +681,7 @@ input:focus {
     position: relative;
     height: 1.3rem;
     width: 20%;
-    background: #D77A47;
+    background: #0d4098;
     border-bottom-left-radius: 0.3rem;
     border-top-right-radius: 0.3rem;
     border: 2px solid black;

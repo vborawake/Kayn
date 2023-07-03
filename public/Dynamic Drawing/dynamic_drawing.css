@@ -263,7 +263,7 @@ input:focus {
     background: #000;
 }
 
-.container .workspace .ranges {
+.container .workspace .video_controls .ranges {
     background: #A4A4A4;
     font-size: 1.5rem;
     font-weight: 600;
@@ -272,13 +272,13 @@ input:focus {
     border-radius: 0.4rem;
 }
 
-.container .workspace .ranges button {
+.container .workspace .video_controls .ranges button {
     background: none;
     color: #000;
     padding: 0.3rem;
 }
 
-.container .workspace .ranges img {
+.container .workspace .video_controls .ranges img {
     width: 1.5rem;
     height: 1.5rem;
 }

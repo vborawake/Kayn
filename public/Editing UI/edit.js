@@ -46,10 +46,16 @@ const files = [
 ];
 
 function drawCanvas (canvasElems, action) {
-    if (action === 'undo') canvasElems.splice(canvasElems.length - 1, 1);
+    if (action === 'undo') {
+        const removed = canvasElems.splice(canvasElems.length - 1, 1);
+        console.log(removed[0]);
+    }
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     Array.from(workingArea.children).forEach(tag => {
         if (tag.classList.contains('tag')) tag.remove();
+    });
+    Array.from(fileSection.children).forEach((tag, index) => {
+        if (index > 0) tag.remove();
     });
     ringCount = 0;
     lineCount = 0;
@@ -166,6 +172,24 @@ function setPlayer(e) {
     }
     console.log(playerElems);
     drawCanvas(playerElems[currentPlayer], 'setPlayer');
+}
+
+function addSelectRow (name) {
+    const html = `
+        <div class="row flex_row justify_flex_start center width_full">
+            <input type="checkbox">
+            <p class="tag_name">${ name }</p>
+        </div>
+    `;
+
+    fileSection.innerHTML += html;
+}
+
+function removeSelectRow (name) {
+    console.log(fileSection.children);
+    Array.from(fileSection.children).forEach(row => {
+        if (row.querySelector('p').innerHTML === name) row.remove();
+    });
 }
 
 canvas.addEventListener('click', (e) => {
@@ -392,6 +416,8 @@ function addVideoBar(type) {
     ring.style.position = 'absolute';
     ring.style.top = `${ top }rem`;
     ring.style.right = '20rem';
+
+    addSelectRow(document.querySelector('.tag.flex_row.justify_center.center.width_full:last-child p').innerHTML);
 }
 
 // seekBar.max = video.duration;

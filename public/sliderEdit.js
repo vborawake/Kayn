@@ -20,7 +20,7 @@ stop.addEventListener('click', () => {
     video.currentTime = 0;
 });
 
-seekBar.max = video.duration;
+if (seekBar && video) seekBar.max = video.duration;
 
 volume.addEventListener('change', (e) => {
     video.volume = e.currentTarget.value;
@@ -28,9 +28,11 @@ volume.addEventListener('change', (e) => {
 
 startTracker.style.position = 'absolute';
 
-video.addEventListener('timeupdate', () => {
-    seekBar.value = video.currentTime;
-    start.innerHTML = video.currentTime;
-    startTracker.style.left = `${ video.currentTime }px`;
-    // start
-});
+if (video) {
+    video.addEventListener('timeupdate', () => {
+        seekBar.value = video.currentTime;
+        start.innerHTML = video.currentTime;
+        startTracker.style.left = `${ video.currentTime }px`;
+        // start
+    });
+}
