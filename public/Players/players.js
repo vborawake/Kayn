@@ -52,7 +52,7 @@ leftWorkspace.addEventListener('click', (e) => {
     }
     if (!e.currentTarget.classList.contains('team_wrapper')) {
         right_workspace.style.display = 'none';
-        leftWorkspace.style.minWidth = '100%';
+        leftWorkspace.style.width = '100%';
 
         Array.from(e.currentTarget.getElementsByClassName('player_wrapper flex_column center space_between')).forEach(element => {
             element.classList.remove('active');
@@ -102,7 +102,7 @@ function hidePlayerDetails (e) {
     Array.from(playersContainer.children).forEach(team => team.classList.remove('active'))
     // e.currentTarget.parentElement.parentElement.remove();
     right_workspace.style.display = 'none';
-    leftWorkspace.style.minWidth = '100%';
+    leftWorkspace.style.width = '100%';
 }
 
 function uploadPhoto(e) {
@@ -149,12 +149,12 @@ function showPlayerDetails(e) {
         }
         if (window.innerWidth < 900) {
             right_workspace.style.display = 'flex';
-            leftWorkspace.style.minWidth = '75%';
-            right_workspace.style.minWidth = '25%';
+            leftWorkspace.style.width = '75%';
+            right_workspace.style.width = '25%';
         } else {
             right_workspace.style.display = 'flex';
-            right_workspace.style.minWidth = '20%';
-            leftWorkspace.style.minWidth = '80%';
+            right_workspace.style.width = '20%';
+            leftWorkspace.style.width = '80%';
         }
     }
 }
@@ -162,16 +162,16 @@ function showPlayerDetails(e) {
 window.addEventListener('resize', (e) => {
     if (right_workspace.style.display === 'flex') {
         if (window.innerWidth > 1200) {
-            right_workspace.style.minWidth = '20%';
-            leftWorkspace.style.minWidth = '80%';
+            right_workspace.style.width = '20%';
+            leftWorkspace.style.width = '80%';
             // menu.style.display = 'none';
         } else if (window.innerWidth < 1200 && window.innerWidth > 900) {
-            right_workspace.style.minWidth = '25%';
-            leftWorkspace.style.minWidth = '75%';
+            right_workspace.style.width = '25%';
+            leftWorkspace.style.width = '75%';
             // menu.style.display = 'none';
         } else if (window.innerWidth < 900 && window.innerWidth > 600) {
-            right_workspace.style.minWidth = '35%';
-            leftWorkspace.style.minWidth = '65%';
+            right_workspace.style.width = '35%';
+            leftWorkspace.style.width = '65%';
             // menu.style.display = 'none';
             document.querySelector('.search.flex_row.center').style.width = '70%';
         }

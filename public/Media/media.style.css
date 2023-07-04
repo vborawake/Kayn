@@ -391,7 +391,7 @@ input:focus {
     border-right: 2px solid #A4A4A4;
     padding: 1rem 0 0 1rem;
     background: #2F2D2E;
-    /* overflow-x: scroll; */
+    overflow: hidden;
 }
 
 .container .workspace .files_section .file_tree::-webkit-scrollbar {
@@ -412,7 +412,6 @@ input:focus {
     color: #FFF;
     font-weight: 600;
     margin: 0 0 0 0.5rem;
-    width: 80%;
 }
 
 .container .files_section .file_tree .path p {
@@ -425,7 +424,7 @@ input:focus {
 }
 
 .container .files_section .file_tree .row {
-    width: 100%;
+    width: 20rem;
 }
 
 .container svg {
@@ -508,6 +507,10 @@ input:focus {
     width: 80%;
     transition: all 0.5s ease;
     z-index: 10;
+}
+
+.container .files_section .file_tree .tooltip {
+    left: -25%;
 }
 
 .container .inactive {
@@ -1111,7 +1114,7 @@ input:focus {
     }
 
     .container .menu ul {
-        width: 16%;
+        width: 22%;
     }
 
     .container .menu .language {

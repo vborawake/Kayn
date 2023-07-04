@@ -316,7 +316,7 @@ function createDirectory(e) {
         </div>
     </div>
     `;
-    const fileTreeHtml = `<div class="row flex_row space_between center">
+    const fileTreeHtml = `<div class="row flex_row center">
     <div class="file">
         <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M141 896q-24 0-42-18.5T81 836V316q0-23 18-41.5t42-18.5h280l60 60h340q23 0 41.5 18.5T881 376v460q0 23-18.5 41.5T821 896H141Zm0-580v520h680V376H456l-60-60H141Zm0 0v520-520Z"/></svg>
     </div>
@@ -328,7 +328,7 @@ function createDirectory(e) {
     const directoriesContainer = document.querySelector('.directories_container.flex_row.justify_flex_start.align_flex_start.width_full');
     let fileTree = document.querySelector('.file_tree.flex_column.justify_flex_start.align_flex_start');
     fileTree.innerHTML += fileTreeHtml;
-    fileTree = document.querySelector('.row.flex_row.space_between.center:last-child');
+    fileTree = document.querySelector('.row.flex_row.center:last-child');
     fileTree.style.marginLeft = '0.8rem';
     fileTree.style.marginTop = '1rem';
     createMenu.style.display = 'none';
@@ -397,7 +397,7 @@ function cutHere(e) {
     cutFileSection.parentElement.style.display = 'flex';
 
     const fileTreeHtml = `
-        <div class="row flex_row space_between center">
+        <div class="row flex_row center">
             <div class="file">
                 <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M141 896q-24 0-42-18.5T81 836V316q0-23 18-41.5t42-18.5h280l60 60h340q23 0 41.5 18.5T881 376v460q0 23-18.5 41.5T821 896H141Zm0-580v520h680V376H456l-60-60H141Zm0 0v520-520Z"/></svg>
             </div>
@@ -408,7 +408,7 @@ function cutHere(e) {
         </div>`;
     let fileTree = document.querySelector('.file_tree.flex_column.justify_flex_start.align_flex_start');
     fileTree.innerHTML += fileTreeHtml;
-    fileTree = document.querySelector('.row.flex_row.space_between.center:last-child');
+    fileTree = document.querySelector('.row.flex_row.center:last-child');
     fileTree.style.marginLeft = '1.6rem';
     fileTree.style.marginTop = '1rem';
 }

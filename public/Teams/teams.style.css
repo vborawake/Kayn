@@ -182,7 +182,7 @@ input:focus {
 
 .container .left_workspace {
     position: relative;
-    min-width: 100%;
+    width: 100%;
     height: 82vh;
     transition: all 0.5s ease;
     color: #FFF;
@@ -227,7 +227,7 @@ input:focus {
     font-size: 1rem;
     font-weight: 400;
     /* overflow: scroll; */
-    flex-grow: 1;
+    /* flex-grow: 1; */
 }
 
 .container .left_workspace .teams_container .team_wrapper {
