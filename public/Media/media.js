@@ -226,7 +226,7 @@ function importFile(e) {
             <input type="checkbox">
             <div class="file flex_column space_between center width_full">
                 <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M450 896V370L202 618l-42-42 320-320 320 320-42 42-248-248v526h-60Z"/></svg>
-                <p id="file_name">${ e.target.files[0].name }</p>
+                <p id="file_name" name=${ e.target.files[0].name }>${ e.target.files[0].name }</p>
                 <span class='tooltip'>${ e.target.files[0].name }</span>
             </div>
         </div>
@@ -371,7 +371,7 @@ function directorySelect(e) {
                     <input type="checkbox">
                     <div class="file flex_column space_between center width_full">
                         <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M450 896V370L202 618l-42-42 320-320 320 320-42 42-248-248v526h-60Z"/></svg>
-                        <p id='file_name'>${ file.name }</p>
+                        <p id='file_name' name=${ file.name }>${ file.name }</p>
                         <span class='tooltip'>${ file.name }</span>
                     </div>
                 </div>

@@ -73,7 +73,7 @@ function cutVideo(e) {
 function moveSlider(e) {
     e.stopPropagation();
     if (e.pageX > 30 && e.pageX < (videoBar.getBoundingClientRect().width + 30)) {
-        let percent = 1 - ((start_tracker.getBoundingClientRect().x - videoDiv.getBoundingClientRect().x) / (videoBar.getBoundingClientRect().width));
+        let percent = 1 - ((start_tracker.getBoundingClientRect().x - videoBar.getBoundingClientRect().x) / (videoBar.getBoundingClientRect().width));
         start_tracker.style.position = 'absolute';
         start_tracker.style.left = `${ e.pageX }px`;
         video.currentTime = video.duration - (percent * video.duration);
@@ -111,7 +111,7 @@ function setPosition(e) {
 function moveEndSlider(e) {
     e.stopPropagation();
     if (e.pageX > 30 && e.pageX < 1460) {
-        let percent = 1 - ((end_tracker.getBoundingClientRect().x - videoDiv.getBoundingClientRect().x) / (videoBar.getBoundingClientRect().width));
+        let percent = 1 - ((end_tracker.getBoundingClientRect().x - videoBar.getBoundingClientRect().x) / (videoBar.getBoundingClientRect().width));
         end_tracker.style.position = 'absolute';
         end_tracker.style.left = `${ e.pageX }px`;
         video.currentTime = video.duration - (percent * video.duration);

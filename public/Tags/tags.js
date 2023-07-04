@@ -167,7 +167,7 @@ function addTag() {
                 <div onclick="showTagDetails(event)" class="tag_wrapper flex_row center justify_flex)start width_full">
                     <span></span>
                     <div class="text_wrapper height_full flex_column space_evenly">
-                        <p>${ name.value ? name.value : 'Tag_1' }</p>
+                        <p name=${ name.value ? name.value : 'Tag_1' }>${ name.value ? name.value : 'Tag_1' }</p>
                         <p>11 Tags</p>
                         <p>John</p>
                     </div>

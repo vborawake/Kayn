@@ -855,7 +855,7 @@ input:focus {
     width: 80%;
 }
 
-.container .video img, .container .cut_video img {
+.container .video img, .container .cut_video img, .container .video video {
     height: 100%;
 }
 
