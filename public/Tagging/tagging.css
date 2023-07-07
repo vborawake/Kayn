@@ -792,6 +792,10 @@ input:focus {
     html {
         font-size: 14px;
     }
+
+    .container .workspace {
+        height: calc(100vh - 10rem);
+    }
     
     .container .workspace .toolbar .filter {
         width: 45%;
@@ -839,6 +843,10 @@ input:focus {
     
     html {
         font-size: 14px;
+    }
+
+    .container .workspace {
+        height: calc(100vh - 10rem);
     }
     
     .container .workspace .toolbar .filter {
@@ -890,16 +898,16 @@ input:focus {
     .container .workspace .player_section .volume_buttons {
         width: 38%;
     }
-
-    .container .workspace {
-        height: 81vh;
-    }
 }
 
 @media screen and (min-width: 766px) and (max-width: 1030px) {
     
     html {
         font-size: 14px;
+    }
+
+    .container .workspace {
+        height: calc(100vh - 10rem);
     }
     
     .container .workspace .toolbar {
@@ -968,16 +976,16 @@ input:focus {
     .container .bottom_buttons .buttons_wrapper {
         width: 65%;
     }
-
-    .container .workspace {
-        height: 83.5vh;
-    }
 }
 
 @media screen and (min-width: 400px) and (max-width: 768px) {
 
     html {
         font-size: 14px;
+    }
+
+    .container .workspace {
+        height: calc(100vh - 10rem);
     }
     
     .container .workspace .toolbar {
@@ -1049,9 +1057,5 @@ input:focus {
 
     .container .bottom_buttons .buttons_wrapper {
         width: 65%;
-    }
-
-    .container .workspace {
-        height: 83.5vh;
     }
 }
