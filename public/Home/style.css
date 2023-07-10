@@ -166,12 +166,21 @@ body {
     height: 80%;
 }
 
+.container-fluid .hero_section > img {
+    width: 100%;
+    height: 100%;
+}
+
 .mobile_menu {
     display: none;
 }
 
 .hamburger {
     display: none;
+}
+
+.container-fluid .hero_section nav ul {
+    margin: auto 0;
 }
 
 .container-fluid .hero_section nav ul li:last-child {
@@ -189,7 +198,7 @@ body {
     transition: all 0.6s ease;
 }
 
-.container-fluid .hero_section > img {
+/* .container-fluid .hero_section > img {
     position: absolute;
     top: 0;
     left: 0;
@@ -197,7 +206,7 @@ body {
     width: 45%;
     height: 100%;
     z-index: 1;
-}
+} */
 
 .container-fluid .hero_section .hero_section_display {
     margin: 6rem 0 0 0;
@@ -329,44 +338,84 @@ body {
 .container-fluid .working_section {
     /* width: 90%; */
     margin: -2rem auto 0 auto;
-    color: #000;
-    text-align: center;
+    color: #FFF;
     font-size: 1.3rem;
     z-index: 10;
+    background: url('../images/working-background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 2rem;
+    height: fit-content;
 }
 
-.container-fluid .working_section h1 span {
-    color: #B83169;
+.container-fluid .working_section h1 {
+    align-self: flex-start;
+    font-weight: 600;
 }
 
 .container-fluid .working_section .step {
     margin: 3rem 0 0 0;
     /* width: 30%; */
-    height: 34rem;
+    height: fit-content;
 }
 
-.container-fluid .working_section .step:nth-child(2) {
-    transform: translateY(8rem);
-}
-
-.container-fluid .working_section .step .image {
+.container-fluid .working_section .step h4 {
     position: relative;
+    width: fit-content;
 }
 
-.container-fluid .working_section .step .image p {
+.container-fluid .working_section .step h4::before {
+    content: '';
     position: absolute;
-    top: 30%;
-    left: 40%;
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: #FFF;
+    top: 200%;
+    left: 0;
+    height: 0.2rem;
+    width: 50%;
+    background: #B83169;
+}
+
+.container-fluid .working_section .step img {
+    margin: 4rem 0 0 0;
+    width: 80%;
+    border: 4px solid #B83169;
+}
+
+.container-fluid .working_section .step p {
+    margin-top: 2rem;
+    line-height: 1.8;
 }
 
 .container-fluid .audience_section {
-    margin: 12rem 0 0 0;
-    background: #380E3C;
+    background: #FFF;
+    color: #380E3C;
     height: 30rem;
     font-size: 1.4rem;
+}
+
+.container-fluid .audience_section .left_section {
+    width: 80%;
+    padding: 2rem;
+}
+
+.container-fluid .audience_section .right_section {
+    background: url('../images/audience.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 20%;
+    color: #FFF;
+}
+
+.container-fluid .audience_section .right_section p {
+    height: 60%;
+    /* margin: auto 0; */
+    width: 95%;
+    text-align: left;
+    font-size: 1.5rem;
+    line-height: 1.8;
+}
+
+.container-fluid .audience_section h1 {
+    font-weight: 600;
 }
 
 .container-fluid .audience_section .buttons {
@@ -374,11 +423,33 @@ body {
 }
 
 .container-fluid .audience_section button {
-    margin: 1rem 0 0 0;
-    width: 30%;
+    position: relative;
+    margin: 1rem 0 2rem 0;
+    width: 22%;
     font-size: 1.2rem;
     font-weight: 600;
-    height: 3rem;
+    height: fit-content;
+    background: none;
+    color: #B83169;
+}
+
+.container-fluid .audience_section button::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    height: 0.3rem;
+    width: 100%;
+    border-radius: 50%;
+    background: radial-gradient(#B83169, #FFF);
+    left: 0;
+}
+
+.container-fluid .audience_section button:hover:before {
+    background: radial-gradient(#380E3C, #FFF);
+}
+
+.container-fluid .audience_section button:hover {
+    border: none;
 }
 
 .container-fluid .audience_section button:last-child {
@@ -392,14 +463,21 @@ body {
 
 .container-fluid .advantages_section {
     /* width: 90%; */
-    margin: 4rem auto 0 auto;
+    margin: 0 auto;
     color: #000;
     height: fit-content;
+    background: url('../images/advantages.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 100;
+    padding: 2rem 0;
 }
 
 .container-fluid .advantages_section h1 {
     font-size: 2.5rem;
     font-weight: 600;
+    color: #FFF;
+    margin-bottom: 4rem;
 }
 
 .container-fluid .advantages_section .advantages {
@@ -407,26 +485,35 @@ body {
     z-index: 4;
     /* width: 80%; */
     height: fit-content;
+    border-radius: 5rem;
+    border: 2px solid #B83169;
+    overflow: hidden;
+    color: #FFF;
 }
 
 .container-fluid .advantages_section .advantages .advantage {
-    height: 24rem;
-    width: 26%;
-    margin: 3rem 5rem 0 0;
+    height: 50%;
+    width: 33.33%;
     text-align: center;
-    background: linear-gradient(360deg, #FFFFFF 76.56%, #D399D9 100%);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 10px;
+    margin: 0;
+}
+
+.container-fluid .advantages_section .advantages .advantage:nth-child(1),
+.container-fluid .advantages_section .advantages .advantage:nth-child(2),
+.container-fluid .advantages_section .advantages .advantage:nth-child(4),
+.container-fluid .advantages_section .advantages .advantage:nth-child(5) {
+    border-right: 2px solid #B83169;
+    border-bottom: 2px solid #B83169;
+}
+
+.container-fluid .advantages_section .advantages .advantage:nth-child(3) {
+    border-bottom: 2px solid #B83169;
 }
 
 .container-fluid .advantages_section .advantages .advantage h5 {
     font-size: 1.3rem;
     font-weight: 600;
-}
-
-.container-fluid .advantages_section .advantages .advantage:nth-child(3),
-.container-fluid .advantages_section .advantages .advantage:nth-child(6) {
-    margin: 3rem 0 0 0;
 }
 
 .container-fluid .advantages_section .advantage .header {
@@ -459,10 +546,12 @@ body {
     z-index: 4;
     width: 50%;
     height: 4.5rem;
-    background: #FFFFFF;
+    background: #513d72;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 1.8rem;
     margin: 0 0 2rem 0;
+    padding: 0;
+    color: #FFF;
 }
 
 .container-fluid .pricing_section .payment_cycle ul {
@@ -470,8 +559,8 @@ body {
     font-size: 2rem;
     font-weight: 600;
     cursor: pointer;
-    padding: 0;
     margin: 0;
+    padding: 0;
 }
 
 .container-fluid .pricing_section .payment_cycle ul li {
@@ -484,7 +573,7 @@ body {
 
 .container-fluid .pricing_section .payment_cycle ul li.active {
     color: #FFF;
-    background: linear-gradient(180deg, #380E3C 0%, #B83169 100%);
+    background: #ff22a4;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 1.8rem;
 }
@@ -499,19 +588,22 @@ body {
 
 .container-fluid .pricing_section .plans .plan {
     width: 43%;
-    min-height: 35rem;
+    min-height: 45rem;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.06);
-    border-radius: 0.8rem;
+    border-radius: 2.5rem;
     padding-bottom: 2rem;
-    background: #FFF;
+    background: #2a2a55;
+    overflow: hidden;
+    color: #FFF;
 }
 
 .container-fluid .pricing_section .plan .header {
     align-items: center;
-    border-bottom: 2px solid #DBD6D6;;
+    background: #505079;
     width: 100%;
     height: 8rem;
     font-size: 1.2rem;
+    color: #FFF;
 }
 
 .container-fluid .pricing_section .plan .header h2, .container-fluid .pricing_section .plan .header p {
@@ -521,7 +613,9 @@ body {
 
 .container-fluid .pricing_section .plan .header h2 {
     margin: 1rem 0 0 0;
-    font-weight: 600;
+    font-weight: 700;
+    color: #ff5cbc;
+    font-size: 4rem;
 }
 
 .container-fluid .pricing_section .plan .header p {
@@ -529,29 +623,46 @@ body {
 }
 
 .container-fluid .pricing_section .plan ul {
-    height: 20rem;
+    height: fit-content;
     width: 70%;
     font-size: 1.2rem;
-}
-
-.container-fluid .pricing_section .plan h1 {
-    margin: 2rem 0 0 0;
-    font-weight: 600;
-    
-}
-
-.container-fluid .pricing_section .plan button {
-    height: 3rem;
-    margin: 2rem 0;
-    width: 40%;
-    font-size: 1.2rem;
-    font-weight: 700;
+    margin: 0 auto;
     padding: 0;
 }
 
+.container-fluid .pricing_section .plan h1 {
+    margin: 2rem 0 2rem 0;
+    font-weight: 600;
+    font-size: 4rem;
+}
+
+.container-fluid .pricing_section .plan button {
+    height: 3.5rem;
+    margin: 2rem 0;
+    width: 80%;
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 0;
+    background: linear-gradient(180deg, #ff5cbc 0%, #9e56ca 100%);;
+}
+
 .container-fluid .pricing_section .plan ul li {
-    list-style: disc;
-    text-align: center;
+    background: linear-gradient(180deg, #271955 0%, #49226f 100%);
+    padding: 1rem;
+}
+
+.container-fluid .pricing_section .plan ul li:first-child {
+    border-top-left-radius: 1.2rem;
+    border-top-right-radius: 1.2rem;
+}
+
+.container-fluid .pricing_section .plan ul li:last-child {
+    border-bottom-left-radius: 1.2rem;
+    border-bottom-right-radius: 1.2rem;
+}
+
+.container-fluid .pricing_section .plan ul li:not(:last-child) {
+    border-bottom: 2px solid #B83169;
 }
 
 .container-fluid .pricing_section img:first-child {
@@ -737,18 +848,6 @@ body {
 
     .container-fluid .working_section {
         margin: 4rem 0 0 0;
-    }
-
-    .container-fluid .audience_section h1 {
-        font-size: 2.3rem;
-    }
-
-    .container-fluid .audience_section p {
-        font-size: 1.2rem;
-    }
-    
-    .container-fluid .audience_section button {
-        font-size: 1rem;
     }
     
     .container-fluid .advantages_section .advantages {
@@ -1027,7 +1126,8 @@ body {
     }
 
     .container-fluid .hero_section > img {
-        height: 80vh;
+        width: 100%;
+        height: 100%;
     }
 
     .container-fluid .hero_section .mobile_menu {
@@ -1105,10 +1205,6 @@ body {
     
     .container-fluid .hero_section nav .right_section {
         display: none;
-    }
-
-    .container-fluid .hero_section > img {
-        width: 50%;
     }
     
     .container-fluid .hero_section .hero_section_display .hero_text {
@@ -1207,14 +1303,6 @@ body {
         margin: 4rem 0 0 0;
     }
 
-    .container-fluid .audience_section p {
-        width: 80%;
-    }
-
-    .container-fluid .audience_section button {
-        font-size: 1rem;
-    }
-
     .container-fluid .working_section {
         margin-top: 4rem;
     }
@@ -1228,7 +1316,6 @@ body {
     } */
 
     .container-fluid .advantages_section {
-        margin: 4rem auto 0 auto;
         height: fit-content;
     }
     
@@ -1239,8 +1326,8 @@ body {
     }
     
     .container-fluid .advantages_section .advantages .advantage {
-        width: 30%;
-        margin: 3rem 0 0 0;
+        width: 33.33%;
+        height: 50%;
     }
     
     .container-fluid .advantages_section .advantage .header {
@@ -1253,11 +1340,6 @@ body {
 
     .container-fluid .advantages_section .advantage .text h5 {
         font-size: 1.1rem;
-    }
-
-    .container-fluid .advantages_section .advantages .advantage:nth-child(3),
-    .container-fluid .advantages_section .advantages .advantage:nth-child(6) {
-        margin: 3rem 0 0 0;
     }
 
     .container-fluid .pricing_section {
