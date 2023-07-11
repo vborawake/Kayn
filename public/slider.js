@@ -146,6 +146,11 @@ function setEndPosition(e) {
 
 function playVideo(e) {
     e.stopPropagation();
+    const files = document.getElementsByClassName('file_wrapper flex_row align_flex_start center');
+    currentFile = e.currentTarget;
+    Array.from(files).forEach(file => {
+        file.classList.remove('active');
+    });
     const fileName = e.currentTarget.querySelector('#file_name').innerHTML;
     const path = folders[currentDirectory.querySelector('#directory_name').innerHTML].filter(file => file.name === fileName);;
     video.style.display = 'block';
