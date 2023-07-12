@@ -84,11 +84,16 @@ window.addEventListener('load', () => {
 });
 
 directorySection.addEventListener('click', (e) => {
+    console.log(fileSection.children);
     emptyFileContainer();
     Array.from(directorySection.children).forEach(directory => {
         directory.classList.remove('active');
     });
     importInput.classList.add('inactive');
+    video.style.display = 'none';
+    video.nextElementSibling.style.display = 'flex';
+
+    fileSection.children[0].style.display = 'block';
 });
 
 fileMenu.addEventListener('click', (e) => {
@@ -232,7 +237,7 @@ function importFile(e) {
         </div>
     `;
 
-    if (fileSection.children[0].tagName === 'H1') fileSection.innerHTML = '';
+    if (fileSection.children[0].tagName === 'H1') fileSection.children[0].style.display = 'none';
 
     folders[currentDirectory.querySelector('#directory_name').innerHTML].push({
         name: e.target.files[0].name,
@@ -271,6 +276,7 @@ function importFile(e) {
 
 function emptyFileContainer(e) {
     Array.from(fileSection.children).forEach(file => {
+        console.log(file);
         if (file.classList.contains('file_wrapper')) file.remove();
     });
 }
@@ -361,6 +367,7 @@ function directorySelect(e) {
         const directories = document.getElementsByClassName('directory_wrapper flex_row align_flex_start center');
         currentDirectory = e.currentTarget;
         importInput.classList.remove('inactive');
+        fileSection.children[0].style.display = 'none';
         Array.from(directories).forEach(directory => {
             directory.classList.remove('active');
         });

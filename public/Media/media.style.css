@@ -257,6 +257,10 @@ input:focus {
     text-align: center;
 }
 
+.container .files_section h1#directoryExists {
+    display: none;
+}
+
 .container .player_section {
     width: 50%;
     border: 1px solid gray;

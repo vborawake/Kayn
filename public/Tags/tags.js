@@ -126,6 +126,10 @@ function showEditPanel(e) {
             leftWorkspace.style.minWidth = '80%';
         });
     } else {
+        right_workspace.style.display = 'flex';
+        right_workspace.children[2].style.display = 'block';
+        right_workspace.children[3].style.display = 'flex';
+        right_workspace.children[3].style.opacity = '1';
         requestAnimationFrame(() => {
             right_workspace.style.minWidth = '25%';
             leftWorkspace.style.minWidth = '75%';
