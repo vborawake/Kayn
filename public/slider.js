@@ -44,10 +44,41 @@ if (video) {
     });
 }
 
-start_tracker.addEventListener('drag', moveSlider)
-end_tracker.addEventListener('drag', moveEndSlider)
-start_tracker.addEventListener('dragend', setPosition)
-end_tracker.addEventListener('dragend', setEndPosition)
+start_tracker.addEventListener('mousedown', (e) => {
+    // e.stopPropagation();
+    e.preventDefault();
+    window.addEventListener('mousemove', moveSlider);
+    window.addEventListener('mouseup', () => {
+        window.removeEventListener('mousemove', moveSlider);
+    });
+});
+
+function moveSlider (e2) {
+    if (e2.pageX > 30 && e2.pageX < (videoBar.getBoundingClientRect().width + 30)) {
+        let percent = 1 - ((start_tracker.getBoundingClientRect().x - videoBar.getBoundingClientRect().x) / (videoBar.getBoundingClientRect().width));
+        start_tracker.style.position = 'absolute';
+        start_tracker.style.left = `${ e2.pageX }px`;
+        video.currentTime = video.duration - (percent * video.duration);
+        seekBar.max = video.duration;
+        seekBar.value = video.currentTime;
+        const value = video.currentTime / 60;
+        if (value > 1) {
+            let minutes = Math.floor(value);
+            let seconds = Math.floor((value % 1) * 60);
+            start ? start.value = `${ minutes }.${ seconds }` : startP.innerHTML = `${ minutes }.${ seconds }`;
+        } else {
+            start ? start.value = `${ value * 60 }` : startP.innerHTML = `${ value * 60 }`;
+        }
+    }
+}
+
+end_tracker.addEventListener('mousedown', (e) => {
+    e.preventDefault();
+    window.addEventListener('mousemove', moveEndSlider);
+    window.addEventListener('mouseup', () => {
+        window.removeEventListener('mousemove', moveEndSlider);
+    });
+})
 
 function cutVideo(e) {
     const start = start_tracker.style.left.split('px')[0] ? start_tracker.style.left.split('px')[0] : (start_tracker.getBoundingClientRect().x - 12);
@@ -70,44 +101,6 @@ function cutVideo(e) {
     cutVideo.style.borderLeft = '1px solid black';
 }
 
-function moveSlider(e) {
-    e.stopPropagation();
-    if (e.pageX > 30 && e.pageX < (videoBar.getBoundingClientRect().width + 30)) {
-        let percent = 1 - ((start_tracker.getBoundingClientRect().x - videoBar.getBoundingClientRect().x) / (videoBar.getBoundingClientRect().width));
-        start_tracker.style.position = 'absolute';
-        start_tracker.style.left = `${ e.pageX }px`;
-        video.currentTime = video.duration - (percent * video.duration);
-        seekBar.max = video.duration;
-        seekBar.value = video.currentTime;
-        const value = video.currentTime / 60;
-        if (value > 1) {
-            let minutes = Math.floor(value);
-            let seconds = Math.floor((value % 1) * 60);
-            start ? start.value = `${ minutes }.${ seconds }` : startP.innerHTML = `${ minutes }.${ seconds }`;
-        } else {
-            start ? start.value = `${ value * 60 }` : startP.innerHTML = `${ value * 60 }`;
-        }
-    }
-}
-
-function setPosition(e) {
-    e.stopPropagation();
-    if (30 < e.pageX) {
-        start_tracker.style.left = `${ e.pageX }px`;
-        const value = video.currentTime / 60;
-        if (value > 1) {
-            let minutes = Math.floor(value);
-            let seconds = Math.floor((value % 1) * 60);
-            start ? start.value = `${ minutes }.${ seconds }` : startP.innerHTML = `${ minutes }.${ seconds }`;
-        } else {
-            start ? start.value = `${ value * 60 }` : startP.innerHTML = `${ value * 60 }`;
-        }
-    } else {
-        start_tracker.style.left = '30px';
-        start.value = start.value.min;
-    }
-}
-
 function moveEndSlider(e) {
     e.stopPropagation();
     if (e.pageX > 30 && e.pageX < 1460) {
@@ -126,23 +119,109 @@ function moveEndSlider(e) {
     }
 }
 
-function setEndPosition(e) {
-    e.stopPropagation();
-    const value = video.currentTime / 60;
-    if (30 < e.pageX) {
-        end_tracker.style.left = `${ e.pageX }px`;
+// function setEndPosition(e) {
+//     e.stopPropagation();
+//     const value = video.currentTime / 60;
+//     if (30 < e.pageX) {
+//         end_tracker.style.left = `${ e.pageX }px`;
+//         if (value > 1) {
+//             let minutes = Math.floor(value);
+//             let seconds = Math.floor((value % 1) * 60);
+//             end ? end.value = `${ minutes }.${ seconds }` : endP.innerHTML = `${ minutes }.${ seconds }`;
+//         } else {
+//             end ? end.value = `${ value * 60 }` : endP.innerHTML = `${ value * 60 }`;
+//         }
+//     } else {
+//         end_tracker.style.left = '30px';
+//         end.value = '0.00';
+//     }
+// }
+
+function func2 (e2) {
+    if (e2.pageX > 30 && e2.pageX < (videoBar.getBoundingClientRect().width + 30)) {
+        let percent = 1 - ((start_tracker.getBoundingClientRect().x - videoBar.getBoundingClientRect().x) / (videoBar.getBoundingClientRect().width));
+        start_tracker.style.position = 'absolute';
+        start_tracker.style.left = `${ e2.pageX }px`;
+        video.currentTime = video.duration - (percent * video.duration);
+        seekBar.max = video.duration;
+        seekBar.value = video.currentTime;
+        const value = video.currentTime / 60;
         if (value > 1) {
             let minutes = Math.floor(value);
             let seconds = Math.floor((value % 1) * 60);
-            end ? end.value = `${ minutes }.${ seconds }` : endP.innerHTML = `${ minutes }.${ seconds }`;
+            start ? start.value = `${ minutes }.${ seconds }` : startP.innerHTML = `${ minutes }.${ seconds }`;
         } else {
-            end ? end.value = `${ value * 60 }` : endP.innerHTML = `${ value * 60 }`;
+            start ? start.value = `${ value * 60 }` : startP.innerHTML = `${ value * 60 }`;
         }
-    } else {
-        end_tracker.style.left = '30px';
-        end.value = '0.00';
     }
 }
+
+function moveSlider(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    window.addEventListener('mousemove', func2);
+    window.addEventListener('mouseup', func3);
+}
+
+function func3 () {
+    window.removeEventListener('mousemove', func2);
+}
+
+function setPosition(e) {
+    e.stopPropagation();
+    e.currentTarget.addEventListener('mousemove', (e2) => {
+        if (30 < e2.pageX) {
+            start_tracker.style.left = `${ e2.pageX }px`;
+            const value = video.currentTime / 60;
+            if (value > 1) {
+                let minutes = Math.floor(value);
+                let seconds = Math.floor((value % 1) * 60);
+                start ? start.value = `${ minutes }.${ seconds }` : startP.innerHTML = `${ minutes }.${ seconds }`;
+            } else {
+                start ? start.value = `${ value * 60 }` : startP.innerHTML = `${ value * 60 }`;
+            }
+        } else {
+            start_tracker.style.left = '30px';
+            start.value = start.value.min;
+        }
+    });
+}
+
+// function moveEndSlider(e) {
+//     e.stopPropagation();
+//     if (e.pageX > 30 && e.pageX < 1460) {
+//         let percent = 1 - ((end_tracker.getBoundingClientRect().x - videoBar.getBoundingClientRect().x) / (videoBar.getBoundingClientRect().width));
+//         end_tracker.style.position = 'absolute';
+//         end_tracker.style.left = `${ e.pageX }px`;
+//         video.currentTime = video.duration - (percent * video.duration);
+//         const value = (video.duration - (percent * video.duration)) / 60;
+//         if (value > 1) {
+//             let minutes = Math.floor(value);
+//             let seconds = Math.floor((value % 1) * 60);
+//             end ? end.value = `${ minutes }.${ seconds }` : endP.innerHTML = `${ minutes }.${ seconds }`;
+//         } else {
+//             end ? end.value = `${ value * 60 }` : endP.innerHTML = `${ value * 60 }`;
+//         }
+//     }
+// }
+
+// function setEndPosition(e) {
+//     e.stopPropagation();
+//     const value = video.currentTime / 60;
+//     if (30 < e.pageX) {
+//         end_tracker.style.left = `${ e.pageX }px`;
+//         if (value > 1) {
+//             let minutes = Math.floor(value);
+//             let seconds = Math.floor((value % 1) * 60);
+//             end ? end.value = `${ minutes }.${ seconds }` : endP.innerHTML = `${ minutes }.${ seconds }`;
+//         } else {
+//             end ? end.value = `${ value * 60 }` : endP.innerHTML = `${ value * 60 }`;
+//         }
+//     } else {
+//         end_tracker.style.left = '30px';
+//         end.value = '0.00';
+//     }
+// }
 
 function playVideo(e) {
     e.stopPropagation();

@@ -210,9 +210,9 @@ input:focus {
     padding: 0 0.5rem;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     z-index: 10;
-    background: #FFF;
+    background: #464648;
     border-radius: 0.5rem;
-    color: #380E3C;
+    color: #FFF;
     display: none;
 }
 
@@ -221,12 +221,19 @@ input:focus {
     border: 2px solid #380E3C;
     border-radius: 0.3rem;
     font-size: 1.2rem;
+    background: #2F2D2E;
+    color: #FFF;
+}
+
+.container .toolbar .create_menu .actions input::placeholder {
+    color: #FFF;
 }
 
 .container .toolbar .create_menu .actions button {
-    background: #B83169;
+    background: #2F2D2E;
     border-radius: 0.3rem;
     padding: 0.3rem;
+    color: #FFF;
 }
 
 .container .toolbar .create_menu .actions button:nth-child(2) {
@@ -327,6 +334,7 @@ input:focus {
     border-radius: 0.3rem;
     transform: scale(0);
     transition: all 0.5s ease;
+    z-index: 10;
 }
 
 .container .workspace .toolbar .select .select_menu .item {
@@ -383,23 +391,22 @@ input:focus {
     border-right: 2px solid #A4A4A4;
     padding: 1rem 0 0 1rem;
     background: #2F2D2E;
-    white-space: nowrap;
-    overflow-x: scroll;
+    overflow: hidden;
 }
 
 .container .workspace .files_section .file_tree::-webkit-scrollbar {
     display: none;
 }
 
-.container .files_section .file_tree .file {
+.container .files_section .file_tree .file,
+.container .files_section .file_tree .cut {
     background: #464648;
     padding: 0.2rem;
     border-radius: 0.25rem;
 }
 
 .container .files_section .file_tree .path {
-    /* background: #D9D9D9; */
-    /* padding: 0.2rem; */
+    position: relative;
     border-radius: 0.25rem;
     font-size: 1.2rem;
     color: #FFF;
@@ -408,12 +415,16 @@ input:focus {
 }
 
 .container .files_section .file_tree .path p {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     padding: 0.4rem 0.8rem;
     font-size: 0.8rem;
 }
 
 .container .files_section .file_tree .row {
-    width: fit-content;
+    width: 20rem;
 }
 
 .container svg {
@@ -425,24 +436,32 @@ input:focus {
     width: 70%;
 }
 
-.container .workspace .files_section .file_manager .folders {
+.container .workspace .files_section .file_manager .folders,
+.container .workspace .files_section .file_manager .files,
+.container .workspace .files_section .file_manager .cuts {
     border-bottom: 2px solid #D9D9D9;
     border-width: 95%;
     padding-bottom: 0.5rem;
     margin-bottom: 1rem;
 }
 
+.container .workspace .files_section .file_manager .cuts {
+    display: none;
+}
+
 .container .workspace .files_section .file_manager .directories_container,
-.container .workspace .files_section .file_manager .files_container {
+.container .workspace .files_section .file_manager .files_container,
+.container .workspace .files_section .file_manager .cut_container {
     /* position: relative; */
     margin-top: 1rem;
 }
 
 .container .workspace .files_section .file_manager .directories_container .directory_wrapper,
-.container .workspace .files_section .file_manager .files_container .file_wrapper {
+.container .workspace .files_section .file_manager .files_container .file_wrapper,
+.container .workspace .files_section .file_manager .cut_container .cut_wrapper {
     position: relative;
     cursor: pointer;
-    width: 15%;
+    width: 20%;
     text-align: center;
     margin: 0 2rem 1rem 0;
 }
@@ -454,20 +473,72 @@ input:focus {
     width: 25%;
 }
 
-.container .workspace .files_section .file_manager .files_container .file_wrapper.active {
-    width: fit-content;
+.container .workspace .files_section .file_manager .files_container .file_wrapper.active,
+.container .workspace .files_section .file_manager .files_container .cut_wrapper.active {
+    /* width: fit-content; */
     border-radius: 0.5rem;
     padding: 0.5rem;
     border: 2px solid #B83169;
 }
 
 .container .workspace .files_section .file_manager .directories_container .directory_wrapper p,
-.container .workspace .files_section .file_manager .files_container .file_wrapper p {
+.container .workspace .files_section .file_manager .files_container .file_wrapper p,
+.container .workspace .files_section .file_manager .cut_container .cut_wrapper p {
     margin-top: 0.5rem;
+    width: 80%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
+.container .workspace .files_section .file_manager .files_container .file_wrapper .tooltip,
+.container .workspace .files_section .file_manager .directories_container .directory_wrapper .tooltip,
+.container .workspace .files_section .file_manager .cut_container .cut_wrapper .tooltip,
+.container .files_section .file_tree .tooltip {
+    position: absolute;
+    opacity: 0;
+    top: 100%;
+    left: 50%;
+    font-size: 1rem;
+    font-weight: 400;
+    word-wrap: break-word;
+    background: #1F1F1F;
+    border-radius: 0.3rem;
+    width: 80%;
+    transition: all 0.5s ease;
+    z-index: 10;
+}
+
+.container .files_section .file_tree .tooltip {
+    left: -25%;
+}
+
+.container .inactive {
+    opacity: 0.5;
+}
+
+.container .numbers_tablet {
+    display: none;
+}
+
+.container .inactive input {
+    pointer-events: none;
+}
+
+.container .workspace .files_section .file_manager .files_container .file_wrapper .file:hover .tooltip,
+.container .workspace .files_section .file_manager .directories_container .directory_wrapper .directory:hover .tooltip,
+.container .workspace .files_section .file_manager .cut_container .cut_wrapper .cut:hover .tooltip,
+.container .files_section .file_tree .path:hover .tooltip {
+    opacity: 1;
+}
+
+/* .container .workspace .files_section .file_manager .files_container .file_wrapper .file p:hover {
+    overflow: visible;
+} */
+
 .container .workspace .files_section .file_manager .directories_container .directory svg,
-.container .workspace .files_section .file_manager .files_container .file svg {
+.container .workspace .files_section .file_manager .files_container .file svg,
+.container .workspace .files_section .file_manager .cut_container .cut svg {
     background: #A4A4A4;
     border-radius: 0.25rem;
 }
@@ -543,7 +614,8 @@ input:focus {
 }
 
 .container .workspace .player video {
-    object-fit: fill;
+    height: 100%;
+    object-fit: contain;
 }
 
 .container .workspace .controls .seek_bar {
@@ -627,8 +699,8 @@ input:focus {
     background: #D9D9D9;
     padding: 0.2rem;
     color: #000;
-    transition: all 0.5s ease;
     width: 500%;
+    transition: all 0.5s ease;
 }
 
 .container .bottom_buttons .buttons_wrapper button:hover p {
@@ -651,7 +723,7 @@ input:focus {
 }
 
 .container .cut_section {
-    background: #380E3C;
+    background: #2F2D2E;
     padding: 1rem 1rem 0 1rem;
     display: none;
 }
@@ -689,7 +761,7 @@ input:focus {
 
 .container .cut_section .button_wrapper button {
     padding: 1rem;
-    background: #B83169;
+    background: #464648;
     border-radius: 0.5rem;
     transition: all 0.5s ease;
 }
@@ -714,7 +786,8 @@ input:focus {
     /* background: #FFF; */
     padding: 0 0.6rem;
     margin: 1rem 0 0 0;
-    background: #F2E8ED;
+    background: #110F0D;
+    color: #4C7A96;
 }
 
 /* .container .cut_section .tracker .ticks {
@@ -731,7 +804,7 @@ input:focus {
 .container .cut_section .working_area {
     position: relative;
     height: 20rem;
-    background: #380E3C;
+    background: #464648;
     padding: 0 1.8rem;
 }
 
@@ -742,6 +815,7 @@ input:focus {
     height: 100%;
     width: 0.2rem;
     background: #A4A4A4;
+    cursor: col-resize;
 }
 
 .container .cut_section .working_area span:nth-child(2) {
@@ -751,6 +825,7 @@ input:focus {
     height: 100%;
     width: 0.2rem;
     background: #B83169;
+    cursor: col-resize;
 }
 
 .container .cut_section .working_area .video {
@@ -783,8 +858,32 @@ input:focus {
     width: 80%;
 }
 
-.container .video img, .container .cut_video img {
+.container .video img, .container .cut_video img, .container .video video {
     height: 100%;
+}
+
+.container .bar_menu {
+    position: absolute;
+    top: 0;
+    width: 12%;
+    border-radius: 0.6rem;
+    background: #2F2D2E;
+    display: none;
+}
+
+.container .bar_menu .item {
+    height: 2rem;
+    padding: 0.5rem;
+    color: #FFF;
+    cursor: pointer;
+}
+
+.container .bar_menu .item:hover {
+    background: #0d4098;
+}
+
+.container .bar_menu .item svg {
+    margin: 0 1rem 0 0;
 }
 
 @media screen and (min-width: 1200px) and (max-width: 1400px) {
@@ -802,7 +901,11 @@ input:focus {
     }
 
     .container .menu ul {
-        width: 10%;
+        width: 9%;
+    }
+
+    .container .menu ul li {
+        padding: 0;
     }
 
     .container .workspace .player {
@@ -811,6 +914,10 @@ input:focus {
 
     .container .workspace .player_section .controls {
         height: 8rem;
+    }
+
+    .container .workspace .player_section .controls .volume_buttons {
+        width: 36%;
     }
 
     .container .workspace .player_section button {
@@ -828,14 +935,6 @@ input:focus {
 
     .container .cut_section .tracker {
         overflow: hidden;
-    }
-
-    .container .workspace {
-        height: 81vh;
-    }
-
-    .container .workspace .player_section .controls .volume_buttons {
-        width: 36%;
     }
 }
 
@@ -867,7 +966,11 @@ input:focus {
     }
 
     .container .menu ul {
-        width: 11%;
+        width: 10%;
+    }
+
+    .container .menu ul li {
+        padding: 0;
     }
 
     .container .workspace .player {
@@ -933,7 +1036,11 @@ input:focus {
     }
 
     .container .menu ul {
-        width: 13%;
+        width: 12%;
+    }
+
+    .container .menu ul li {
+        padding: 0;
     }
 
     .container .workspace .player {
@@ -985,7 +1092,7 @@ input:focus {
     }
 
     .container .workspace {
-        height: calc(100vh - 10rem);
+        height: 82vh;
     }
     
     .container .workspace .toolbar {
@@ -1011,7 +1118,7 @@ input:focus {
     }
 
     .container .menu ul {
-        width: 15%;
+        width: 22%;
     }
 
     .container .menu .language {
