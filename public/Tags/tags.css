@@ -743,7 +743,7 @@ input:focus {
     
     .container .tag_information > h1 {
         position: absolute;
-        top: 4rem;
+        top: 1rem;
         left: 1rem;
         font-size: 1rem;
         font-weight: 500;
@@ -976,7 +976,7 @@ input:focus {
     
     .container .tag_information > h1 {
         position: absolute;
-        top: 4rem;
+        top: 1rem;
         left: 1rem;
         font-size: 1rem;
         font-weight: 500;
