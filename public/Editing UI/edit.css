@@ -212,6 +212,7 @@ input:focus {
 .container .workspace .video_editing .tools {
     height: 100%;
     background: #1f1f1f;
+    width: 10%;
 }
 
 .container .workspace .video_editing .tools img {
@@ -253,7 +254,7 @@ input:focus {
 .container .workspace .video #canvas {
     position: absolute;
     z-index: 10;
-    border: 2px solid black;
+    border: 1px solid white;
 }
 
 .container .workspace .video_editing .tools svg {
@@ -394,6 +395,10 @@ input:focus {
 .container .workspace .video .render_menu .ranges .start, .container .workspace .video .render_menu .ranges .end {
     width: 40%;
     color: #FFF;
+}
+
+.container .render_menu .start_tracker, .container .render_menu .end_tracker {
+    cursor: col-resize;
 }
 
 .container .workspace .video .render_menu .range {

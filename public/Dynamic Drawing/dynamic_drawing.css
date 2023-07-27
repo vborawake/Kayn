@@ -230,6 +230,11 @@ input:focus {
     overflow: hidden;
 }
 
+.container .workspace .video video {
+    height: 100%;
+    width: 100%;
+}
+
 .container .workspace .video .spotlight {
     position: absolute;
     background: url('../images/spotlight2.jpg');
@@ -640,6 +645,10 @@ input:focus {
     cursor: e-resize;
 }
 
+.container .cut_section .working_area span:nth-child(1) {
+    left: 1.8rem;
+}
+
 .container .cut_section .working_area span:nth-child(2) {
     position: absolute;
     top: 0;
@@ -695,6 +704,10 @@ input:focus {
 
 .container .editing_section {
     width: 80%;
+}
+
+.container .render_menu .start_tracker, .container .render_menu .end_tracker {
+    cursor: col-resize;
 }
 
 @media screen and (min-width: 1200px) and (max-width: 1400px) {

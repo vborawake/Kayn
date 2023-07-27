@@ -272,7 +272,7 @@ input:focus {
 }
 
 .container .workspace {
-    height: 80vh;
+    height: calc(100vh - 10rem);
 }
 
 .container .workspace .left_section {
@@ -402,12 +402,19 @@ input:focus {
 
 .container .workspace .right_section .image_container {
     width: 100%;
-    height: 50%;
+    height: calc(100vh - 10rem);
     overflow: hidden;
+    background: #1F1E1E;
 }
 
 .container .workspace .right_section .image_container img {
     object-position: 0 2rem;
+    width: 100%;
+}
+
+.container .workspace .right_section .image_container video {
+    object-fit: contain;
+    height: 100%;
     width: 100%;
 }
 
@@ -658,6 +665,19 @@ input:focus {
     padding: 0;
 }
 
+.container .render_menu .file_input {
+    position: relative;
+}
+
+.container .render_menu .file_input #render_path {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
 .container .render_menu {
     position: absolute;
     top: 0;
@@ -739,6 +759,10 @@ input:focus {
     color: #FFF;
 }
 
+.container .render_menu .start_tracker, .container .render_menu .end_tracker {
+    cursor: col-resize;
+}
+
 .container .render_menu .range {
     position: relative;
     width: 100%;
@@ -756,6 +780,26 @@ input:focus {
     height: 120%;
     width: 20%;
     background: #2F2D2E;
+}
+
+.container .cut_section .working_area span {
+    position: absolute;
+    top: 0;
+    left: 1.8;
+    height: 100%;
+    width: 0.2rem;
+    background: #A4A4A4;
+    cursor: col-resize;
+}
+
+.container .cut_section .working_area span:nth-child(2) {
+    position: absolute;
+    top: 0;
+    left: 2rem;
+    height: 100%;
+    width: 0.2rem;
+    background: #B83169;
+    cursor: col-resize;
 }
 
 .container .range .start_tracker {

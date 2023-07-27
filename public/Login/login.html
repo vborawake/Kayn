@@ -22,7 +22,10 @@
             <h2>Log In</h2>
             <form action="" class="flex_column space_between center">
                 <input type="text" placeholder="Email">
-                <input type="password" placeholder="Password">
+                <div style="position: relative; width: 80%;">
+                    <input type="password" placeholder="Password" style="width: 100%;">
+                    <!-- <img src="../images/image 32.png" alt="" style="position: absolute; top: 0; bottom: 0; margin: auto 0; right: 0.5rem;"> -->
+                </div>
                 <div class="forgot flex_row space_between center">
                     <div class="checkbox flex_row space_between center">
                         <input type="checkbox" name="remember">
@@ -30,7 +33,7 @@
                     </div>
                     <p><a href="../Forgot Password/forgotPassword.html">Forgot Password?</a></p>
                 </div>
-                <button><a href="../Media/media.html">Log In</a></button>
+                <button onclick="window.location.href='../Media/media.html'"><a href="../Media/media.html">Log In</a></button>
             </form>
             <div class="register flex_column space_between">
                 <p>Don't have an account?</p>

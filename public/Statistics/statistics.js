@@ -680,7 +680,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }
-        document.getElementById('initial').remove();
+        // document.getElementById('initial').style.display = 'none';
+        if (localStorage.getItem('fromPlayer')) {
+            const html = `
+                <div class="player flex_row justify_center center">
+                    <p class="player_name">${ localStorage.getItem('fromPlayer') }</p>
+                </div>
+            `;
+            document.querySelector('.players.flex_column.center.justify_flex_start').insertAdjacentHTML('beforeend', html);
+        }
+        if (localStorage.getItem('fromTeams')) {
+            const html = `
+                <div class="team flex_row justify_center center">
+                    <p class="team_name">${ localStorage.getItem('fromTeams') }</p>
+                </div>
+            `;
+            document.querySelector('.teams.flex_column.center.justify_flex_start').insertAdjacentHTML('beforeend', html);
+        }
     }
 
     if (playersContainer.children.length === 0) {

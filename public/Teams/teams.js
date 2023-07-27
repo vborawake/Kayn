@@ -135,10 +135,11 @@ function showTeamDetails(e) {
         name = name + ' - ' + teamName;
         localStorage.setItem('fromCutSection', name);
         window.location.href = '../Desktop/desktop.html';
+        localStorage.removeItem('select');
     }
     if (localStorage.getItem('fromStats')) {
         localStorage.removeItem('fromStats');
-        localStorage.setItem('fromPlayer', e.currentTarget.querySelector('.team_name').innerHTML);
+        localStorage.setItem('fromTeams', e.currentTarget.querySelector('.team_name').innerHTML);
         window.location.href = '../Statistics/statistics.html'
     }
     if (!localStorage.getItem('fromStats')) {

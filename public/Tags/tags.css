@@ -533,11 +533,31 @@ input:focus {
 }
 
 .container .tag_information .information_wrapper .right_section .tag_layout button {
+    position: relative;
     width: 4.4rem;
     height: 4rem;
     margin-bottom: 0.5rem;
     border-radius: 0.3rem;
     background: #777073;
+    z-index: 2;
+}
+
+.container .tag_information .information_wrapper .right_section .tag_layout button:hover span {
+    /* display: block; */
+    opacity: 1;
+}
+
+.container .tag_information .information_wrapper .right_section .tag_layout button span {
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    border: 1px solid #380E3C;
+    background: #2F2D2E;
+    padding: 0.5rem;
+    /* display: none; */
+    opacity: 0;
+    transition: all 0.5s ease;
+    z-index: 3;
 }
 
 .container .tag_information .information_wrapper .right_section .tag_layout button.active {

@@ -68,10 +68,10 @@
             <div class="video_editing flex_row width_full space_between">
                 <div class="tools left_tools">
                     <div onclick="selectTool(event)" class="tools_wrapper flex_column">
-                        <button>
+                        <button class="play">
                             <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M320 853V293l440 280-440 280Zm60-280Zm0 171 269-171-269-171v342Z"/></svg>
                         </button>
-                        <button>
+                        <button class="stop">
                             <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M330 726h300V426H330v300Zm150.266 250q-82.734 0-155.5-31.5t-127.266-86q-54.5-54.5-86-127.341Q80 658.319 80 575.5q0-82.819 31.5-155.659Q143 347 197.5 293t127.341-85.5Q397.681 176 480.5 176q82.819 0 155.659 31.5Q709 239 763 293t85.5 127Q880 493 880 575.734q0 82.734-31.5 155.5T763 858.316q-54 54.316-127 86Q563 976 480.266 976Zm.234-60Q622 916 721 816.5t99-241Q820 434 721.188 335 622.375 236 480 236q-141 0-240.5 98.812Q140 433.625 140 576q0 141 99.5 240.5t241 99.5Zm-.5-340Z"/></svg>
                         </button>
                         <button>
@@ -83,8 +83,8 @@
                     </div>
                 </div>
                 <div class="video">
-                    <!-- <video src="../video/defaultVideo2.mp4" width="1404px" height="520px"></video> -->
-                    <img src="../images/aerial-view-grass-field-hockey.jpg" alt="">
+                    <video src="../video/Panasonic.mp4"></video>
+                    <!-- <img src="../images/aerial-view-grass-field-hockey.jpg" alt=""> -->
                     <!-- <div class="spotlight">
                         <img src="../images/spotlight.jpg" alt="">
                     </div> -->
@@ -96,7 +96,7 @@
                             <p>Create Player From Selected Rectangle</p>
                         </div>
                     </div>
-                    <div class="render_menu flex_column center">
+                    <div class="render_menu flex_column center" onclick="event.stopPropagation()">
                         <h4>Render Video Clip</h4>
                         <div class="video_image">
                             <img src="../images/aerial-view-grass-field-hockey.jpg" alt="">
@@ -132,10 +132,10 @@
                 </div>
                 <div onclick="selectTool(event)" class="tools right_tools">
                     <div class="tools_wrapper flex_column">
-                        <button>
+                        <button class="play">
                             <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M320 853V293l440 280-440 280Zm60-280Zm0 171 269-171-269-171v342Z"/></svg>
                         </button>
-                        <button>
+                        <button class="stop">
                             <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M330 726h300V426H330v300Zm150.266 250q-82.734 0-155.5-31.5t-127.266-86q-54.5-54.5-86-127.341Q80 658.319 80 575.5q0-82.819 31.5-155.659Q143 347 197.5 293t127.341-85.5Q397.681 176 480.5 176q82.819 0 155.659 31.5Q709 239 763 293t85.5 127Q880 493 880 575.734q0 82.734-31.5 155.5T763 858.316q-54 54.316-127 86Q563 976 480.266 976Zm.234-60Q622 916 721 816.5t99-241Q820 434 721.188 335 622.375 236 480 236q-141 0-240.5 98.812Q140 433.625 140 576q0 141 99.5 240.5t241 99.5Zm-.5-340Z"/></svg>
                         </button>
                         <button>
@@ -198,8 +198,8 @@
                             </div>
                         </div>
                         <div class="working_area width_full flex_column justify_flex_start">
-                            <span class="start_tracker"></span>
-                            <span class="end_tracker"></span>
+                            <span class="start_tracker_cut"></span>
+                            <span class="end_tracker_cut"></span>
                             <div class="video flex_row justify_center center width_full" style="color: #FFF;">
                                 <p>Spotlight</p>
                             </div>

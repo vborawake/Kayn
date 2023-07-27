@@ -1,51 +1,32 @@
 const hamburger = document.querySelector('.hamburger');
 const mobileMenu = document.querySelector('.mobile_menu');
 const trackerPosition = document.querySelector('.tracker.flex_column.justify_flex_start.width_full');
-const videoBar = document.querySelector('.video');
-const start_tracker = document.querySelector('.start_tracker');
-const end_tracker = document.querySelector('.end_tracker');
-let canvas = document.getElementById('chart');
-let ctx = canvas ? canvas.getContext('2d') : undefined;
+const videoBar = document.querySelector('.video.width_full.flex_row.justify_center');
+const start_tracker = document.querySelector('.start_tracker_cut');
+const end_tracker = document.querySelector('.end_tracker_cut');
+const render_start = document.querySelector('.start_tracker');
+const render_end = document.querySelector('.end_tracker');
 const selectMenu = document.querySelector('.select_menu.flex_column.width_full');
 const tagList = document.querySelector('.tags_list.flex_column.center.width_full');
-let buttonsList = document.querySelector('.buttons.flex_row.space_between.center.width_full');
 const workingArea = document.querySelector('.working_area.width_full.flex_column.justify_flex_start');
 const selectionContent = document.querySelector('.selection_content.flex_column:nth-child(2)');
 const defaultContent = document.querySelector('.default_content.flex_row.space_between');
-let lineChart = document.getElementById('line_chart');
-let lineCtx = lineChart ? lineChart.getContext('2d') : undefined;
 const ticksElement = document.querySelector('.ticks.flex_row.align_flex_end.width_full');
 const fileSection = document.querySelector('.files_section.flex_column.justify_flex_start');
 const cutSection = document.querySelector('.cut_section.flex_row.center.justify_flex_start.width_full');
 const barMenu = document.querySelector('.bar_menu.flex_column');
 const renderMenu = document.querySelector('.render_menu.flex_column.center');
+const video = document.querySelector('video');
 
 let barInCons;
-const bars = [];
+let bars = [];
+let movingEndSlider = false;
 
 const playersContainer = document.querySelector('.players.flex_column.center.justify_flex_start');
 
 let fileMenu;
 
 let isOpen = false;
-const files = [
-    {
-        name: 'Football 1',
-        videoSrc: 'video/football-15734.mp4'
-    },
-    {
-        name: 'Football 2',
-        videoSrc: 'video/soccer-5264.mp4'
-    },
-];
-
-// window.addEventListener('load', () => {
-//     setTimeout(() => {
-//         document.querySelector('.container.flex_column.justify_flex_start.center.width_full').style.display = 'flex';
-//         // document.querySelector('.loader.flex_row.center.justify_center').classList.remove('flex_row');
-//         document.querySelector('.loader.flex_row.center.justify_center').style.display = 'none';
-//     }, 500)
-// });
 
 const selectContent = {
     'Attacking Principles': `
@@ -405,13 +386,28 @@ const content = {
     `
 };
 
+video.addEventListener('timeupdate', updateSeekbar);
+
+function updateSeekbar () {
+    if (!movingEndSlider) {
+        let percent = video.currentTime / video.duration;
+        start_tracker.style.left = `${ percent * videoBar.getBoundingClientRect().width + 30 }px`;
+    
+        if (end_tracker.getBoundingClientRect().x < start_tracker.getBoundingClientRect().x) end_tracker.style.left = start_tracker.style.left;
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     if (localStorage.getItem('fromCutSection') || localStorage.getItem('cutSection')) {
         const name = localStorage.getItem('fromCutSection') ? localStorage.getItem('fromCutSection') : localStorage.getItem('cutSection');
-        const html = `<div oncontextmenu="tagRightClick(event)" class="tag width_full flex_row justify_center" style="color: #FFF;">
-                            <p>${ name }</p>
-                        </div>`
-        workingArea.innerHTML += html;
+        const html = `
+                <div oncontextmenu="tagRightClick(event)" class="tag flex_row justify_center center width_full" style="color: #FFF;">
+                    <span onmousedown='resize(event)' id='left_resizer'></span>
+                    <p>${ name }</p>
+                    <span onmousedown='resize(event)' id='right_resizer'></span>
+                </div>
+            `;
+            workingArea.insertAdjacentHTML('beforeend', html);
         adjustBars();
         addSelectRow(name);
         cutSection.style.display = 'flex';
@@ -419,6 +415,27 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.removeItem('fromCutSection');
         localStorage.setItem('cutSection', name);
     }
+
+    if (localStorage.getItem('bars')) {
+        bars = JSON.parse(localStorage.getItem('bars'));
+
+        bars.forEach(bar => {
+            const html = `
+                <div oncontextmenu="tagRightClick(event)" class="tag flex_row justify_center center width_full" style="color: #FFF;">
+                    <span onmousedown='resize(event)' id='left_resizer'></span>
+                    <p>${ bar }</p>
+                    <span onmousedown='resize(event)' id='right_resizer'></span>
+                </div>
+            `;
+            workingArea.insertAdjacentHTML('beforeend', html);
+            cutSection.style.display = 'flex';
+            adjustBars();
+            addSelectRow(bar);
+            populateTicks();
+            localStorage.setItem('bars', JSON.stringify(bars));
+        });
+    }
+    // addEventListenersSlider();
 });
 
 function adjustBars () {
@@ -464,13 +481,14 @@ function removeSelectRow (name) {
 
 function addToTagList (e) {
     let tagListContains = 0
-    console.log(buttonsList);
+    // console.log(buttonsList);
 
     if (cutSection.style.display !== 'flex') cutSection.style.display = 'flex';
     
     Array.from(tagList.children).forEach(button => {
         if (button === e.currentTarget) {
-            buttonsList.appendChild(e.currentTarget);
+            button.remove();
+            // buttonsList.appendChild(e.currentTarget);
             tagListContains = 1;
             removeSelectRow(e.currentTarget.innerHTML);
             removeBar(e.currentTarget.innerHTML);
@@ -492,6 +510,7 @@ function addToTagList (e) {
         addSelectRow(e.currentTarget.innerHTML);
         populateTicks();
         bars.push(e.currentTarget.innerHTML);
+        localStorage.setItem('bars', JSON.stringify(bars));
     }
 }
 
@@ -521,6 +540,8 @@ function selectAllTags(event) {
             workingArea.innerHTML += html;
             adjustBars();
             addSelectRow(button.innerHTML);
+            bars.push(button.innerHTML);
+            localStorage.setItem('bars', JSON.stringify(bars));
         });
 
     } else if (buttonsList.children.length === 0) {
@@ -528,6 +549,7 @@ function selectAllTags(event) {
             buttonsList.appendChild(tag);
             removeSelectRow(tag.innerHTML);
             removeBar(tag.innerHTML);
+            removeFromBar(tag.innerHTML);
         });
     }
 
@@ -536,7 +558,10 @@ function selectAllTags(event) {
 
 function removeFromBar (name) {
     const index = bars.indexOf(name);
-    if (index !== -1) bars.splice(index, 1);
+    if (index !== -1) {
+        bars.splice(index, 1);
+        localStorage.setItem('bars', JSON.stringify(bars));
+    }
 }
 
 function resize(e) {
@@ -647,9 +672,11 @@ document.addEventListener('click', (e) => {
         };
     }
     if (barMenu.style.display === 'flex') barMenu.style.display = 'none';
-    if (renderMenu) {
+    if (renderMenu && !e.target.classList.contains('workspace')) {
+        console.log(e.target);
         if (renderMenu.style.transform === 'scaleY(1)') renderMenu.style.transform = 'scale(0)';
     }
+    console.log(e);
 });
 
 function handleBarClick(e) {
@@ -671,6 +698,8 @@ function handleBarClick(e) {
     else if (action === 'Remove') {
         removeSelectRow(barInCons.querySelector('p').innerHTML);
         removeBar(barInCons.querySelector('p').innerHTML);
+        removeFromBar(barInCons.querySelector('p').innerHTML);
+        localStorage.setItem('bars', JSON.stringify(bars));
         localStorage.removeItem('cutSection');
     }
     barMenu.style.display = 'none';
@@ -685,11 +714,16 @@ function trackPlayers(e) {
     }, 1000);
 }
 
+function selectPath(e) {
+    e.stopPropagation();
+    console.log(e);
+    e.currentTarget.nextElementSibling.value = e.currentTarget.value;
+}
+
 function populateTicks() {
     const ticksElement = document.querySelector('.ticks.width_full');
     let numbersPosition = document.querySelectorAll('.numbers.flex_row.space_between.center.width_full p');
     let tick = undefined;
-    console.log(trackerPosition);
     if (window.innerWidth < 992) numbersPosition = document.querySelectorAll('.numbers_tablet.flex_row.space_between.center.width_full p');
     Array.from(ticksElement.children).forEach(tick => { tick.remove(); });
     Array.from(numbersPosition).forEach(numberPosition => {
@@ -722,6 +756,116 @@ function populateTicks() {
             start += 5;
         }
     }
+}
+
+start_tracker.addEventListener('mousedown', (e) => {
+    // e.stopPropagation();
+    e.preventDefault();
+    e.stopPropagation();
+    movingEndSlider = false;
+    window.addEventListener('mousemove', moveSlider);
+    window.addEventListener('mouseup', () => {
+        window.removeEventListener('mousemove', moveSlider);
+    });
+});
+
+function moveSlider (e2) {
+    if (e2.pageX > (30 + fileSection.getBoundingClientRect().width) && (e2.pageX - fileSection.getBoundingClientRect().width) < (videoBar.getBoundingClientRect().width + 30)) {
+        let percent = 1 - ((start_tracker.getBoundingClientRect().x - videoBar.getBoundingClientRect().x) / (videoBar.getBoundingClientRect().width));
+        start_tracker.style.position = 'absolute';
+        start_tracker.style.left = `${ e2.pageX - fileSection.getBoundingClientRect().width }px`;
+        console.log(e2.pageX - fileSection.getBoundingClientRect().width);
+        if (end_tracker.getBoundingClientRect().x < start_tracker.getBoundingClientRect().x) end_tracker.style.left = start_tracker.style.left;
+        video.currentTime = video.duration - (percent * video.duration);
+        const value = video.currentTime / 60;
+        if (value > 1) {
+            let minutes = Math.floor(value);
+            let seconds = Math.floor((value % 1) * 60);
+        }
+    }
+}
+
+end_tracker.addEventListener('mousedown', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    movingEndSlider = true;
+    window.addEventListener('mousemove', moveEndSlider);
+    window.addEventListener('mouseup', () => {
+        movingEndSlider = false;
+        window.removeEventListener('mousemove', moveEndSlider);
+    });
+})
+
+function moveEndSlider(e) {
+    e.stopPropagation();
+    // movingEndSlider = true;
+    if (e.pageX > (30 + fileSection.getBoundingClientRect().width) && (e.pageX - fileSection.getBoundingClientRect().width) < (videoBar.getBoundingClientRect().width + 30)) {
+        let percent = 1 - ((end_tracker.getBoundingClientRect().x - videoBar.getBoundingClientRect().x) / (videoBar.getBoundingClientRect().width));
+        end_tracker.style.position = 'absolute';
+        end_tracker.style.left = `${ e.pageX - fileSection.getBoundingClientRect().width }px`;
+        video.currentTime = video.duration - (percent * video.duration);
+        const value = (video.duration - (percent * video.duration)) / 60;
+        if (value > 1) {
+            let minutes = Math.floor(value);
+            let seconds = Math.floor((value % 1) * 60);
+        }
+    }
+}
+
+render_start.addEventListener('mousedown', (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+
+    window.addEventListener('mousemove', renderStartMove);
+    
+    window.addEventListener('mouseup', () => {
+        window.removeEventListener('mousemove', renderStartMove);
+    });
+});
+
+function renderStartMove(e) {
+    if (e.pageX > (renderMenu.getBoundingClientRect().x + 24) && (e.pageX < renderMenu.querySelector('.range').getBoundingClientRect().right )) {
+        if ((render_start.getBoundingClientRect().x + 50) > render_end.getBoundingClientRect().x) render_end.style.left = `${ e.pageX - renderMenu.getBoundingClientRect().x }px`;
+        render_start.style.left = `${ e.pageX - renderMenu.getBoundingClientRect().x - 24 }px`;
+        render_start.previousElementSibling.style.left = render_start.style.left;
+        render_start.previousElementSibling.style.width = `${ (render_end.getBoundingClientRect().x - render_start.getBoundingClientRect().x) }px`;
+
+        let percent = getPercent(render_start);
+        video.currentTime = video.duration * percent;
+    }
+}
+
+render_end.addEventListener('mousedown', (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+
+    window.addEventListener('mousemove', renderEndMove);
+    
+    window.addEventListener('mouseup', () => {
+        window.removeEventListener('mousemove', renderEndMove);
+    });
+});
+
+function renderEndMove(e) {
+    if (e.pageX > ( renderMenu.getBoundingClientRect().x + 24) && (e.pageX < renderMenu.querySelector('.range').getBoundingClientRect().right )) {
+        render_end.style.left = `${ e.pageX - renderMenu.getBoundingClientRect().x - 24 }px`;
+        render_start.previousElementSibling.style.left = render_start.style.left;
+        render_start.previousElementSibling.style.width = `${ (render_end.getBoundingClientRect().x - render_start.getBoundingClientRect().x) }px`;
+
+        let percent = getPercent(render_end);
+        video.currentTime = video.duration * percent;
+        // console.log(video.duration);
+    }
+}
+
+function getPercent(element) {
+    const width = element.parentElement.getBoundingClientRect().width;
+    // Here we are getting the position of element excluding the padding and position of render menu popup.
+    const position = element.getBoundingClientRect().x -
+                    (renderMenu.getBoundingClientRect().x +
+                    parseInt(window.getComputedStyle(renderMenu, null).getPropertyValue('padding-left').split('px')[0]));
+    console.log(position / width);
+    return (position / width);
 }
 
 function throttleFunc(func, delay) {

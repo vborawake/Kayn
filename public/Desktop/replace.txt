@@ -1,0 +1,5 @@
+function getValue(e) {
+    if (e.currentTarget.checked === true) {
+        const name = e.currentTarget.nextElementSibling.innerHTML;
+    }
+}

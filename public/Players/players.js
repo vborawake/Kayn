@@ -129,6 +129,8 @@ function showPlayerDetails(e) {
         let name = localStorage.getItem('select');
         name = name + ' - ' + teamName;
         localStorage.setItem('fromCutSection', name);
+        localStorage.removeItem('select');
+        console.log(localStorage.getItem('select'));
         window.location.href = '../Desktop/desktop.html';
     }
     if (localStorage.getItem('fromStats')) {

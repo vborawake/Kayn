@@ -1,0 +1,9 @@
+Start end values in render menu
+Obtain path of a Folder
+Video plays with slider
+
+Eloroverde
+CMS section image
+Language popup
+Loading screen
+Add new row On add button

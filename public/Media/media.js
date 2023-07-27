@@ -87,6 +87,7 @@ directorySection.addEventListener('click', (e) => {
     console.log(fileSection.children);
     emptyFileContainer();
     Array.from(directorySection.children).forEach(directory => {
+        directory.querySelector('input').checked = false;
         directory.classList.remove('active');
     });
     importInput.classList.add('inactive');
@@ -228,7 +229,7 @@ function fileRightClick(e) {
 function importFile(e) {
     let html = `
         <div oncontextmenu="fileRightClick(event)" onclick="playVideo(event)" class="file_wrapper flex_row align_flex_start center">
-            <input type="checkbox">
+            <input type="checkbox" disabled>
             <div class="file flex_column space_between center width_full">
                 <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M450 896V370L202 618l-42-42 320-320 320 320-42 42-248-248v526h-60Z"/></svg>
                 <p id="file_name" name=${ e.target.files[0].name }>${ e.target.files[0].name }</p>
@@ -311,7 +312,7 @@ function createDirectory(e) {
     if (!input.value || folders[input.value]) return;
     const html = `
     <div onclick="directorySelect(event)" class="directory_wrapper flex_row align_flex_start center">
-        <input type="checkbox">
+        <input type="checkbox" disabled>
         <div class="directory flex_column space_between center width_full">
             <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M141 896q-24 0-42-18.5T81 836V316q0-23 18-41.5t42-18.5h280l60 60h340q23 0 41.5 18.5T881 376v460q0 23-18.5 41.5T821 896H141Zm0-580v520h680V376H456l-60-60H141Zm0 0v520-520Z"/></svg>
             <p id="directory_name" name=${ input.value ? input.value : 'Individual Concept' }>${ input.value ? input.value : 'Individual Concept' }</p>
@@ -366,6 +367,7 @@ function directorySelect(e) {
     } else {
         const directories = document.getElementsByClassName('directory_wrapper flex_row align_flex_start center');
         currentDirectory = e.currentTarget;
+        e.currentTarget.querySelector('input').checked = true;
         importInput.classList.remove('inactive');
         fileSection.children[0].style.display = 'none';
         Array.from(directories).forEach(directory => {
@@ -375,7 +377,7 @@ function directorySelect(e) {
         folders[e.currentTarget.querySelector('#directory_name').innerHTML].forEach(file => {
             const html = `
                 <div oncontextmenu="fileRightClick(event)" onclick="playVideo(event)" class="file_wrapper flex_row align_flex_start center">
-                    <input type="checkbox">
+                    <input type="checkbox" disabled>
                     <div class="file flex_column space_between center width_full">
                         <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M450 896V370L202 618l-42-42 320-320 320 320-42 42-248-248v526h-60Z"/></svg>
                         <p id='file_name' name=${ file.name }>${ file.name }</p>

@@ -16,6 +16,8 @@ const renderMenu = document.querySelector('.render_menu.flex_column.center');
 const canvasMenu = document.querySelector('.canvas_menu.flex_column');
 const playerSelect = document.querySelector('.selected_item.flex_row.justify_center.center');
 const workingArea = document.querySelector('.working_area.width_full.flex_column.justify_flex_start');
+const start_tracker = document.querySelector('.start_tracker_cut');
+const end_tracker = document.querySelector('.end_tracker_cut');
 
 let start_coords = {};
 let end_coords = {};
@@ -124,11 +126,13 @@ function drawCanvas (canvasElems, action) {
 
 function setCanvasSize() {
     console.log(image.getBoundingClientRect());
-    canvas.width = image.getBoundingClientRect().width;
-    canvas.height = image.getBoundingClientRect().height;
+    video.addEventListener('loadedmetadata', (e) => {
+        canvas.width = (video.videoWidth * 0.75);
+        canvas.height = (video.videoHeight * 0.75);
+    });
     canvas.style.position = 'absolute';
-    canvas.style.left = `${ image.getBoundingClientRect().left }px`;
-    canvas.style.top = `${ image.getBoundingClientRect().top + window.scrollY }px`;
+    canvas.style.left = `${ 0 + videoDiv.previousElementSibling.getBoundingClientRect().width }px`;
+    canvas.style.top = `${ videoDiv.getBoundingClientRect().top }px`;
     // canvas.style.border = '4px solid black';
 }
 
@@ -144,7 +148,9 @@ playerSelect.addEventListener('click', (e) => {
 
 document.addEventListener('DOMContentLoaded', () => {
     setCanvasSize();
-    const players = localStorage.getItem('Players').split(', ');
+    if (localStorage.getItem('Players')) {
+        const players = localStorage.getItem('Players').split(', ');
+    }
     if (players) {
         canvasMenu.style.display = 'flex';
         canvasMenu.style.position = 'absolute';

@@ -459,7 +459,8 @@ input:focus {
     color: #000;
 }
 
-.container .workspace .right_section .default_content .item .player {
+.container .workspace .right_section .default_content .item .player,
+.container .workspace .right_section .default_content .item .team {
     margin: 0 0 0.5rem 0;
     background: #D9D9D9;
     color: #000;
