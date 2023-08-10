@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="statistics.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.3.0/chart.umd.js" integrity="sha512-CMF3tQtjOoOJoOKlsS7/2loJlkyctwzSoDK/S40iAB+MqWSaf50uObGQSk5Ny/gfRhRCjNLvoxuCvdnERU4WGg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script defer src="statistics.js"></script>
     <title>Statistics</title>
 </head>
@@ -18,7 +19,7 @@
             <div class="hamburger">
                 <span></span>
             </div>
-            <ul class="flex_row space_between center">
+            <ul class="flex_row space_between center" id="stagger">
                 <li class="flex_row justify_center center">Help</li>
                 <li class="flex_row justify_center center"><a href="../Home/index.html">Logout</a></li>
             </ul>
@@ -27,17 +28,17 @@
                 <li class="flex_row justify_center center"><a href="../Home/index.html">Logout</a></li>
             </ul>
             <div class="language flex_row space_between center">
-                <p>EN</p>
-                <img src="../images/icons8-first-flag-of-the-usa-40 1.png" alt="flag">
+                <p id="stagger">EN</p>
+                <img src="../images/icons8-first-flag-of-the-usa-40 1.png" alt="flag" id="stagger">
             </div>
         </div>
         <!-- First toolbar (import files and create directory) -->
         <div class="toolbar flex_row space_between center width_full">
-            <div class="left_side flex_row space_between center">
+            <div class="left_side flex_row space_between center" id="stagger">
                 <p>Match Statistics</p>
             </div>
             <div class="right_side flex_row space_between center">
-                <button class="flex_row space_between center">
+                <button class="flex_row space_between center" id="stagger">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M280 856v-60h289q70 0 120.5-46.5T740 634q0-69-50.5-115.5T569 472H274l114 114-42 42-186-186 186-186 42 42-114 114h294q95 0 163.5 64T800 634q0 94-68.5 158T568 856H280Z"/></svg>
                     <p>Undo</p>
                 </button>
@@ -46,9 +47,9 @@
         <div class="workspace flex_row center width_full">
             <div class="left_section flex_column justify_flex_start center">
                 <div class="content_wrapper flex_column width_full">
-                    <h4>Tag Panels</h4>
+                    <h4 id="stagger">Tag Panels</h4>
                     <div class="select flex_column space_between center width_full" onclick="showSelectMenu(event)">
-                        <div class="selected_item flex_row space_between center width_full">
+                        <div class="selected_item flex_row space_between center width_full" id="stagger">
                             <p>Attacking principles</p>
                             <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M480 696 280 497h400L480 696Z"/></svg>
                         </div>
@@ -68,21 +69,21 @@
                         <div class="content_wrapper flex_column space_between center">
                             <h4>Attacking Principles</h4>
                             <div class="buttons flex_row space_between center width_full">
-                                <button onclick="addToTagList(event)" style="background: #4E4C4C;">Depth</button>
-                                <button onclick="addToTagList(event)" style="background: #A4A4A4;">Support</button>
-                                <button onclick="addToTagList(event)" style="background: #4E4C4C;">Penetration</button>
-                                <button onclick="addToTagList(event)" style="background: #A4A4A4;">Transition</button>
-                                <button onclick="addToTagList(event)" style="background: #4E4C4C;">Mobility</button>
-                                <button onclick="addToTagList(event)" style="background: #A4A4A4;">Creativity</button>
-                                <button onclick="addToTagList(event)" style="background: #4E4C4C;">Width</button>
-                                <button onclick="addToTagList(event)" style="background: #A4A4A4;">No Text</button>
-                                <button onclick="addToTagList(event)" style="background: #4E4C4C;">Successful</button>
-                                <button onclick="addToTagList(event)" style="background: #A4A4A4;">Unsuccessful</button>
+                                <button id="tag_stagger" onclick="addToTagList(event)" style="background: #4E4C4C;">Depth</button>
+                                <button id="tag_stagger" onclick="addToTagList(event)" style="background: #A4A4A4;">Support</button>
+                                <button id="tag_stagger" onclick="addToTagList(event)" style="background: #4E4C4C;">Penetration</button>
+                                <button id="tag_stagger" onclick="addToTagList(event)" style="background: #A4A4A4;">Transition</button>
+                                <button id="tag_stagger" onclick="addToTagList(event)" style="background: #4E4C4C;">Mobility</button>
+                                <button id="tag_stagger" onclick="addToTagList(event)" style="background: #A4A4A4;">Creativity</button>
+                                <button id="tag_stagger" onclick="addToTagList(event)" style="background: #4E4C4C;">Width</button>
+                                <button id="tag_stagger" onclick="addToTagList(event)" style="background: #A4A4A4;">No Text</button>
+                                <button id="tag_stagger" onclick="addToTagList(event)" style="background: #4E4C4C;">Successful</button>
+                                <button id="tag_stagger" onclick="addToTagList(event)" style="background: #A4A4A4;">Unsuccessful</button>
                             </div>
                         </div>
                     </div>
                     <div class="tag_list">
-                        <p>Select Tag List</p>
+                        <p id="stagger">Select Tag List</p>
                         <button onclick="selectAllTags(event)">Select All Tags Used</button>
                         <div class="tags_list flex_column center width_full">
                         </div>
@@ -93,7 +94,7 @@
                 <div class="default_content flex_row space_between">
                     <div class="item">
                         <p>Add Player To Compare</p>
-                        <button onclick="localStorage.setItem('fromStats', 'true')"><a href="../Players/players.html">Add Player</a></button>
+                        <button onclick="localStorage.setItem('fromStats', 'true')"><a href="../Players/players.html" id="stagger">Add Player</a></button>
                         <div class="players flex_column center justify_flex_start">
                             <!-- <div class="player flex_row justify_center center">
                                 <p class="player_name"></p>
@@ -102,7 +103,7 @@
                     </div>
                     <div class="item">
                         <p>Add Team To Compare</p>
-                        <button onclick="localStorage.setItem('fromStats', 'true')"><a href="../Teams/teams.html">Add Team</a></button>
+                        <button onclick="localStorage.setItem('fromStats', 'true')"><a href="../Teams/teams.html" id="stagger">Add Team</a></button>
                         <div class="teams flex_column center justify_flex_start">
                             <!-- <div class="team flex_row justify_center center">
                                 <p class="team_name"></p>
@@ -112,13 +113,13 @@
                 </div>
                 <div class="playerCharts flex_column">
                     <div onclick="selectTab(event)" class="tabs flex_row space_between">
-                        <p class="active">Match Statistics</p>
-                        <p>Passes</p>
-                        <p>Ball Possession</p>
+                        <p class="active" id="stagger">Match Statistics</p>
+                        <p id="stagger">Passes</p>
+                        <p id="stagger">Ball Possession</p>
                     </div>
                     <div class="selection_content flex_column">
                         <div class="score_section flex_row center">
-                            <div class="team flex_row center">
+                            <div class="team flex_row center" id="stat_stagger">
                                 <div class="team_image flex_column center">
                                     <img src="../images/team 1.png" alt="">
                                     <p>Soccer Club</p>
@@ -126,7 +127,7 @@
                                 <p class="score">3</p>
                             </div>
                             <p>:</p>
-                            <div class="team flex_row_reverse center">
+                            <div class="team flex_row_reverse center" id="stat_stagger">
                                 <div class="team_image flex_column center">
                                     <img src="../images/team 2.png" alt="">
                                     <p>Best Foot</p>
@@ -135,7 +136,7 @@
                             </div>
                         </div>
                         <div class="chart_wrapper flex_row space_between center">
-                            <div class="chart flex_row justify_center center">
+                            <div class="chart flex_row justify_center center" id="stat_stagger">
                                 <div>
                                     <span class="team_1">
                                         <p>Yara Toure 34'</p>
@@ -164,7 +165,7 @@
                                 </div>
                             </div>
                             <div class="stats flex_column center">
-                                <div class="ball_possession flex_column">
+                                <div class="ball_possession flex_column" id="stat_stagger">
                                     <h1 style="text-align: center;">Ball Possession</h1>
                                     <div class="values flex_row space_between">
                                         <div class="bar_left flex_row center justify_flex_end">
@@ -177,7 +178,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="ball_possession flex_column">
+                                <div class="ball_possession flex_column" id="stat_stagger">
                                     <h1 style="text-align: center;">Shots</h1>
                                     <div class="values flex_row space_between">
                                         <div class="bar_left flex_row center justify_flex_end">
@@ -190,7 +191,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="ball_possession flex_column">
+                                <div class="ball_possession flex_column" id="stat_stagger">
                                     <h1 style="text-align: center;">Free Kicks</h1>
                                     <div class="values flex_row space_between">
                                         <div class="bar_left flex_row center justify_flex_end">

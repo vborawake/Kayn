@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="subscription.css">
+    <link rel="stylesheet" href="../helper.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" integrity="sha512-Ic9xkERjyZ1xgJ5svx3y0u3xrvfT/uPkV99LBwe68xjy/mGtO+4eURHZBW2xW4SZbFrF1Tf090XqB+EVgXnVjw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script defer src="subscription.js"></script>
+    <title>Home</title>
+</head>
+<body>
+    <div class="container-fluid d-flex flex-column p-0">
+        <div class="hero_section d-flex flex-column justify-content-start">
+            <nav class="d-flex flex-row justify-content-between align-items-center">
+                <div class="left_section col-2 d-flex flex-row justify-content-between align-items-center">
+                    <a href="../Home/index.html" id="stagger"><img src="../images/logo kayn.png" alt="logo"></a>
+                    <div class="language d-flex flex-row align-items-center">
+                        <p id="stagger">EN</p>
+                        <img src="../images/icons8-first-flag-of-the-usa-40 1.png" alt="flag" id="stagger">
+                    </div>
+                </div>
+                <div class="right_section col-lg-8 col-xxl-7 col-xl-8">
+                    <ul class="d-flex flex-row justify-content-end align-items-center">
+                        <li id="stagger"><a href="../Login/login.html">Login</a></li>
+                    </ul>
+                </div>
+                <div class="hamburger flex_column justify_center center">
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+        <div class="pricing_section flex_column space_between center">
+            <h1>Select your Video Analyzer Plan</h1>
+            <div class="payment_cycle flex_row center">
+                <ul class="flex_row space_evenly center">
+                    <li onclick="selectPlan(event)" class="active">Monthly</li>
+                    <li onclick="selectPlan(event)">Yearly</li>
+                </ul>
+            </div>
+            <div class="plans flex_row space_between center">
+                <div class="plan flex_column space_between center">
+                    <div class="header flex_column space_evenly">
+                        <h2>BASIC</h2>
+                        <p>Entry Level (Tag + Draw)</p>
+                    </div>
+                    <h1>$121.99</h1>
+                    <ul class="flex_column space_evenly">
+                        <li>Video analyst certification course included.</li>
+                        <li>Video analyst certification course included.</li>
+                        <li>Video analyst certification course included.</li>
+                        <li>Video analyst certification course included.</li>
+                        <li>Video analyst certification course included.</li>
+                    </ul>
+                    <button onclick="showPopup(event)">Buy Now</button>
+                </div>
+                <div class="plan flex_column space_between center">
+                    <div class="header flex_column space_evenly">
+                        <h2>PREMIUM</h3>
+                        <p>Entry Level (Tag + Draw)</p>
+                    </div>
+                    <h1>$121.99</h1>
+                    <ul class="flex_column space_evenly">
+                        <li>Video analyst certification course included.</li>
+                        <li>Video analyst certification course included.</li>
+                        <li>Video analyst certification course included.</li>
+                        <li>Video analyst certification course included.</li>
+                        <li>Video analyst certification course included.</li>
+                    </ul>
+                    <button onclick="showPopup(event)">Buy Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer flex_row space_between">
+            <div class="column flex_column">
+                <img class="logo" src="../images/logo kayn.png" alt="logo">
+                <div class="social_media flex_row space_between center">
+                    <div class="element flex_row center justify_center" style="background: #4267B2">
+                        <img src="../images/icons8-facebook-f-50 (1).png" alt="facebook">
+                    </div>
+                    <div class="element flex_row center justify_center" style="background: #E1306C">
+                        <img src="../images/icons8-instagram-50.png" alt="facebook">
+                    </div>
+                    <div class="element flex_row center justify_center" style="background: #FF0000">
+                        <img src="../images/icons8-youtube-48.png" alt="facebook">
+                    </div>
+                    <div class="element flex_row center justify_center">
+                        <img src="../images/icons8-linkedin-circled-60.png" alt="facebook">
+                    </div>
+                </div>
+            </div>
+            <div class="column flex_column space_evenly">
+                <h1>Kayn</h1>
+                <ul class="flex_column space_evenly">
+                    <a href="">
+                        <li>Home</li>
+                    </a>
+                    <a href="">
+                        <li>Concept</li>
+                    </a>
+                    <a href="">
+                        <li>About Us</li>
+                    </a>
+                    <a href="">
+                        <li>Contact Us</li>
+                    </a>
+                </ul>
+            </div>
+            <div class="column flex_column space_evenly">
+                <h1>Join Us</h1>
+                <ul class="flex_column space_evenly">
+                    <a href="">
+                        <li>I am Athlete</li>
+                    </a>
+                    <a href="">
+                        <li>I am Coach or Agent</li>
+                    </a>
+                    <a href="">
+                        <li>Video Analyzer</li>
+                    </a>
+                </ul>
+            </div>
+            <div class="column flex_column space_evenly">
+                <h1>Kayn</h1>
+                <ul class="flex_column space_evenly">
+                    <a href="">
+                        <li>Terms And Conditions</li>
+                    </a>
+                    <a href="">
+                        <li>Licence agreement</li>
+                    </a>
+                    <a href="">
+                        <li>Privacy Policy</li>
+                    </a>
+                </ul>
+            </div>
+        </div>
+        <div class="popup" style="display: none;">
+            <div class="content_wrapper"></div>
+            <div class="product_info flex_column space_between" onclick="event.stopPropagation();">
+                <div class="header flex_row center justify_center m-0 p-0">
+                    <h1>PRODUCT</h1>
+                </div>
+                <div class="plan flex_row space_between center m-0 p-0">
+                    <div class="plan_type flex_row space_between center">
+                        <p class="type">Basic X </p>
+                        <p class="quantity">1</p>
+                    </div>
+                    <p class="feature">$122 / Month with 1 Week Free Trial</p>
+                </div>
+                <div class="bill flex_column space_between center m-0 p-0">
+                    <div class="row flex_row space_between center m-0 p-0">
+                        <p>Subtotal</p>
+                        <p>$0</p>
+                    </div>
+                    <div class="row flex_row space_between center m-0 p-0">
+                        <p>VAT</p>
+                        <p>$0 / Month</p>
+                    </div>
+                    <div class="row flex_row space_between center m-0 p-0">
+                        <p>Total</p>
+                        <p>$122 / Month</p>
+                    </div>
+                    <div class="row flex_row justify_flex_end center m-0 p-0">
+                        <p>1st Renewal : 5 Apr 2023</p>
+                    </div>
+                </div>
+                <div class="payment_method flex_column space_between center">
+                    <div class="header flex_row space_between center">
+                        <div class="input flex_row center">
+                            <input type="radio" name="payment_method" id="credit_card">
+                            <label for="credit_card">CREDIT CARD</label>
+                        </div>
+                        <div class="input flex_row space_between center">
+                            <input type="radio" name="payment_method" id="paypal">
+                            <label for="paypal">PAYPAL</label>
+                        </div>
+                    </div>
+                    <div class="payment">
+                        <p>Your information is secured and we don't store card details in our systems. If your 1 week free trial coupon code applied, we won't be charging you until the end of trial and you can cancel your service whenever you want.</p>
+                    </div>
+                    <div class="inputs flex_row space_between center">
+                        <div class="input flex_row space_between center">
+                            <img src="../images/image 32.png" alt="">
+                            <input type="text" placeholder="Card Number">
+                        </div>
+                        <div class="input">
+                            <input type="text" placeholder="MM/YY">
+                        </div>
+                        <div class="input">
+                            <input type="text" placeholder="CVC">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

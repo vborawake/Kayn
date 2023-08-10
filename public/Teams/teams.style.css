@@ -261,7 +261,7 @@ input:focus {
     display: none;
     position: relative;
     background: #464648;
-    height: 84vh;
+    height: 100%;
     width: 20%;
     padding: 2rem 1rem;
     transition: all 0.5s ease;

@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="media.style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script defer src="../slider.js"></script>
     <script defer src="media.js"></script>
     <link rel="stylesheet" href="../helper.css">
@@ -22,9 +23,12 @@
             <ul class="flex_row space_between center">
                 <li class="flex_row justify_center center">Help</li>
                 <li class="flex_row justify_center center"><a href="../Home/index.html">Logout</a></li>
+                <li class="flex_row justify_center center" onclick="window.location.href = '../Subscription/subscription.html'">Subscription</li>
             </ul>
             <ul class="mobile_menu">
                 <li>Help</li>
+                <li class="flex_row justify_center center"><a href="../Home/index.html">Logout</a></li>
+                <li class="flex_row justify_center center"><a href="../Home/index.html">Subscription</a></li>
             </ul>
             <div class="language flex_row space_between center">
                 <p>EN</p>
@@ -33,12 +37,12 @@
         </div>
         <!-- First toolbar (import files and create directory) -->
         <div class="toolbar flex_row justify_flex_start center width_full">
-            <div class="import flex_row center space_between">
+            <div class="import flex_row center space_between" id="stagger">
                 <svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30"><path d="M220 896q-24 0-42-18t-18-42V693h60v143h520V693h60v143q0 24-18 42t-42 18H220Zm260-153L287 550l43-43 120 120V256h60v371l120-120 43 43-193 193Z"/></svg>
                 <p>Import Files</p>
                 <input type="file" accept=".mp4,video/*" onchange="importFile(event)" id="file_import">
             </div>
-            <div class="create flex_row center space_between">
+            <div class="create flex_row center space_between" id="stagger">
                 <svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30"><path d="M570 736h60v-90h90v-60h-90v-90h-60v90h-90v60h90v90ZM141 896q-24 0-42-18.5T81 836V316q0-23 18-41.5t42-18.5h280l60 60h340q23 0 41.5 18.5T881 376v460q0 23-18.5 41.5T821 896H141Zm0-580v520h680V376H456l-60-60H141Zm0 0v520-520Z"/></svg>
                 <p><button>Create Directory</button></p>
             </div>
@@ -56,11 +60,11 @@
             <div class="files_section flex_column align_flex_start">
                 <!-- Second toolbar (search and filter) -->
                 <div class="toolbar flex_row justify_flex_start center width_full">
-                    <div class="search flex_row center space_between">
+                    <div class="search flex_row center space_between" id="stagger">
                         <svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30"><path d="M796 935 533 672q-30 26-69.959 40.5T378 727q-108.162 0-183.081-75Q120 577 120 471t75-181q75-75 181.5-75t181 75Q632 365 632 471.15 632 514 618 554q-14 40-42 75l264 262-44 44ZM377 667q81.25 0 138.125-57.5T572 471q0-81-56.875-138.5T377 275q-82.083 0-139.542 57.5Q180 390 180 471t57.458 138.5Q294.917 667 377 667Z"/></svg>
                         <input type="text" placeholder="Search">
                     </div>
-                    <div class="filter flex_row center space_between">
+                    <div class="filter flex_row center space_between" id="stagger">
                         <svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30"><path d="M440 896q-17 0-28.5-11.5T400 856V616L161 311q-14-17-4-36t31-19h584q21 0 31 19t-4 36L560 616v240q0 17-11.5 28.5T520 896h-80Zm40-276 240-304H240l240 304Zm0 0Z"/></svg>
                         <div class="select flex_column space_between center width_full" onclick="showSelectMenu(event)">
                             <div class="selected_item flex_row space_between center width_full">
@@ -110,7 +114,7 @@
                 </div>
                 <div class="directories flex_row width_full">
                     <div class="file_tree flex_column justify_flex_start align_flex_start">
-                        <div class="row flex_row center width_full">
+                        <div class="row flex_row center width_full" id="stagger">
                             <div class="file">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M141 896q-24 0-42-18.5T81 836V316q0-23 18-41.5t42-18.5h280l60 60h340q23 0 41.5 18.5T881 376v460q0 23-18.5 41.5T821 896H141Zm0-580v520h680V376H456l-60-60H141Zm0 0v520-520Z"/></svg>
                             </div>
@@ -120,7 +124,7 @@
                         </div>
                     </div>
                     <div class="file_manager flex_column width_full">
-                        <div class="folders flex_column width_full">
+                        <div class="folders flex_column width_full" id="stagger">
                             <p>Directories</p>
                             <div class="directories_container flex_row justify_flex_start align_flex_start width_full">
                                 <!-- <div onclick="directorySelect(event)" class="directory_wrapper flex_row align_flex_start center">
@@ -135,7 +139,7 @@
                                 </div> -->
                             </div>
                         </div>
-                        <div class="files flex_column width_full">
+                        <div class="files flex_column width_full" id="stagger">
                             <p>Files</p>
                             <div class="files_container flex_row justify_flex_start center width_full">
                                 <!-- <div oncontextmenu="fileRightClick(event)" class="file_wrapper flex_row align_flex_start center">
@@ -166,9 +170,10 @@
                 </div>
             </div>
             <div class="player_section flex_column space_between width_full">
-                <div class="player flex_column justify_center center">
+                <div class="player flex_column center">
+                    <video class="blur_video" muted width="100%"></video>
                     <video class="video" width="100%"></video>
-                    <div class="default_video flex_column center">
+                    <div class="default_video flex_column justify_center center">
                         <img src="../images/icons8-play-100 1.png" alt="">
                         <p>No files selected</p>
                     </div>

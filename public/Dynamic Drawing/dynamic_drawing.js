@@ -77,7 +77,28 @@ function setCanvasSize() {
 
 document.addEventListener('DOMContentLoaded', () => {
     setCanvasSize();
+    addAnimations();
 });
+
+function addAnimations() {
+    gsap.from('.buttons_wrapper a', {
+        y: '1rem',
+        opacity: 0,
+        stagger: 0.1
+    });
+
+    gsap.from('#stagger', {
+        y: '1rem',
+        opacity: 0,
+        stagger: 0.1
+    });
+
+    gsap.from('#horizontal_stagger', {
+        x: '-1rem',
+        opacity: 0,
+        stagger: 0.1
+    });
+}
 
 canvas.addEventListener('click', (e) => {
     e.stopPropagation();
@@ -228,6 +249,12 @@ function showRender (e) {
             renderMenu.style.transform = 'scaleX(1)';
             renderMenu.style.transform = 'scaleY(1)';
             renderMenu.style.transformOrigin = 'left';
+            gsap.from('#render_stagger', {
+                y: '1rem',
+                opacity: 0,
+                delay: 0.5,
+                stagger: 0.1,
+            });
         } else renderMenu.style.transform = 'scale(0)'
     });
 }

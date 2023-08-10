@@ -254,7 +254,7 @@ input:focus {
 .container .right_workspace {
     position: relative;
     background: #464648;
-    height: 82vh;
+    height: 100%;
     width: 15%;
     padding: 2rem 1rem;
     display: none;

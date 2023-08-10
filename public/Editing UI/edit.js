@@ -125,14 +125,11 @@ function drawCanvas (canvasElems, action) {
 }
 
 function setCanvasSize() {
-    console.log(image.getBoundingClientRect());
-    video.addEventListener('loadedmetadata', (e) => {
-        canvas.width = (video.videoWidth * 0.75);
-        canvas.height = (video.videoHeight * 0.75);
-    });
+    canvas.width = image.getBoundingClientRect().width;
+    canvas.height = image.getBoundingClientRect().height;
     canvas.style.position = 'absolute';
-    canvas.style.left = `${ 0 + videoDiv.previousElementSibling.getBoundingClientRect().width }px`;
-    canvas.style.top = `${ videoDiv.getBoundingClientRect().top }px`;
+    canvas.style.left = `${ image.getBoundingClientRect().left }px`;
+    canvas.style.top = `${ image.getBoundingClientRect().top }px`;
     // canvas.style.border = '4px solid black';
 }
 
@@ -148,8 +145,9 @@ playerSelect.addEventListener('click', (e) => {
 
 document.addEventListener('DOMContentLoaded', () => {
     setCanvasSize();
+    let players;
     if (localStorage.getItem('Players')) {
-        const players = localStorage.getItem('Players').split(', ');
+        players = localStorage.getItem('Players').split(', ');
     }
     if (players) {
         canvasMenu.style.display = 'flex';
@@ -164,7 +162,29 @@ document.addEventListener('DOMContentLoaded', () => {
         currentPlayer = playerSelect.innerText;
         playerElems[playerSelect.innerText] = [];
     }
+
+    addAnimations();
 });
+
+function addAnimations() {
+    gsap.from('.buttons_wrapper a', {
+        y: '1rem',
+        opacity: 0,
+        stagger: 0.1
+    });
+
+    gsap.from('#stagger', {
+        y: '1rem',
+        opacity: 0,
+        stagger: 0.1
+    });
+
+    gsap.from('#horizontal_stagger', {
+        x: '-1rem',
+        opacity: 0,
+        stagger: 0.1
+    });
+}
 
 function setPlayer(e) {
     playerSelect.innerHTML = e.currentTarget.innerHTML;
@@ -473,6 +493,12 @@ function showRender (e) {
             renderMenu.style.transform = 'scaleX(1)';
             renderMenu.style.transform = 'scaleY(1)';
             renderMenu.style.transformOrigin = 'left';
+            gsap.from('#render_stagger', {
+                y: '1rem',
+                opacity: 0,
+                delay: 0.5,
+                stagger: 0.1,
+            });
         } else renderMenu.style.transform = 'scale(0)'
     });
 }

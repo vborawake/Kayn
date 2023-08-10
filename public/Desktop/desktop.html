@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="desktop.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.3.0/chart.umd.js" integrity="sha512-CMF3tQtjOoOJoOKlsS7/2loJlkyctwzSoDK/S40iAB+MqWSaf50uObGQSk5Ny/gfRhRCjNLvoxuCvdnERU4WGg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script defer src="desktop.js"></script>
     <title>Tagging</title>
 </head>
@@ -18,7 +19,7 @@
             <div class="hamburger">
                 <span></span>
             </div>
-            <ul class="flex_row space_between center">
+            <ul class="flex_row space_between center" id="stagger">
                 <li class="flex_row justify_center center">Help</li>
                 <li class="flex_row justify_center center"><a href="../Home/index.html">Logout</a></li>
             </ul>
@@ -27,16 +28,16 @@
                 <li class="flex_row justify_center center"><a href="../Home/index.html">Logout</a></li>
             </ul>
             <div class="language flex_row space_between center">
-                <p>EN</p>
-                <img src="../images/icons8-first-flag-of-the-usa-40 1.png" alt="flag">
+                <p id="stagger">EN</p>
+                <img src="../images/icons8-first-flag-of-the-usa-40 1.png" alt="flag" id="stagger">
             </div>
         </div>
         <!-- First toolbar (import files and create directory) -->
         <div class="toolbar flex_row space_between center width_full">
-            <div class="left_side flex_row space_between center">
+            <div class="left_side flex_row space_between center" id="stagger">
                 <p>Match Statistics</p>
             </div>
-            <div class="right_side flex_row space_between center">
+            <div class="right_side flex_row space_between center" id="stagger">
                 <button onclick="showRender(event)" class="flex_row space_between center">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M782 942 481 641 364 758q11 17 13.5 33t2.5 35q0 64-43 107t-107 43q-64 0-107-43T80 826q0-64 43-107t107-43q18 0 35.5 5t36.5 15l116-116-118-118q-17 8-34.5 11t-35.5 3q-64 0-107-43T80 326q0-64 43-107t107-43q64 0 107 43t43 107q0 19-2.5 36T367 394l514 514v34h-99ZM599 529l-66-66 249-249h99v33L599 529ZM230 416q38 0 64-26t26-64q0-38-26-64t-64-26q-38 0-64 26t-26 64q0 38 26 64t64 26Zm253 183q8 0 13.5-5.5T502 580q0-8-5.5-13.5T483 561q-8 0-13.5 5.5T464 580q0 8 5.5 13.5T483 599ZM230 916q38 0 64-26t26-64q0-38-26-64t-64-26q-38 0-64 26t-26 64q0 38 26 64t64 26Z"/></svg>
                     <p>Render Selected</p>
@@ -46,9 +47,9 @@
         <div class="workspace flex_row center width_full">
             <div class="left_section flex_column justify_flex_start center">
                 <div class="content_wrapper flex_column width_full">
-                    <h4>Tag Panels</h4>
+                    <h4 id="stagger">Tag Panels</h4>
                     <div class="select flex_column space_between center width_full" onclick="showSelectMenu(event)">
-                        <div class="selected_item flex_row space_between center width_full">
+                        <div class="selected_item flex_row space_between center width_full" id="stagger">
                             <p>Attacking principles</p>
                             <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M480 696 280 497h400L480 696Z"/></svg>
                         </div>
@@ -68,22 +69,22 @@
                         <div class="content_wrapper flex_column space_between center">
                             <h4>Attacking Principles</h4>
                             <div class="buttons flex_row space_between center width_full">
-                                <button onclick="addToTagList(event)" style="background: #4E4C4C;">Depth</button>
-                                <button onclick="addToTagList(event)" style="background: #A4A4A4;">Support</button>
-                                <button onclick="addToTagList(event)" style="background: #4E4C4C;">Penetration</button>
-                                <button onclick="addToTagList(event)" style="background: #A4A4A4;">Transition</button>
-                                <button onclick="addToTagList(event)" style="background: #4E4C4C;">Mobility</button>
-                                <button onclick="addToTagList(event)" style="background: #A4A4A4;">Creativity</button>
-                                <button onclick="addToTagList(event)" style="background: #4E4C4C;">Width</button>
-                                <button onclick="addToTagList(event)" style="background: #A4A4A4;">No Text</button>
-                                <button onclick="addToTagList(event)" style="background: #4E4C4C;">Successful</button>
-                                <button onclick="addToTagList(event)" style="background: #A4A4A4;">Unsuccessful</button>
+                                <button id="tag_stagger" onclick="addToTagList(event)" style="background: #4E4C4C;">Depth</button>
+                                <button id="tag_stagger" onclick="addToTagList(event)" style="background: #A4A4A4;">Support</button>
+                                <button id="tag_stagger" onclick="addToTagList(event)" style="background: #4E4C4C;">Penetration</button>
+                                <button id="tag_stagger" onclick="addToTagList(event)" style="background: #A4A4A4;">Transition</button>
+                                <button id="tag_stagger" onclick="addToTagList(event)" style="background: #4E4C4C;">Mobility</button>
+                                <button id="tag_stagger" onclick="addToTagList(event)" style="background: #A4A4A4;">Creativity</button>
+                                <button id="tag_stagger" onclick="addToTagList(event)" style="background: #4E4C4C;">Width</button>
+                                <button id="tag_stagger" onclick="addToTagList(event)" style="background: #A4A4A4;">No Text</button>
+                                <button id="tag_stagger" onclick="addToTagList(event)" style="background: #4E4C4C;">Successful</button>
+                                <button id="tag_stagger" onclick="addToTagList(event)" style="background: #A4A4A4;">Unsuccessful</button>
                             </div>
                         </div>
                     </div>
                     <div class="tag_list">
-                        <p>Select Tag List</p>
-                        <button onclick="selectAllTags(event)">Select All Tags Used</button>
+                        <p id="stagger">Select Tag List</p>
+                        <button onclick="selectAllTags(event)" id="stagger">Select All Tags Used</button>
                         <div class="tags_list flex_column center width_full">
                         </div>
                     </div>
@@ -115,11 +116,11 @@
                         <div class="ranges flex_row space_between">
                             <div class="start flex_row space_between center">
                                 <p>Start</p>
-                                <input type="number" name="" id="">
+                                <input type="number" name="" id="render_start">
                             </div>
                             <div class="end flex_row space_between center">
                                 <p>End</p>
-                                <input type="number" name="" id="">
+                                <input type="number" name="" id="render_end">
                             </div>
                         </div>
                     </div>
@@ -141,6 +142,7 @@
                 <!-- <div class="row flex_row justify_flex_start center width_full">
                     <input type="checkbox">
                     <p class="tag_name">Unsuccessful</p>
+                    <img src="../images/loader3.gif" alt="">
                 </div> -->
             </div>
             <div class="editing_section">

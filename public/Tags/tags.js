@@ -23,7 +23,23 @@ document.addEventListener('DOMContentLoaded', () => {
         const html = '<h1>You have not created any tags yet. Please click on the + button above and start creating tags.</h1>';
         tagsContainer.innerHTML += html;
     }
+
+    addAnimations();
 });
+
+function addAnimations() {
+    gsap.from('.buttons_wrapper a', {
+        y: '1rem',
+        opacity: 0,
+        stagger: 0.1
+    });
+
+    gsap.from('#stagger', {
+        y: '1rem',
+        opacity: 0,
+        stagger: 0.1
+    });
+}
 
 // window.addEventListener('load', () => {
 //     setTimeout(() => {
@@ -153,6 +169,12 @@ addButton.addEventListener('click', (e) => {
     e.stopPropagation();
     console.log('clicked');
     tagEdit.style.display = 'flex';
+
+    gsap.from('#tag_stagger', {
+        y: '1rem',
+        opacity: 0,
+        stagger: 0.1
+    });
 });
 
 document.addEventListener('click', (e) => {
@@ -163,6 +185,8 @@ document.addEventListener('click', (e) => {
         console.log(e);
         createMenu.style.display = 'none';
     }
+
+    tagEdit.style.display = 'none';
 });
 
 function addTag() {
@@ -187,6 +211,12 @@ function addTag() {
     tag_information.querySelector('.left_section h1').innerHTML = name.value;
     tagEdit.style.display = 'none';
     tag_information.style.display = 'flex';
+
+    gsap.from('#tag_stagger', {
+        y: '1rem',
+        opacity: 0,
+        stagger: 0.1
+    });
 }
 
 function hideTagDetails (e) {

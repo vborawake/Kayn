@@ -48,9 +48,11 @@ playPause.addEventListener('click', (e) => {
     if (!video.paused) {
         playPause.innerHTML = playSvg;
         video.pause();
+        videoBlur.pause();
     } else {
         playPause.innerHTML = pauseSvg;
         video.play();
+        document.querySelector('.blur_video').play();
     }
 });
 
@@ -58,6 +60,8 @@ stop.addEventListener('click', (e) => {
     e.stopPropagation();
     video.currentTime = 0;
     video.pause();
+    videoBlur.currentTime = 0;
+    videoBlur.pause();
     playPause.innerHTML = playSvg;
 });
 
@@ -73,7 +77,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // if (fileSection.children.length === 0) {
     //     let 
     // }
+    addAnimations();
 });
+
+function addAnimations() {
+    gsap.from('.buttons_wrapper a', {
+        y: '1rem',
+        opacity: 0,
+        delay: 0.7,
+        stagger: 0.1
+    });
+
+    gsap.from('#stagger', {
+        y: '1rem',
+        opacity: 0,
+        delay: 0.7,
+        stagger: 0.1
+    });
+}
 
 window.addEventListener('load', () => {
     setTimeout(() => {
@@ -174,6 +195,9 @@ function handleMenuClick(e) {
         console.log('In if');
         fileMenu.style.display = 'none';
         cutSection.style.display = 'flex';
+        end_tracker.style.left = '10rem';
+        const percent = videoBar.getBoundingClientRect().x / end_tracker.getBoundingClientRect().x;
+        end.value = `${ percent * video.duration }`;
         populateTicks();
         folders[currentDirectory.querySelector('#directory_name').innerHTML].forEach(file => {
             if (file.name === currentFile.querySelector('#file_name').innerHTML) {
@@ -188,7 +212,7 @@ function fileRightClick(e) {
     e.preventDefault();
     e.stopPropagation();
     currentFile = e.currentTarget;
-    console.log(fileMenu);
+    console.log(e);
     if (fileMenu.children.length === 0) {
         const html = `
         <div class="menu_item flex_row width_full justify_flex_start center" id="cut">
@@ -220,8 +244,8 @@ function fileRightClick(e) {
     }
     fileMenu.style.display = 'flex';
     fileMenu.style.position = 'absolute';
-    fileMenu.style.top = `${e.clientY}px`;
-    fileMenu.style.left = `${e.clientX}px`;
+    fileMenu.style.top = `${e.layerY}px`;
+    fileMenu.style.left = `${e.layerX}px`;
     console.log(e);
 //     isOpen = true;
 }
@@ -298,6 +322,7 @@ document.addEventListener('click', (e) => {
         video.src = '';
         video.style.display = 'none';
         video.nextElementSibling.style.display = 'flex';
+        videoBlur.style.display = 'none';
         Array.from(fileSection.children).forEach(file => {
             file.classList.remove('active');
         });
@@ -425,7 +450,6 @@ function cutHere(e) {
 function tagRightClick(e) {
     e.stopPropagation();
     e.preventDefault();
-    console.log(window.scrollY);
     barMenu.style.display = 'flex';
     barMenu.style.top = `${ e.clientY + window.scrollY }px`;
     barMenu.style.left = `${ e.clientX }px`;

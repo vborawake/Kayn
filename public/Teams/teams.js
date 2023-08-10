@@ -14,7 +14,23 @@ document.addEventListener('DOMContentLoaded', () => {
         const html = '<h1>You have not created any teams yet. Please click on the + button above and start creating teams.</h1>';
         teamsContainer.innerHTML += html;
     }
+
+    addAnimations();
 });
+
+function addAnimations() {
+    gsap.from('.buttons_wrapper a', {
+        y: '1rem',
+        opacity: 0,
+        stagger: 0.1
+    });
+
+    gsap.from('#stagger', {
+        y: '1rem',
+        opacity: 0,
+        stagger: 0.1
+    });
+}
 
 // window.addEventListener('load', () => {
 //     setTimeout(() => {

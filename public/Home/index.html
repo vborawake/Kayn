@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../helper.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" integrity="sha512-Ic9xkERjyZ1xgJ5svx3y0u3xrvfT/uPkV99LBwe68xjy/mGtO+4eURHZBW2xW4SZbFrF1Tf090XqB+EVgXnVjw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script defer src="index.js"></script>
     <title>Home</title>
 </head>
@@ -21,22 +23,33 @@
         <div class="hero_section d-flex flex-column justify-content-start">
             <nav class="d-flex flex-row justify-content-between align-items-center">
                 <div class="left_section col-2 d-flex flex-row justify-content-between align-items-center">
-                    <a href="../Home/index.html"><img src="../images/logo kayn.png" alt="logo"></a>
-                    <div class="language d-flex flex-row align-items-center">
+                    <a href="../Home/index.html" id="stagger"><img src="../images/logo kayn.png" alt="logo"></a>
+                    <div class="language selected flex_row center" id="stagger" style="cursor: pointer;" onclick="showLanguagePopup(event)">
                         <p>EN</p>
                         <img src="../images/icons8-first-flag-of-the-usa-40 1.png" alt="flag">
                     </div>
+                    <div class="language_popup flex_column">
+                        <div class="language flex_row center" style="cursor: pointer;" onclick="selectLanguage(event)">
+                            <p>EN</p>
+                            <img src="../images/icons8-first-flag-of-the-usa-40 1.png" alt="flag">
+                        </div>
+                        <div class="language flex_row center" style="cursor: pointer;" onclick="selectLanguage(event)">
+                            <p>AR</p>
+                            <img src="../images/arab.png" alt="flag">
+                        </div>
+                        <div class="language flex_row center" style="cursor: pointer;" onclick="selectLanguage(event)">
+                            <p>FR</p>
+                            <img src="../images/france.png" alt="flag">
+                        </div>
+                        <div class="language flex_row center" style="cursor: pointer;" onclick="selectLanguage(event)">
+                            <p>GE</p>
+                            <img src="../images/germany.png" alt="flag">
+                        </div>
+                    </div>
                 </div>
                 <div class="right_section col-lg-8 col-xxl-7 col-xl-8">
-                    <ul class="d-flex flex-row justify-content-between align-items-center">
-                        <li><a class="active" href="#">Concept</a></li>
-                        <li><a href="#">Athelet</a></li>
-                        <li><a href="#">Coach</a></li>
-                        <li><a href="#">Analysis</a></li>
-                        <li><a href="#">Broadcast</a></li>
-                        <li><a href="#">Ultras</a></li>
-                        <li><a href="#">Education</a></li>
-                        <li><a href="../Login/login.html">Login</a></li>
+                    <ul class="d-flex flex-row justify-content-end align-items-center">
+                        <li id="stagger"><a href="../Login/login.html">Login</a></li>
                     </ul>
                 </div>
                 <div class="hamburger flex_column justify_center center">
@@ -45,13 +58,6 @@
             </nav>
             <div class="mobile_menu flex_row center justify_center">
                 <ul class="flex_column space_evenly center">
-                    <li><a class="active" href="#">Concept</a></li>
-                    <li><a href="#">Athelet</a></li>
-                    <li><a href="#">Coach</a></li>
-                    <li><a href="#">Analysis</a></li>
-                    <li><a href="#">Broadcast</a></li>
-                    <li><a href="#">Ultras</a></li>
-                    <li><a href="#">Education</a></li>
                     <li><a href="../Login/login.html">Login</a></li>
                 </ul>
             </div>
@@ -194,48 +200,6 @@
                 </div>
             </div>
         </div>
-        <div class="pricing_section flex_column space_between center">
-            <img src="../images/Vector 2.png" alt="">
-            <h1>Select your Video Analyzer Plan</h1>
-            <div class="payment_cycle flex_row center">
-                <ul class="flex_row space_evenly center">
-                    <li onclick="selectPlan(event)" class="active">Monthly</li>
-                    <li onclick="selectPlan(event)">Yearly</li>
-                </ul>
-            </div>
-            <div class="plans flex_row space_between center">
-                <div class="plan flex_column space_between center">
-                    <div class="header flex_column space_evenly">
-                        <h2>BASIC</h2>
-                        <p>Entry Level (Tag + Draw)</p>
-                    </div>
-                    <h1>$121.99</h1>
-                    <ul class="flex_column space_evenly">
-                        <li>Video analyst certification course included.</li>
-                        <li>Video analyst certification course included.</li>
-                        <li>Video analyst certification course included.</li>
-                        <li>Video analyst certification course included.</li>
-                        <li>Video analyst certification course included.</li>
-                    </ul>
-                    <button><a href="../Register/register.html?plan=basic">Buy Now</a></button>
-                </div>
-                <div class="plan flex_column space_between center">
-                    <div class="header flex_column space_evenly">
-                        <h2>PREMIUM</h3>
-                        <p>Entry Level (Tag + Draw)</p>
-                    </div>
-                    <h1>$121.99</h1>
-                    <ul class="flex_column space_evenly">
-                        <li>Video analyst certification course included.</li>
-                        <li>Video analyst certification course included.</li>
-                        <li>Video analyst certification course included.</li>
-                        <li>Video analyst certification course included.</li>
-                        <li>Video analyst certification course included.</li>
-                    </ul>
-                    <button><a href="../Register/register.html?plan=premium">Buy Now</a></button>
-                </div>
-            </div>
-        </div>
         <div class="action_section flex_row space_between">
             <div class="left_section flex_row space_between center">
                 <h1>Start video analyzing today with <p>KYAN...</p></h1>
@@ -268,9 +232,6 @@
                     </a>
                     <a href="">
                         <li>Concept</li>
-                    </a>
-                    <a href="">
-                        <li>Blog</li>
                     </a>
                     <a href="">
                         <li>About Us</li>

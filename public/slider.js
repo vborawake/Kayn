@@ -1,4 +1,5 @@
-const video = document.querySelector('video');
+const video = document.querySelector('.video');
+const videoBlur = document.querySelector('.blur_video');
 const seekBar = document.querySelector('.seek_bar');
 const start_tracker = document.querySelector('.start_tracker');
 const volumeInput = document.querySelector('.volume');
@@ -39,6 +40,7 @@ if (video) {
     video.addEventListener('timeupdate', (e) => {
         seekBar.max = e.target.duration;
         seekBar.value = e.target.currentTime;
+        videoBlur.currentTime = e.target.currentTime;
         if (!video.paused) playPause.innerHTML = pauseSvg;
         else if (video.paused) playPause.innerHTML = playSvg;
     });
@@ -57,11 +59,14 @@ function moveSlider (e2) {
     if (e2.pageX > 30 && e2.pageX < (videoBar.getBoundingClientRect().width + 30)) {
         let percent = 1 - ((start_tracker.getBoundingClientRect().x - videoBar.getBoundingClientRect().x) / (videoBar.getBoundingClientRect().width));
         start_tracker.style.position = 'absolute';
-        start_tracker.style.left = `${ e2.pageX }px`;
+        start_tracker.style.left = `${ e2.pageX -30 }px`;
         video.currentTime = video.duration - (percent * video.duration);
+        videoBlur.currentTime = video.currentTime;
         seekBar.max = video.duration;
         seekBar.value = video.currentTime;
         const value = video.currentTime / 60;
+        if (end_tracker.getBoundingClientRect().x < start_tracker.getBoundingClientRect().x) end_tracker.style.left = `${ start_tracker.getBoundingClientRect().x + 50 }px`;
+        console.log(video.currentTime);
         if (value > 1) {
             let minutes = Math.floor(value);
             let seconds = Math.floor((value % 1) * 60);
@@ -107,7 +112,9 @@ function moveEndSlider(e) {
         let percent = 1 - ((end_tracker.getBoundingClientRect().x - videoBar.getBoundingClientRect().x) / (videoBar.getBoundingClientRect().width));
         end_tracker.style.position = 'absolute';
         end_tracker.style.left = `${ e.pageX }px`;
+        if (end_tracker.getBoundingClientRect().x < start_tracker.getBoundingClientRect().x) start_tracker.style.left = `${ end_tracker.getBoundingClientRect().x - 50 }px`;
         video.currentTime = video.duration - (percent * video.duration);
+        videoBlur.currentTime = video.currentTime;
         const value = (video.duration - (percent * video.duration)) / 60;
         if (value > 1) {
             let minutes = Math.floor(value);
@@ -130,8 +137,10 @@ function playVideo(e) {
     const fileName = e.currentTarget.querySelector('#file_name').innerHTML;
     const path = folders[currentDirectory.querySelector('#directory_name').innerHTML].filter(file => file.name === fileName);;
     video.style.display = 'block';
+    videoBlur.style.display = 'block';
     video.nextElementSibling.style.display = 'none';
     video.src = path[0].src;
+    videoBlur.src = path[0].src;
     e.currentTarget.classList.add('active');
     e.currentTarget.querySelector('input').checked = true;
     currentFile = e.currentTarget;

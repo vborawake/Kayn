@@ -1,0 +1,795 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+*, *::after, *::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.flex_column {
+    display: flex;
+    flex-direction: column;
+}
+
+.space_between {
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.space_evenly {
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.justify_center {
+    justify-content: center;
+}
+
+.justify_flex_start {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.justify_flex_end {
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
+.center {
+    align-items: center;
+}
+
+.align_flex_start {
+    align-items: flex-start;
+    /* flex-wrap: wrap; */
+}
+
+.flex_row {
+    display: flex;
+}
+
+.flex_row_reverse {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    position: relative;
+    text-decoration: none;
+    color: #FFF;
+}
+
+a:hover::before {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    width: 30%;
+    height: 0.2rem;
+    background: #B83169;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin: 0 0 0 35%;
+}
+
+a.active::before {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    width: 100%;
+    height: 0.2rem;
+    background: #B83169;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+button {
+    border: none;
+    padding: 0.6rem 1rem;
+    background: #B83169;
+    color: #FFF;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 0.6rem;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+input {
+    border: none;
+}
+
+input:focus {
+    outline: none;
+}
+
+.width_full {
+    width: 100%;
+}
+
+.height_full {
+    height: 100%;
+}
+
+.mt4 {
+    margin: 4rem 0 0 0;
+}
+
+.loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 150;
+    background: #380E3C;
+}
+
+.loader img {
+    width: 15%;
+    height: 15%;
+    object-fit: contain;
+
+}
+
+.container {
+    min-height: 100vh;
+    font-family: 'Inter', 'sans-serif';
+    /* display: none; */
+}
+
+.hamburger {
+    display: none;
+}
+
+.mobile_menu {
+    display: none;
+}
+
+.container .menu, .container > .toolbar {
+    height: 3rem;
+    background: #000;
+    color: #FFF;
+    padding: 0 2.5%;
+}
+
+.container .menu ul {
+    height: 100%;
+    width: 20%;
+}
+
+.container .menu ul li {
+    height: 70%;
+    border-radius: 0.4rem;
+    padding: 0 0.5rem;
+    transition: all 0.5s ease;
+}
+
+.container .menu ul li:hover {
+    background: #B83169;
+    cursor: pointer;
+}
+
+.container .menu .language {
+    width: 8%;
+}
+
+.container .toolbar {
+    position: relative;
+    background: #1f1f1f;
+    border-bottom: 2px solid gray;
+}
+
+
+
+.container .bottom_buttons {
+    height: 4rem;
+    background: #241728;
+    border-top: 4px solid #B83169;
+}
+
+.container .bottom_buttons .buttons_wrapper {
+    width: 35%;
+}
+
+.container .bottom_buttons .buttons_wrapper button {
+    position: relative;
+}
+
+.container .bottom_buttons .buttons_wrapper button p {
+    display: none;
+    position: absolute;
+    top: 0rem;
+    background: #D9D9D9;
+    padding: 0.2rem;
+    color: #000;
+    width: 500%;
+    transition: all 0.5s ease;
+}
+
+.container .bottom_buttons .buttons_wrapper button:hover p {
+    display: block;
+    top: -3rem;
+}
+
+.container .bottom_buttons .buttons_wrapper button.active {
+    background: #B83169;
+}
+
+.container .bottom_buttons .buttons_wrapper button.active svg {
+    fill: #FFF;
+}
+
+.container .bottom_buttons .buttons_wrapper svg:hover {
+    fill: #FFF;
+    background: #B83169;
+    border-radius: 0.5rem;
+}
+
+.container button {
+    background: none;
+    padding: 0;
+}
+
+.container button svg {
+    fill: #FFF;
+}
+
+.container .pricing_section {
+    position: relative;
+    width: 80%;
+    color: #000;
+    margin: 5rem auto 5rem auto;
+}
+
+.container .pricing_section > h1 {
+    position: relative;
+    z-index: 4;
+    font-size: 3rem;
+    font-weight: 600;
+    margin: 0 0 2rem 0;
+}
+
+.container .pricing_section .payment_cycle {
+    position: relative;
+    z-index: 4;
+    width: 50%;
+    height: 4.5rem;
+    background: #513d72;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 1.8rem;
+    margin: 0 0 2rem 0;
+    padding: 0;
+    color: #FFF;
+}
+
+.container .pricing_section .payment_cycle ul {
+    width: 100%;
+    font-size: 2rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+}
+
+.container .pricing_section .payment_cycle ul li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 4.5rem;
+}
+
+.container .pricing_section .payment_cycle ul li.active {
+    color: #FFF;
+    background: #ff22a4;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 1.8rem;
+}
+
+.container .pricing_section .plans {
+    position: relative;
+    z-index: 4;
+    width: 85%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.container .pricing_section .plans .plan {
+    width: 43%;
+    min-height: 45rem;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.06);
+    border-radius: 2.5rem;
+    padding-bottom: 2rem;
+    background: #2a2a55;
+    overflow: hidden;
+    color: #FFF;
+}
+
+.container .pricing_section .plan .header {
+    align-items: center;
+    background: #505079;
+    width: 100%;
+    height: 8rem;
+    font-size: 1.2rem;
+    color: #FFF;
+}
+
+.container .pricing_section .plan .header h2, .container .pricing_section .plan .header p {
+    padding: 0;
+    margin: 0;
+}
+
+.container .pricing_section .plan .header h2 {
+    margin: 1rem 0 0 0;
+    font-weight: 700;
+    color: #ff5cbc;
+    font-size: 3.5rem;
+}
+
+.container .pricing_section .plan .header p {
+    margin: -0.5rem 0 0 0;
+}
+
+.container .pricing_section .plan ul {
+    height: fit-content;
+    width: 70%;
+    font-size: 1.2rem;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.container .pricing_section .plan h1 {
+    margin: 1rem 0 1rem 0;
+    font-weight: 600;
+    font-size: 3rem;
+}
+
+.container .pricing_section .plan button {
+    height: 3.5rem;
+    margin: 2rem 0;
+    width: 80%;
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 0;
+    background: linear-gradient(180deg, #ff5cbc 0%, #9e56ca 100%);;
+}
+
+.container .pricing_section .plan ul li {
+    background: linear-gradient(180deg, #271955 0%, #49226f 100%);
+    padding: 1rem;
+}
+
+.container .pricing_section .plan ul li:first-child {
+    border-top-left-radius: 1.2rem;
+    border-top-right-radius: 1.2rem;
+}
+
+.container .pricing_section .plan ul li:last-child {
+    border-bottom-left-radius: 1.2rem;
+    border-bottom-right-radius: 1.2rem;
+}
+
+.container .pricing_section .plan ul li:not(:last-child) {
+    border-bottom: 2px solid #B83169;
+}
+
+.container .pricing_section img:first-child {
+    position: absolute;
+    top: -15rem;
+    left: -10rem;
+    z-index: 2;
+    transform: scale(1.1);
+}
+
+.popup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}
+
+.popup .content_wrapper {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.container .product_info {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 30%;
+    margin: auto 0;
+    width: 40%;
+    padding: 2rem;
+    font-size: 1.3rem;
+    font-weight: 500;
+    border-radius: 0.6rem;
+    border: 2px solid #B83169;
+    background: #FFF;
+    height: fit-content;
+    color: #000;
+    transform: scale(0.9);
+}
+
+.container .product_info p {
+    width: fit-content;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+input {
+    height: 3rem;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.14);
+    border-radius: 0.8rem;
+    border: none;
+    padding: 0.5rem;
+    font-size: 1.2rem;
+}
+
+input:focus {
+    outline: none;
+}
+
+.container .product_info .header {
+    color: #FFF;
+    width: 100%;
+    height: 5rem;
+    background: linear-gradient(180deg, #B83169 0%, #380E3C 100%);
+}
+
+.container .product_info .plan {
+    width: 100%;
+    margin: 1rem 0 0 0;
+}
+
+.container .product_info .row {
+    margin: 1rem 0 0 0;
+    width: 100%;
+}
+
+.container .payment_method {
+    margin: 2rem 0 0 0;
+}
+
+.container .payment_method .header .input {
+    justify-content: flex-start;
+    padding: 0 0 0 3rem;
+    font-size: 1.5rem;
+    width: 50%;
+    height: 100%;
+}
+
+.container input[type='radio'] {
+    border: 1px solid white;
+    background: transparent;
+    width: 1.3rem;
+    height: 1.3rem;
+    margin: 0 1rem 0 0;
+}
+
+.container .payment_method .payment {
+    line-height: 1.8;
+    font-size: 1rem;
+    margin: 1rem 0 0 0;
+}
+
+.container .payment_method .inputs {
+    margin: 1rem 0 0 0;
+    width: 100%;
+}
+
+.container .payment_method .inputs .input {
+    width: 20%;
+    height: fit-content;
+}
+
+.container .payment_method .inputs .input input {
+    width: 100%;
+    box-shadow: none;
+}
+
+.container .payment_method .inputs .input:nth-child(1) {
+    width: 40%;
+}
+
+.container .payment_method .inputs .input:nth-child(1) input {
+    width: 80%;
+}
+
+.container .product_info button {
+    margin: 0;
+    width: 100%;
+    height: 5rem;
+    font-size: 2.2rem;
+    font-weight: 600;
+    background: #B83169;
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1400px) {
+    
+    html {
+        font-size: 14px;
+    }
+    .container .menu ul {
+        width: 20%;
+    }
+
+    .container .menu ul li {
+        padding: 0;
+    }
+
+    .container .cut_section .button_wrapper {
+        width: 60%;
+    }
+
+    .container .pricing_section {
+        width: 80%;
+        height: fit-content;
+        color: #000;
+        margin: 0 auto;
+    }
+    
+    .container .pricing_section .payment_cycle {
+        width: 55%;
+        height: 4.5rem;
+    }
+    
+    .container .pricing_section .payment_cycle ul li {
+        height: 4.5rem;
+    }
+    
+    .container .pricing_section .plans {
+        width: 90%;
+    }
+    
+    .container .pricing_section .plans .plan {
+        width: 45%;
+        height: fit-content;
+        border-radius: 0.8px;
+    }
+    
+    .container .pricing_section .plan ul {
+        height: fit-content;
+    }
+}
+
+@media screen and (min-width: 1030px) and (max-width: 1200px) {
+    
+    html {
+        font-size: 14px;
+    }
+
+    .container .menu ul {
+        width: 20%;
+    }
+
+    .container .menu ul li {
+        padding: 0;
+    }
+
+    .container .cut_section .button_wrapper {
+        width: 80%;
+    }
+
+    .container .pricing_section {
+        width: 80%;
+        height: fit-content;
+        color: #000;
+        margin: 5rem auto 0 auto;
+    }
+    
+    .container .pricing_section .payment_cycle {
+        width: 55%;
+        height: 3.8rem;
+    }
+    
+    .container .pricing_section .payment_cycle ul li {
+        height: 3.8rem;
+    }
+    
+    .container .pricing_section .plans {
+        width: 90%;
+    }
+    
+    .container .pricing_section .plans .plan {
+        width: 45%;
+        height: fit-content;
+        border-radius: 0.8px;
+    }
+    
+    .container .pricing_section .plan ul {
+        height: fit-content;
+    }
+
+    .container .product_info {
+        font-size: 1.3rem;
+        font-weight: 500;
+        width: 45%;
+        left: 27.5%;
+    }
+    
+    .container .product_info .header {
+        color: #FFF;
+        width: 100%;
+        height: 5rem;
+        background: linear-gradient(180deg, #B83169 0%, #380E3C 100%);
+    }
+
+    .container .product_info .header h1 {
+        font-size: 2.2rem;
+        font-weight: 600;
+    }
+    
+    .container .product_info .plan {
+        width: 100%;
+        margin: 1rem 0 0 0;
+    }
+    
+    .container .product_info .row {
+        margin: 1rem 0 0 0;
+        width: 100%;
+    }
+    
+    .container .payment_method .inputs .input {
+        width: 20%;
+        height: fit-content;
+    }
+    
+    .container .payment_method .inputs .input input {
+        width: 100%;
+        box-shadow: none;
+    }
+    
+    .container .payment_method .inputs .input:nth-child(1) {
+        width: 40%;
+    }
+    
+    .container .payment_method .inputs .input:nth-child(1) input {
+        width: 80%;
+    }
+}
+
+@media screen and (min-width: 766px) and (max-width: 1030px) {
+    
+    html {
+        font-size: 14px;
+    }
+
+    .container .menu ul {
+        width: 25%;
+    }
+
+    .container .menu ul li {
+        padding: 0;
+    }
+
+    .container .bottom_buttons .buttons_wrapper {
+        width: 65%;
+    }
+
+    .container .pricing_section {
+        width: 80%;
+        height: fit-content;
+        color: #000;
+        margin: 5rem auto 0 auto;
+    }
+    
+    .container .pricing_section .payment_cycle {
+        width: 55%;
+        height: 3.8rem;
+    }
+    
+    .container .pricing_section .payment_cycle ul li {
+        height: 3.8rem;
+    }
+    
+    .container .pricing_section .plans {
+        width: 90%;
+    }
+    
+    .container .pricing_section .plans .plan {
+        width: 45%;
+        height: fit-content;
+        border-radius: 0.8px;
+    }
+    
+    .container .pricing_section .plan ul {
+        height: fit-content;
+    }
+
+    .container .product_info {
+        width: 55%;
+        left: 22.5%;
+    }
+}
+
+@media screen and (min-width: 400px) and (max-width: 768px) {
+
+    html {
+        font-size: 14px;
+    }
+
+    .container .menu ul {
+        width: 38%;
+    }
+
+    .container .menu .language {
+        width: 15%;
+    }
+
+    .container .bottom_buttons .buttons_wrapper {
+        width: 65%;
+    }
+
+    .container .pricing_section {
+        height: fit-content;
+    }
+
+    .container .pricing_section h1 {
+        text-align: center;
+        margin: 4rem 0 2rem 0;
+        font-size: 2.5rem;
+    }
+    
+    .container .pricing_section .payment_cycle {
+        width: 60%;
+        height: 3.2rem;
+        margin: 0 0 4rem 0;
+    }
+
+    .container .pricing_section .payment_cycle ul li {
+        font-size: 1.5rem;
+    }
+
+    .container .pricing_section .payment_cycle ul li.active {
+        height: 3.2rem;
+    }
+    
+    .container .pricing_section .plans {
+        width: 100%;
+    }
+    
+    .container .pricing_section .plans .plan {
+        width: 45%;
+        height: fit-content;
+        border-radius: 0.8rem;
+    }
+
+    .container .pricing_section .plans .plan .header h2 {
+        font-size: 1.5rem;
+    }
+
+    .container .pricing_section .plans .plan .header p {
+        font-size: 1rem;
+    }
+    
+    .container .pricing_section .plan ul {
+        height: fit-content;
+        width: 70%;
+        font-size: 1rem;
+    }
+
+    .container .pricing_section .plan ul li {
+        margin: 0.8rem 0 0 0;
+    }
+
+    .container .pricing_section .plan h1 {
+        /* margin: 0; */
+        font-size: 2rem;
+    }
+
+    .container .pricing_section .plan button {
+        font-size: 1rem;
+        padding: 0.3rem;
+    }
+
+    .container .product_info {
+        width: 70%;
+        left: 15%;
+    }
+}

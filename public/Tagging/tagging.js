@@ -58,7 +58,32 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         fileSection.querySelector('h1').style.display = 'none';
     }
+
+    addAnimations();
 });
+
+function addAnimations() {
+    gsap.from('.buttons_wrapper a', {
+        y: '1rem',
+        opacity: 0,
+        delay: 0.7,
+        stagger: 0.1
+    });
+
+    gsap.from('#stagger', {
+        y: '1rem',
+        opacity: 0,
+        delay: 0.7,
+        stagger: 0.1
+    });
+
+    gsap.from('#player_stagger', {
+        y: '1rem',
+        opacity: 0,
+        delay: 0.7,
+        stagger: 0.1
+    });
+}
 
 window.addEventListener('load', () => {
     setTimeout(() => {

@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="tags.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script defer src="tags.js"></script>
     <title>Tags</title>
 </head>
@@ -26,14 +27,14 @@
                 <li class="flex_row justify_center center"><a href="../Home/index.html">Logout</a></li>
             </ul>
             <div class="language flex_row space_between center">
-                <p>EN</p>
-                <img src="../images/icons8-first-flag-of-the-usa-40 1.png" alt="flag">
+                <p id="stagger">EN</p>
+                <img src="../images/icons8-first-flag-of-the-usa-40 1.png" alt="flag" id="stagger">
             </div>
         </div>
         <div class="workspace flex_row space_between width_full">
             <div class="left_workspace flex_column justify_flex_start">
                 <div class="toolbar flex_row center space_between width_full">
-                    <div class="search flex_row center">
+                    <div class="search flex_row center" id="stagger">
                         <svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30"><path d="M796 935 533 672q-30 26-69.959 40.5T378 727q-108.162 0-183.081-75Q120 577 120 471t75-181q75-75 181.5-75t181 75Q632 365 632 471.15 632 514 618 554q-14 40-42 75l264 262-44 44ZM377 667q81.25 0 138.125-57.5T572 471q0-81-56.875-138.5T377 275q-82.083 0-139.542 57.5Q180 390 180 471t57.458 138.5Q294.917 667 377 667Z"/></svg>
                         <input placeholder="Find Tags" type="text">
                     </div>
@@ -65,35 +66,35 @@
                         <h1 onclick="showTagDetails(event)">Back To Panels</h1>
                         <div class="information_wrapper flex_row width_full">
                             <div class="left_section">
-                                <span></span>
-                                <h1>1st Team Tag</h1>
+                                <span id="create_stagger"></span>
+                                <h1 id="create_stagger">1st Team Tag</h1>
                                 <div class="information">
-                                    <div class="information_item">
+                                    <div class="information_item" id="create_stagger">
                                         <p>Created By</p>
                                         <p>John</p>
                                     </div>
-                                    <div class="information_item">
+                                    <div class="information_item" id="create_stagger">
                                         <p>Layout</p>
                                         <p>Standard Tag Panel (11)</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="right_section">
-                                <p>Click tags to edit</p>
+                                <p id="create_stagger">Click tags to edit</p>
                                 <div class="tag_layout flex_column space_evenly center">
-                                    <h1>Standard Tag Panel (11)</h1>
-                                    <div class="tags_wrapper width_full">
-                                        <button onclick="showEditPanel(event)">No Text<span>No Text</span></button>
-                                        <button onclick="showEditPanel(event)">No Text<span>No Text</span></button>
-                                        <button onclick="showEditPanel(event)">No Text<span>No Text</span></button>
-                                        <button onclick="showEditPanel(event)">No Text<span>No Text</span></button>
-                                        <button onclick="showEditPanel(event)">No Text<span>No Text</span></button>
-                                        <button onclick="showEditPanel(event)">No Text<span>No Text</span></button>
-                                        <button onclick="showEditPanel(event)">No Text<span>No Text</span></button>
-                                        <button onclick="showEditPanel(event)">No Text<span>No Text</span></button>
-                                        <button onclick="showEditPanel(event)">No Text<span>No Text</span></button>
-                                        <button onclick="showEditPanel(event)">No Text<span>No Text</span></button>
-                                        <button onclick="showEditPanel(event)">No Text<span>No Text</span></button>
+                                    <h1 id="create_stagger">Standard Tag Panel (11)</h1>
+                                    <div class="tags_wrapper width_full" id="create_stagger">
+                                        <button id="tag_stagger" onclick="showEditPanel(event)">No Text<span>No Text</span></button>
+                                        <button id="tag_stagger" onclick="showEditPanel(event)">No Text<span>No Text</span></button>
+                                        <button id="tag_stagger" onclick="showEditPanel(event)">No Text<span>No Text</span></button>
+                                        <button id="tag_stagger" onclick="showEditPanel(event)">No Text<span>No Text</span></button>
+                                        <button id="tag_stagger" onclick="showEditPanel(event)">No Text<span>No Text</span></button>
+                                        <button id="tag_stagger" onclick="showEditPanel(event)">No Text<span>No Text</span></button>
+                                        <button id="tag_stagger" onclick="showEditPanel(event)">No Text<span>No Text</span></button>
+                                        <button id="tag_stagger" onclick="showEditPanel(event)">No Text<span>No Text</span></button>
+                                        <button id="tag_stagger" onclick="showEditPanel(event)">No Text<span>No Text</span></button>
+                                        <button id="tag_stagger" onclick="showEditPanel(event)">No Text<span>No Text</span></button>
+                                        <button id="tag_stagger" onclick="showEditPanel(event)">No Text<span>No Text</span></button>
                                     </div>
                                 </div>
                             </div>
@@ -240,31 +241,31 @@
                 </a>
             </div>
         </div>
-        <div class="menus flex_row justify_center center">
+        <div class="menus flex_row justify_center center" onclick="event.stopPropagation()">
             <div class="tag_information flex_column center" style="display: none;">
                 <div class="information_wrapper flex_row width_full">
-                    <div class="left_section">
+                    <div class="left_section" id="create_stagger">
                         <div class="input flex_column">
                             <p>Title</p>
                             <input type="text" id="tag_name" placeholder="Name for the panel">
                         </div>
                     </div>
                     <div class="right_section">
-                        <p>Click tags to edit</p>
+                        <p id="create_stagger">Edit tags on the next screen</p>
                         <div class="tag_layout flex_column space_evenly center">
-                            <h1>Standard Tag Panel (11)</h1>
-                            <div class="tags_wrapper width_full">
-                                <button>No Text<span>No Text</span></button>
-                                <button>No Text<span>No Text</span></button>
-                                <button>No Text<span>No Text</span></button>
-                                <button>No Text<span>No Text</span></button>
-                                <button>No Text<span>No Text</span></button>
-                                <button>No Text<span>No Text</span></button>
-                                <button>No Text<span>No Text</span></button>
-                                <button>No Text<span>No Text</span></button>
-                                <button>No Text<span>No Text</span></button>
-                                <button>No Text<span>No Text</span></button>
-                                <button>No Text<span>No Text</span></button>
+                            <h1 id="create_stagger">Standard Tag Panel (11)</h1>
+                            <div class="tags_wrapper width_full" id="create_stagger">
+                                <button id="tag_stagger">No Text<span>No Text</span></button>
+                                <button id="tag_stagger">No Text<span>No Text</span></button>
+                                <button id="tag_stagger">No Text<span>No Text</span></button>
+                                <button id="tag_stagger">No Text<span>No Text</span></button>
+                                <button id="tag_stagger">No Text<span>No Text</span></button>
+                                <button id="tag_stagger">No Text<span>No Text</span></button>
+                                <button id="tag_stagger">No Text<span>No Text</span></button>
+                                <button id="tag_stagger">No Text<span>No Text</span></button>
+                                <button id="tag_stagger">No Text<span>No Text</span></button>
+                                <button id="tag_stagger">No Text<span>No Text</span></button>
+                                <button id="tag_stagger">No Text<span>No Text</span></button>
                             </div>
                         </div>
                     </div>

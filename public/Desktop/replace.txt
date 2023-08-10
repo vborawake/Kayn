@@ -1,5 +1,2 @@
-function getValue(e) {
-    if (e.currentTarget.checked === true) {
-        const name = e.currentTarget.nextElementSibling.innerHTML;
-    }
-}
+Add another menu option called subscription which shows subscription details of the user
+When user clicks on buy now, the product details and payment option popup will be visible

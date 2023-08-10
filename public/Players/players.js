@@ -15,7 +15,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const html = '<h1>You have not created any players yet. Please click on the + button above and start creating players.</h1>';
         playersContainer.innerHTML += html;
     }
+    addAnimations();
 });
+
+function addAnimations() {
+    gsap.from('.buttons_wrapper a', {
+        y: '1rem',
+        opacity: 0,
+        stagger: 0.1
+    });
+
+    gsap.from('#stagger', {
+        y: '1rem',
+        opacity: 0,
+        stagger: 0.1
+    });
+}
 
 // window.addEventListener('load', () => {
 //     setTimeout(() => {

@@ -98,7 +98,7 @@ button {
     font-weight: 500;
     border-radius: 0.6rem;
     cursor: pointer;
-    transition: all 0.5s ease;
+    /* transition: all 0.5s ease; */
 }
 
 input {
@@ -361,7 +361,7 @@ input:focus {
     border-radius: 0.3rem;
     font-size: 1rem;
     margin: 0 0 0.6rem 0;
-    transition: all 0.5s ease;
+    /* transition: all 0.5s ease; */
 }
 
 .container .workspace .left_section .selection_content .buttons button span {

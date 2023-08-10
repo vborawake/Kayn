@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="register.style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script defer src="register.js"></script>
     <link rel="stylesheet" href="../helper.css">
     <title>Register</title>
@@ -17,20 +18,31 @@
         <nav class="flex_row space_between center">
             <div class="left_section flex_row space_between center">
                 <a href="../Home/index.html"><img src="../images/logo kayn.png" alt="logo"></a>
-                <div class="language flex_row center">
+                <div class="language selected flex_row center" id="stagger" style="cursor: pointer;" onclick="showLanguagePopup(event)">
                     <p>EN</p>
                     <img src="../images/icons8-first-flag-of-the-usa-40 1.png" alt="flag">
                 </div>
+                <div class="language_popup flex_column">
+                    <div class="language flex_row center" style="cursor: pointer;" onclick="selectLanguage(event)">
+                        <p>EN</p>
+                        <img src="../images/icons8-first-flag-of-the-usa-40 1.png" alt="flag">
+                    </div>
+                    <div class="language flex_row center" style="cursor: pointer;" onclick="selectLanguage(event)">
+                        <p>AR</p>
+                        <img src="../images/arab.png" alt="flag">
+                    </div>
+                    <div class="language flex_row center" style="cursor: pointer;" onclick="selectLanguage(event)">
+                        <p>FR</p>
+                        <img src="../images/france.png" alt="flag">
+                    </div>
+                    <div class="language flex_row center" style="cursor: pointer;" onclick="selectLanguage(event)">
+                        <p>GE</p>
+                        <img src="../images/germany.png" alt="flag">
+                    </div>
+                </div>
             </div>
             <div class="right_section">
-                <ul class="flex_row space_between center">
-                    <li><a class="active" href="#">Concept</a></li>
-                    <li><a href="#">Athelet</a></li>
-                    <li><a href="#">Coach</a></li>
-                    <li><a href="#">Analysis</a></li>
-                    <li><a href="#">Broadcast</a></li>
-                    <li><a href="#">Ultras</a></li>
-                    <li><a href="#">Education</a></li>
+                <ul class="flex_row justify_flex_end center">
                     <li><a href="../Login/login.html">Login</a></li>
                 </ul>
             </div>
@@ -40,13 +52,6 @@
         </nav>
         <div class="mobile_menu flex_row center justify_center">
             <ul class="flex_column space_evenly center">
-                <li><a class="active" href="#">Concept</a></li>
-                <li><a href="#">Athelet</a></li>
-                <li><a href="#">Coach</a></li>
-                <li><a href="#">Analysis</a></li>
-                <li><a href="#">Broadcast</a></li>
-                <li><a href="#">Ultras</a></li>
-                <li><a href="#">Education</a></li>
                 <li><a href="../Login/login.html">Login</a></li>
             </ul>
         </div>
@@ -85,62 +90,6 @@
                     <div class="input flex_column space_between">
                         <label for="email2">Email</label>
                         <input type="text" name="email2">
-                    </div>
-                    <div class="product_info flex_column space_between center">
-                        <div class="header flex_row center justify_center">
-                            <h1>PRODUCT</h1>
-                        </div>
-                        <div class="plan flex_row space_between center">
-                            <div class="plan_type flex_row space_between center">
-                                <p class="type">Basic X </p>
-                                <p class="quantity">1</p>
-                            </div>
-                            <p class="feature">$122 / Month with 1 Week Free Trial</p>
-                        </div>
-                        <div class="bill flex_column space_between center">
-                            <div class="row flex_row space_between center">
-                                <p>Subtotal</p>
-                                <p>$0</p>
-                            </div>
-                            <div class="row flex_row space_between center">
-                                <p>VAT</p>
-                                <p>$0 / Month</p>
-                            </div>
-                            <div class="row flex_row space_between center">
-                                <p>Total</p>
-                                <p>$122 / Month</p>
-                            </div>
-                            <div class="row flex_row space_between center">
-                                <p>1st Renewal : 5 Apr 2023</p>
-                            </div>
-                        </div>
-                        <div class="payment_method flex_column space_between center">
-                            <div class="header flex_row space_between center">
-                                <div class="input flex_row center">
-                                    <input type="radio" name="payment_method" id="credit_card">
-                                    <label for="credit_card">CREDIT CARD</label>
-                                </div>
-                                <div class="input flex_row space_between center">
-                                    <input type="radio" name="payment_method" id="paypal">
-                                    <label for="paypal">PAYPAL</label>
-                                </div>
-                            </div>
-                            <div class="payment">
-                                <p>Your information is secured and we don't store card details in our systems. If your 1 week free trial coupon code applied, we won't be charging you until the end of trial and you can cancel your service whenever you want.</p>
-                            </div>
-                            <div class="inputs flex_row space_between center">
-                                <div class="input flex_row space_between center">
-                                    <img src="../images/image 32.png" alt="">
-                                    <input type="text" placeholder="Card Number">
-                                </div>
-                                <div class="input">
-                                    <input type="text" placeholder="MM/YY">
-                                </div>
-                                <div class="input">
-                                    <input type="text" placeholder="CVC">
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <div class="input flex_row center">
                         <input type="radio" name="terms">
@@ -206,6 +155,5 @@
             </div>
         </div>
     </div>
-    <script>window.addEventListener('resize', () => { console.log(window.innerWidth); })</script>
 </body>
 </html>

@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="teams.style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script defer src="teams.js"></script>
     <title>Teams</title>
 </head>
@@ -26,14 +27,14 @@
                 <li class="flex_row justify_center center"><a href="../Home/index.html">Logout</a></li>
             </ul>
             <div class="language flex_row space_between center">
-                <p>EN</p>
-                <img src="../images/icons8-first-flag-of-the-usa-40 1.png" alt="flag">
+                <p id="stagger">EN</p>
+                <img src="../images/icons8-first-flag-of-the-usa-40 1.png" alt="flag" id="stagger">
             </div>
         </div>
         <div class="workspace flex_row space_between width_full">
             <div class="left_workspace flex_column justify_flex_start">
                 <div class="toolbar flex_row center space_between width_full">
-                    <div class="search flex_row center">
+                    <div class="search flex_row center" id="stagger">
                         <svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30"><path d="M796 935 533 672q-30 26-69.959 40.5T378 727q-108.162 0-183.081-75Q120 577 120 471t75-181q75-75 181.5-75t181 75Q632 365 632 471.15 632 514 618 554q-14 40-42 75l264 262-44 44ZM377 667q81.25 0 138.125-57.5T572 471q0-81-56.875-138.5T377 275q-82.083 0-139.542 57.5Q180 390 180 471t57.458 138.5Q294.917 667 377 667Z"/></svg>
                         <input placeholder="Find Teams" type="text">
                     </div>

@@ -17,6 +17,8 @@ const cutSection = document.querySelector('.cut_section.flex_row.center.justify_
 const barMenu = document.querySelector('.bar_menu.flex_column');
 const renderMenu = document.querySelector('.render_menu.flex_column.center');
 const video = document.querySelector('video');
+const render_start_input = document.getElementById('render_start');
+const render_end_input = document.getElementById('render_end');
 
 let barInCons;
 let bars = [];
@@ -30,161 +32,187 @@ let isOpen = false;
 
 const selectContent = {
     'Attacking Principles': `
-        <h4>Attacking Principles</h4>
+        <h4 id="tag_stagger">Attacking Principles</h4>
         <div class="buttons flex_row space_between center width_full">
-            <button onclick="addToTagList(event)" style="background: #4E4C4C;">Depth</button>
-            <button onclick="addToTagList(event)" style="background: #A4A4A4;">Support</button>
-            <button onclick="addToTagList(event)" style="background: #4E4C4C;">Penetration</button>
-            <button onclick="addToTagList(event)" style="background: #A4A4A4;">Transition</button>
-            <button onclick="addToTagList(event)" style="background: #4E4C4C;">Mobility</button>
-            <button onclick="addToTagList(event)" style="background: #A4A4A4;">Creativity</button>
-            <button onclick="addToTagList(event)" style="background: #4E4C4C;">Width</button>
-            <button onclick="addToTagList(event)" style="background: #A4A4A4;">No Text</button>
-            <button onclick="addToTagList(event)" style="background: #4E4C4C;">Successful</button>
-            <button onclick="addToTagList(event)" style="background: #A4A4A4;">Unsuccessful</button>
+            <button onclick="addToTagList(event)" style="background: #4E4C4C;" id="tag_stagger">Depth</button>
+            <button onclick="addToTagList(event)" style="background: #A4A4A4;" id="tag_stagger">Support</button>
+            <button onclick="addToTagList(event)" style="background: #4E4C4C;" id="tag_stagger">Penetration</button>
+            <button onclick="addToTagList(event)" style="background: #A4A4A4;" id="tag_stagger">Transition</button>
+            <button onclick="addToTagList(event)" style="background: #4E4C4C;" id="tag_stagger">Mobility</button>
+            <button onclick="addToTagList(event)" style="background: #A4A4A4;" id="tag_stagger">Creativity</button>
+            <button onclick="addToTagList(event)" style="background: #4E4C4C;" id="tag_stagger">Width</button>
+            <button onclick="addToTagList(event)" style="background: #A4A4A4;" id="tag_stagger">No Text</button>
+            <button onclick="addToTagList(event)" style="background: #4E4C4C;" id="tag_stagger">Successful</button>
+            <button onclick="addToTagList(event)" style="background: #A4A4A4;" id="tag_stagger">Unsuccessful</button>
         </div>
     `,
     'Transitions': `
-        <h4>Transition</h4>
-        <div class="buttons flex_row space_between center width_full">
-            <button class="tall_button" onclick="addToTagList(event)" style="background: #4E4C4C;">Defensive</button>
-            <button class="tall_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Attacking</button>
-            <button onclick="addToTagList(event)" style="background: #4E4C4C;">Speed Of Awareness</button>
-            <button onclick="addToTagList(event)" style="background: #A4A4A4;">Speed Of Decision</button>
-            <button onclick="addToTagList(event)" style="background: #4E4C4C;">Speed Of Perception</button>
-            <button onclick="addToTagList(event)" style="background: #A4A4A4;">Speed Of Action</button>
-            <button onclick="addToTagList(event)" style="background: #4E4C4C;">Recovery Time</button>
-            <div class="flex_row space_between" style="width: 38%;">
-                <button class="short_button" onclick="addToTagList(event)" style="background: #4E4C4C;">Successful</button>
-                <button class="short_button" onclick="addToTagList(event)" style="background: #A4A4A4;">UnSuccessful</button>
-            </div>
-            <button onclick="addToTagList(event)" style="background: #4E4C4C;">Pressing Inside</button>
-            <button onclick="addToTagList(event)" style="background: #D9D9D9;">No Text</button>
-            <button onclick="addToTagList(event)" style="background: #4E4C4C;">Pressing Outside</button>
-            <button onclick="addToTagList(event)" style="background: #D9D9D9;">No Text</button>
-            <div class="flex_row space_between" style="width: 38%;">
-            <button class="short_button" onclick="addToTagList(event)" style="background: #4E4C4C;">Successful</button>
-                <button class="short_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Unsuccessful</button>
-            </div>
-            <button onclick="addToTagList(event)" style="background: #D9D9D9;">No Text</button>
+    <h4 id="tag_stagger">Transition</h4>
+    <div class="buttons flex_row space_between center width_full">
+        <button class="tall_button" onclick="addToTagList(event)" style="background: #4E4C4C;" id="tag_stagger">Defensive</button>
+        <button class="tall_button" onclick="addToTagList(event)" style="background: #A4A4A4;" id="tag_stagger">Attacking</button>
+        <button onclick="addToTagList(event)" style="background: #4E4C4C;" id="tag_stagger">
+            Speed Of Awareness
+        </button>
+        <button onclick="addToTagList(event)" style="background: #A4A4A4;" id="tag_stagger">
+            Speed Of Decision
+        </button>
+        <button onclick="addToTagList(event)" style="background: #4E4C4C;" id="tag_stagger">
+            Speed Of Perception
+        </button>
+        <button onclick="addToTagList(event)" style="background: #A4A4A4;" id="tag_stagger">
+            Speed Of Action
+        </button>
+        <button onclick="addToTagList(event)" style="background: #4E4C4C;" id="tag_stagger">
+            Recovery Time
+        </button>
+        <div class="flex_row space_between" style="width: 38%;">
+            <button class="short_button" onclick="addToTagList(event)" style="background: #4E4C4C;" id="tag_stagger">
+                <p>Successful</p>
+                <span>Successful</span>
+            </button>
+            <button class="short_button" onclick="addToTagList(event)" style="background: #A4A4A4;" id="tag_stagger">
+                <p>UnSuccessful</p>
+                <span>UnSuccessful</span>
+            </button>
         </div>
+        <button onclick="addToTagList(event)" style="background: #4E4C4C;" id="tag_stagger">
+            Pressing Inside
+        </button>
+        <button onclick="addToTagList(event)" style="background: #D9D9D9;" id="tag_stagger">No Text</button>
+        <button onclick="addToTagList(event)" style="background: #4E4C4C;" id="tag_stagger">
+            Pressing Outside
+        </button>
+        <button onclick="addToTagList(event)" style="background: #D9D9D9;" id="tag_stagger">No Text</button>
+        <div class="flex_row space_between" style="width: 38%;">
+            <button class="short_button" onclick="addToTagList(event)" style="background: #4E4C4C;" id="tag_stagger">
+                <p>Successful</p>
+                <span>Successful</span>
+            </button>
+            <button class="short_button" onclick="addToTagList(event)" style="background: #A4A4A4;" id="tag_stagger">
+                <p>UnSuccessful</p>
+                <span>UnSuccessful</span>
+            </button>
+        </div>
+        <button onclick="addToTagList(event)" style="background: #D9D9D9;" id="tag_stagger">No Text</button>
+    </div>
     `,
     'Phases Of Play': `
-        <h4>Phases Of Play</h4>
+        <h4 id="tag_stagger">Phases Of Play</h4>
         <div class="buttons flex_row space_between center width_full">
-            <button class="tall_button" onclick="addToTagList(event)" style="background: #4E4C4C;">In Possession</button>
-            <button class="tall_button long_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Out Of Possession</button>
-            <button class="small_button" onclick="addToTagList(event)" style="background: #4E4C4C;">Build Up Unopponent</button>
-            <button class="small_button" onclick="addToTagList(event)" style="background: #A4A4A4;">High Press</button>
-            <button class="small_button" onclick="addToTagList(event)" style="background: #A4A4A4;">High Block</button>
-            <button class="small_button" onclick="addToTagList(event)" style="background: #4E4C4C;">Build Up Opponent</button>
-            <button class="small_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Mid Press</button>
-            <button class="small_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Mid Block</button>
-            <button class="small_button" onclick="addToTagList(event)" style="background: #4E4C4C;">Progression</button>
-            <button class="small_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Low Press</button>
-            <button class="small_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Low Block</button>
-            <button class="small_button" onclick="addToTagList(event)" style="background: #4E4C4C;">Long Ball</button>
-            <button class="small_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Recovery</button>
-            <button class="small_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Defensive</button>
-            <button class="small_button" onclick="addToTagList(event)" style="background: #4E4C4C;">Counter Attack</button>
-            <button class="small_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Transitions</button>
-            <button class="small_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Counter</button>
-            <button class="small_button" onclick="addToTagList(event)" style="background: #D9D9D9;">No Text</button>
-            <button class="small_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Press</button>
-            <button class="small_button" onclick="addToTagList(event)" style="background: #D9D9D9;">No Text</button>
+            <button id="tag_stagger" class="tall_button" onclick="addToTagList(event)" style="background: #4E4C4C;">In Possession</button>
+            <button id="tag_stagger" class="tall_button long_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Out Of Possession</button>
+            <button id="tag_stagger" class="small_button" onclick="addToTagList(event)" style="background: #4E4C4C;">Build Up Unopponent</button>
+            <button id="tag_stagger" class="small_button" onclick="addToTagList(event)" style="background: #A4A4A4;">High Press</button>
+            <button id="tag_stagger" class="small_button" onclick="addToTagList(event)" style="background: #A4A4A4;">High Block</button>
+            <button id="tag_stagger" class="small_button" onclick="addToTagList(event)" style="background: #4E4C4C;">Build Up Opponent</button>
+            <button id="tag_stagger" class="small_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Mid Press</button>
+            <button id="tag_stagger" class="small_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Mid Block</button>
+            <button id="tag_stagger" class="small_button" onclick="addToTagList(event)" style="background: #4E4C4C;">Progression</button>
+            <button id="tag_stagger" class="small_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Low Press</button>
+            <button id="tag_stagger" class="small_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Low Block</button>
+            <button id="tag_stagger" class="small_button" onclick="addToTagList(event)" style="background: #4E4C4C;">Long Ball</button>
+            <button id="tag_stagger" class="small_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Recovery</button>
+            <button id="tag_stagger" class="small_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Defensive</button>
+            <button id="tag_stagger" class="small_button" onclick="addToTagList(event)" style="background: #4E4C4C;">Counter Attack</button>
+            <button id="tag_stagger" class="small_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Transitions</button>
+            <button id="tag_stagger" class="small_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Counter</button>
+            <button id="tag_stagger" class="small_button" onclick="addToTagList(event)" style="background: #D9D9D9;">No Text</button>
+            <button id="tag_stagger" class="small_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Press</button>
+            <button id="tag_stagger" class="small_button" onclick="addToTagList(event)" style="background: #D9D9D9;">No Text</button>
         </div>
     `,
     'Defensive Principles': `
-        <h4>Defensive Principles</h4>
+        <h4 id="tag_stagger">Defensive Principles</h4>
         <div class="buttons flex_row space_between center width_full">
-            <button onclick="addToTagList(event)" style="background: #4E4C4C;">Pressure</button>
-            <button onclick="addToTagList(event)" style="background: #4E4C4C;">Cover</button>
-            <button onclick="addToTagList(event)" style="background: #4E4C4C;">Balance</button>
-            <button onclick="addToTagList(event)" style="background: #4E4C4C;">Compact</button>
-            <button onclick="addToTagList(event)" style="background: #D9D9D9;">&lt;No Text%gt;</button>
-            <button onclick="addToTagList(event)" style="background: #D9D9D9;">&lt;No Text%gt;</button>
-            <button onclick="addToTagList(event)" style="background: #D9D9D9;">&lt;No Text%gt;</button>
-            <button onclick="addToTagList(event)" style="background: #D9D9D9;">&lt;No Text%gt;</button>
+            <button id="tag_stagger" onclick="addToTagList(event)" style="background: #4E4C4C;">Pressure</button>
+            <button id="tag_stagger" onclick="addToTagList(event)" style="background: #4E4C4C;">Cover</button>
+            <button id="tag_stagger" onclick="addToTagList(event)" style="background: #4E4C4C;">Balance</button>
+            <button id="tag_stagger" onclick="addToTagList(event)" style="background: #4E4C4C;">Compact</button>
+            <button id="tag_stagger" onclick="addToTagList(event)" style="background: #D9D9D9;">&lt;No Text&gt;</button>
+            <button id="tag_stagger" onclick="addToTagList(event)" style="background: #D9D9D9;">&lt;No Text&gt;</button>
+            <button id="tag_stagger" onclick="addToTagList(event)" style="background: #D9D9D9;">&lt;No Text&gt;</button>
+            <button id="tag_stagger" onclick="addToTagList(event)" style="background: #D9D9D9;">&lt;No Text&gt;</button>
         </div>
     `,
     'Set Plays': `
-        <h4>Set Plays</h4>
+        <h4 id="tag_stagger">Set Plays</h4>
         <div class="buttons flex_row space_between center width_full">
-            <button class="tall_button" onclick="addToTagList(event)" style="background: #4E4C4C;">Free Kicks</button>
-            <button class="tall_button long_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Corners</button>
-            <button onclick="addToTagList(event)" style="background: #4E4C4C;">Direct</button>
+            <button id="tag_stagger" class="tall_button" onclick="addToTagList(event)" style="background: #4E4C4C;">Free Kicks</button>
+            <button id="tag_stagger" class="tall_button long_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Corners</button>
+            <button id="tag_stagger" onclick="addToTagList(event)" style="background: #4E4C4C;">Direct</button>
             <div class="flex_row space_between" style="width: 60%;">
-                <button class="short_button" onclick="addToTagList(event)" style="background: #A4A4A4;">From Left</button>
-                <button class="short_button" onclick="addToTagList(event)" style="background: #A4A4A4;">High Block</button>
+                <button id="tag_stagger" class="short_button" onclick="addToTagList(event)" style="background: #A4A4A4;">From Left</button>
+                <button id="tag_stagger" class="short_button" onclick="addToTagList(event)" style="background: #A4A4A4;">High Block</button>
             </div>
-            <button onclick="addToTagList(event)" style="background: #4E4C4C;">Direct On Target</button>
+            <button id="tag_stagger" onclick="addToTagList(event)" style="background: #4E4C4C;">Direct On Target</button>
             <div class="flex_row space_between" style="width: 60%;">
-                <button class="short_button" onclick="addToTagList(event)" style="background: #A4A4A4;">From Right</button>
-                <button class="short_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Mid Block</button>
+                <button id="tag_stagger" class="short_button" onclick="addToTagList(event)" style="background: #A4A4A4;">From Right</button>
+                <button id="tag_stagger" class="short_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Mid Block</button>
             </div>
-            <button onclick="addToTagList(event)" style="background: #4E4C4C;">Direct Off Target</button>
-            <button class="long_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Direct To Area Shot</button>
-            <button onclick="addToTagList(event)" style="background: #4E4C4C;">Indirect</button>
+            <button id="tag_stagger" onclick="addToTagList(event)" style="background: #4E4C4C;">Direct Off Target</button>
+            <button id="tag_stagger" class="long_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Direct To Area Shot</button>
+            <button id="tag_stagger" onclick="addToTagList(event)" style="background: #4E4C4C;">Indirect</button>
             <div class="flex_row space_between" style="width: 60%;">
-                <button class="short_button" onclick="addToTagList(event)" style="background: #A4A4A4;">In Swing</button>
-                <button class="short_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Out Swing</button>
+                <button id="tag_stagger" class="short_button" onclick="addToTagList(event)" style="background: #A4A4A4;">In Swing</button>
+                <button id="tag_stagger" class="short_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Out Swing</button>
             </div>
-            <button onclick="addToTagList(event)" style="background: #4E4C4C;">Counter Attack</button>
-            <button class="long_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Edge Of Penalty Area</button>
+            <button id="tag_stagger" onclick="addToTagList(event)" style="background: #4E4C4C;">Counter Attack</button>
+            <button id="tag_stagger" class="long_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Edge Of Penalty Area</button>
         </div>
     `,
     'Attempts At Goal': `
-        <h4>Attempts At Goal</h4>
-        <div class="buttons flex_row space_between center width_full">
-            <button class="long_button" onclick="addToTagList(event)" style="background: #4E4C4C;">Goal</button>
+        <h4 id="tag_stagger">Attempts At Goal</h4>
+        <div class="buttons flex_row space_evenly center width_full">
+            <button id="tag_stagger" class="long_button" onclick="addToTagList(event)" style="background: #4E4C4C;">Goal</button>
             <div class="flex_row space_between" style="width: 60%;">
-                <button class="short_button" onclick="addToTagList(event)" style="background: #4E4C4C;">On Target</button>
-                <button class="short_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Off Target</button>
+                <button id="tag_stagger" class="short_button" onclick="addToTagList(event)" style="background: #4E4C4C;">On Target</button>
+                <button id="tag_stagger" class="short_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Off Target</button>
             </div>
             <div class="flex_row space_between" style="width: 60%;">
-                <button class="short_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Blocked</button>
-                <button class="short_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Incomplete</button>
+                <button id="tag_stagger" class="short_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Blocked</button>
+                <button id="tag_stagger" class="short_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Incomplete</button>
             </div>
         </div>
     `,
     'Defensive Actions': `
-        <h4>Defensive Actions</h4>
-        <div class="buttons flex_row space_between center width_full">
-            <button class="long_button" onclick="addToTagList(event)" style="background: #4E4C4C;">Forced Turnover</button>
+        <h4 id="tag_stagger">Defensive Actions</h4>
+        <div class="buttons flex_row space_evenly center width_full">
+            <button id="tag_stagger" class="long_button" onclick="addToTagList(event)" style="background: #4E4C4C;">Forced Turnover</button>
             <div class="flex_row space_between" style="width: 60%;">
-                <button class="short_button" onclick="addToTagList(event)" style="background: #4E4C4C;">On Target</button>
-                <button class="short_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Interceptions</button>
+                <button id="tag_stagger" class="short_button" onclick="addToTagList(event)" style="background: #4E4C4C;">On Target</button>
+                <button id="tag_stagger" class="short_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Interceptions</button>
             </div>
             <div class="flex_row space_between" style="width: 60%;">
-                <button class="short_button" onclick="addToTagList(event)" style="background: #4E4C4C;">Tackles</button>
-                <button class="short_button" onclick="addToTagList(event)" style="background: #A4A4A4;">1v1 Duels</button>
+                <button id="tag_stagger" class="short_button" onclick="addToTagList(event)" style="background: #4E4C4C;">Tackles</button>
+                <button id="tag_stagger" class="short_button" onclick="addToTagList(event)" style="background: #A4A4A4;">1v1 Duels</button>
             </div>
             <div class="flex_row space_between" style="width: 60%;">
-                <button class="short_button" onclick="addToTagList(event)" style="background: #4E4C4C;">Aerial Duels</button>
-                <button class="short_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Clearance</button>
+                <button id="tag_stagger" class="short_button" onclick="addToTagList(event)" style="background: #4E4C4C;">Aerial Duels</button>
+                <button id="tag_stagger" class="short_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Clearance</button>
             </div>
         </div>
     `,
     'Movement To Receive': `
-        <h4>Movement To Receive</h4>
+        <h4 id="tag_stagger">Movement To Receive</h4>
         <div class="buttons flex_row space_between center width_full">
-            <button onclick="addToTagList(event)" style="background: #4E4C4C;">In Front</button>
-            <button onclick="addToTagList(event)" style="background: #A4A4A4;">In Front</button>
-            <button onclick="addToTagList(event)" style="background: #4E4C4C;">In Between</button>
-            <button onclick="addToTagList(event)" style="background: #A4A4A4;">Out To In</button>
-            <button onclick="addToTagList(event)" style="background: #4E4C4C;">In To Out</button>
-            <button onclick="addToTagList(event)" style="background: #A4A4A4;">In Behind</button>
+            <button id="tag_stagger" onclick="addToTagList(event)" style="background: #4E4C4C;">In Front</button>
+            <button id="tag_stagger" onclick="addToTagList(event)" style="background: #A4A4A4;">In Front</button>
+            <button id="tag_stagger" onclick="addToTagList(event)" style="background: #4E4C4C;">In Between</button>
+            <button id="tag_stagger" onclick="addToTagList(event)" style="background: #A4A4A4;">Out To In</button>
+            <button id="tag_stagger" onclick="addToTagList(event)" style="background: #4E4C4C;">In To Out</button>
+            <button id="tag_stagger" onclick="addToTagList(event)" style="background: #A4A4A4;">In Behind</button>
         </div>
     `,
     'Goalkeeping': `
-        <h4>Goalkeeping</h4>
-        <div class="buttons flex_row space_between center width_full">
-            <button class="long_button" onclick="addToTagList(event)" style="background: #4E4C4C;">Goalkeeping Distribution</button>
-            <button class="long_button" onclick="addToTagList(event)" style="background: #4E4C4C;">Goal Prevention</button>
-            <button class="long_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Aerial Control</button>
+        <h4 id="tag_stagger">Goalkeeping</h4>
+        <div class="buttons flex_row space_evenly center width_full">
+            <button id="tag_stagger" class="long_button" onclick="addToTagList(event)" style="background: #4E4C4C;">Goalkeeping Distribution</button>
+            <button id="tag_stagger" class="long_button" onclick="addToTagList(event)" style="background: #4E4C4C;">Goal Prevention</button>
+            <button id="tag_stagger" class="long_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Aerial Control</button>
             <div class="flex_row space_between" style="width: 60%;">
-                <button class="short_button" onclick="addToTagList(event)" style="background: #4E4C4C;">Successful</button>
-                <button class="short_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Unsuccessful</button>
+                <button id="tag_stagger" class="short_button" onclick="addToTagList(event)" style="background: #4E4C4C;">Successful</button>
+                <button id="tag_stagger" class="short_button" onclick="addToTagList(event)" style="background: #A4A4A4;">Unsuccessful</button>
             </div>
         </div>
     `
@@ -435,8 +463,34 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('bars', JSON.stringify(bars));
         });
     }
-    // addEventListenersSlider();
+    addAnimations();
 });
+
+function addAnimations() {
+    gsap.from('.buttons_wrapper a', {
+        y: '1rem',
+        opacity: 0,
+        stagger: 0.1
+    });
+
+    gsap.from('#stagger', {
+        y: '1rem',
+        opacity: 0,
+        stagger: 0.1
+    });
+
+    gsap.from('#tag_stagger', {
+        marginTop: '1rem',
+        opacity: 0,
+        stagger: 0.1
+    });
+
+    gsap.from('#stat_stagger', {
+        marginTop: '1rem',
+        opacity: 0,
+        stagger: 0.1
+    });
+}
 
 function adjustBars () {
     let top = 1.4;
@@ -466,6 +520,7 @@ function addSelectRow (name) {
         <div class="row flex_row justify_flex_start center width_full">
             <input type="checkbox">
             <p class="tag_name">${ name }</p>
+            <img src="../images/loader3.gif" alt="">
         </div>
     `;
 
@@ -616,6 +671,11 @@ function selectItem (e) {
     selected.innerHTML = e.target.innerHTML;
     content.innerHTML = selectContent[e.target.innerHTML];
     buttonsList = document.querySelector('.buttons.flex_row.space_between.center.width_full');
+    gsap.from('#tag_stagger', {
+        marginTop: '1rem',
+        opacity: 0,
+        stagger: 0.1
+    });
 }
 
 hamburger.addEventListener('click', (e) => {
@@ -832,6 +892,7 @@ function renderStartMove(e) {
 
         let percent = getPercent(render_start);
         video.currentTime = video.duration * percent;
+        render_start_input.value = Math.floor(video.currentTime);
     }
 }
 
@@ -854,7 +915,7 @@ function renderEndMove(e) {
 
         let percent = getPercent(render_end);
         video.currentTime = video.duration * percent;
-        // console.log(video.duration);
+        render_end_input.value = Math.floor(video.currentTime);
     }
 }
 

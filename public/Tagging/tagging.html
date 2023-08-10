@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="tagging.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script defer src="tagging.js"></script>
     <title>Tagging</title>
 </head>
@@ -17,7 +18,7 @@
             <div class="hamburger">
                 <span></span>
             </div>
-            <ul class="flex_row space_between center">
+            <ul class="flex_row space_between center" id="stagger">
                 <li class="flex_row justify_center center">Help</li>
                 <li class="flex_row justify_center center"><a href="../Home/index.html">Logout</a></li>
             </ul>
@@ -25,18 +26,18 @@
                 <li>Help</li>
             </ul>
             <div class="language flex_row space_between center">
-                <p>EN</p>
-                <img src="../images/icons8-first-flag-of-the-usa-40 1.png" alt="flag">
+                <p id="stagger">EN</p>
+                <img src="../images/icons8-first-flag-of-the-usa-40 1.png" alt="flag" id="stagger">
             </div>
         </div>
         <!-- First toolbar (import files and create directory) -->
         <div class="toolbar flex_row justify_flex_start center width_full">
-            <div class="import flex_row center space_between">
+            <div class="import flex_row center space_between" id="stagger">
                 <svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30"><path d="M220 896q-24 0-42-18t-18-42V693h60v143h520V693h60v143q0 24-18 42t-42 18H220Zm260-153L287 550l43-43 120 120V256h60v371l120-120 43 43-193 193Z"/></svg>
                 <p>Import Files</p>
                 <input type="file" accept=".mp4,video/*" onchange="importFile(event)" id="file_import">
             </div>
-            <div class="create flex_row center space_between">
+            <div class="create flex_row center space_between" id="stagger">
                 <svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30"><path d="M570 736h60v-90h90v-60h-90v-90h-60v90h-90v60h90v90ZM141 896q-24 0-42-18.5T81 836V316q0-23 18-41.5t42-18.5h280l60 60h340q23 0 41.5 18.5T881 376v460q0 23-18.5 41.5T821 896H141Zm0-580v520h680V376H456l-60-60H141Zm0 0v520-520Z"/></svg>
                 <p><button>Create Directory</button></p>
             </div>
@@ -54,11 +55,11 @@
             <div class="files_section flex_column align_flex_start">
                 <!-- Second toolbar (search and filter) -->
                 <div class="toolbar flex_row justify_flex_start center width_full">
-                    <div class="search flex_row center space_between">
+                    <div class="search flex_row center space_between" id="stagger">
                         <svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30"><path d="M796 935 533 672q-30 26-69.959 40.5T378 727q-108.162 0-183.081-75Q120 577 120 471t75-181q75-75 181.5-75t181 75Q632 365 632 471.15 632 514 618 554q-14 40-42 75l264 262-44 44ZM377 667q81.25 0 138.125-57.5T572 471q0-81-56.875-138.5T377 275q-82.083 0-139.542 57.5Q180 390 180 471t57.458 138.5Q294.917 667 377 667Z"/></svg>
                         <input type="text" placeholder="Search">
                     </div>
-                    <div class="filter flex_row center space_between">
+                    <div class="filter flex_row center space_between" id="stagger">
                         <svg xmlns="http://www.w3.org/2000/svg" height="30" viewBox="0 96 960 960" width="30"><path d="M440 896q-17 0-28.5-11.5T400 856V616L161 311q-14-17-4-36t31-19h584q21 0 31 19t-4 36L560 616v240q0 17-11.5 28.5T520 896h-80Zm40-276 240-304H240l240 304Zm0 0Z"/></svg>
                         <div class="select flex_column space_between center width_full" onclick="showSelectMenu(event)">
                             <div class="selected_item flex_row space_between center width_full">
@@ -108,7 +109,7 @@
                 </div>
                 <div class="directories flex_row width_full">
                     <div class="file_tree flex_column justify_flex_start align_flex_start">
-                        <div class="row flex_row space_between center width_full">
+                        <div class="row flex_row space_between center width_full" id="stagger">
                             <div class="file">
                                 <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 96 960 960" width="24"><path d="M141 896q-24 0-42-18.5T81 836V316q0-23 18-41.5t42-18.5h280l60 60h340q23 0 41.5 18.5T881 376v460q0 23-18.5 41.5T821 896H141Zm0-580v520h680V376H456l-60-60H141Zm0 0v520-520Z"/></svg>
                             </div>
@@ -118,7 +119,7 @@
                         </div>
                     </div>
                     <div class="file_manager flex_column width_full">
-                        <div class="folders flex_column width_full">
+                        <div class="folders flex_column width_full" id="stagger">
                             <p>Directories</p>
                             <div class="directories_container flex_row justify_flex_start align_flex_start width_full">
                                 <div onclick="directorySelect(event)" class="directory_wrapper flex_row align_flex_start center">
@@ -133,7 +134,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="files flex_column width_full">
+                        <div class="files flex_column width_full" id="stagger">
                             <p>Files</p>
                             <div class="files_container flex_row justify_flex_start center width_full">
                                 <div oncontextmenu="fileRightClick(event)" onclick="window.location.href = '../Desktop/desktop.html'; localStorage.setItem('fromTagging', 'true');" class="file_wrapper flex_row align_flex_start center">
@@ -158,23 +159,23 @@
                         <p>No files selected</p>
                     </div>
                     <div class="controls flex_column space_evenly width_full">
-                        <input type="range" value="0" name="seek_bar" class="seek_bar">
+                        <input type="range" value="0" name="seek_bar" class="seek_bar" id="player_stagger">
                         <div class="buttons flex_row space_between center width_full">
                             <div class="playing_buttons flex_row space_between center">
-                                <button>
+                                <button id="player_stagger">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M320 853V293l440 280-440 280Zm60-280Zm0 171 269-171-269-171v342Z"/></svg>
                                     <!-- <svg fill="#000000" width="36" height="36" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M46.677 64.652c0-9.362 7.132-17.387 16.447-17.394 9.315-.007 24.677.007 34.55.007 9.875 0 17.138 7.594 17.138 16.998 0 9.403-.083 119.094-.083 127.82 0 8.726-7.58 16.895-16.554 16.837-8.975-.058-25.349.115-34.963.058-9.614-.058-16.646-7.74-16.646-17.254 0-9.515.11-117.71.11-127.072zm14.759.818s-.09 118.144-.09 123.691c0 5.547 3.124 5.315 6.481 5.832 3.358.518 21.454.47 24.402.47 2.947 0 7.085-1.658 7.167-6.14.08-4.483-.082-119.507-.082-123.249 0-3.742-4.299-4.264-7.085-4.66-2.787-.395-25.796 0-25.796 0l-4.997 4.056zm76.664-.793c.027-9.804 7.518-17.541 17.125-17.689 9.606-.147 25.283.148 35.004.148 9.72 0 17.397 8.52 17.397 17.77s-.178 117.809-.178 127c0 9.192-7.664 17.12-16.323 17.072-8.66-.05-26.354 0-34.991.048-8.638.05-17.98-8.582-18.007-17.783-.027-9.201-.055-116.763-.027-126.566zm16.917.554s-.089 118.145-.089 123.692c0 5.547 3.123 5.314 6.48 5.832 3.359.518 21.455.47 24.402.47 2.948 0 7.086-1.659 7.167-6.141.081-4.482-.08-119.506-.08-123.248 0-3.742-4.3-4.265-7.087-4.66-2.786-.396-25.796 0-25.796 0l-4.997 4.055z" fill-rule="evenodd"/>
                                     </svg> -->
                                 </button>
-                                <button><svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M220 816V336h60v480h-60Zm520 0L394 576l346-240v480Zm-60-240Zm0 125V451L499 576l181 125Z"/></svg></button>
-                                <button><svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M680 816V336h60v480h-60Zm-460 0V336l346 240-346 240Zm60-240Zm0 125 181-125-181-125v250Z"/></svg></button>
-                                <button><svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M330 726h300V426H330v300Zm150.266 250q-82.734 0-155.5-31.5t-127.266-86q-54.5-54.5-86-127.341Q80 658.319 80 575.5q0-82.819 31.5-155.659Q143 347 197.5 293t127.341-85.5Q397.681 176 480.5 176q82.819 0 155.659 31.5Q709 239 763 293t85.5 127Q880 493 880 575.734q0 82.734-31.5 155.5T763 858.316q-54 54.316-127 86Q563 976 480.266 976Zm.234-60Q622 916 721 816.5t99-241Q820 434 721.188 335 622.375 236 480 236q-141 0-240.5 98.812Q140 433.625 140 576q0 141 99.5 240.5t241 99.5Zm-.5-340Z"/></svg></button>
+                                <button id="player_stagger"><svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M220 816V336h60v480h-60Zm520 0L394 576l346-240v480Zm-60-240Zm0 125V451L499 576l181 125Z"/></svg></button>
+                                <button id="player_stagger"><svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M680 816V336h60v480h-60Zm-460 0V336l346 240-346 240Zm60-240Zm0 125 181-125-181-125v250Z"/></svg></button>
+                                <button id="player_stagger"><svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M330 726h300V426H330v300Zm150.266 250q-82.734 0-155.5-31.5t-127.266-86q-54.5-54.5-86-127.341Q80 658.319 80 575.5q0-82.819 31.5-155.659Q143 347 197.5 293t127.341-85.5Q397.681 176 480.5 176q82.819 0 155.659 31.5Q709 239 763 293t85.5 127Q880 493 880 575.734q0 82.734-31.5 155.5T763 858.316q-54 54.316-127 86Q563 976 480.266 976Zm.234-60Q622 916 721 816.5t99-241Q820 434 721.188 335 622.375 236 480 236q-141 0-240.5 98.812Q140 433.625 140 576q0 141 99.5 240.5t241 99.5Zm-.5-340Z"/></svg></button>
                             </div>
                             <div class="volume_buttons flex_row space_between center">
-                                <button><svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M280 696V456h160l200-200v640L440 696H280Zm60-60h127l113 109V408L467 516H340v120Zm119-60Z"/></svg></button>
-                                <input type="range" min="0" max="1" step="0.1" name="volume" class="volume">
-                                <button><svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M560 925v-62q97-28 158.5-107.5T780 575q0-101-61-181T560 287v-62q124 28 202 125.5T840 575q0 127-78 224.5T560 925ZM120 696V456h160l200-200v640L280 696H120Zm420 48V407q55 17 87.5 64T660 576q0 57-33 104t-87 64ZM420 408 307 516H180v120h127l113 109V408Zm-94 168Z"/></svg></button>
+                                <button id="player_stagger"><svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M280 696V456h160l200-200v640L440 696H280Zm60-60h127l113 109V408L467 516H340v120Zm119-60Z"/></svg></button>
+                                <input type="range" min="0" max="1" step="0.1" name="volume" class="volume" id="player_stagger">
+                                <button id="player_stagger"><svg xmlns="http://www.w3.org/2000/svg" height="36" viewBox="0 96 960 960" width="36"><path d="M560 925v-62q97-28 158.5-107.5T780 575q0-101-61-181T560 287v-62q124 28 202 125.5T840 575q0 127-78 224.5T560 925ZM120 696V456h160l200-200v640L280 696H120Zm420 48V407q55 17 87.5 64T660 576q0 57-33 104t-87 64ZM420 408 307 516H180v120h127l113 109V408Zm-94 168Z"/></svg></button>
                             </div>
                         </div>
                     </div>
