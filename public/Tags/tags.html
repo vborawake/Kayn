@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="tags.css">
+    <link rel="stylesheet" href="../helper.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script defer src="tags.js"></script>
     <title>Tags</title>
@@ -26,9 +27,27 @@
                 <li>Help</li>
                 <li class="flex_row justify_center center"><a href="../Home/index.html">Logout</a></li>
             </ul>
-            <div class="language flex_row space_between center">
-                <p id="stagger">EN</p>
-                <img src="../images/icons8-first-flag-of-the-usa-40 1.png" alt="flag" id="stagger">
+            <div class="language selected flex_row space_between center" id="stagger" style="cursor: pointer;" onclick="showLanguagePopup(event)">
+                <p>EN</p>
+                <img src="../images/icons8-first-flag-of-the-usa-40 1.png" alt="flag">
+            </div>
+            <div class="language_popup flex_column">
+                <div class="language flex_row center" style="cursor: pointer;" onclick="selectLanguage(event)">
+                    <p>EN</p>
+                    <img src="../images/icons8-first-flag-of-the-usa-40 1.png" alt="flag">
+                </div>
+                <div class="language flex_row center" style="cursor: pointer;" onclick="selectLanguage(event)">
+                    <p>AR</p>
+                    <img src="../images/arab.png" alt="flag">
+                </div>
+                <div class="language flex_row center" style="cursor: pointer;" onclick="selectLanguage(event)">
+                    <p>FR</p>
+                    <img src="../images/france.png" alt="flag">
+                </div>
+                <div class="language flex_row center" style="cursor: pointer;" onclick="selectLanguage(event)">
+                    <p>GE</p>
+                    <img src="../images/germany.png" alt="flag">
+                </div>
             </div>
         </div>
         <div class="workspace flex_row space_between width_full">

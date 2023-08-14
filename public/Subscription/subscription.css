@@ -175,13 +175,36 @@ input:focus {
     width: 8%;
 }
 
+.container .language_popup {
+    position: absolute;
+    top: 3rem;
+    width: fit-content;
+    background: #FFF;
+    border-radius: 0.6rem;
+    border: 2px solid #B83169;
+    color: #000;
+    display: none;
+    z-index: 150;
+}
+
+.container .language_popup .language {
+    padding: 0.25rem 1.1rem;
+    width: 100%;
+}
+
+.container .language_popup .language p {
+    margin: 0 1rem 0 0;
+}
+
+.container .language_popup .language:hover {
+    background: #B83169;
+}
+
 .container .toolbar {
     position: relative;
     background: #1f1f1f;
     border-bottom: 2px solid gray;
 }
-
-
 
 .container .bottom_buttons {
     height: 4rem;
@@ -238,7 +261,7 @@ input:focus {
 
 .container .pricing_section {
     position: relative;
-    width: 80%;
+    width: 100%;
     color: #000;
     margin: 5rem auto 5rem auto;
 }
@@ -254,7 +277,7 @@ input:focus {
 .container .pricing_section .payment_cycle {
     position: relative;
     z-index: 4;
-    width: 50%;
+    width: 40%;
     height: 4.5rem;
     background: #513d72;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -297,11 +320,11 @@ input:focus {
 }
 
 .container .pricing_section .plans .plan {
-    width: 43%;
-    min-height: 45rem;
+    width: 30%;
+    min-height: fit-content;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.06);
     border-radius: 2.5rem;
-    padding-bottom: 2rem;
+    padding-bottom: 0.5rem;
     background: #2a2a55;
     overflow: hidden;
     color: #FFF;
@@ -311,7 +334,7 @@ input:focus {
     align-items: center;
     background: #505079;
     width: 100%;
-    height: 8rem;
+    height: 7.5rem;
     font-size: 1.2rem;
     color: #FFF;
 }
@@ -322,7 +345,7 @@ input:focus {
 }
 
 .container .pricing_section .plan .header h2 {
-    margin: 1rem 0 0 0;
+    margin: 0;
     font-weight: 700;
     color: #ff5cbc;
     font-size: 3.5rem;
@@ -336,19 +359,19 @@ input:focus {
     height: fit-content;
     width: 70%;
     font-size: 1.2rem;
-    margin: 0 auto;
+    margin: 0 auto 1rem auto;
     padding: 0;
 }
 
 .container .pricing_section .plan h1 {
-    margin: 1rem 0 1rem 0;
+    margin: 1.5rem 0;
     font-weight: 600;
     font-size: 3rem;
 }
 
 .container .pricing_section .plan button {
     height: 3.5rem;
-    margin: 2rem 0;
+    margin: 1rem 0;
     width: 80%;
     font-size: 1.5rem;
     font-weight: 700;
@@ -358,7 +381,7 @@ input:focus {
 
 .container .pricing_section .plan ul li {
     background: linear-gradient(180deg, #271955 0%, #49226f 100%);
-    padding: 1rem;
+    padding: 0.75rem;
 }
 
 .container .pricing_section .plan ul li:first-child {
@@ -528,7 +551,7 @@ input:focus {
     }
 
     .container .pricing_section {
-        width: 80%;
+        width: 100%;
         height: fit-content;
         color: #000;
         margin: 0 auto;
@@ -548,9 +571,8 @@ input:focus {
     }
     
     .container .pricing_section .plans .plan {
-        width: 45%;
+        width: 30%;
         height: fit-content;
-        border-radius: 0.8px;
     }
     
     .container .pricing_section .plan ul {
@@ -577,7 +599,6 @@ input:focus {
     }
 
     .container .pricing_section {
-        width: 80%;
         height: fit-content;
         color: #000;
         margin: 5rem auto 0 auto;
@@ -599,7 +620,7 @@ input:focus {
     .container .pricing_section .plans .plan {
         width: 45%;
         height: fit-content;
-        border-radius: 0.8px;
+        margin-bottom: 2rem;
     }
     
     .container .pricing_section .plan ul {
@@ -673,7 +694,6 @@ input:focus {
     }
 
     .container .pricing_section {
-        width: 80%;
         height: fit-content;
         color: #000;
         margin: 5rem auto 0 auto;
@@ -694,8 +714,8 @@ input:focus {
     
     .container .pricing_section .plans .plan {
         width: 45%;
+        margin-bottom: 2rem;
         height: fit-content;
-        border-radius: 0.8px;
     }
     
     .container .pricing_section .plan ul {
@@ -756,6 +776,7 @@ input:focus {
     
     .container .pricing_section .plans .plan {
         width: 45%;
+        margin-bottom: 2rem;
         height: fit-content;
         border-radius: 0.8rem;
     }

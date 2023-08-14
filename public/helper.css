@@ -14,6 +14,31 @@
     object-fit: fill;
 }
 
+.container .language_popup {
+    position: absolute;
+    top: 3rem;
+    width: fit-content;
+    background: #FFF;
+    border-radius: 0.6rem;
+    border: 2px solid #B83169;
+    color: #000;
+    display: none;
+    z-index: 150;
+}
+
+.container .language_popup .language {
+    padding: 0.25rem 1.1rem;
+    width: 100%;
+}
+
+.container .language_popup .language p {
+    margin: 0 1rem 0 0;
+}
+
+.container .language_popup .language:hover {
+    background: #B83169;
+}
+
 @media screen and (min-width: 992px) and (max-width: 1200px) {
     .loader img {
         width: 25%;

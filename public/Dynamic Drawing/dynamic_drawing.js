@@ -19,6 +19,8 @@ const right_toolbar = document.querySelector('.tools.right_tools');
 const ticksElement = document.querySelector('.ticks.flex_row.align_flex_end.width_full');
 const renderMenu = document.querySelector('.render_menu.flex_column.center');
 // const video = document.querySelector('video');
+const selectedLanguage = document.querySelector('.language.selected');
+const popup2 = document.querySelector('.language_popup');
 
 let start_coords = {};
 let end_coords = {};
@@ -367,4 +369,41 @@ window.addEventListener('resize', throttleFunc(() => {
     Array.from(ticksElement.children).forEach(tick => { tick.remove() });
     setCanvasSize();
     populateTicks();
+    popup2.style.left = `${document.querySelector('.selected').getBoundingClientRect().x - 25}px`;
 }), 1000);
+
+async function selectLanguage(e) {
+    selectedLanguage.querySelector('img').outerHTML = e.currentTarget.querySelector('img').outerHTML;
+    selectedLanguage.querySelector('p').outerHTML = e.currentTarget.querySelector('p').outerHTML;
+
+    await gsap.to(popup2, {
+        y: '0',
+        opacity: 0,
+    });
+    popup2.style.display = 'none';
+    await gsap.to(popup2, {
+        opacity: 1
+    })
+}
+
+async function showLanguagePopup(e) {
+    e.stopPropagation();
+    if (popup2.style.display === 'none' || popup2.style.display === '') {
+        popup2.style.display = 'flex';
+        popup2.style.left = `${e.currentTarget.getBoundingClientRect().x - 25}px`;
+        await gsap.from(popup2, {
+            y: '-2rem',
+            opacity: 0,
+            duration: 0.5
+        });
+    } else {
+        await gsap.to(popup2, {
+            y: '0',
+            opacity: 0,
+        });
+        popup2.style.display = 'none';
+        await gsap.to(popup2, {
+            opacity: 1
+        })
+    }
+}

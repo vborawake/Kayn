@@ -11,6 +11,8 @@ const tagEdit = document.querySelector('.menus .tag_information.flex_column.cent
 const tags_wrapper = tag_information.querySelector('.tags_wrapper.width_full');
 const start = document.getElementById('start');
 const end = document.getElementById('end');
+const selectedLanguage = document.querySelector('.language.selected');
+const popup2 = document.querySelector('.language_popup');
 
 let tag_button;
 let buttonInCons = '';
@@ -272,5 +274,42 @@ window.addEventListener('resize', (e) => {
             document.querySelector('.search.flex_row.center').style.width = '40%';
         }
     }
+    popup2.style.left = `${document.querySelector('.selected').getBoundingClientRect().x - 25}px`;
     console.log(window.innerWidth);
 });
+
+async function selectLanguage(e) {
+    selectedLanguage.querySelector('img').outerHTML = e.currentTarget.querySelector('img').outerHTML;
+    selectedLanguage.querySelector('p').outerHTML = e.currentTarget.querySelector('p').outerHTML;
+
+    await gsap.to(popup2, {
+        y: '0',
+        opacity: 0,
+    });
+    popup2.style.display = 'none';
+    await gsap.to(popup2, {
+        opacity: 1
+    })
+}
+
+async function showLanguagePopup(e) {
+    e.stopPropagation();
+    if (popup2.style.display === 'none' || popup2.style.display === '') {
+        popup2.style.display = 'flex';
+        popup2.style.left = `${e.currentTarget.getBoundingClientRect().x - 25}px`;
+        await gsap.from(popup2, {
+            y: '-2rem',
+            opacity: 0,
+            duration: 0.5
+        });
+    } else {
+        await gsap.to(popup2, {
+            y: '0',
+            opacity: 0,
+        });
+        popup2.style.display = 'none';
+        await gsap.to(popup2, {
+            opacity: 1
+        })
+    }
+}

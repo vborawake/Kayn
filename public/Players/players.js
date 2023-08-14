@@ -6,6 +6,8 @@ const leftWorkspace = document.querySelector('.left_workspace.flex_column.justif
 const right_workspace = document.querySelector('.right_workspace.flex_column.justify_flex_start');
 const playersContainer = document.querySelector('.players_container.flex_row.justify_flex_start');
 const photoInput = document.querySelector('.image_upload');
+const selectedLanguage = document.querySelector('.language.selected');
+const popup2 = document.querySelector('.language_popup');
 
 let isOpen = false;
 let playerCounter = 0;
@@ -193,4 +195,42 @@ window.addEventListener('resize', (e) => {
             document.querySelector('.search.flex_row.center').style.width = '70%';
         }
     }
+
+    popup2.style.left = `${document.querySelector('.selected').getBoundingClientRect().x - 25}px`;
 });
+
+async function selectLanguage(e) {
+    selectedLanguage.querySelector('img').outerHTML = e.currentTarget.querySelector('img').outerHTML;
+    selectedLanguage.querySelector('p').outerHTML = e.currentTarget.querySelector('p').outerHTML;
+
+    await gsap.to(popup2, {
+        y: '0',
+        opacity: 0,
+    });
+    popup2.style.display = 'none';
+    await gsap.to(popup2, {
+        opacity: 1
+    })
+}
+
+async function showLanguagePopup(e) {
+    e.stopPropagation();
+    if (popup2.style.display === 'none' || popup2.style.display === '') {
+        popup2.style.display = 'flex';
+        popup2.style.left = `${e.currentTarget.getBoundingClientRect().x - 25}px`;
+        await gsap.from(popup2, {
+            y: '-2rem',
+            opacity: 0,
+            duration: 0.5
+        });
+    } else {
+        await gsap.to(popup2, {
+            y: '0',
+            opacity: 0,
+        });
+        popup2.style.display = 'none';
+        await gsap.to(popup2, {
+            opacity: 1
+        })
+    }
+}
